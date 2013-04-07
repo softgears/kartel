@@ -1,4 +1,8 @@
-﻿
+﻿@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@{
+    var catIndex = Locator.GetService<CategoriesIndexManager>();
+}
 <!DOCTYPE html>
 
 <html>
@@ -48,11 +52,11 @@
                     
                     </div>
                     <ul id="categories">
-                        @for (var i = 0; i < 33;i++ )
+                        @foreach(var category in catIndex.RootCategories)
                         {
-                        <li>
-                            <a href="/category/1">ПО</a>
-                        </li>    
+                            <li data-length="@category.Title.Length">
+                                <a href="/category/@category.Id">@category.Title</a>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -67,5 +71,13 @@
             </div>
         </footer>
     </div>
+    <script type="text/javascript">
+        $("#categories li").each(function(index, item) {
+            var length = parseInt($(item).data("length"));
+            if (length > 27) {
+                $(item).addClass("big");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Kartel" EntityNamespace="Kartel.Domain.Entities" ContextNamespace="Kartel.Domain.DAL" Class="KartelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Subdomain" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Brand" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LogoUrl" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FIO" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FIOImg" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CellPhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Skype" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ICQ" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ListWork" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="People" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Capital" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Money" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="About" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mainproduct" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Geography" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Certificates" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="License" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dealer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CertificateCompany" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CertificateCountry" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CertificateAddress" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CertificateDirector" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CertificateNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CertificateInn" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="CertificateDate" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CertificateOpf" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CartificateU" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CertificateCapital" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Tarif" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TariffExpiration" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TariffMoney" Type="System.Data.Linq.Binary" DbType="VarBinary(255) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TariffTmp" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Activate" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="ConfigSave2Week" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggedIP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="LoggedDate" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Administrator" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Design" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ListCertificate" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="BannerPeriod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Product" Member="Products" ThisKey="Id" OtherKey="UserId" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductsCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TendersCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewMode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Product" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Field1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field3" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field4" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field5" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field6" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field8" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Field9" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Category_Product" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="User_Product" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

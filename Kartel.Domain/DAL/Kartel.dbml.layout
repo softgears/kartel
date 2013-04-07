@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.5" name="Kartel">
+  <DataContextMoniker Name="/KartelDataContext" />
+  <nestedChildShapes>
+    <classShape Id="be36540f-91a2-49c1-bfb3-ec0bff530888" absoluteBounds="6.75, 1, 2, 11.193666992187502">
+      <DataClassMoniker Name="/KartelDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="764bb132-5aff-4c73-990e-695ac4f9bc53" absoluteBounds="6.7650000000000006, 1.4600000000000009, 1.9700000000000002, 10.6336669921875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3f5a705e-9d9a-4e9f-84bd-4517b22432df" absoluteBounds="0.75, 1.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/KartelDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cf33c5c-21f3-434b-a630-58e9ec96e94b" absoluteBounds="0.765, 2.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77a3f7a6-afe2-4f4c-9908-46776719c297" absoluteBounds="3.5, 1, 2, 3.6939111328124992">
+      <DataClassMoniker Name="/KartelDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a9e20c80-409f-4184-9ed6-4786dff7d44f" absoluteBounds="3.515, 1.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.82774983723958); (3.5 : 2.82774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KartelDataContext/Category/Category_Product" />
+      <nodes>
+        <classShapeMoniker Id="3f5a705e-9d9a-4e9f-84bd-4517b22432df" />
+        <classShapeMoniker Id="77a3f7a6-afe2-4f4c-9908-46776719c297" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 2.84695556640625); (5.5 : 2.84695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KartelDataContext/User/User_Product" />
+      <nodes>
+        <classShapeMoniker Id="be36540f-91a2-49c1-bfb3-ec0bff530888" />
+        <classShapeMoniker Id="77a3f7a6-afe2-4f4c-9908-46776719c297" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
