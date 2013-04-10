@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=960px" />
+    <title>@ViewBag.Title | Картель.рф</title>
+    @Html.Partial("Includes")
+</head>
+<body class="inner">
+    <div>
+        @Html.Partial("Header")
+        <section id="content">
+            <div id="content-wrapper">
+                <div id="left-menu-block">
+                    @RenderSection("LeftMenuBlock",false)
+                </div>
+                <div id="content-section-bg">
+                    <div id="content-section-inner">
+                        
+                    </div>
+                </div>
+                <div id="content-section">
+                    <div id="content-inner-wrapper">
+                        @RenderBody()        
+                    </div>
+                </div>    
+                <script type="text/javascript">
+                    $(window).resize(function () {
+                        $("#content-section-inner").height($("#content-section").outerHeight(true)).width($("#content-section").outerWidth(true) + window.innerWidth - $("#content-section-bg").position().left - $("#content-section").outerWidth(true) - 37);
+                    }).resize();
+                </script>
+            </div>
+        </section>
+        @Html.Partial("Footer")
+    </div>
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>

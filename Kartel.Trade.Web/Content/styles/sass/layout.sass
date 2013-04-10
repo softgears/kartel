@@ -4,6 +4,27 @@ body
 	font-size:  12px
 	color: #444444
 
+	&.inner
+		background: url(../../images/layout/innerbg.png) !important
+
+		#header
+			border-bottom: 0
+			background: none
+
+		#content
+			margin: 0
+
+			#content-section
+				width: 740px !important
+
+				#content-inner-wrapper
+					padding: 15px 35px
+					padding-bottom: 5px
+
+		#footer
+			border-top: 0
+			background: none
+
 	#header
 		height: 102px
 		background: url(../../images/layout/header-bg.png) center top repeat-x
@@ -195,14 +216,64 @@ body
 							&:hover
 								text-decoration: none
 
+			#left-menu-block
+				display: inline-block
+				vertical-align: top
+				width: 195px
+				margin-right: 25px
+				padding-left: 15px
+
+				.menu-block
+					margin-bottom: 25px
+
+					.menu-block-title
+						font-size: 14px
+						color: #ffffff
+						font-weight: bold
+						border-bottom: 1px dashed white
+						padding-bottom: 10px
+						font-family: Arial
+
+					ul
+						li
+							list-style-position: inside
+							list-style-image: url(../../images/layout/bullet.png)
+							border-bottom: 1px dashed white
+							margin: 5px 0px
+							padding-bottom: 10px
+
+							a
+								color: white
+								font-family: Verdana
+								font-size: 12px
+
+								&:hover
+									text-decoration: underline
+
+
+
+			#content-section-bg
+				display: inline-block
+				vertical-align: top
+				margin-left: 25px
+				position: absolute
+				background-color: #fafafa
+				padding: 5px
+				border-top-left-radius: 5px
+				border-bottom-left-radius: 5px
+				z-index: 9
+
+				#content-section-inner
+					width: 100%
+					border: 1px dashed #c5c5c5
+					border-right: 0
+
 			#content-section
 				display: inline-block
 				vertical-align: top
 				width: 720px
-
-
-
-
+				position: relative
+				z-index: 10
 
 	#footer
 		height: 28px
