@@ -1,0 +1,13 @@
+﻿@model Kartel.Domain.Entities.Product
+
+<div class="hot-product">
+    <div class="title">
+        <a href="/product/@Model.Title">@Model.Title</a>
+    </div>
+    <div class="image">
+        <img src="@Model.Img"/>
+    </div>
+    <div class="price">
+        Цена: <span class="price-holder">@Model.Field3</span>
+    </div>
+</div>

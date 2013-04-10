@@ -1,0 +1,23 @@
+﻿@model dynamic
+
+@{
+    int page = ViewBag.page;
+    int totalPages = ViewBag.totalPages;
+}
+
+<div class="products-navigator">
+    <select class="product-sort">
+        <option value="price">Цена</option>
+        <option value="count">Минимальная партия</option>
+        <option value="views">Просмотров</option>
+    </select>
+    @if (page > 0)
+    {
+        <span class="prev">Предыдущая страница</span>
+    }
+    @if (page < totalPages - 1)
+    {
+        <span class="next">Следующая страница</span>
+    }
+    <div style="clear: both"></div>
+</div>

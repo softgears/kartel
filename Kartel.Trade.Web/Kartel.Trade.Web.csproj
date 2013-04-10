@@ -122,6 +122,7 @@
     <Compile Include="Classes\Cache\CategoriesIndexManager.cs" />
     <Compile Include="Classes\Navigation\NavigationChain.cs" />
     <Compile Include="Classes\Navigation\NavigationChainItem.cs" />
+    <Compile Include="Classes\Utils\MathHelper.cs" />
     <Compile Include="Classes\WebLayer.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -145,6 +146,8 @@
     <Content Include="Content\images\layout\innerbg.png" />
     <Content Include="Content\images\layout\login.png" />
     <Content Include="Content\images\layout\logo.png" />
+    <Content Include="Content\images\layout\pnext.png" />
+    <Content Include="Content\images\layout\pprev.png" />
     <Content Include="Content\images\layout\register.png" />
     <Content Include="Content\images\layout\search-separator.png" />
     <Content Include="Content\images\layout\search.png" />
@@ -177,7 +180,11 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Main\Category.cshtml" />
     <Content Include="Views\Shared\InnerLayout.cshtml" />
-    <Content Include="Views\Main\NavigationChain.cshtml" />
+    <Content Include="Views\Shared\NavigationChain.cshtml" />
+    <Content Include="Views\Main\BrowseCategory.cshtml" />
+    <Content Include="Views\Shared\HotProduct.cshtml" />
+    <Content Include="Views\Main\ProductsNavigator.cshtml" />
+    <Content Include="Views\Main\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

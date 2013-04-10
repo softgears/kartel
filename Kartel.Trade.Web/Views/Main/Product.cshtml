@@ -1,0 +1,30 @@
+﻿@model Kartel.Domain.Entities.Product
+
+<div class="product">
+    <div class="image">
+        <img src="@Model.Img"/>
+    </div>
+    <div class="title">
+        <a href="/product/@Model.Id">@Model.Title</a>
+    </div>
+    <div class="details">
+        @if (!String.IsNullOrEmpty(Model.Field3))
+        {
+            <div class="detailItem">
+                Цена: @Model.Field3
+            </div>    
+        }
+        @if (!String.IsNullOrEmpty(Model.Field4))
+        {
+            <div class="detailItem">
+                Мин. партия: @Model.Field4
+            </div>    
+        }
+        <div class="detailItem">
+            @Model.User.City
+        </div>    
+    </div>
+    <div class="author">
+        <a href="/vendor/@Model.UserId">@Model.User.Dealer</a>
+    </div>
+</div>

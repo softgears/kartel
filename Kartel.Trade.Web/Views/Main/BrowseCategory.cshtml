@@ -1,0 +1,78 @@
+﻿@model Kartel.Domain.Entities.Category
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "../Shared/InnerLayout.cshtml";
+    int page = ViewBag.page;
+}
+
+@section LeftMenuBlock
+{
+    <div class="menu-block">
+        <div class="menu-block-title">
+            @Model.Title
+        </div>
+        <ul>
+            @foreach (var subCategory in Model.GetChildCategories())
+            {
+                <li>
+                    <a href="/browse-category/@subCategory.Id">@subCategory.Title</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="menu-block">
+        <div class="menu-block-title">
+            Регион
+        </div>
+        <ul>
+            <li>
+                <a href="/browse-category/@Model.Id?region=ru">Россия</a>
+            </li>
+            <li>
+                <a href="/browse-category/@Model.Id?region=bru">Беларусь</a>
+            </li>
+            <li>
+                <a href="/browse-category/@Model.Id?region=ukr">Украина</a>
+            </li>
+            <li>
+                <a href="/browse-category/@Model.Id?region=de">Германия</a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div id="page-categories">
+    @* навигационная цепочка *@
+    @Html.Partial("NavigationChain")
+    
+    @* Заголовок *@
+    <div class="current-category-title">
+        @Model.Title
+    </div>
+    
+    @* Горячие товары *@
+    <div id="hot-products">
+        @foreach (var product in Model.GetRandomProducts())
+        {
+            @Html.Partial("HotProduct",product)
+        }
+        <div id="hot-actions">
+            <a href="/help/hot" style="float: right">Узнать больше <img src="~/Content/images/layout/bullet.png" /></a>
+            <a href="#">Добавить свои товары <img src="~/Content/images/layout/bullet.png" /></a>
+        </div>
+    </div>
+    
+    @* Верхний навигатор *@
+    @Html.Partial("ProductsNavigator")
+    
+    <div id="products">
+        @foreach (var product in Model.GetProducts().Skip(page*9).Take(9))
+        {
+            @Html.Partial("Product",product)
+        }
+    </div>
+
+    @* нижний навигатор *@
+    @Html.Partial("ProductsNavigator")
+</div>

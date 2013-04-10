@@ -1,0 +1,115 @@
+.products-navigator
+	margin: 15px 0px
+	background: url(../../images/layout/innerbg.png)
+	padding: 5px 10px
+	font-size: 12px
+	color: white
+	font-family: Arial
+	min-height: 15px
+
+	.product-sort
+		float: right
+
+	.prev
+		padding-left: 32px
+		position: relative
+		top: 4px
+		background: url(../../images/layout/pprev.png) left center no-repeat
+		border-right: 1px solid white
+		padding-right: 5px
+		cursor: pointer
+
+	.next
+		padding-right: 32px
+		position: relative
+		top: 4px
+		cursor: pointer
+		background: url(../../images/layout/pnext.png) right center no-repeat
+
+	.next:hover, prev:hover
+		text-decoration: underline
+
+
+.hot-product
+	display: inline-block
+	vertical-align: top
+	border-right: 1px dashed #bebebe
+	text-align: center
+	width: 170px
+	font-family: Arial
+
+	&:last-child
+		border-right: 0 !important
+
+	.title
+		height: 28px
+
+		a
+			color: #0099cc
+			font-size: 13px
+			font-weight: bold
+			font-family: Arial
+
+			&:hover
+				text-decoration: underline
+
+	.image
+		margin-top: 15px
+		min-height: 85px
+
+		img
+			max-width: 150px
+			max-height: 120px
+			min-height: 100px
+
+	.price
+		color: #999999
+		margin-top: 25px
+		font-size: 14px
+
+		.price-holder
+			margin-left: 5px
+			color: #444444
+
+.product
+	display: inline-block
+	vertical-align: top
+	width: 200px
+	text-align: left
+	margin: 12px
+
+	.image
+		border: 1px solid #c3c3c3
+		height: 200px
+		text-align: center
+		overflow: hidden
+
+		img
+			width: 190px
+			height: auto
+
+	.title
+		margin-top: 5px
+		height: 29px
+
+		a
+			color: #3c9cff
+			font-family: Verdana
+
+			&:hover
+				text-decoration: underline
+
+	.details
+		margin-top: 15px
+		color: #919191
+		text-align: left
+		font-size: 10px
+
+		.detailItem
+			margin-bottom: 5px
+
+	.author
+		margin-top: 10px
+
+		a
+			color: #919191
