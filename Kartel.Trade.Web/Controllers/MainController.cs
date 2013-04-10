@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
 
@@ -27,6 +28,7 @@ namespace Kartel.Trade.Web.Controllers
         /// </summary>
         /// <param name="id">Идентификатор категории</param>
         /// <returns></returns>
+        [Route("category/{id}")]
         public ActionResult Category(long id)
         {
             // Загружаем указанную категорию

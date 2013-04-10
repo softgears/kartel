@@ -4,7 +4,9 @@
     <list default="true" id="91385219-d411-4363-9b27-3ebb50b1a82d" name="Default" comment="" />
     <ignored path="Kartel.Trade.Web.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365555528602" ignored="false" />
+    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365558394900" ignored="false" />
+    <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365556524074" ignored="false" />
+    <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365559402031" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,37 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="reset.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/reset.sass">
+      <file leaf-file-name="categories.sass" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="26" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.sass" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="39" selection-start="299" selection-end="299" vertical-scroll-proportion="0.34160757">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page-main.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="23" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/all.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="18" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
+            <state line="66" column="63" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.8794326">
               <folding />
             </state>
           </provider>
@@ -71,9 +46,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/Content/styles/sass/reset.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
       </list>
     </option>
   </component>
@@ -190,6 +166,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -349,21 +333,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/all.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
+        <state line="3" column="19" selection-start="87" selection-end="87" vertical-scroll-proportion="0.060283687">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="23" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0">
+        <state line="98" column="23" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.74822694">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="39" selection-start="299" selection-end="299" vertical-scroll-proportion="0.34160757">
+        <state line="21" column="38" selection-start="375" selection-end="375" vertical-scroll-proportion="-0.24113475">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="63" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.8794326">
           <folding />
         </state>
       </provider>

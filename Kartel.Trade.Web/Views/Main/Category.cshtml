@@ -1,8 +1,11 @@
-﻿@model Kartel.Domain.Entities.Category
+﻿@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@model Kartel.Domain.Entities.Category
 
 @{
     ViewBag.Title = Model.Title;
     Layout = "../Shared/InnerLayout.cshtml";
+    var catManager = Locator.GetService<CategoriesIndexManager>();
 }
 
 @section LeftMenuBlock
@@ -30,4 +33,48 @@
         </ul>
     </div>
 }
+<div id="page-categories">
+    <div class="current-category-title">
+        @Model.Title
+    </div>
+
+    @* рендерим категории *@
+    @foreach (var category in Model.GetChildCategories())
+    {
+        <div class="category-1-level">
+            <div class="category-1-title">
+                @category.Title
+            </div>
+            <div class="category-1-image">
+                <img src="@catManager.GetCategoryImage(category)"/>
+            </div>
+            <div class="category-1-child">
+                @foreach (var category2child in category.GetChildCategories())
+                {
+                    <div class="category-2-level">
+                        <div class="category-2-title">
+                            <a href="/browse-category/@category2child.Id">@category2child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category2child))</span>
+                        </div>
+                        <ul class="category-2-child">
+                            @foreach (var category3child in category2child.GetChildCategories())
+                            {
+                                <li class="level-3">
+                                    <a href="/browse-category/@category3child.Id">@category3child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category3child))</span>
+                                    <ul class="category-3-child">
+                                        @foreach (var category4child in category3child.GetChildCategories())
+                                        {
+                                            <li class="level-4">
+                                                <a href="/browse-category/@category4child.Id">@category4child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category4child))</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }    
+</div>
 

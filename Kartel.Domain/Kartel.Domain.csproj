@@ -66,6 +66,9 @@
     <Compile Include="DAL\Repositories\CategoriesRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Infrastructure\Routing\RouteAttribute.cs" />
+    <Compile Include="Infrastructure\Routing\RoutesManager.cs" />
     <Compile Include="Interfaces\Cache\IStringCache.cs" />
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
@@ -93,9 +96,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
