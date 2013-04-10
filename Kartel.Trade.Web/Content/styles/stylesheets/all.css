@@ -534,26 +534,41 @@ body #footer #footer-content a {
 }
 
 /* line 1, ../sass/categories.sass */
+#navigation-chain {
+  margin-bottom: 15px;
+}
+/* line 4, ../sass/categories.sass */
+#navigation-chain .navigation-chain-item, #navigation-chain .navigation-chain-inactive {
+  color: #3f3f3f;
+  font-family: Arial;
+  font-size: 12px;
+}
+/* line 9, ../sass/categories.sass */
+#navigation-chain a:hover {
+  text-decoration: underline;
+}
+
+/* line 12, ../sass/categories.sass */
 #page-categories {
   margin-left: 7px;
 }
-/* line 4, ../sass/categories.sass */
+/* line 15, ../sass/categories.sass */
 #page-categories .current-category-title {
   font-size: 18px;
   color: #3f3f3f;
   margin-bottom: 20px;
 }
-/* line 9, ../sass/categories.sass */
+/* line 20, ../sass/categories.sass */
 #page-categories .products-count {
   color: #a1a2a2;
   font-family: Arial;
 }
-/* line 13, ../sass/categories.sass */
+/* line 24, ../sass/categories.sass */
 #page-categories .category-1-level {
   margin-bottom: 15px;
   clear: both;
 }
-/* line 17, ../sass/categories.sass */
+/* line 28, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-title {
   padding: 5px 7px;
   font-size: 16px;
@@ -562,53 +577,53 @@ body #footer #footer-content a {
   background: url(../../images/layout/innerbg.png);
   margin-bottom: 15px;
 }
-/* line 25, ../sass/categories.sass */
+/* line 36, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-image {
   float: left;
   width: 165px;
   min-height: 165px;
 }
-/* line 30, ../sass/categories.sass */
+/* line 41, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child {
   display: inline-block;
   vertical-align: top;
   width: 530px;
 }
-/* line 35, ../sass/categories.sass */
+/* line 46, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level {
   display: inline-block;
   vertical-align: top;
   width: 260px;
   margin-bottom: 15px;
 }
-/* line 43, ../sass/categories.sass */
+/* line 54, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-title a {
   color: #008ac0;
   font-family: Arial;
   font-size: 14px;
 }
-/* line 48, ../sass/categories.sass */
+/* line 59, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-title a:hover {
   text-decoration: underline;
 }
-/* line 52, ../sass/categories.sass */
+/* line 63, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 58, ../sass/categories.sass */
+/* line 69, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 a {
   color: #686868;
   font-family: Arial;
   font-size: 13px;
 }
-/* line 63, ../sass/categories.sass */
+/* line 74, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 a:hover {
   text-decoration: underline;
 }
-/* line 67, ../sass/categories.sass */
+/* line 78, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 .category-4-child li.level-4 {
   list-style-type: square;
   list-style-position: inside;

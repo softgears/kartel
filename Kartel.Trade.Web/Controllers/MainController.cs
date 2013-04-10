@@ -12,7 +12,7 @@ namespace Kartel.Trade.Web.Controllers
     /// <summary>
     /// Основной контроллер системы
     /// </summary>
-    public class MainController : Controller
+    public class MainController : BaseController
     {
         /// <summary>
         /// Отображает главную страницу системы
@@ -31,6 +31,9 @@ namespace Kartel.Trade.Web.Controllers
         [Route("category/{id}")]
         public ActionResult Category(long id)
         {
+            // Пушим навигационную цепочку
+            PushNavigationChainItem("Главная","/");
+
             // Загружаем указанную категорию
             var rep = Locator.GetService<ICategoriesRepository>();
             var cat = rep.Load(id);
@@ -38,6 +41,8 @@ namespace Kartel.Trade.Web.Controllers
             {
                 return RedirectToAction("NotFound");
             }
+
+            PushNavigationChainItem(cat.Title,"",true);
 
             // Отображаем вьху указанной категории
             return View(cat);

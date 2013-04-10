@@ -1,0 +1,18 @@
+﻿@using Kartel.Trade.Web.Controllers
+@model dynamic
+@{
+    var chainItems = (ViewContext.Controller as BaseController).NavigationChain;
+}
+<div id="navigation-chain">
+    @foreach (var item in chainItems)
+    {
+        if (!item.Inactive)
+        {
+            <a class="navigation-chain-item" href="@item.Url">@item.Title</a> <text>/</text>
+        }
+        else
+        {
+            <span class="navigation-chain-inactive">@item.Title</span>
+        }
+    }
+</div>
