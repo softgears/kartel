@@ -4,6 +4,7 @@
     ViewBag.Title = Model.Title;
     Layout = "../Shared/InnerLayout.cshtml";
     int page = ViewBag.page;
+    int totalPages = ViewBag.totalPages;
 }
 
 @section LeftMenuBlock
@@ -75,4 +76,50 @@
 
     @* нижний навигатор *@
     @Html.Partial("ProductsNavigator")
+    
+    @* Пагинатор *@
+    @if (totalPages > 1)
+    {
+    <div id="paginator">
+        @for (var i = 0; i < totalPages; i++)
+        {
+            if (i == page)
+            {
+                <span class="current-page">@(page+1)</span>
+            }
+            else
+            {
+                <a href="/browse-category/@Model.Id?page=@(i)">@(i+1)</a>
+            }
+        }
+    </div>
+    }
+    
+    <div style="text-align: center">
+        <div class="info">
+            <div class="info-title">
+                Покупателям
+            </div>
+            <div class="info-text">
+                Не нашли то, что искали? Объявите тендер и поставщики сами вас найдут.
+            </div>
+            <div class="action-button">
+                <img src="~/Content/images/layout/addtender.png" />
+            </div>
+            <div class="action-text">Разместите тендер!<br/> Бесплатно</div>
+        </div>
+    
+        <div class="info">
+            <div class="info-title">
+                Поставщикам
+            </div>
+            <div class="info-text">
+                Хотите видеть ваши товары здесь? Зарегистрируйтесь, это бесплатно.
+            </div>
+            <div class="action-button">
+                <img src="~/Content/images/layout/addproduct.png" />
+            </div>
+            <div class="action-text">Зарегистрируйтесь сейчас! Бесплатно</div>
+        </div>    
+    </div>
 </div>

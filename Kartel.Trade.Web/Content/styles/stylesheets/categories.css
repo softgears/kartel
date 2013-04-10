@@ -120,3 +120,56 @@
 #page-categories #products {
   text-align: center;
 }
+/* line 104, ../sass/categories.sass */
+#page-categories #paginator {
+  text-align: center;
+}
+/* line 107, ../sass/categories.sass */
+#page-categories #paginator a {
+  border: 1px solid black;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #444444;
+}
+/* line 113, ../sass/categories.sass */
+#page-categories #paginator span {
+  border: 1px solid transparent;
+  padding: 4px 8px;
+}
+/* line 117, ../sass/categories.sass */
+#page-categories .info {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #bbbbbb;
+  padding: 14px;
+  width: 300px;
+  height: 110px;
+  margin: 5px;
+  border-radius: 5px;
+  font-family: Arial;
+  text-align: left;
+  margin-top: 25px;
+}
+/* line 130, ../sass/categories.sass */
+#page-categories .info .info-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* line 134, ../sass/categories.sass */
+#page-categories .info .info-text {
+  margin-top: 20px;
+  line-height: 1.5;
+}
+/* line 138, ../sass/categories.sass */
+#page-categories .info .action-text {
+  margin-top: 15px;
+  color: #004080;
+  font-weight: bold;
+  font-size: 13px;
+}
+/* line 144, ../sass/categories.sass */
+#page-categories .info .action-button {
+  float: right;
+  margin-top: 15px;
+  cursor: pointer;
+}

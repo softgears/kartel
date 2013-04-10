@@ -31,7 +31,7 @@
   background: url(../../images/layout/pnext.png) right center no-repeat;
 }
 /* line 29, ../sass/products.sass */
-.products-navigator .next:hover, .products-navigator prev:hover {
+.products-navigator .next:hover, .products-navigator .prev:hover {
   text-decoration: underline;
 }
 
