@@ -714,40 +714,41 @@ body #footer #footer-content a {
 .products-navigator {
   margin: 15px 0px;
   background: url(../../images/layout/innerbg.png);
-  padding: 5px 10px;
+  padding: 10px;
   font-size: 12px;
   color: white;
   font-family: Arial;
   min-height: 15px;
+  border-radius: 5px;
 }
-/* line 10, ../sass/products.sass */
+/* line 11, ../sass/products.sass */
 .products-navigator .product-sort {
   float: right;
 }
-/* line 13, ../sass/products.sass */
+/* line 14, ../sass/products.sass */
 .products-navigator .prev {
   padding-left: 32px;
   position: relative;
   top: 4px;
   background: url(../../images/layout/pprev.png) left center no-repeat;
   border-right: 1px solid white;
-  padding-right: 5px;
+  padding-right: 8px;
   cursor: pointer;
 }
-/* line 22, ../sass/products.sass */
+/* line 23, ../sass/products.sass */
 .products-navigator .next {
   padding-right: 32px;
   position: relative;
-  top: 4px;
+  top: 8px;
   cursor: pointer;
   background: url(../../images/layout/pnext.png) right center no-repeat;
 }
-/* line 29, ../sass/products.sass */
+/* line 30, ../sass/products.sass */
 .products-navigator .next:hover, .products-navigator .prev:hover {
   text-decoration: underline;
 }
 
-/* line 33, ../sass/products.sass */
+/* line 34, ../sass/products.sass */
 .hot-product {
   display: inline-block;
   vertical-align: top;
@@ -756,49 +757,49 @@ body #footer #footer-content a {
   width: 170px;
   font-family: Arial;
 }
-/* line 41, ../sass/products.sass */
+/* line 42, ../sass/products.sass */
 .hot-product:last-child {
   border-right: 0 !important;
 }
-/* line 44, ../sass/products.sass */
+/* line 45, ../sass/products.sass */
 .hot-product .title {
   height: 28px;
 }
-/* line 47, ../sass/products.sass */
+/* line 48, ../sass/products.sass */
 .hot-product .title a {
   color: #0099cc;
   font-size: 13px;
   font-weight: bold;
   font-family: Arial;
 }
-/* line 53, ../sass/products.sass */
+/* line 54, ../sass/products.sass */
 .hot-product .title a:hover {
   text-decoration: underline;
 }
-/* line 56, ../sass/products.sass */
+/* line 57, ../sass/products.sass */
 .hot-product .image {
   margin-top: 15px;
   min-height: 85px;
 }
-/* line 60, ../sass/products.sass */
+/* line 61, ../sass/products.sass */
 .hot-product .image img {
   max-width: 150px;
   max-height: 120px;
   min-height: 100px;
 }
-/* line 65, ../sass/products.sass */
+/* line 66, ../sass/products.sass */
 .hot-product .price {
   color: #999999;
   margin-top: 25px;
   font-size: 14px;
 }
-/* line 70, ../sass/products.sass */
+/* line 71, ../sass/products.sass */
 .hot-product .price .price-holder {
   margin-left: 5px;
   color: #444444;
 }
 
-/* line 74, ../sass/products.sass */
+/* line 75, ../sass/products.sass */
 .product {
   display: inline-block;
   vertical-align: top;
@@ -806,48 +807,48 @@ body #footer #footer-content a {
   text-align: left;
   margin: 12px;
 }
-/* line 81, ../sass/products.sass */
+/* line 82, ../sass/products.sass */
 .product .image {
   border: 1px solid #c3c3c3;
   height: 200px;
   text-align: center;
   overflow: hidden;
 }
-/* line 87, ../sass/products.sass */
+/* line 88, ../sass/products.sass */
 .product .image img {
   width: 190px;
   height: auto;
 }
-/* line 91, ../sass/products.sass */
+/* line 92, ../sass/products.sass */
 .product .title {
   margin-top: 5px;
   height: 29px;
 }
-/* line 95, ../sass/products.sass */
+/* line 96, ../sass/products.sass */
 .product .title a {
   color: #3c9cff;
   font-family: Verdana;
 }
-/* line 99, ../sass/products.sass */
+/* line 100, ../sass/products.sass */
 .product .title a:hover {
   text-decoration: underline;
 }
-/* line 102, ../sass/products.sass */
+/* line 103, ../sass/products.sass */
 .product .details {
   margin-top: 15px;
   color: #919191;
   text-align: left;
   font-size: 10px;
 }
-/* line 108, ../sass/products.sass */
+/* line 109, ../sass/products.sass */
 .product .details .detailItem {
   margin-bottom: 5px;
 }
-/* line 111, ../sass/products.sass */
+/* line 112, ../sass/products.sass */
 .product .author {
   margin-top: 10px;
 }
-/* line 114, ../sass/products.sass */
+/* line 115, ../sass/products.sass */
 .product .author a {
   color: #919191;
 }

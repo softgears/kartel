@@ -7,7 +7,7 @@
     <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365567872398" ignored="false" />
     <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365566232606" ignored="false" />
     <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
-    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573308116" ignored="false" />
+    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365574450266" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +27,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="categories.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="categories.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="21" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.5780142">
+            <state line="127" column="21" selection-start="2148" selection-end="2148" vertical-scroll-proportion="-27.72">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="products.sass" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="products.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="13" selection-start="562" selection-end="562" vertical-scroll-proportion="28.56">
+            <state line="25" column="14" selection-start="485" selection-end="485" vertical-scroll-proportion="0.50236404">
               <folding />
             </state>
           </provider>
@@ -68,8 +68,8 @@
         <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
       </list>
     </option>
   </component>
@@ -369,16 +369,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="562" selection-end="562" vertical-scroll-proportion="28.56">
+        <state line="127" column="21" selection-start="2148" selection-end="2148" vertical-scroll-proportion="-27.72">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="21" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.5780142">
+        <state line="25" column="14" selection-start="485" selection-end="485" vertical-scroll-proportion="0.50236404">
           <folding />
         </state>
       </provider>
