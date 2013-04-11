@@ -18,6 +18,11 @@ namespace Kartel.Domain.Interfaces.Repositories
     /// </summary>
     public interface IUsersRepository: IBaseRepository<User>
     {
-         
+        /// <summary>
+        /// Проверяет, существует ли в системе пользователь с указанным логином
+        /// </summary>
+        /// <param name="email">Email для логина</param>
+        /// <returns></returns>
+        bool ExistsUserWithLogin(string email);
     }
 }

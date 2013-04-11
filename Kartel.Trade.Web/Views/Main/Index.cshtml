@@ -1,102 +1,98 @@
-﻿@model dynamic
+﻿@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@model dynamic
 
 @{
     ViewBag.Title = "Главная";
     Layout = "../Shared/_Layout.cshtml";
+    var catIndex = Locator.GetService<CategoriesIndexManager>();
 }
 
-
-<div id="banners-block">
-    <div id="banners-container">
-        
+<div id="content-categories">
+    <div id="categories-header">
     </div>
-    <ul id="banners-swticher">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul id="categories">
+        @foreach (var category in catIndex.RootCategories)
+        {
+            <li data-length="@category.Title.Length">
+                <a href="/category/@category.Id">@category.Title</a>
+            </li>
+        }
     </ul>
 </div>
-<div class="hr">
-    
-</div>
-<div class="mainblock">
-    <div id="gold-vendor-info">
-        <div class="title">
-            Премиум аккаунт
+<div id="content-section">
+    <div id="banners-block">
+        <div id="banners-container">
         </div>
-        <ul>
-            <li>
-                Самостоятельный выбор дизайна сайта
-            </li>
-            <li>
-                Реклама в интернете (Яндекс.Директ)
-            </li>
-            <li>
-                Email и SMS рассылки
-            </li>
-            <li>
-                Посещаемость в 28 раз выше
-            </li>
-            <li>
-                Доступ к 100% тендеров
-            </li>
+        <ul id="banners-swticher">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
     </div>
-    <div id="place-info">
-        <div id="place-goods">
-            
+    <div class="hr">
+    </div>
+    <div class="mainblock">
+        <div id="gold-vendor-info">
+            <div class="title">
+                Премиум аккаунт
+            </div>
+            <ul>
+                <li>Самостоятельный выбор дизайна сайта
+                </li>
+                <li>Реклама в интернете (Яндекс.Директ)
+                </li>
+                <li>Email и SMS рассылки
+                </li>
+                <li>Посещаемость в 28 раз выше
+                </li>
+                <li>Доступ к 100% тендеров
+                </li>
+            </ul>
         </div>
-        <div id="place-tenders">
-            
+        <div id="place-info">
+            <div id="place-goods">
+            </div>
+            <div id="place-tenders">
+            </div>
+            <ul>
+                <li>Профессиональный сайт компании
+                </li>
+                <li>Неограниченное количество товаров
+                </li>
+                <li>Доменное имя сайта
+                </li>
+            </ul>
+            <div class="free">
+                И все это БЕСПЛАТНО!
+            </div>
         </div>
-        <ul>
-            <li>
-                Профессиональный сайт компании
-            </li>
-            <li>
-                Неограниченное количество товаров
-            </li>
-            <li>
-                Доменное имя сайта
-            </li>
-        </ul>
-        <div class="free">
-            И все это БЕСПЛАТНО!
+        <div class="goldvendor"></div>
+    </div>
+    <div class="hr" style="margin-top: 20px">
+    </div>
+    <div class="mainblock">
+        <div class="row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
         </div>
     </div>
-    <div class="goldvendor"></div>
 </div>
-<div class="hr" style="margin-top: 20px">
-    
-</div>
-<div class="mainblock">
-    <div class="row">
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-    </div>
-    <div class="row">
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-        <div class="item">
-            
-        </div>
-    </div>
-</div>
+

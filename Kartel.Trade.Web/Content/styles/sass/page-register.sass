@@ -1,0 +1,98 @@
+#page-register
+	margin-top: 5px
+	margin-left: 15px
+	min-height: 600px
+	font-family: Arial
+
+	#registration-info
+		float: right
+		border: 1px solid #bebebe
+		border-radius: 5px
+		padding: 10px
+		width: 195px
+
+		.title
+			font-weight: bold
+			font-size: 16px
+			margin-top: 5px
+
+		.info
+			margin-top: 20px
+			line-height: 1.5
+
+			.digit
+				color: #b8b8b8
+
+		.free
+			margin-top: 20px
+			color: #02659e
+			font-weight: bold
+			font-size: 16px
+			text-align: center
+
+	.required-warning
+		font-size: 16px
+		margin: 20px 0px
+		color: #0170a5
+		font-style: italic
+
+	.field
+		margin-bottom: 3px
+
+		.label
+			display: inline-block
+			vertical-align: top
+			text-align: right
+			width: 210px
+			margin-right: 10px
+			padding-top: 10px
+			font-weight: bold
+
+			&.header
+				font-weight: bold
+				font-size: 16px
+				margin-bottom: 15px
+				margin-top: 10px
+
+			.asterix
+				color: #0170a5
+
+		.editor
+			display: inline-block
+			vertical-align: top
+
+			input[type='text'], input[type='password']
+				background-color: white
+				padding: 5px
+				width: 270px
+				border: 1px solid #cecece
+				border-radius: 3px
+
+				&.small
+					width: 80px !important
+
+				&.error
+					background-color: #ffc7bb
+
+			#captcha-image
+				width: 115px
+				height: 37px
+				margin-right: 5px
+
+			#captcha-field
+				width: 150px
+
+			label.error
+				color: red
+				margin-left: 5px
+
+	#reg-button
+		margin-top: 25px
+		width: 149px
+		height: 28px
+		cursor: pointer
+		background: url(../../images/layout/doreg.png)
+		border: 0
+		margin-left: 220px
+
+
