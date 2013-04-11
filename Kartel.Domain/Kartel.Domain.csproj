@@ -67,6 +67,10 @@
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Infrastructure\Misc\DictionaryStringCache.cs" />
+    <Compile Include="Infrastructure\Misc\DynamicJsonObject.cs" />
+    <Compile Include="Infrastructure\Misc\PasswordUtils.cs" />
+    <Compile Include="Infrastructure\Misc\StringUtils.cs" />
     <Compile Include="Infrastructure\Routing\RouteAttribute.cs" />
     <Compile Include="Infrastructure\Routing\RoutesManager.cs" />
     <Compile Include="Interfaces\Cache\IStringCache.cs" />

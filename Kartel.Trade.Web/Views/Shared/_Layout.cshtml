@@ -1,7 +1,7 @@
 ﻿@using Kartel.Domain.IoC
 @using Kartel.Trade.Web.Classes.Cache
 @{
-    var catIndex = Locator.GetService<CategoriesIndexManager>();
+    
 }
 <!DOCTYPE html>
 
@@ -16,22 +16,7 @@
         @Html.Partial("Header")
         <section id="content">
             <div id="content-wrapper">
-                <div id="content-categories">
-                    <div id="categories-header">
-                    
-                    </div>
-                    <ul id="categories">
-                        @foreach(var category in catIndex.RootCategories)
-                        {
-                            <li data-length="@category.Title.Length">
-                                <a href="/category/@category.Id">@category.Title</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-                <div id="content-section">
-                    @RenderBody()    
-                </div>    
+                @RenderBody() 
             </div>
         </section>
         @Html.Partial("Footer")

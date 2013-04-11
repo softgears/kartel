@@ -1,0 +1,209 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div id="page-register">
+    <div id="registration-info">
+        <div class="title">
+            Зарегистрируйте компанию сейчас!
+        </div>
+        <div class="info">
+            Потратив несколько минут на заполнение регистрационной формы, Вы сможете:
+        </div>
+        <div class="info">
+            <span class="digit">1.</span> Разместить неограниченное число товаров и услуг
+        </div>
+        <div class="info">
+            <span class="digit">2.</span> Получать запрос о товарах на Email
+        </div>
+        <div class="info">
+            <span class="digit">3.</span> Находить клиентов и партнеров по бизнесу и все это бесплатно
+        </div>
+        <div class="free">
+            И все это БЕСПЛАТНО!
+        </div>
+    </div>
+
+    @* Хлебная крошка *@
+    @Html.Partial("NavigationChain")
+
+    <form method="POST" action="/account/register" id="reg-form">
+        <div class="required-warning">
+            Обязательные к заполнению поля отмечены звездочкой (*)
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Название компании
+            </div>
+            <div class="editor">
+                <input type="text" name="OrganizationName" maxlength="255" placeholder="Введите название вашей компании"/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label header">
+                Ваше местонахождение
+            </div>
+        </div>
+        <div></div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Страна
+            </div>
+            <div class="editor">
+                <input type="text" name="Country" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                Регион
+            </div>
+            <div class="editor">
+                <input type="text" name="Region" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Город
+            </div>
+            <div class="editor">
+                <input type="text" name="City" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Адрес
+            </div>
+            <div class="editor">
+                <input type="text" name="Address" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label header">
+                Ваши контактные данные
+            </div>
+        </div>
+        <div></div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Телефон
+            </div>
+            <div class="editor">
+                <input type="text" class="small" name="CountryCode" maxlength="3" placeholder="Код страны"/>
+                <input type="text" class="small" name="CityCode" maxlength="5" placeholder="Код города"/>
+                <input type="text" class="small" name="PhoneNumber" maxlength="15" placeholder="Телефон"/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                Сайт
+            </div>
+            <div class="editor">
+                <input type="text" name="Website" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label header">
+                Данные для авторизации
+            </div>
+        </div>
+        <div></div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span>Email
+            </div>
+            <div class="editor">
+                <input type="text" name="Email" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span>Пароль
+            </div>
+            <div class="editor">
+                <input type="password" id="reg-password-field" name="Password" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span>Повторите пароль
+            </div>
+            <div class="editor">
+                <input type="password" name="ConfirmPassword" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span>Защитный код
+            </div>
+            <div class="editor">
+                <img src="/account/regcaptcha/" id="captcha-image" alt="FUCK OFF" width="115" height="37">
+                <input type="text" id="captcha-field" name="CaptchaValue" maxlength="10" placeholder=""/>
+            </div>
+        </div>
+        
+        <input type="submit" id="reg-button" value=" "/>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#reg-form").validate({
+            rules: {
+                OrganizationName: {
+                    required: true,
+                    maxlength: 255
+                },
+                Country: {
+                    required: true,
+                    maxlength: 255
+                },
+                City: {
+                    required: true,
+                    maxlength: 255
+                },
+                Address: {
+                    required: true,
+                    maxlength: 255
+                },/*
+                CountryCode: {
+                    required: true,
+                    maxlength: 3,
+                    digits: true
+                },
+                CityCode: {
+                    required: true,
+                    maxlength: 5,
+                    digits: true
+                },*/
+                PhoneNumber: {
+                    required: true,
+                    maxlength: 15,
+                    digits: true
+                },
+                Email: {
+                    required: true,
+                    email: true,
+                    remote: '/account/checklogin'
+                },
+                Password: {
+                    required: true
+                },
+                ConfirmPassword: {
+                    required: true,
+                    equalTo: $("#reg-password-field")
+                },
+            },
+            submitHandler: function(form) {
+                $.post("/account/CheckRegCaptcha", { captcha: $("#captcha-field").val() }, function (data) {
+                    if (data.success) {
+                        form.submit();
+                    } else {
+                        alert("Неверно введен код");
+                    }
+                }, 'json');
+            }
+        });
+    });
+</script>

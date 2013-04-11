@@ -6,3 +6,15 @@
 @* Scripts *@
 <script src="~/Scripts/Libs/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/Libs/jquery.validate.min.js"></script>
+
+
+<script type="text/javascript">
+    @* Inline scripting *@
+    $.validator.messages.required = "Обязательное поле";
+    $.validator.messages.email = "Неверный формат Email";
+    $.validator.messages.digits = "Допустимы только цифры";
+    $.validator.messages.equalTo = "Значения не совпадают";
+    $.validator.messages.minlength = "Минимальная длина {0} символов";
+    $.validator.messages.maxlength = "Максимальная длина {0} символов";
+    $.validator.messages.date = "Неверный формат даты";
+</script>

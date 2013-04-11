@@ -763,43 +763,48 @@ body #footer #footer-content a {
 }
 /* line 45, ../sass/products.sass */
 .hot-product .title {
-  height: 28px;
+  height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 48, ../sass/products.sass */
+/* line 50, ../sass/products.sass */
 .hot-product .title a {
   color: #0099cc;
   font-size: 13px;
   font-weight: bold;
   font-family: Arial;
+  height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 54, ../sass/products.sass */
+/* line 59, ../sass/products.sass */
 .hot-product .title a:hover {
   text-decoration: underline;
 }
-/* line 57, ../sass/products.sass */
+/* line 62, ../sass/products.sass */
 .hot-product .image {
   margin-top: 15px;
   min-height: 85px;
 }
-/* line 61, ../sass/products.sass */
+/* line 66, ../sass/products.sass */
 .hot-product .image img {
   max-width: 150px;
   max-height: 120px;
   min-height: 100px;
 }
-/* line 66, ../sass/products.sass */
+/* line 71, ../sass/products.sass */
 .hot-product .price {
   color: #999999;
   margin-top: 25px;
   font-size: 14px;
 }
-/* line 71, ../sass/products.sass */
+/* line 76, ../sass/products.sass */
 .hot-product .price .price-holder {
   margin-left: 5px;
   color: #444444;
 }
 
-/* line 75, ../sass/products.sass */
+/* line 80, ../sass/products.sass */
 .product {
   display: inline-block;
   vertical-align: top;
@@ -807,48 +812,170 @@ body #footer #footer-content a {
   text-align: left;
   margin: 12px;
 }
-/* line 82, ../sass/products.sass */
+/* line 87, ../sass/products.sass */
 .product .image {
   border: 1px solid #c3c3c3;
   height: 200px;
   text-align: center;
   overflow: hidden;
 }
-/* line 88, ../sass/products.sass */
+/* line 93, ../sass/products.sass */
 .product .image img {
   width: 190px;
   height: auto;
 }
-/* line 92, ../sass/products.sass */
+/* line 97, ../sass/products.sass */
 .product .title {
   margin-top: 5px;
-  height: 29px;
+  height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 96, ../sass/products.sass */
+/* line 103, ../sass/products.sass */
 .product .title a {
   color: #3c9cff;
   font-family: Verdana;
+  height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 100, ../sass/products.sass */
+/* line 110, ../sass/products.sass */
 .product .title a:hover {
   text-decoration: underline;
 }
-/* line 103, ../sass/products.sass */
+/* line 113, ../sass/products.sass */
 .product .details {
   margin-top: 15px;
   color: #919191;
   text-align: left;
   font-size: 10px;
 }
-/* line 109, ../sass/products.sass */
+/* line 119, ../sass/products.sass */
 .product .details .detailItem {
   margin-bottom: 5px;
 }
-/* line 112, ../sass/products.sass */
+/* line 122, ../sass/products.sass */
 .product .author {
   margin-top: 10px;
 }
-/* line 115, ../sass/products.sass */
+/* line 125, ../sass/products.sass */
 .product .author a {
   color: #919191;
+}
+
+/* line 1, ../sass/page-register.sass */
+#page-register {
+  margin-top: 5px;
+  margin-left: 15px;
+  min-height: 600px;
+  font-family: Arial;
+}
+/* line 7, ../sass/page-register.sass */
+#page-register #registration-info {
+  float: right;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  padding: 10px;
+  width: 195px;
+}
+/* line 14, ../sass/page-register.sass */
+#page-register #registration-info .title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 5px;
+}
+/* line 19, ../sass/page-register.sass */
+#page-register #registration-info .info {
+  margin-top: 20px;
+  line-height: 1.5;
+}
+/* line 23, ../sass/page-register.sass */
+#page-register #registration-info .info .digit {
+  color: #b8b8b8;
+}
+/* line 26, ../sass/page-register.sass */
+#page-register #registration-info .free {
+  margin-top: 20px;
+  color: #02659e;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+/* line 33, ../sass/page-register.sass */
+#page-register .required-warning {
+  font-size: 16px;
+  margin: 20px 0px;
+  color: #0170a5;
+  font-style: italic;
+}
+/* line 39, ../sass/page-register.sass */
+#page-register .field {
+  margin-bottom: 3px;
+}
+/* line 42, ../sass/page-register.sass */
+#page-register .field .label {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  width: 210px;
+  margin-right: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+}
+/* line 51, ../sass/page-register.sass */
+#page-register .field .label.header {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+/* line 57, ../sass/page-register.sass */
+#page-register .field .label .asterix {
+  color: #0170a5;
+}
+/* line 60, ../sass/page-register.sass */
+#page-register .field .editor {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 64, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'], #page-register .field .editor input[type='password'] {
+  background-color: white;
+  padding: 5px;
+  width: 270px;
+  border: 1px solid #cecece;
+  border-radius: 3px;
+}
+/* line 71, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'].small, #page-register .field .editor input[type='password'].small {
+  width: 80px !important;
+}
+/* line 74, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'].error, #page-register .field .editor input[type='password'].error {
+  background-color: #ffc7bb;
+}
+/* line 77, ../sass/page-register.sass */
+#page-register .field .editor #captcha-image {
+  width: 115px;
+  height: 37px;
+  margin-right: 5px;
+}
+/* line 82, ../sass/page-register.sass */
+#page-register .field .editor #captcha-field {
+  width: 150px;
+}
+/* line 85, ../sass/page-register.sass */
+#page-register .field .editor label.error {
+  color: red;
+  margin-left: 5px;
+}
+/* line 89, ../sass/page-register.sass */
+#page-register #reg-button {
+  margin-top: 25px;
+  width: 149px;
+  height: 28px;
+  cursor: pointer;
+  background: url(../../images/layout/doreg.png);
+  border: 0;
+  margin-left: 220px;
 }

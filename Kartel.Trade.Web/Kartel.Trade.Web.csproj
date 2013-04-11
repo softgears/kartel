@@ -116,6 +116,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="XCaptcha">
+      <HintPath>..\packages\XCaptcha\XCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="XCaptcha.Web.Mvc">
+      <HintPath>..\packages\XCaptcha\XCaptcha.Web.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
@@ -124,11 +130,13 @@
     <Compile Include="Classes\Navigation\NavigationChainItem.cs" />
     <Compile Include="Classes\Utils\MathHelper.cs" />
     <Compile Include="Classes\WebLayer.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +151,7 @@
     <Content Include="Content\images\layout\catbg1.png" />
     <Content Include="Content\images\layout\catbg2.png" />
     <Content Include="Content\images\layout\cate-header.png" />
+    <Content Include="Content\images\layout\doreg.png" />
     <Content Include="Content\images\layout\footer-bg.png" />
     <Content Include="Content\images\layout\header-bg.png" />
     <Content Include="Content\images\layout\innerbg.png" />
@@ -189,11 +198,12 @@
     <Content Include="Views\Shared\HotProduct.cshtml" />
     <Content Include="Views\Main\ProductsNavigator.cshtml" />
     <Content Include="Views\Main\Product.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegistrationResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\styles\sass\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
