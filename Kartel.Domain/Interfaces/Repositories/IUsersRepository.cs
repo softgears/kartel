@@ -24,5 +24,13 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// <param name="email">Email для логина</param>
         /// <returns></returns>
         bool ExistsUserWithLogin(string email);
+
+        /// <summary>
+        /// Ищет в базе данных пользователя по комбинации логина и пароля
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="passwordHash">Хеш пароля</param>
+        /// <returns></returns>
+        User GetUserByLoginAndPasswordHash(string login, string passwordHash);
     }
 }

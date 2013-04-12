@@ -47,5 +47,16 @@ namespace Kartel.Domain.DAL.Repositories
         {
             return Search(u => u.Login.ToLower() == email.ToLower()).Any();
         }
+
+        /// <summary>
+        /// Ищет в базе данных пользователя по комбинации логина и пароля
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="passwordHash">Хеш пароля</param>
+        /// <returns></returns>
+        public User GetUserByLoginAndPasswordHash(string login, string passwordHash)
+        {
+            return Find(u => u.Login.ToLower() == login.ToLower() && u.PasswordHash.ToLower() == passwordHash.ToLower());
+        }
     }
 }

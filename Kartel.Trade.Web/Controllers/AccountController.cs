@@ -150,5 +150,67 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
+        #region Авторизация
+
+        /// <summary>
+        /// Отображает страницу входа
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Login()
+        {
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Вход в личный кабинет", "", true);
+
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index"); // Главная страница личного кабинета
+            }
+
+            return View();
+        }
+
+        /// <summary>
+        /// Обрабатывает авторизацию на сайте
+        /// </summary>
+        /// <param name="model">Модель данных авторизации</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index");
+            }
+
+            // Ищем пользователя
+            var user = UsersRepository.GetUserByLoginAndPasswordHash(model.Login, PasswordUtils.QuickMD5(model.Password));
+            if (user == null)
+            {
+                // Выдаем информацию
+                this.ModelState.AddModelError("common","Не найдена такая пара имени пользователя и пароля");
+
+                // Навигационная цепочка
+                PushNavigationChainItem("Главная страница", "/");
+                PushNavigationChainItem("Вход в личный кабинет", "", true);
+
+                return View("Login");
+            }
+
+            // Пользователь найден - авторизуемся
+            user.LoggedDate = DateTime.Now;
+            user.LoggedIP = Request.UserHostAddress;
+            UsersRepository.SubmitChanges();
+
+            // Авторизуем пользователя
+            AuthorizeUser(user,model.Remember);
+
+            // Перенаправляем в личный кабинет
+            return RedirectToAction("Index");
+
+        }
+
+        #endregion
+
     }
 }

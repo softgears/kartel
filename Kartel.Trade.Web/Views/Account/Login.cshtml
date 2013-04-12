@@ -1,0 +1,49 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Вход в личный кабинет";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@* Хлебная крошка *@
+@Html.Partial("NavigationChain")
+
+<div id="page-register">
+    
+    @Html.ValidationSummary()
+
+    <form method="POST" action="/account/login" id="login-form">
+        <div class="field">
+            <div class="label header">
+                Авторизация на сайте
+            </div>
+        </div>
+        <div></div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Логин (Email)
+            </div>
+            <div class="editor">
+                <input type="text" name="Login" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                <span class="asterix">*</span> Пароль
+            </div>
+            <div class="editor">
+                <input type="password" name="Password" maxlength="255" placeholder=""/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="label">
+                Запомнить на сайте
+            </div>
+            <div class="editor" style="padding-top: 5px">
+                @Html.CheckBox("Remember")
+            </div>
+        </div>
+        
+        <input type="submit" id="reg-button" value=" "/>
+    </form>
+</div>
