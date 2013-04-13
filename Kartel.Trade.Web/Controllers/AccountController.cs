@@ -212,5 +212,18 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
+        #region Главная страница
+
+        /// <summary>
+        /// Отображает главную страницу личного кабинета
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #endregion
+
     }
 }

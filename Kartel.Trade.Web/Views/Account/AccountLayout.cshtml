@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=1280px" />
+    <title>@ViewBag.Title | Личный кабинет | Картель.рф</title>
+    @Html.Partial("Includes")
+</head>
+<body class="account">
+    <div>
+        @* Шапка *@
+        <header id="header">
+            <div id="header-content">
+                <div id="select-name">
+                    Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" /><span class="name-part">.karteltrade.ru</span>
+                    <input type="submit" id="domain-submit" value=" " />
+                </div>
+                <a id="logo" href="/">
+                    <img src="/Content/images/layout/logo.png" />
+                </a>
+            </div>
+        </header>
+        @* Содержимое *@
+        <section id="content">
+            <div id="content-wrapper">
+                @* Боковое меню *@
+                <div id="menu-block">
+                    <div class="menu-block">
+                        <div class="title">
+                            Настройки сайта
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/">О компании</a>
+                            </li>
+                            <li>
+                                <a href="/account/banner">Баннер на главной</a>
+                            </li>
+                            <li>
+                                <a href="/account/design">Дизайн</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <div class="title">
+                            Товары и услуги
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/products">Товары</a>
+                            </li>
+                            <li>
+                                <a href="/account/hot-products">Горячие товары</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <div class="title">
+                            Тендеры
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/tenders/my">Мои тенеры</a>
+                            </li>
+                            <li>
+                                <a href="/account/tenders/participation">Участие в тендерах</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <div class="title">
+                            Премиум услуги
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/gold">Золотой Поставщик</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <div class="title">
+                            Рассылки
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/sending/mail">Email рассылки</a>
+                            </li>
+                            <li>
+                                <a href="/account/sending/sms">SMS рассылки</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-block">
+                        <div class="title">
+                            Настройки аккаунта
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="/account/change-password">Сменить пароль</a>
+                            </li>
+                            <li>
+                                <a href="/account/logoff">ВЫХОД</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @* Подложка под контент *@
+            <div id="content-section-bg">
+                <div id="content-section-inner">
+                </div>
+            </div>
+            @* Содержимое страницы *@
+            <div id="content-section">
+                @RenderBody()
+            </div>
+            <div style="clear: both"></div>   
+            <script type="text/javascript">
+                $(window).resize(function () {
+                    $("#content-section-inner").height($("#content-section").outerHeight(true)).width($("#content-section").outerWidth(true)-250+$("#content-section").offset().left-30).css("min-height",$("#menu-block").height()-30);
+                }).resize();
+            </script>
+        </section>
+        @* Подвал *@
+        @Html.Partial("Footer")
+    </div>
+</body>
+</html>
