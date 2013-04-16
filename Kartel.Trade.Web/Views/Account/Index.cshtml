@@ -1,6 +1,307 @@
-﻿@model dynamic
+﻿@using Kartel.Trade.Web.Controllers
+@model dynamic
 
 @{
-    ViewBag.Title = "Профиль";
+    ViewBag.Title = "О Компании";
     Layout = "AccountLayout.cshtml";
+    var current = ((BaseController)ViewContext.Controller).CurrentUser;
 }
+<div class="account-content">
+    <form action="/account/save-profile" method="POST" id="company-profile-form" enctype="multipart/form-data">
+        <div class="fields-group">
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Название компании
+                </div>
+                <div class="editor">
+                    <input type="text" name="Company" value="@current.Company" placeholder="Введите название компании"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Бренд
+                </div>
+                <div class="editor">
+                    <input type="text" name="Brand" value="@current.Brand" placeholder="Введите бренд под которым компания работает"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Логотип
+                </div>
+                <div class="editor">
+                    <div class="image-wrapper">
+                        <img src="/files/logos/" />
+                    </div>
+                    <input type="file" name="LogoImage" placeholder="GIF или JPEG не более 200кб" />
+                </div>
+            </div>
+        </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                Контактные данные
+            </div>
+            <div class="field">
+                <div class="label">
+                    E-mail
+                </div>
+                <div class="editor">
+                    @current.Email
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Контактное лицо
+                </div>
+                <div class="editor">
+                    <input type="text" name="FIO" value="@current.FIO" placeholder="Введите фамилию имя и отчество контактного лица"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Фотография
+                </div>
+                <div class="editor">
+                    <input type="file" name="FIOImage" placeholder="GIF или JPEG не более 200кб" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Телефон
+                </div>
+                <div class="editor">
+                    <div class="phone-wrapper">
+                        <input type="text" class="small" name="PhoneCountryCode" maxlength="3" placeholder="Код страны" />
+                        <input type="text" class="small" name="PhoneCityCode" maxlength="5" placeholder="Код города" />
+                        <input type="text" class="small" name="PhoneNumber" maxlength="15" placeholder="Телефон" />
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Факс
+                </div>
+                <div class="editor">
+                    <div class="phone-wrapper">
+                        <input type="text" class="small" name="FaxCountryCode" maxlength="3" placeholder="Код страны" />
+                        <input type="text" class="small" name="FaxCityCode" maxlength="5" placeholder="Код города" />
+                        <input type="text" class="small" name="FaxNumber" maxlength="15" placeholder="Телефон" />
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Мобильный телефон
+                </div>
+                <div class="editor">
+                    <div class="phone-wrapper">
+                        <input type="text" class="small" name="CellPhoneCountryCode" maxlength="3" placeholder="Код страны" />
+                        <input type="text" class="small" name="CellPhoneCityCode" maxlength="5" placeholder="Код города" />
+                        <input type="text" class="small" name="CellPhoneNumber" maxlength="15" placeholder="Телефон" />
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Skype
+                </div>
+                <div class="editor">
+                    <input type="text" name="Skype" value="@current.Skype"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    ICQ
+                </div>
+                <div class="editor">
+                    <input type="text" name="ICQ" value="@current.ICQ"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Сайт
+                </div>
+                <div class="editor">
+                    <input type="text" name="Url" value="@current.Url"/>
+                </div>
+            </div>
+        </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                Ваше местонахождение
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Страна
+                </div>
+                <div class="editor">
+                    <input type="text" name="Country" value="@current.Country"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Регион
+                </div>
+                <div class="editor">
+                    <input type="text" name="Region" value="@current.Region"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Город
+                </div>
+                <div class="editor">
+                    <input type="text" name="City" value="@current.City"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Адрес
+                </div>
+                <div class="editor">
+                    <input type="text" name="Address" value="@current.Address"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Индекс
+                </div>
+                <div class="editor">
+                    <input type="text" name="Postcode" value="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="fields-group">
+            <div class="fields-title">
+                Деятельность компании
+            </div>
+            <div class="column">
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Importer", false) Импортер        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("OEM", false) ОЕМ        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Whosaller", false) Оптовый продавец        
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Exporter", false) Экспортер        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("ODM", false) ODM        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("SingleSeller", false) Розничный продавец       
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Developer", false) Производитель        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Agent", false) Агент        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBox("Distributer", false) Дистрибьютор
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                О компании
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <textarea name="About">@current.About</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                Банковские реквизиты
+            </div>
+            <div class="field">
+                <div class="label">
+                    ОГРН / ОГРНИП
+                </div>
+                <div class="editor">
+                    <input type="text" name="CertificateNumber" value="@current.CertificateNumber"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    ИНН
+                </div>
+                <div class="editor">
+                    <input type="text" name="CertificateInn" value="@current.CertificateInn"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    КПП
+                </div>
+                <div class="editor">
+                    <input type="text" name="CertificateKPP" value="@current.CertificateInn"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Р./счет
+                </div>
+                <div class="editor">
+                    <input type="text" name="AccountRNumber" value="" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Корр./счет
+                </div>
+                <div class="editor">
+                    <input type="text" name="AccountKNumber" value="" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Банк
+                </div>
+                <div class="editor">
+                    <input type="text" name="AccountBank" value="" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    БИК Банка
+                </div>
+                <div class="editor">
+                    <input type="text" name="BankBIK" value="" />
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <input type="submit" class="save" value=" " />
+        </div>
+    </form>
+</div>
+

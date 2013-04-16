@@ -108,15 +108,15 @@
                         </ul>
                     </div>
                 </div>
+                @* Содержимое страницы *@
+                <div id="content-section">
+                    @RenderBody()
+                </div>
             </div>
             @* Подложка под контент *@
             <div id="content-section-bg">
                 <div id="content-section-inner">
                 </div>
-            </div>
-            @* Содержимое страницы *@
-            <div id="content-section">
-                @RenderBody()
             </div>
             <div style="clear: both"></div>   
             <script type="text/javascript">

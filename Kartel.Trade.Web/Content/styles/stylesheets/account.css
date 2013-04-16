@@ -116,3 +116,53 @@
 .account #content #content-wrapper #menu-block .menu-block ul li a:hover {
   text-decoration: underline;
 }
+/* line 103, ../sass/account.sass */
+.account .fields-group {
+  margin-bottom: 30px;
+  background-color: #f0f0f0;
+}
+/* line 107, ../sass/account.sass */
+.account .fields-group .column {
+  display: inline-block;
+  vertical-align: top;
+  width: 32%;
+}
+/* line 112, ../sass/account.sass */
+.account .fields-group .field {
+  margin-bottom: 10px;
+}
+/* line 115, ../sass/account.sass */
+.account .fields-group .field .fields-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #33a1c2;
+  padding: 10px 20px;
+  border-bottom: #ddddde;
+}
+/* line 122, ../sass/account.sass */
+.account .fields-group .field .label {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  width: 243px;
+}
+/* line 128, ../sass/account.sass */
+.account .fields-group .field .label .asterix {
+  color: red;
+}
+/* line 131, ../sass/account.sass */
+.account .fields-group .field .editor {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+/* line 136, ../sass/account.sass */
+.account .fields-group .field .editor input[type='text'], .account .fields-group .field .editor textarea {
+  border: 1px solid gray;
+  padding: 3px;
+  width: 390px;
+}
+/* line 141, ../sass/account.sass */
+.account .fields-group .field .editor textarea {
+  min-height: 150px;
+}
