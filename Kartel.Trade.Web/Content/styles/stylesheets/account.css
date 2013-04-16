@@ -8,35 +8,33 @@
   border-bottom: 0;
   background: none;
   height: auto !important;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 /* line 11, ../sass/account.sass */
 .account #header #header-content {
   width: 1240px;
   margin: 0px auto;
   margin-top: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid white;
 }
-/* line 19, ../sass/account.sass */
+/* line 16, ../sass/account.sass */
 .account #header #header-content #select-name {
   float: right;
   color: #bebebe;
   margin-right: 0px;
 }
-/* line 24, ../sass/account.sass */
+/* line 21, ../sass/account.sass */
 .account #header #header-content #select-name .name-part {
   font-weight: bold;
   color: white;
 }
-/* line 28, ../sass/account.sass */
+/* line 25, ../sass/account.sass */
 .account #header #header-content #select-name input[type='text'] {
   border: 0;
   background-color: white;
   padding: 3px;
   width: 95px;
 }
-/* line 34, ../sass/account.sass */
+/* line 31, ../sass/account.sass */
 .account #header #header-content #select-name input[type='submit'] {
   border: 0;
   width: 30px;
@@ -45,16 +43,30 @@
   margin-left: 5px;
   cursor: pointer;
 }
-/* line 42, ../sass/account.sass */
+/* line 39, ../sass/account.sass */
 .account #header #header-content #logo {
   margin-left: 0px;
 }
-/* line 45, ../sass/account.sass */
+/* line 42, ../sass/account.sass */
+.account #header #header-content #header-links {
+  border-top: 1px solid white;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+/* line 47, ../sass/account.sass */
+.account #header #header-content #header-links #ask {
+  background: url(../../images/account/message.png) left center no-repeat;
+  padding-left: 30px;
+  color: white;
+  font-size: 14px;
+  text-decoration: underline;
+}
+/* line 55, ../sass/account.sass */
 .account #content {
   margin: 0;
   position: relative;
 }
-/* line 49, ../sass/account.sass */
+/* line 59, ../sass/account.sass */
 .account #content #content-section-bg {
   display: inline-block;
   vertical-align: top;
@@ -67,29 +79,29 @@
   left: 0px;
   top: 0px;
 }
-/* line 61, ../sass/account.sass */
+/* line 71, ../sass/account.sass */
 .account #content #content-section-bg #content-section-inner {
   width: 100%;
   border: 1px dashed #c5c5c5;
   border-left: 0;
 }
-/* line 66, ../sass/account.sass */
+/* line 76, ../sass/account.sass */
 .account #content #content-wrapper {
   width: 1240px;
   margin: 0px auto;
   position: relative;
   z-index: 10;
 }
-/* line 72, ../sass/account.sass */
+/* line 82, ../sass/account.sass */
 .account #content #content-wrapper #menu-block {
   float: right;
   width: 220px;
 }
-/* line 76, ../sass/account.sass */
+/* line 86, ../sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block {
   margin-bottom: 35px;
 }
-/* line 79, ../sass/account.sass */
+/* line 89, ../sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block .title {
   font-size: 14px;
   color: #33a1c2;
@@ -98,7 +110,7 @@
   padding-bottom: 10px;
   font-family: Arial;
 }
-/* line 88, ../sass/account.sass */
+/* line 98, ../sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li {
   list-style-position: inside;
   list-style-image: url(../../images/layout/bullet.png);
@@ -106,63 +118,99 @@
   margin: 5px 0px;
   padding-bottom: 10px;
 }
-/* line 95, ../sass/account.sass */
+/* line 105, ../sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li a {
   color: white;
   font-family: Verdana;
   font-size: 12px;
 }
-/* line 100, ../sass/account.sass */
+/* line 110, ../sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li a:hover {
   text-decoration: underline;
 }
-/* line 103, ../sass/account.sass */
+/* line 113, ../sass/account.sass */
+.account #content #content-wrapper #content-section {
+  width: 990px;
+}
+/* line 116, ../sass/account.sass */
 .account .fields-group {
+  margin: 15px;
   margin-bottom: 30px;
   background-color: #f0f0f0;
+  padding: 15px 0px;
 }
-/* line 107, ../sass/account.sass */
+/* line 122, ../sass/account.sass */
 .account .fields-group .column {
   display: inline-block;
   vertical-align: top;
-  width: 32%;
+  width: 30%;
+  margin-left: 30px;
 }
-/* line 112, ../sass/account.sass */
-.account .fields-group .field {
-  margin-bottom: 10px;
-}
-/* line 115, ../sass/account.sass */
-.account .fields-group .field .fields-title {
+/* line 128, ../sass/account.sass */
+.account .fields-group .fields-title {
   font-size: 20px;
   font-weight: bold;
   color: #33a1c2;
   padding: 10px 20px;
-  border-bottom: #ddddde;
+  padding-top: 0px;
+  border-bottom: 1px solid #ddddde;
+  margin-bottom: 15px;
 }
-/* line 122, ../sass/account.sass */
+/* line 137, ../sass/account.sass */
+.account .fields-group .field {
+  margin-bottom: 10px;
+}
+/* line 140, ../sass/account.sass */
+.account .fields-group .field:first-child {
+  margin-top: 15px;
+}
+/* line 143, ../sass/account.sass */
 .account .fields-group .field .label {
   display: inline-block;
   vertical-align: top;
   text-align: right;
-  width: 243px;
+  width: 293px;
+  padding-top: 5px;
 }
-/* line 128, ../sass/account.sass */
+/* line 150, ../sass/account.sass */
 .account .fields-group .field .label .asterix {
   color: red;
 }
-/* line 131, ../sass/account.sass */
+/* line 153, ../sass/account.sass */
 .account .fields-group .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
 }
-/* line 136, ../sass/account.sass */
+/* line 158, ../sass/account.sass */
+.account .fields-group .field .editor:first-child {
+  text-align: center;
+}
+/* line 161, ../sass/account.sass */
+.account .fields-group .field .editor:first-child textarea {
+  width: 720px;
+  margin-left: 100px;
+}
+/* line 166, ../sass/account.sass */
 .account .fields-group .field .editor input[type='text'], .account .fields-group .field .editor textarea {
-  border: 1px solid gray;
+  border: 1px solid #cdcdcd;
   padding: 3px;
   width: 390px;
 }
-/* line 141, ../sass/account.sass */
+/* line 171, ../sass/account.sass */
+.account .fields-group .field .editor input[type='text'].small, .account .fields-group .field .editor textarea.small {
+  width: 123px;
+}
+/* line 174, ../sass/account.sass */
 .account .fields-group .field .editor textarea {
   min-height: 150px;
+}
+/* line 177, ../sass/account.sass */
+.account input.save[type='submit'] {
+  width: 229px;
+  height: 47px;
+  background: url(../../images/account/save.png);
+  border: 0;
+  cursor: pointer;
+  margin-bottom: 25px;
 }

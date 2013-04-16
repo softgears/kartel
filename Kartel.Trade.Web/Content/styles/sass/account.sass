@@ -6,15 +6,12 @@
 		border-bottom: 0
 		background: none
 		height: auto !important
-		margin-bottom: 25px
+		margin-bottom: 15px
 
 		#header-content
 			width: 1240px
 			margin:  0px auto
 			margin-top: 25px
-			padding-bottom: 15px
-			border-bottom: 1px solid white
-
 
 			#select-name
 				float: right
@@ -41,6 +38,19 @@
 
 			#logo
 				margin-left: 0px
+
+			#header-links
+				border-top: 1px solid white
+				padding-top: 15px
+				margin-top: 15px
+
+				#ask
+					background: url(../../images/account/message.png) left center no-repeat
+					padding-left: 30px
+					color: white
+					font-size: 14px
+					text-decoration: underline
+
 
 	#content
 		margin: 0
@@ -100,30 +110,42 @@
 								&:hover
 									text-decoration: underline
 
+			#content-section
+				width: 1240px - 250px
+
 	.fields-group
+		margin: 15px
 		margin-bottom: 30px
 		background-color: #f0f0f0
+		padding: 15px 0px
 
 		.column
 			display: inline-block
 			vertical-align: top
-			width: 32%
+			width: 30%
+			margin-left: 30px
+
+		.fields-title
+			font-size: 20px
+			font-weight: bold
+			color: #33a1c2
+			padding: 10px 20px
+			padding-top: 0px
+			border-bottom: 1px solid #ddddde
+			margin-bottom: 15px
 
 		.field
 			margin-bottom: 10px
 
-			.fields-title
-				font-size: 20px
-				font-weight: bold
-				color: #33a1c2
-				padding: 10px 20px
-				border-bottom: #ddddde
+			&:first-child
+				margin-top: 15px
 
 			.label
 				display: inline-block
 				vertical-align: top
 				text-align: right
-				width: 243px
+				width: 293px
+				padding-top: 5px
 
 				.asterix
 					color: red
@@ -133,13 +155,33 @@
 				vertical-align: top
 				margin-left: 10px
 
+				&:first-child
+					text-align: center
+
+					textarea
+						width: 720px
+						margin-left: 100px
+
+
 				input[type='text'], textarea
-					border: 1px solid gray
+					border: 1px solid #cdcdcd
 					padding: 3px
 					width: 390px
 
+					&.small
+						width: 123px
+
 				textarea
 					min-height: 150px
+
+	input.save[type='submit']
+		width: 229px
+		height: 47px
+		background: url(../../images/account/save.png)
+		border: 0
+		cursor: pointer
+		margin-bottom: 25px
+
 
 
 
