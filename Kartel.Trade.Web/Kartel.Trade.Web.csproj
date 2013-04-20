@@ -144,6 +144,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\images\account\add-category.png" />
+    <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\message.png" />
     <Content Include="Content\images\account\save.png" />
     <Content Include="Content\images\account\submitdomain.png" />
@@ -208,6 +210,8 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\AccountLayout.cshtml" />
     <Content Include="Views\Account\ProfileSaved.cshtml" />
+    <Content Include="Views\Account\Products.cshtml" />
+    <Content Include="Views\Account\EditCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

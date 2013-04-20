@@ -1,0 +1,55 @@
+﻿@model Kartel.Domain.Entities.UserCategory
+
+@{
+    ViewBag.Title = Model.Id <= 0 ? "Создание категории" : string.Format("Редактирование категории \"{0}\"", Model.Title);
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <form method="post" id="category-form" action="/account/products/save-category">
+        <div class="fields-group">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <div class="fields-title">
+                @(Model.Id <= 0 ? "Создание категории" : string.Format("Редактирование категории \"{0}\"", Model.Title))
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Название
+                </div>
+                <div class="editor">
+                    <input type="text" name="Title" value="@Model.Title"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Описание
+                </div>
+                <div class="editor">
+                    <input type="text" name="Description" value="@Model.Description"/>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <input type="submit" class="save" value=" " />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#category-form").validate({
+            rules: {
+                Title: {
+                    required: true,
+                    maxlength: 100
+                },
+                Description: {
+                    required: true,
+                    maxlength: 100
+                },
+            }
+        });
+    });
+</script>

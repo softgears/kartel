@@ -225,6 +225,12 @@ namespace Kartel.Trade.Web.Controllers
             {
                 return RedirectToAction("Register");
             }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Профиль компании", "", false);
+
             return View(CurrentUser);
         }
 
@@ -295,9 +301,157 @@ namespace Kartel.Trade.Web.Controllers
             CurrentUser.UserLegalInfos.AccountBank = model.UserLegalInfos.AccountBank;
             CurrentUser.UserLegalInfos.AccountBankBIK = model.UserLegalInfos.AccountBankBIK;
 
+            // Дилер
+            CurrentUser.Dealer = model.Dealer;
+
             // Сохраняем
             UsersRepository.SubmitChanges();
             return View("ProfileSaved");
+        }
+
+        #endregion
+
+        #region Управление товарами
+
+        /// <summary>
+        /// Отображает главную страницу управления товарами
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Products()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "", false);
+
+            // Отображаем вид
+            return View();
+        }
+
+        /// <summary>
+        /// Отображает форму добавления новой пользовательской категории
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/products/add-category")]
+        public ActionResult AddCategory()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Создание категории", "", false);
+
+            // Отображаем вид
+            return View("EditCategory",new UserCategory());
+        }
+
+        /// <summary>
+        /// Обрабатывает категории - создает или сохраняет новую пользовательскую категорию
+        /// </summary>
+        /// <param name="model">Модель</param>
+        /// <returns></returns>
+        [Route("account/products/save-category")][HttpPost]
+        public ActionResult SaveCategory(UserCategory model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Проверяем что у нас - создание или редактирование
+            UserCategory category = null;
+            if (model.Id <= 0)
+            {
+                category = model;
+                category.Position = CurrentUser.UserCategories.Count > 0
+                                        ? CurrentUser.UserCategories.Max(c => c.Position) + 1000
+                                        : 1000;
+                CurrentUser.UserCategories.Add(category);
+            }
+            else
+            {
+                category = CurrentUser.UserCategories.First(c => c.Id == model.Id);
+                category.Title = model.Title;
+                category.Description = model.Description;
+                category.Position = model.Position;
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на страницу товара
+            return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Отображает форму редактирования пользовательской категории
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        [Route("account/products/edit-category/{id}")]
+        public ActionResult EditCategory(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Редактирование категории", "", false);
+
+            var category = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            return View("EditCategory", category);
+        }
+
+        /// <summary>
+        /// Удаляет указанную категорию товара
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        [Route("account/products/delete-category/{id}")]
+        public ActionResult DeleteCategory(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем категорию и удаляем
+            var category = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return RedirectToAction("Products");
+            }
+            CurrentUser.UserCategories.Remove(category);
+            category.User = null;
+            foreach(var product in category.Products)
+            {
+                product.Category = null;
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на список категорий
+            return RedirectToAction("Products");
         }
 
         #endregion

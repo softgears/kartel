@@ -8,6 +8,10 @@
 // 	 at 20.04.2013 11:10
 // 
 // ============================================================
+
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Kartel.Domain.Entities
 {
     /// <summary>
@@ -29,6 +33,15 @@ namespace Kartel.Domain.Entities
                     };
             }
             return UserLegalInfos;
+        }
+
+        /// <summary>
+        /// Возвращает категории пользователя
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<UserCategory> GetUserCategories()
+        {
+            return UserCategories;
         }
     }
 }

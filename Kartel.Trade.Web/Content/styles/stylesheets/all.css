@@ -1201,3 +1201,58 @@ body #footer #footer-content a {
   cursor: pointer;
   margin-bottom: 25px;
 }
+/* line 189, ../sass/account.sass */
+.account #add-product {
+  display: inline-block;
+  vertical-align: top;
+  width: 149px;
+  height: 28px;
+  cursor: pointer;
+  background: url(../../images/account/add-product.png) left top no-repeat;
+  margin-left: 20px;
+}
+/* line 198, ../sass/account.sass */
+.account #add-category {
+  display: inline-block;
+  vertical-align: top;
+  width: 183px;
+  height: 28px;
+  cursor: pointer;
+  background: url(../../images/account/add-category.png) left top no-repeat;
+  margin-left: 20px;
+}
+/* line 207, ../sass/account.sass */
+.account .categories-table {
+  border-top: 2px solid #ddddde;
+  width: 100%;
+  margin-top: 15px;
+}
+/* line 214, ../sass/account.sass */
+.account .categories-table tbody tr td {
+  border: 1px solid #ddddde;
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 220, ../sass/account.sass */
+.account .categories-table tbody tr td a {
+  color: black;
+}
+/* line 223, ../sass/account.sass */
+.account .categories-table tbody tr td a:hover {
+  text-decoration: underline;
+}
+/* line 226, ../sass/account.sass */
+.account .categories-table tbody tr td:first-child {
+  border-left: 0;
+  text-align: left;
+}
+/* line 230, ../sass/account.sass */
+.account .categories-table tbody tr td:first-child a {
+  color: #33a1c2 !important;
+  font-weight: bold;
+}
+/* line 234, ../sass/account.sass */
+.account .categories-table tbody tr td:last-child {
+  border-right: 0;
+}

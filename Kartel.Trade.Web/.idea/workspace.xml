@@ -29,28 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="layout.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="36" selection-start="5315" selection-end="5656" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="account.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/account.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="31" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.89693254">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page-register.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-register.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+            <state line="209" column="24" selection-start="3778" selection-end="3778" vertical-scroll-proportion="0.45766872">
               <folding />
             </state>
           </provider>
@@ -68,11 +50,11 @@
       <list>
         <option value="$PROJECT_DIR$/Content/styles/sass/reset.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-register.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/account.sass" />
       </list>
     </option>
@@ -278,20 +260,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="36" selection-start="5656" selection-end="5656" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="12" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/reset.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="26" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" />
@@ -353,21 +321,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="36" selection-start="5315" selection-end="5656" vertical-scroll-proportion="0.0">
+        <state line="248" column="51" selection-start="5229" selection-end="5230" vertical-scroll-proportion="-10.52">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="23" selection-start="38" selection-end="38" vertical-scroll-proportion="-1.2306749">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-register.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+        <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.4797546">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/account.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="31" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.89693254">
+        <state line="209" column="24" selection-start="3778" selection-end="3778" vertical-scroll-proportion="0.45766872">
           <folding />
         </state>
       </provider>

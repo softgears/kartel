@@ -1,0 +1,52 @@
+﻿@using Kartel.Trade.Web.Controllers
+@model dynamic
+
+@{
+    ViewBag.Title = "Товары";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <div class="fields-group">
+        <div id="add-product" onclick="window.location.href='/account/products/add-product'"></div>
+        <div id="add-category" onclick="window.location.href='/account/products/add-category'"></div>
+        <table class="categories-table">
+            <tbody>
+                @{
+                    var counter = 0;
+                    var userCategories = ((BaseController)ViewContext.Controller).CurrentUser.GetUserCategories().ToList();
+                }
+                @foreach (var category in userCategories.OrderBy(p => p.Position))
+                {
+                    <tr>
+                        <td>
+                            <a href="/account/products/category-products/@category.Id">@category.Title</a> (@category.GetProductsCount())
+                        </td>
+                        <td>
+                            @if (counter != 0)
+                            {
+                                <a href="/account/products/move-category-up/@category.Id"></a>
+                            }
+                        </td>
+                        <td>
+                            @if (counter != userCategories.Count - 1)
+                            {
+                                <a href="/account/products/move-category-down/@category.Id"></a>
+                            }
+                        </td>
+                        <td>
+                            <a href="/account/products/edit-category/@category.Id">Редактировать</a>
+                        </td>
+                        <td>
+                            <a href="/account/products/delete-category/@category.Id" onclick="return confirm('Действительно хотите удалить эту категорию?')">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -7,7 +7,13 @@
     var current = Model;
 }
 <div class="account-content">
+
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+
     <form action="/account/save-profile" method="POST" id="company-profile-form" enctype="multipart/form-data">
+
         <div class="fields-group">
             <div class="field">
                 <div class="label">
@@ -299,6 +305,16 @@
                 </div>
             </div>
         </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                Дилер / Дистрибьютор
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <textarea name="Dealer">@current.Dealer</textarea>
+                </div>
+            </div>
+        </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />
         </div>
@@ -371,6 +387,9 @@
                 },
                 UserLegalInfos_AccountBankBIK: {
                     maxlength: 50
+                },
+                Dealer: {
+                    maxlength: 1000
                 }
             }
         });
