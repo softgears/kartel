@@ -144,6 +144,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\images\account\message.png" />
+    <Content Include="Content\images\account\submitdomain.png" />
     <Content Include="Content\images\layout\addproduct.png" />
     <Content Include="Content\images\layout\addtender.png" />
     <Content Include="Content\images\layout\arrow-bottom.png" />
