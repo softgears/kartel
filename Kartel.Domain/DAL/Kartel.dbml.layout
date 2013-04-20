@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.5" name="Kartel">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.125" name="Kartel">
   <DataContextMoniker Name="/KartelDataContext" />
   <nestedChildShapes>
-    <classShape Id="be36540f-91a2-49c1-bfb3-ec0bff530888" absoluteBounds="6.75, 1, 2, 11.193666992187502">
-      <DataClassMoniker Name="/KartelDataContext/User" />
-      <nestedChildShapes>
-        <elementListCompartment Id="764bb132-5aff-4c73-990e-695ac4f9bc53" absoluteBounds="6.7650000000000006, 1.4600000000000009, 1.9700000000000002, 10.6336669921875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="3f5a705e-9d9a-4e9f-84bd-4517b22432df" absoluteBounds="0.75, 1.75, 2, 2.1554996744791666">
       <DataClassMoniker Name="/KartelDataContext/Category" />
       <nestedChildShapes>
@@ -20,18 +14,63 @@
         <elementListCompartment Id="a9e20c80-409f-4184-9ed6-4786dff7d44f" absoluteBounds="3.515, 1.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.82774983723958); (3.5 : 2.82774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 2.72416524251302); (3.5 : 2.72416524251302)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/Category/Category_Product" />
       <nodes>
         <classShapeMoniker Id="3f5a705e-9d9a-4e9f-84bd-4517b22432df" />
         <classShapeMoniker Id="77a3f7a6-afe2-4f4c-9908-46776719c297" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.75 : 2.84695556640625); (5.5 : 2.84695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="7efb85b5-a8ef-444e-83af-3406526f2f95" absoluteBounds="3.5, 9.125, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/KartelDataContext/UserPhone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="915aa080-371f-4ba3-8327-5c2d9212dc42" absoluteBounds="3.515, 9.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb117250-1605-4ed6-9d19-196e4a1cbc84" absoluteBounds="3.5, 15, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/KartelDataContext/UserOccupationInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa3ab4a2-f956-4253-95fd-71e0f9e57e14" absoluteBounds="3.515, 15.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" absoluteBounds="0.75, 0.75, 2, 11.385968424479163">
+      <DataClassMoniker Name="/KartelDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f3043393-5ad2-4ea6-b1c6-8fe7c0c6552c" absoluteBounds="0.765, 1.21, 1.9700000000000002, 10.825968424479166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.82333048502604); (3.5 : 3.82333048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/User/User_Product" />
       <nodes>
-        <classShapeMoniker Id="be36540f-91a2-49c1-bfb3-ec0bff530888" />
+        <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
         <classShapeMoniker Id="77a3f7a6-afe2-4f4c-9908-46776719c297" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 10.1065991210938); (3.5 : 10.1065991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/KartelDataContext/User/User_UserPhone" />
+      <nodes>
+        <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
+        <classShapeMoniker Id="7efb85b5-a8ef-444e-83af-3406526f2f95" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 12.1359684244792); (1.75 : 16.4623527018229); (3.5 : 16.4623527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/KartelDataContext/User/User_UserOccupationInfo" />
+      <nodes>
+        <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
+        <classShapeMoniker Id="fb117250-1605-4ed6-9d19-196e4a1cbc84" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5abdd2bc-e72d-453d-8f0a-e8e043847bc9" absoluteBounds="3.5, 11.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/KartelDataContext/UserLegalInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b3117d10-23cb-4027-9348-2472e3155c35" absoluteBounds="3.5149999999999997, 12.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.2812525 : 12.1359684244792); (2.2812525 : 13.3067879817708); (3.5 : 13.3067879817708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/KartelDataContext/User/User_UserLegalInfo" />
+      <nodes>
+        <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
+        <classShapeMoniker Id="5abdd2bc-e72d-453d-8f0a-e8e043847bc9" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

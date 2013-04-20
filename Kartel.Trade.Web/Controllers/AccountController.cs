@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Infrastructure.Misc;
+using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
@@ -220,7 +221,83 @@ namespace Kartel.Trade.Web.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View();
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            return View(CurrentUser);
+        }
+
+        /// <summary>
+        /// Обрабатывает сохранение профайла компании
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost][Route("account/save-profile")]
+        public ActionResult SaveCompanyProfile(User model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Сохраняем
+            // Основное инфо
+            CurrentUser.Company = model.Company;
+            CurrentUser.Brand = model.Brand;
+            // TODO: доабвить сохранение лого компании
+            CurrentUser.FIO = model.FIO;
+            // TODO: добавить сохранение портрета пользователя
+            // TODO: добавить сохранение номером телефона
+            CurrentUser.Skype = model.Skype;
+            CurrentUser.ICQ = model.ICQ;
+            CurrentUser.Url = model.Url;
+            CurrentUser.Country = model.Country;
+            CurrentUser.Region = model.Region;
+            CurrentUser.Address = model.Address;
+            CurrentUser.City = model.City;
+            CurrentUser.PostCode = model.PostCode;
+
+            // Деятельность
+            if (CurrentUser.UserOccupationInfos == null)
+            {
+                CurrentUser.UserOccupationInfos = new UserOccupationInfo()
+                    {
+                        User = CurrentUser
+                    };
+            }
+            CurrentUser.UserOccupationInfos.Importer = model.UserOccupationInfos.Importer;
+            CurrentUser.UserOccupationInfos.OEM = model.UserOccupationInfos.OEM;
+            CurrentUser.UserOccupationInfos.Whoseller = model.UserOccupationInfos.Whoseller;
+            CurrentUser.UserOccupationInfos.Exporter = model.UserOccupationInfos.Exporter;
+            CurrentUser.UserOccupationInfos.ODM = model.UserOccupationInfos.ODM;
+            CurrentUser.UserOccupationInfos.SingleSeller = model.UserOccupationInfos.SingleSeller;
+            CurrentUser.UserOccupationInfos.Developer = model.UserOccupationInfos.Developer;
+            CurrentUser.UserOccupationInfos.Agent = model.UserOccupationInfos.Agent;
+            CurrentUser.UserOccupationInfos.Distributor = model.UserOccupationInfos.Distributor;
+
+            // О компании
+            CurrentUser.About = model.About;
+
+            // Банковские реквизиты
+            if (CurrentUser.UserLegalInfos == null)
+            {
+                CurrentUser.UserLegalInfos = new UserLegalInfo()
+                {
+                    User = CurrentUser
+                };
+            }
+            CurrentUser.UserLegalInfos.OGRN = model.UserLegalInfos.OGRN;
+            CurrentUser.UserLegalInfos.INN = model.UserLegalInfos.INN;
+            CurrentUser.UserLegalInfos.KPP = model.UserLegalInfos.KPP;
+            CurrentUser.UserLegalInfos.AccountRNumber = model.UserLegalInfos.AccountRNumber;
+            CurrentUser.UserLegalInfos.AccountKNumber = model.UserLegalInfos.AccountKNumber;
+            CurrentUser.UserLegalInfos.AccountBank = model.UserLegalInfos.AccountBank;
+            CurrentUser.UserLegalInfos.AccountBankBIK = model.UserLegalInfos.AccountBankBIK;
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+            return View("ProfileSaved");
         }
 
         #endregion

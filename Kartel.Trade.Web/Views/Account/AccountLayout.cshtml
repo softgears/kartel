@@ -124,7 +124,7 @@
             <div style="clear: both"></div>   
             <script type="text/javascript">
                 $(window).resize(function () {
-                    $("#content-section-inner").height($("#content-section").outerHeight(true)+$("#footer").outerHeight(true)).width($("#content-section").outerWidth(true)-280+$("#content-section").offset().left-60+((window.innerWidth-1240)/2)).css("min-height",$("#menu-block").height()-30);
+                    $("#content-section-inner").height($("#content-section").outerHeight(true)+$("#footer").outerHeight(true)).width($("#content-wrapper").outerWidth(true)-280+$("#content-section").offset().left+((window.innerWidth-1240)/2)).css("min-height",$("#menu-block").height()-30);
                 }).resize();
             </script>
         </section>

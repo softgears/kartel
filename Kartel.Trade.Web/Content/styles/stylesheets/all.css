@@ -1188,6 +1188,11 @@ body #footer #footer-content a {
   min-height: 150px;
 }
 /* line 177, ../sass/account.sass */
+.account .fields-group .field .editor label.error {
+  margin-left: 5px;
+  color: red;
+}
+/* line 181, ../sass/account.sass */
 .account input.save[type='submit'] {
   width: 229px;
   height: 47px;

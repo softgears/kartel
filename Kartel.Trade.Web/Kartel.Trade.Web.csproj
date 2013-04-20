@@ -207,6 +207,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\AccountLayout.cshtml" />
+    <Content Include="Views\Account\ProfileSaved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
