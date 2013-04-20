@@ -129,6 +129,16 @@
       <Association Name="User_UserCategory" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ProductImages" Member="ProductImages">
+    <Type Name="ProductImage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductImage" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Products" Member="Products">
     <Type Name="Product">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -147,9 +157,34 @@
       <Column Name="Field8" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="Field9" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="UserCategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MinimunLotSize" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MinimumLotMeasure" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="VendorCountry" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DeliveryTime" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DeliveryPossibilityDay" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DeliveryPossibilityMeasure" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DeliveryPossibilityTime" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductBox" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Product_ProductImage" Member="ProductImages" ThisKey="Id" OtherKey="ProductId" Type="ProductImage" />
+      <Association Name="Product_HotProduct" Member="HotProducts" ThisKey="Id" OtherKey="ProductId" Type="HotProduct" Cardinality="One" />
       <Association Name="Category_Product" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="UserCategory_Product" Member="UserCategory" ThisKey="UserCategoryId" OtherKey="Id" Type="UserCategory" IsForeignKey="true" />
+      <Association Name="UserCategory_Product" Member="UserCategory" ThisKey="UserCategoryId" OtherKey="Id" Type="UserCategory" IsForeignKey="true" DeleteRule="SET DEFAULT" />
       <Association Name="User_Product" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HotProducts" Member="HotProducts">
+    <Type Name="HotProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EnableHotProduct" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PayedViews" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Clicks" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Views" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_HotProduct" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

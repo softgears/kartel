@@ -46,9 +46,15 @@ namespace Kartel.Domain.DAL
     partial void InsertUserCategory(Kartel.Domain.Entities.UserCategory instance);
     partial void UpdateUserCategory(Kartel.Domain.Entities.UserCategory instance);
     partial void DeleteUserCategory(Kartel.Domain.Entities.UserCategory instance);
+    partial void InsertProductImage(Kartel.Domain.Entities.ProductImage instance);
+    partial void UpdateProductImage(Kartel.Domain.Entities.ProductImage instance);
+    partial void DeleteProductImage(Kartel.Domain.Entities.ProductImage instance);
     partial void InsertProduct(Kartel.Domain.Entities.Product instance);
     partial void UpdateProduct(Kartel.Domain.Entities.Product instance);
     partial void DeleteProduct(Kartel.Domain.Entities.Product instance);
+    partial void InsertHotProduct(Kartel.Domain.Entities.HotProduct instance);
+    partial void UpdateHotProduct(Kartel.Domain.Entities.HotProduct instance);
+    partial void DeleteHotProduct(Kartel.Domain.Entities.HotProduct instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -123,11 +129,27 @@ namespace Kartel.Domain.DAL
 			}
 		}
 		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.ProductImage> ProductImages
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.ProductImage>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Kartel.Domain.Entities.Product> Products
 		{
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.HotProduct> HotProducts
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.HotProduct>();
 			}
 		}
 	}
@@ -3037,6 +3059,205 @@ namespace Kartel.Domain.Entities
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProductImages")]
+	public partial class ProductImage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _ProductId;
+		
+		private string _Image;
+		
+		private string _Title;
+		
+		private int _Position;
+		
+		private EntityRef<Product> _Product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnImageChanging(string value);
+    partial void OnImageChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnPositionChanging(int value);
+    partial void OnPositionChanged();
+    #endregion
+		
+		public ProductImage()
+		{
+			this._Product = default(EntityRef<Product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int NOT NULL")]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(MAX)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(MAX)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="Int NOT NULL")]
+		public int Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this.OnPositionChanging(value);
+					this.SendPropertyChanging();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductImage", Storage="_Product", ThisKey="ProductId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.ProductImages.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.ProductImages.Add(this);
+						this._ProductId = value.Id;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Products")]
 	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3074,6 +3295,34 @@ namespace Kartel.Domain.Entities
 		private string _Field9;
 		
 		private int _UserCategoryId;
+		
+		private string _Price;
+		
+		private string _Currency;
+		
+		private string _Measure;
+		
+		private string _MinimunLotSize;
+		
+		private string _MinimumLotMeasure;
+		
+		private string _VendorCountry;
+		
+		private string _DeliveryTime;
+		
+		private string _DeliveryPossibilityDay;
+		
+		private string _DeliveryPossibilityMeasure;
+		
+		private string _DeliveryPossibilityTime;
+		
+		private string _ProductCode;
+		
+		private string _ProductBox;
+		
+		private EntitySet<ProductImage> _ProductImages;
+		
+		private EntityRef<HotProduct> _HotProducts;
 		
 		private EntityRef<Category> _Category;
 		
@@ -3117,10 +3366,36 @@ namespace Kartel.Domain.Entities
     partial void OnField9Changed();
     partial void OnUserCategoryIdChanging(int value);
     partial void OnUserCategoryIdChanged();
+    partial void OnPriceChanging(string value);
+    partial void OnPriceChanged();
+    partial void OnCurrencyChanging(string value);
+    partial void OnCurrencyChanged();
+    partial void OnMeasureChanging(string value);
+    partial void OnMeasureChanged();
+    partial void OnMinimunLotSizeChanging(string value);
+    partial void OnMinimunLotSizeChanged();
+    partial void OnMinimumLotMeasureChanging(string value);
+    partial void OnMinimumLotMeasureChanged();
+    partial void OnVendorCountryChanging(string value);
+    partial void OnVendorCountryChanged();
+    partial void OnDeliveryTimeChanging(string value);
+    partial void OnDeliveryTimeChanged();
+    partial void OnDeliveryPossibilityDayChanging(string value);
+    partial void OnDeliveryPossibilityDayChanged();
+    partial void OnDeliveryPossibilityMeasureChanging(string value);
+    partial void OnDeliveryPossibilityMeasureChanged();
+    partial void OnDeliveryPossibilityTimeChanging(string value);
+    partial void OnDeliveryPossibilityTimeChanged();
+    partial void OnProductCodeChanging(string value);
+    partial void OnProductCodeChanged();
+    partial void OnProductBoxChanging(string value);
+    partial void OnProductBoxChanged();
     #endregion
 		
 		public Product()
 		{
+			this._ProductImages = new EntitySet<ProductImage>(new Action<ProductImage>(this.attach_ProductImages), new Action<ProductImage>(this.detach_ProductImages));
+			this._HotProducts = default(EntityRef<HotProduct>);
 			this._Category = default(EntityRef<Category>);
 			this._UserCategory = default(EntityRef<UserCategory>);
 			this._User = default(EntityRef<User>);
@@ -3459,6 +3734,288 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="VarChar(255)")]
+		public string Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Currency", DbType="VarChar(255)")]
+		public string Currency
+		{
+			get
+			{
+				return this._Currency;
+			}
+			set
+			{
+				if ((this._Currency != value))
+				{
+					this.OnCurrencyChanging(value);
+					this.SendPropertyChanging();
+					this._Currency = value;
+					this.SendPropertyChanged("Currency");
+					this.OnCurrencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Measure", DbType="VarChar(255)")]
+		public string Measure
+		{
+			get
+			{
+				return this._Measure;
+			}
+			set
+			{
+				if ((this._Measure != value))
+				{
+					this.OnMeasureChanging(value);
+					this.SendPropertyChanging();
+					this._Measure = value;
+					this.SendPropertyChanged("Measure");
+					this.OnMeasureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimunLotSize", DbType="VarChar(255)")]
+		public string MinimunLotSize
+		{
+			get
+			{
+				return this._MinimunLotSize;
+			}
+			set
+			{
+				if ((this._MinimunLotSize != value))
+				{
+					this.OnMinimunLotSizeChanging(value);
+					this.SendPropertyChanging();
+					this._MinimunLotSize = value;
+					this.SendPropertyChanged("MinimunLotSize");
+					this.OnMinimunLotSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinimumLotMeasure", DbType="VarChar(255)")]
+		public string MinimumLotMeasure
+		{
+			get
+			{
+				return this._MinimumLotMeasure;
+			}
+			set
+			{
+				if ((this._MinimumLotMeasure != value))
+				{
+					this.OnMinimumLotMeasureChanging(value);
+					this.SendPropertyChanging();
+					this._MinimumLotMeasure = value;
+					this.SendPropertyChanged("MinimumLotMeasure");
+					this.OnMinimumLotMeasureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VendorCountry", DbType="VarChar(255)")]
+		public string VendorCountry
+		{
+			get
+			{
+				return this._VendorCountry;
+			}
+			set
+			{
+				if ((this._VendorCountry != value))
+				{
+					this.OnVendorCountryChanging(value);
+					this.SendPropertyChanging();
+					this._VendorCountry = value;
+					this.SendPropertyChanged("VendorCountry");
+					this.OnVendorCountryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryTime", DbType="VarChar(255)")]
+		public string DeliveryTime
+		{
+			get
+			{
+				return this._DeliveryTime;
+			}
+			set
+			{
+				if ((this._DeliveryTime != value))
+				{
+					this.OnDeliveryTimeChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryTime = value;
+					this.SendPropertyChanged("DeliveryTime");
+					this.OnDeliveryTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryPossibilityDay", DbType="VarChar(255)")]
+		public string DeliveryPossibilityDay
+		{
+			get
+			{
+				return this._DeliveryPossibilityDay;
+			}
+			set
+			{
+				if ((this._DeliveryPossibilityDay != value))
+				{
+					this.OnDeliveryPossibilityDayChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryPossibilityDay = value;
+					this.SendPropertyChanged("DeliveryPossibilityDay");
+					this.OnDeliveryPossibilityDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryPossibilityMeasure", DbType="VarChar(255)")]
+		public string DeliveryPossibilityMeasure
+		{
+			get
+			{
+				return this._DeliveryPossibilityMeasure;
+			}
+			set
+			{
+				if ((this._DeliveryPossibilityMeasure != value))
+				{
+					this.OnDeliveryPossibilityMeasureChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryPossibilityMeasure = value;
+					this.SendPropertyChanged("DeliveryPossibilityMeasure");
+					this.OnDeliveryPossibilityMeasureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryPossibilityTime", DbType="VarChar(255)")]
+		public string DeliveryPossibilityTime
+		{
+			get
+			{
+				return this._DeliveryPossibilityTime;
+			}
+			set
+			{
+				if ((this._DeliveryPossibilityTime != value))
+				{
+					this.OnDeliveryPossibilityTimeChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryPossibilityTime = value;
+					this.SendPropertyChanged("DeliveryPossibilityTime");
+					this.OnDeliveryPossibilityTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductCode", DbType="VarChar(255)")]
+		public string ProductCode
+		{
+			get
+			{
+				return this._ProductCode;
+			}
+			set
+			{
+				if ((this._ProductCode != value))
+				{
+					this.OnProductCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ProductCode = value;
+					this.SendPropertyChanged("ProductCode");
+					this.OnProductCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductBox", DbType="VarChar(255)")]
+		public string ProductBox
+		{
+			get
+			{
+				return this._ProductBox;
+			}
+			set
+			{
+				if ((this._ProductBox != value))
+				{
+					this.OnProductBoxChanging(value);
+					this.SendPropertyChanging();
+					this._ProductBox = value;
+					this.SendPropertyChanged("ProductBox");
+					this.OnProductBoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductImage", Storage="_ProductImages", ThisKey="Id", OtherKey="ProductId")]
+		public EntitySet<ProductImage> ProductImages
+		{
+			get
+			{
+				return this._ProductImages;
+			}
+			set
+			{
+				this._ProductImages.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_HotProduct", Storage="_HotProducts", ThisKey="Id", OtherKey="ProductId", IsUnique=true, IsForeignKey=false)]
+		public HotProduct HotProducts
+		{
+			get
+			{
+				return this._HotProducts.Entity;
+			}
+			set
+			{
+				HotProduct previousValue = this._HotProducts.Entity;
+				if (((previousValue != value) 
+							|| (this._HotProducts.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HotProducts.Entity = null;
+						previousValue.Product = null;
+					}
+					this._HotProducts.Entity = value;
+					if ((value != null))
+					{
+						value.Product = this;
+					}
+					this.SendPropertyChanged("HotProducts");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Product", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Category Category
 		{
@@ -3493,7 +4050,7 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserCategory_Product", Storage="_UserCategory", ThisKey="UserCategoryId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserCategory_Product", Storage="_UserCategory", ThisKey="UserCategoryId", OtherKey="Id", IsForeignKey=true, DeleteRule="SET DEFAULT")]
 		public UserCategory UserCategory
 		{
 			get
@@ -3557,6 +4114,241 @@ namespace Kartel.Domain.Entities
 						this._UserId = default(int);
 					}
 					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProductImages(ProductImage entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_ProductImages(ProductImage entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HotProducts")]
+	public partial class HotProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _ProductId;
+		
+		private bool _EnableHotProduct;
+		
+		private int _PayedViews;
+		
+		private int _Clicks;
+		
+		private int _Views;
+		
+		private EntityRef<Product> _Product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnEnableHotProductChanging(bool value);
+    partial void OnEnableHotProductChanged();
+    partial void OnPayedViewsChanging(int value);
+    partial void OnPayedViewsChanged();
+    partial void OnClicksChanging(int value);
+    partial void OnClicksChanged();
+    partial void OnViewsChanging(int value);
+    partial void OnViewsChanged();
+    #endregion
+		
+		public HotProduct()
+		{
+			this._Product = default(EntityRef<Product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int NOT NULL")]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnableHotProduct", DbType="Bit NOT NULL")]
+		public bool EnableHotProduct
+		{
+			get
+			{
+				return this._EnableHotProduct;
+			}
+			set
+			{
+				if ((this._EnableHotProduct != value))
+				{
+					this.OnEnableHotProductChanging(value);
+					this.SendPropertyChanging();
+					this._EnableHotProduct = value;
+					this.SendPropertyChanged("EnableHotProduct");
+					this.OnEnableHotProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayedViews", DbType="Int NOT NULL")]
+		public int PayedViews
+		{
+			get
+			{
+				return this._PayedViews;
+			}
+			set
+			{
+				if ((this._PayedViews != value))
+				{
+					this.OnPayedViewsChanging(value);
+					this.SendPropertyChanging();
+					this._PayedViews = value;
+					this.SendPropertyChanged("PayedViews");
+					this.OnPayedViewsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Clicks", DbType="Int NOT NULL")]
+		public int Clicks
+		{
+			get
+			{
+				return this._Clicks;
+			}
+			set
+			{
+				if ((this._Clicks != value))
+				{
+					this.OnClicksChanging(value);
+					this.SendPropertyChanging();
+					this._Clicks = value;
+					this.SendPropertyChanged("Clicks");
+					this.OnClicksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Views", DbType="Int NOT NULL")]
+		public int Views
+		{
+			get
+			{
+				return this._Views;
+			}
+			set
+			{
+				if ((this._Views != value))
+				{
+					this.OnViewsChanging(value);
+					this.SendPropertyChanging();
+					this._Views = value;
+					this.SendPropertyChanged("Views");
+					this.OnViewsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_HotProduct", Storage="_Product", ThisKey="ProductId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.HotProducts = null;
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.HotProducts = this;
+						this._ProductId = value.Id;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Product");
 				}
 			}
 		}

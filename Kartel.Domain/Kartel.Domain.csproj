@@ -67,6 +67,7 @@
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserCategory.cs" />
     <Compile Include="Infrastructure\Misc\DictionaryStringCache.cs" />

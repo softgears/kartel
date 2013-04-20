@@ -118,6 +118,9 @@
 		margin-bottom: 30px
 		background-color: #f0f0f0
 		padding: 15px 0px
+		border-bottom: 1px solid #cecece
+		border-bottom-right-radius: 4px
+		border-bottom-left-radius: 4px
 
 		.column
 			display: inline-block
@@ -134,6 +137,11 @@
 			border-bottom: 1px solid #ddddde
 			margin-bottom: 15px
 
+		.separator
+			margin: 25px 0px
+			height:  1px
+			border-bottom: 1px solid #ddddde
+
 		.field
 			margin-bottom: 10px
 
@@ -149,6 +157,9 @@
 
 				.asterix
 					color: red
+
+				a
+					color: black
 
 			.editor
 				display: inline-block
@@ -171,12 +182,18 @@
 					&.small
 						width: 123px
 
+
 				textarea
 					min-height: 150px
 
 				label.error
 					margin-left: 5px
 					color:  red
+
+				.details
+					color: gray
+					font-size:  10px
+					margin-top: 5px
 
 	input.save[type='submit']
 		width: 229px
@@ -234,12 +251,52 @@
 					&:last-child
 						border-right: 0
 
+	.hot-product-stats
+		margin: 15px 40px
+
+		.item
+			font-weight: bold
+			margin-bottom: 10px
+			font-size:  15px
+
+		.pay-hot-product
+			float: right
+			margin-top: 10px
+
+			.round
+				background: #fbfbfb
+				border:  1px solid #808080
+				border-radius: 5px
+				padding: 5px 10px
+				font-weight: bold
+				color:  black
+				margin: 0px 10px
+				cursor: pointer
+
+	.send-title
+		margin-left: 40px
+
+		a
+			color: #33a1c2
+			font-size: 13px
+
+			&:hover
+				text-decoration: underline
+
+
+			b
+				font-weight: bold
 
 
 
 
+	.categories-selector
+		width: 100%
 
+		td
+			width: 25%
+			border: 1px solid #ddddde
 
-
-
-
+			select
+				width: 99%
+				height: auto

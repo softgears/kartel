@@ -229,7 +229,7 @@ namespace Kartel.Trade.Web.Controllers
             // Навигационная цепочка
             PushNavigationChainItem("Главная страница", "/");
             PushNavigationChainItem("Личный кабинет", "", false);
-            PushNavigationChainItem("Профиль компании", "", false);
+            PushNavigationChainItem("Профиль компании", "", true);
 
             return View(CurrentUser);
         }
@@ -327,7 +327,7 @@ namespace Kartel.Trade.Web.Controllers
             // Навигационная цепочка
             PushNavigationChainItem("Главная страница", "/");
             PushNavigationChainItem("Личный кабинет", "", false);
-            PushNavigationChainItem("Товары", "", false);
+            PushNavigationChainItem("Товары", "", true);
 
             // Отображаем вид
             return View();
@@ -349,7 +349,7 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem("Главная страница", "/");
             PushNavigationChainItem("Личный кабинет", "", false);
             PushNavigationChainItem("Товары", "/account/products", false);
-            PushNavigationChainItem("Создание категории", "", false);
+            PushNavigationChainItem("Создание категории", "", true);
 
             // Отображаем вид
             return View("EditCategory",new UserCategory());
@@ -410,7 +410,7 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem("Главная страница", "/");
             PushNavigationChainItem("Личный кабинет", "", false);
             PushNavigationChainItem("Товары", "/account/products", false);
-            PushNavigationChainItem("Редактирование категории", "", false);
+            PushNavigationChainItem("Редактирование категории", "", true);
 
             var category = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
             if (category == null)
@@ -452,6 +452,28 @@ namespace Kartel.Trade.Web.Controllers
 
             // Переходим на список категорий
             return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Отображает форму добавления нового товара на сайт
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/products/add-product")]
+        public ActionResult AddProduct()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Добавление товара", "", true);
+
+            // Отображаем вид
+            return View("EditProduct", new Product());
         }
 
         #endregion

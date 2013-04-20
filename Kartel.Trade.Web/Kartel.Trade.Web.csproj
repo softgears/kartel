@@ -212,6 +212,7 @@
     <Content Include="Views\Account\ProfileSaved.cshtml" />
     <Content Include="Views\Account\Products.cshtml" />
     <Content Include="Views\Account\EditCategory.cshtml" />
+    <Content Include="Views\Account\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

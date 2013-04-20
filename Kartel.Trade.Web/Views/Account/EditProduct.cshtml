@@ -1,0 +1,232 @@
+﻿@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@using Kartel.Trade.Web.Controllers
+@model Kartel.Domain.Entities.Product
+
+@{
+    ViewBag.Title = Model.Id <= 0 ? "Добавление товара" : string.Format("Редактирование товара \"{0}\"", Model.Title);
+    Layout = "AccountLayout.cshtml";
+    var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
+    var catManager = Locator.GetService<CategoriesIndexManager>();
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <form method="post" id="product-form" action="/account/products/save-product">
+        <div class="fields-group">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <div class="fields-title">
+                @(Model.Id <= 0 ? "Создание товара" : string.Format("Редактирование товара \"{0}\"", Model.Title))
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Название товара
+                </div>
+                <div class="editor">
+                    <input type="text" name="Title" value="@Model.Title"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Ключевые слова
+                </div>
+                <div class="editor">
+                    <input type="text" name="Description" value="@Model.Keywords"/>
+                    <div class="details">
+                        Введите ключевые слова, характеризующий ваш товар. Например: мобильный телефон, сотовый, iPhone, Samsung
+                    </div>
+                </div>
+            </div>
+            <div class="separator">
+            </div>
+
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Категория на вашем сайте
+                </div>
+                <div class="editor">
+                    @Html.DropDownListFor(m => m.UserCategoryId, currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
+                        {
+                            Text = n.Title,
+                            Value = n.Id.ToString(),
+                            Selected = Model.UserCategoryId == n.Id
+                        }))
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Категория в каталоге <a href="/">Картель.рф</a>
+                </div>
+                <div class="editor">
+                    <span id="selected-category"></span>
+                </div>
+            </div>
+            <div class="field">
+                <table class="categories-selector">
+                    <tr>
+                        <td>
+                            <select size="10" id="root-categories" level="0">
+                                @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
+                                {
+                                    <option value="@rootCategory.Id">@rootCategory.Title</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-1-categories" level="1">
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-2-categories" level="2">
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-3-categories" level="3">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="separator">
+            </div>
+            <div class="field">
+                <div class="label" style="margin-left: 115px; text-align: left;">
+                    <span class="asterix">*</span>Описание товара
+                </div>
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <textarea class="ckeditor" name="Description">@Model.Description</textarea>
+                </div>
+            </div>
+            <div class="separator">
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Изображения
+                </div>
+                <div class="editor">
+                    <input type="file" name="ProductImage" multiple="true" />
+                    <div class="details">Выберите одно или несколько изображений товара (JPG или GIF), не более 200 килобайт</div>
+                    <div class="details">После выбора вы сможете задать описание каждому товару</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="label">
+                    Цена
+                </div>
+                <div class="editor">
+                    <input type="text" class="small" name="Price" placeholder="Цена" value="@Model.Price"/>
+                    <input type="text" class="small" name="Currency" placeholder="Валюта" value="@Model.Currency"/>
+                    <input type="text" class="small" name="Measure" placeholder="Мера" value="@Model.Measure"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Бренд
+                </div>
+                <div class="editor">
+                    <input type="text" name="Field1" placeholder="Бренд" value="@Model.Field1"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Минимальная партия
+                </div>
+                <div class="editor">
+                    <input type="text" class="small" name="MinimunLotSize" placeholder="Цена" value="@Model.MinimunLotSize"/>
+                    <input type="text" class="small" name="MinimumLotMeasure" placeholder="Валюта" value="@Model.MinimumLotMeasure"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Страна производитель
+                </div>
+                <div class="editor">
+                    <input type="text" name="VendorCountry" placeholder="Наименование страны производителя" value="@Model.VendorCountry"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Срок поставки
+                </div>
+                <div class="editor">
+                    <input type="text" name="DeliveryTime" placeholder="" value="@Model.DeliveryTime"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Возможность поставки
+                </div>
+                <div class="editor">
+                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="Цена" value="@Model.DeliveryPossibilityDay"/>
+                    <input type="text" class="small" name="DeliveryPossibilityMeasure" placeholder="Валюта" value="@Model.DeliveryPossibilityMeasure"/>
+                    <input type="text" class="small" name="DeliveryPossibilityTime" placeholder="Мера" value="@Model.DeliveryPossibilityTime"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Артикул товара
+                </div>
+                <div class="editor">
+                    <input type="text" name="ProductCode" placeholder="" value="@Model.ProductCode"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Упаковка
+                </div>
+                <div class="editor">
+                    <input type="text" name="ProductBox" placeholder="" value="@Model.ProductBox"/>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="editor" style="margin-left: 40px">
+                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <b>Горячие товары</b>
+                </div>
+                <div class="hot-product-stats">
+                    <div class="pay-hot-product">
+                        Доступно показов <span class="round">@Model.GetPayedViewsCount()</span> <span class="round">Купить показы</span>
+                    </div>
+                    <div class="item">
+                        Всего показов: @Model.GetTotalViewsCount()
+                    </div>
+                    <div class="item">
+                        Всего переходов: @Model.GetClicksCount()
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="send-title">
+                <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
+            </div>
+            <div class="separator"></div>
+            <div class="send-title">
+                <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <input type="submit" class="save" value=" " />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#category-form").validate({
+            rules: {
+                Title: {
+                    required: true,
+                    maxlength: 100
+                },
+                Keywords: {
+                    required: true,
+                    maxlength: 100
+                },
+            }
+        });
+    });
+</script>
