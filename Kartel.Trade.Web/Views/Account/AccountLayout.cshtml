@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Kartel.Trade.Web.Controllers
+@{
     Layout = null;
 }
 
@@ -16,7 +17,7 @@
         <header id="header">
             <div id="header-content">
                 <div id="select-name">
-                    Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" /><span class="name-part">.karteltrade.ru</span>
+                    Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" value="@(((BaseController) ViewContext.Controller).CurrentUser.Subdomain)" /><span class="name-part">.karteltrade.ru</span>
                     <input type="submit" id="domain-submit" value=" " />
                 </div>
                 <a id="logo" href="/">
