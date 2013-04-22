@@ -144,9 +144,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\images\account\add-category.png" />
+    <Content Include="Content\images\account\add-product.png" />
+    <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\message.png" />
     <Content Include="Content\images\account\save.png" />
     <Content Include="Content\images\account\submitdomain.png" />
+    <Content Include="Content\images\account\top-check.png" />
     <Content Include="Content\images\layout\addproduct.png" />
     <Content Include="Content\images\layout\addtender.png" />
     <Content Include="Content\images\layout\arrow-bottom.png" />
@@ -207,6 +211,12 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\AccountLayout.cshtml" />
+    <Content Include="Views\Account\ProfileSaved.cshtml" />
+    <Content Include="Views\Account\Products.cshtml" />
+    <Content Include="Views\Account\EditCategory.cshtml" />
+    <Content Include="Views\Account\EditProduct.cshtml" />
+    <Content Include="Views\Account\ProductSubCategories.cshtml" />
+    <Content Include="Views\Account\CategoryProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

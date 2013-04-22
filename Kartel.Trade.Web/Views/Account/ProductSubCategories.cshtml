@@ -1,0 +1,6 @@
+﻿@model IList<Kartel.Domain.Entities.Category>
+
+@foreach (var cat in Model)
+{
+    <option value="@cat.Id">@cat.Title</option>
+}

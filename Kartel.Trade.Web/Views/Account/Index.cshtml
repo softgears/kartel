@@ -1,13 +1,19 @@
 ﻿@using Kartel.Trade.Web.Controllers
-@model dynamic
+@model Kartel.Domain.Entities.User
 
 @{
     ViewBag.Title = "О Компании";
     Layout = "AccountLayout.cshtml";
-    var current = ((BaseController)ViewContext.Controller).CurrentUser;
+    var current = Model;
 }
 <div class="account-content">
+
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+
     <form action="/account/save-profile" method="POST" id="company-profile-form" enctype="multipart/form-data">
+
         <div class="fields-group">
             <div class="field">
                 <div class="label">
@@ -167,7 +173,7 @@
                     Индекс
                 </div>
                 <div class="editor">
-                    <input type="text" name="Postcode" value="" />
+                    <input type="text" name="Postcode" value="@current.PostCode" />
                 </div>
             </div>
         </div>
@@ -179,51 +185,51 @@
             <div class="column">
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("Importer", false) Импортер        
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Importer) Импортер        
                     </div>
                 </div>
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("OEM", false) ОЕМ        
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.OEM) ОЕМ        
                     </div>
                 </div>
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("Whosaller", false) Оптовый продавец        
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="field">
-                    <div class="editor">
-                        @Html.CheckBox("Exporter", false) Экспортер        
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="editor">
-                        @Html.CheckBox("ODM", false) ODM        
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="editor">
-                        @Html.CheckBox("SingleSeller", false) Розничный продавец       
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Whoseller) Оптовый продавец        
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("Developer", false) Производитель        
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Exporter) Экспортер        
                     </div>
                 </div>
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("Agent", false) Агент        
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.ODM) ODM        
                     </div>
                 </div>
                 <div class="field">
                     <div class="editor">
-                        @Html.CheckBox("Distributer", false) Дистрибьютор
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.SingleSeller) Розничный продавец       
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Developer) Производитель        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Agent) Агент        
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        @Html.CheckBoxFor(user => user.UserOccupationInfos.Distributor) Дистрибьютор
                     </div>
                 </div>
             </div>
@@ -247,7 +253,7 @@
                     ОГРН / ОГРНИП
                 </div>
                 <div class="editor">
-                    <input type="text" name="CertificateNumber" value="@current.CertificateNumber"/>
+                    @Html.TextBoxFor(u => u.UserLegalInfos.OGRN)
                 </div>
             </div>
             <div class="field">
@@ -255,7 +261,7 @@
                     ИНН
                 </div>
                 <div class="editor">
-                    <input type="text" name="CertificateInn" value="@current.CertificateInn"/>
+                    @Html.TextBoxFor(u => u.UserLegalInfos.INN)
                 </div>
             </div>
             <div class="field">
@@ -263,7 +269,7 @@
                     КПП
                 </div>
                 <div class="editor">
-                    <input type="text" name="CertificateKPP" value="@current.CertificateInn"/>
+                    @Html.TextBoxFor(u => u.UserLegalInfos.KPP)
                 </div>
             </div>
             <div class="field">
@@ -271,7 +277,7 @@
                     Р./счет
                 </div>
                 <div class="editor">
-                    <input type="text" name="AccountRNumber" value="" />
+                    @Html.TextBoxFor(u => u.UserLegalInfos.AccountRNumber)
                 </div>
             </div>
             <div class="field">
@@ -279,7 +285,7 @@
                     Корр./счет
                 </div>
                 <div class="editor">
-                    <input type="text" name="AccountKNumber" value="" />
+                    @Html.TextBoxFor(u => u.UserLegalInfos.AccountKNumber)
                 </div>
             </div>
             <div class="field">
@@ -287,7 +293,7 @@
                     Банк
                 </div>
                 <div class="editor">
-                    <input type="text" name="AccountBank" value="" />
+                    @Html.TextBoxFor(u => u.UserLegalInfos.AccountBank)
                 </div>
             </div>
             <div class="field">
@@ -295,7 +301,17 @@
                     БИК Банка
                 </div>
                 <div class="editor">
-                    <input type="text" name="BankBIK" value="" />
+                    @Html.TextBoxFor(u => u.UserLegalInfos.AccountBankBIK)
+                </div>
+            </div>
+        </div>
+        <div class="fields-group">
+            <div class="fields-title">
+                Дилер / Дистрибьютор
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <textarea name="Dealer">@current.Dealer</textarea>
                 </div>
             </div>
         </div>
@@ -305,3 +321,77 @@
     </form>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#company-profile-form").validate({
+            rules: {
+                Company: {
+                    required: true,
+                    maxlength: 100
+                },
+                Brand: {
+                    maxlength: 100
+                },
+                FIO: {
+                    maxlength: 100
+                },
+                Skype: {
+                    maxlength: 100
+                },
+                ICQ: {
+                    digits: true
+                },
+                Url: {
+                    maxlength: 100
+                },
+                Country: {
+                    required: true,
+                    maxlength: 100
+                },
+                Region: {
+                    maxlength: 100
+                },
+                City: {
+                    required: true,
+                    maxlength: 100
+                },
+                Address: {
+                    required: true,
+                    maxlength: 255
+                },
+                PostCode: {
+                    required: true,
+                    maxlength: 6
+                },
+                About: {
+                    required: false,
+                    maxlength: 4000
+                },
+                UserLegalInfos_OGRN: {
+                    maxlength: 50
+                },
+                UserLegalInfos_INN: {
+                    maxlength: 50
+                },
+                UserLegalInfos_KPP: {
+                    maxlength: 50
+                },
+                UserLegalInfos_AccountRNumber: {
+                    maxlength: 50
+                },
+                UserLegalInfos_AccountKNumber: {
+                    maxlength: 50
+                },
+                UserLegalInfos_AccountBank: {
+                    maxlength: 50
+                },
+                UserLegalInfos_AccountBankBIK: {
+                    maxlength: 50
+                },
+                Dealer: {
+                    maxlength: 1000
+                }
+            }
+        });
+    });
+</script>

@@ -118,6 +118,9 @@
 		margin-bottom: 30px
 		background-color: #f0f0f0
 		padding: 15px 0px
+		border-bottom: 1px solid #cecece
+		border-bottom-right-radius: 4px
+		border-bottom-left-radius: 4px
 
 		.column
 			display: inline-block
@@ -134,6 +137,11 @@
 			border-bottom: 1px solid #ddddde
 			margin-bottom: 15px
 
+		.separator
+			margin: 25px 0px
+			height:  1px
+			border-bottom: 1px solid #ddddde
+
 		.field
 			margin-bottom: 10px
 
@@ -149,6 +157,9 @@
 
 				.asterix
 					color: red
+
+				a
+					color: black
 
 			.editor
 				display: inline-block
@@ -171,8 +182,18 @@
 					&.small
 						width: 123px
 
+
 				textarea
 					min-height: 150px
+
+				label.error
+					margin-left: 5px
+					color:  red
+
+				.details
+					color: gray
+					font-size:  10px
+					margin-top: 5px
 
 	input.save[type='submit']
 		width: 229px
@@ -182,7 +203,168 @@
 		cursor: pointer
 		margin-bottom: 25px
 
+	#add-product
+		display: inline-block
+		vertical-align: top
+		width: 149px
+		height:  28px
+		cursor: pointer
+		background:  url(../../images/account/add-product.png) left top no-repeat
+		margin-left: 20px
+
+	#add-category
+		display: inline-block
+		vertical-align: top
+		width: 183px
+		height:  28px
+		cursor: pointer
+		background:  url(../../images/account/add-category.png) left top no-repeat
+		margin-left: 20px
+
+	.categories-table
+		border-top: 2px solid #ddddde
+		width: 100%
+		margin-top: 15px
+
+		tbody
+			tr
+				td
+					border: 1px solid #ddddde
+					padding:  15px
+					text-align:  center
+					vertical-align: middle
+
+					a
+						color: black
+
+						&:hover
+							text-decoration: underline
+
+					&:first-child
+						border-left: 0
+						text-align:  left
+
+						a
+							color: #33a1c2 !important
+							font-weight: bold
+
+					&:last-child
+						border-right: 0
+
+	.action-panel
+		background: #f0f0f0
+		padding: 10px
+
+		.select-all
+			width: 18px
+			height: 17px
+			cursor: pointer
+			margin-right: 15px
+
+			&.top
+				background: url(../../images/account/top-check.png) left top no-repeat
+
+			&.bottom
+				background: url(../../images/account/bottom-check.png) left top no-repeat
+
+		.round
+			background: #fbfbfb
+			background: -moz-linear-gradient(top,  #fbfbfb 1%, #d8d8da 100%)
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#fbfbfb), color-stop(100%,#d8d8da))
+			background: -webkit-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+			background: -o-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+			background: -ms-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+			background: linear-gradient(to bottom,  #fbfbfb 1%,#d8d8da 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#d8d8da',GradientType=0 )
+			border:  1px solid #808080
+			border-radius: 5px
+			padding: 5px 10px
+			color:  black
+			margin: 0px 10px
+			cursor: pointer
+
+	.products-table
+		width: 100%
+
+		tr
+			border-top: 1px solid #e2e2e2
+			border-bottom: 1px solid #e2e2e2
+
+			&:hover
+				background-color: #f0f0f0
+
+			td
+				padding: 15px
+				text-align: center
+				vertical-align: middle
+
+				a
+					color: black
+
+					&:hover
+						text-decoration: underline
+
+				&.name
+					text-align: left
+					width: 100%
+
+					a
+						color: #33a1c2 !important
+						font-weight: bold
+
+	.hot-product-stats
+		margin: 15px 40px
+
+		.item
+			font-weight: bold
+			margin-bottom: 10px
+			font-size:  15px
+
+		.pay-hot-product
+			float: right
+			margin-top: 10px
+
+			.round
+				background: #fbfbfb
+				background: -moz-linear-gradient(top,  #fbfbfb 1%, #d8d8da 100%)
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#fbfbfb), color-stop(100%,#d8d8da))
+				background: -webkit-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+				background: -o-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+				background: -ms-linear-gradient(top,  #fbfbfb 1%,#d8d8da 100%)
+				background: linear-gradient(to bottom,  #fbfbfb 1%,#d8d8da 100%)
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#d8d8da',GradientType=0 )
+				border:  1px solid #808080
+				border-radius: 5px
+				padding: 5px 10px
+				font-weight: bold
+				color:  black
+				margin: 0px 10px
+				cursor: pointer
+
+	.send-title
+		margin-left: 40px
+
+		a
+			color: #33a1c2
+			font-size: 13px
+
+			&:hover
+				text-decoration: underline
+
+
+			b
+				font-weight: bold
 
 
 
 
+	.categories-selector
+		width: 100%
+
+		td
+			width: 25%
+			border: 1px solid #ddddde
+
+			select
+				width: 99%
+				height: auto

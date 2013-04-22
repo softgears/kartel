@@ -38,5 +38,21 @@ namespace Kartel.Domain.Entities
         {
             return Products;
         }
+
+        /// <summary>
+        /// возвращает полностью путь категории от самой верхней до нижней
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Category> GetFullCategoriesPath()
+        {
+            var list = new List<Category>();
+            var category = this;
+            do
+            {
+                list.Insert(0,category);
+                category = category.ParentCategory;
+            } while (category != null);
+            return list;
+        }
     }
 }

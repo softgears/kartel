@@ -1,0 +1,62 @@
+﻿@model System.Collections.Generic.List<Kartel.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Товары в категории";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    
+    <div class="action-panel">
+        <span class="select-all top">
+            
+        </span>
+        
+        <span class="round change-category">Сменить категорию</span>
+        <span class="round make-hot">Показывать в "Горячих Товарах"</span>
+    </div>
+    <table class="products-table">
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                foreach (var product in Model)
+                {
+                    <tr data-id="@product.Id">
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td>
+                            <img src=""/> @* Картинка продукта *@
+                        </td>
+                        <td class="name">
+                            <a href="/account/products/edit-product/@product.Id">@product.Title</a>
+                        </td>
+                        <td>
+                            <a href="/account/products/delete-product/@product.Id" onclick=" return confirm('Действительно хотите удалить этот товар?') ">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5">
+                        Нет товаров в категории
+                    </td>
+                </tr>    
+            }
+            
+        </tbody>
+    </table>
+    <div class="action-panel">
+        <span class="select-all bottom">
+            
+        </span>
+        
+        <span class="round change-category">Сменить категорию</span>
+        <span class="round make-hot">Показывать в "Горячих Товарах"</span>
+    </div>
+</div>

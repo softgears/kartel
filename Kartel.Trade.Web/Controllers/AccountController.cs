@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Infrastructure.Misc;
+using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
 
@@ -220,8 +222,478 @@ namespace Kartel.Trade.Web.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Профиль компании", "", true);
+
+            return View(CurrentUser);
+        }
+
+        /// <summary>
+        /// Обрабатывает сохранение профайла компании
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost][Route("account/save-profile")]
+        public ActionResult SaveCompanyProfile(User model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Сохраняем
+            // Основное инфо
+            CurrentUser.Company = model.Company;
+            CurrentUser.Brand = model.Brand;
+            // TODO: доабвить сохранение лого компании
+            CurrentUser.FIO = model.FIO;
+            // TODO: добавить сохранение портрета пользователя
+            // TODO: добавить сохранение номером телефона
+            CurrentUser.Skype = model.Skype;
+            CurrentUser.ICQ = model.ICQ;
+            CurrentUser.Url = model.Url;
+            CurrentUser.Country = model.Country;
+            CurrentUser.Region = model.Region;
+            CurrentUser.Address = model.Address;
+            CurrentUser.City = model.City;
+            CurrentUser.PostCode = model.PostCode;
+
+            // Деятельность
+            if (CurrentUser.UserOccupationInfos == null)
+            {
+                CurrentUser.UserOccupationInfos = new UserOccupationInfo()
+                    {
+                        User = CurrentUser
+                    };
+            }
+            CurrentUser.UserOccupationInfos.Importer = model.UserOccupationInfos.Importer;
+            CurrentUser.UserOccupationInfos.OEM = model.UserOccupationInfos.OEM;
+            CurrentUser.UserOccupationInfos.Whoseller = model.UserOccupationInfos.Whoseller;
+            CurrentUser.UserOccupationInfos.Exporter = model.UserOccupationInfos.Exporter;
+            CurrentUser.UserOccupationInfos.ODM = model.UserOccupationInfos.ODM;
+            CurrentUser.UserOccupationInfos.SingleSeller = model.UserOccupationInfos.SingleSeller;
+            CurrentUser.UserOccupationInfos.Developer = model.UserOccupationInfos.Developer;
+            CurrentUser.UserOccupationInfos.Agent = model.UserOccupationInfos.Agent;
+            CurrentUser.UserOccupationInfos.Distributor = model.UserOccupationInfos.Distributor;
+
+            // О компании
+            CurrentUser.About = model.About;
+
+            // Банковские реквизиты
+            if (CurrentUser.UserLegalInfos == null)
+            {
+                CurrentUser.UserLegalInfos = new UserLegalInfo()
+                {
+                    User = CurrentUser
+                };
+            }
+            CurrentUser.UserLegalInfos.OGRN = model.UserLegalInfos.OGRN;
+            CurrentUser.UserLegalInfos.INN = model.UserLegalInfos.INN;
+            CurrentUser.UserLegalInfos.KPP = model.UserLegalInfos.KPP;
+            CurrentUser.UserLegalInfos.AccountRNumber = model.UserLegalInfos.AccountRNumber;
+            CurrentUser.UserLegalInfos.AccountKNumber = model.UserLegalInfos.AccountKNumber;
+            CurrentUser.UserLegalInfos.AccountBank = model.UserLegalInfos.AccountBank;
+            CurrentUser.UserLegalInfos.AccountBankBIK = model.UserLegalInfos.AccountBankBIK;
+
+            // Дилер
+            CurrentUser.Dealer = model.Dealer;
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+            return View("ProfileSaved");
+        }
+
+        #endregion
+
+        #region Управление товарами
+
+        /// <summary>
+        /// Отображает главную страницу управления товарами
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Products()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "", true);
+
+            // Отображаем вид
             return View();
         }
+
+        #region Категории
+
+        /// <summary>
+        /// Отображает форму добавления новой пользовательской категории
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/products/add-category")]
+        public ActionResult AddCategory()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Создание категории", "", true);
+
+            // Отображаем вид
+            return View("EditCategory",new UserCategory());
+        }
+
+        /// <summary>
+        /// Обрабатывает категории - создает или сохраняет новую пользовательскую категорию
+        /// </summary>
+        /// <param name="model">Модель</param>
+        /// <returns></returns>
+        [Route("account/products/save-category")][HttpPost]
+        public ActionResult SaveCategory(UserCategory model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Проверяем что у нас - создание или редактирование
+            UserCategory category = null;
+            if (model.Id <= 0)
+            {
+                category = model;
+                category.Position = CurrentUser.UserCategories.Count > 0
+                                        ? CurrentUser.UserCategories.Max(c => c.Position) + 1000
+                                        : 1000;
+                CurrentUser.UserCategories.Add(category);
+            }
+            else
+            {
+                category = CurrentUser.UserCategories.First(c => c.Id == model.Id);
+                category.Title = model.Title;
+                category.Description = model.Description;
+                category.Position = model.Position;
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на страницу товара
+            return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Отображает форму редактирования пользовательской категории
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        [Route("account/products/edit-category/{id}")]
+        public ActionResult EditCategory(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Редактирование категории", "", true);
+
+            var category = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            return View("EditCategory", category);
+        }
+
+        /// <summary>
+        /// Удаляет указанную категорию товара
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        [Route("account/products/delete-category/{id}")]
+        public ActionResult DeleteCategory(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем категорию и удаляем
+            var category = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return RedirectToAction("Products");
+            }
+            CurrentUser.UserCategories.Remove(category);
+            category.User = null;
+            foreach(var product in category.Products)
+            {
+                product.Category = null;
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на список категорий
+            return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Отображает список товаров, который находится в указанной пользовательской категории
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns>Страница со список категорий</returns>
+        [Route("account/products/category-products/{id}")]
+        public ActionResult CategoryProducts(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            var userCategory = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == id);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem(string.Format("Товары в категории \"{0}\"", userCategory.Title), "", true);
+
+            // Отображаем вид
+            return View(userCategory.Products.ToList());
+        }
+
+        #endregion
+
+        #region Товары
+
+        /// <summary>
+        /// Отображает форму добавления нового товара на сайт
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/products/add-product")]
+        public ActionResult AddProduct()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem("Добавление товара", "", true);
+
+            // Отображаем вид
+            return View("EditProduct", new Product());
+        }
+
+        /// <summary>
+        /// Возвращает разметку дочерних категорий к указанной категории
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost][Route("account/products/get-sub-categories")]
+        public ActionResult GetProductSubCategories(long id)
+        {
+            // Репозиторий категорий
+            var rep = Locator.GetService<ICategoriesRepository>();
+
+            // Ищем категорию
+            var category = rep.Load(id);
+            if (category == null)
+            {
+                return Content("Не найдена категория");
+            }
+
+            return PartialView("ProductSubCategories", category.ChildCategories.OrderBy(c => c.Title).ToList());
+        }
+
+        /// <summary>
+        /// Возвращает строку полного пути указанной категории
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns>Строка пути</returns>
+        [HttpPost]
+        [Route("account/products/get-category-path")]
+        public ActionResult GetCategoryPath(long id)
+        {
+            // Репозиторий категорий
+            var rep = Locator.GetService<ICategoriesRepository>();
+
+            // Ищем категорию
+            var category = rep.Load(id);
+            if (category == null)
+            {
+                return Content("");
+            }
+
+            return Content(String.Join(" / ", category.GetFullCategoriesPath().Select(c => c.Title)));
+        }
+
+        /// <summary>
+        /// Выполняет сохранение продукта - создание или изменение существующего
+        /// </summary>
+        /// <param name="model">Модель с формы</param>
+        /// <returns></returns>
+        [HttpPost][ValidateInput(false)]
+        [Route("account/products/save-product")]
+        public ActionResult SaveProduct(Product model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Проверяем что у нас - создание или сохранение
+            Product product = null;
+            if (model.Id <= 0)
+            {
+                product = model;
+                product.Date = DateTime.Now;
+                product.User = CurrentUser;
+
+                // TODO: добавить сохранение фотографий продукту
+
+                CurrentUser.Products.Add(product);
+            }
+            else
+            {
+                product = Locator.GetService<IProductsRepository>().Load(model.Id);
+                product.Title = model.Title;
+                product.Keywords = model.Keywords;
+                product.CategoryId = model.CategoryId;
+                product.UserCategoryId = model.UserCategoryId;
+                product.User = CurrentUser;
+                product.Field1 = model.Field1;
+                product.Field3 = model.Field3;
+                product.Field4 = model.Field4;
+                product.Field5 = model.Field5;
+                product.Field6 = model.Field6;
+                product.Field8 = model.Field8;
+                product.Field9 = model.Field9;
+                product.Description = model.Description;
+                product.Price = model.Price;
+                product.Currency = model.Currency;
+                product.Measure = model.Measure;
+                product.MinimunLotSize = model.MinimunLotSize;
+                product.MinimumLotMeasure = model.MinimumLotMeasure;
+                product.VendorCountry = model.VendorCountry;
+                product.DeliveryTime = model.DeliveryTime;
+                product.DeliveryPossibilityDay = model.DeliveryPossibilityDay;
+                product.DeliveryPossibilityMeasure = model.DeliveryPossibilityMeasure;
+                product.DeliveryPossibilityTime = model.DeliveryPossibilityTime;
+                product.ProductCode = model.ProductCode;
+                product.ProductBox = model.ProductBox;
+
+                // Информация о горячем товаре
+                if (product.HotProducts == null)
+                {
+                    product.HotProducts = new HotProduct()
+                        {
+                            Clicks = 0,
+                            EnableHotProduct = false,
+                            PayedViews = 0,
+                            Product = product,
+                            Views = 0
+                        };
+                }
+                product.HotProducts.EnableHotProduct = model.HotProducts.EnableHotProduct;
+            }
+
+            // Сохраняем изменения
+            UsersRepository.SubmitChanges();
+
+            // Перенаправляемся на список продуктов
+            return RedirectToAction("CategoryProducts",new {id = product.UserCategoryId});
+        }
+
+        /// <summary>
+        /// Отображает страницу редактирования товара
+        /// </summary>
+        /// <param name="id">Идентификатор товара</param>
+        /// <returns></returns>
+        [Route("account/products/edit-product/{id}")]
+        public ActionResult EditProduct(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем товар и открываем его
+            var product = CurrentUser.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Товары", "/account/products", false);
+            PushNavigationChainItem(string.Format("Редактирование товара \"{0}\"", product.Title), "", true);
+
+            // Вид
+            return View("EditProduct", product);
+        }
+
+        /// <summary>
+        /// Удаляет товар с указанным идентификатором
+        /// </summary>
+        /// <param name="id">Идентификатор товара</param>
+        /// <returns></returns>
+        [Route("account/products/delete-product/{id}")]
+        public ActionResult DeleteProduct(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем товар и открываем его
+            var product = CurrentUser.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            // Запоминаем куда возвращаться
+            var catId = product.UserCategoryId;
+
+            // Удаляем товар
+            Locator.GetService<IProductsRepository>().Delete(product);
+            UsersRepository.SubmitChanges();
+
+            // Переходим в запомненную категорию
+            return RedirectToAction("CategoryProducts", new {id = catId});
+        }
+
+        #endregion
 
         #endregion
 
