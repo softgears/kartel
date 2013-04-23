@@ -43,5 +43,14 @@ namespace Kartel.Domain.Entities
         {
             return UserCategories;
         }
+
+        /// <summary>
+        /// Возвращает список тендеров
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Tender> GetTenders()
+        {
+            return Tenders;
+        }
     }
 }

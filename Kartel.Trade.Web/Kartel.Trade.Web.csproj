@@ -146,6 +146,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\images\account\add-category.png" />
     <Content Include="Content\images\account\add-product.png" />
+    <Content Include="Content\images\account\add-tender-inner.png" />
     <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\message.png" />
     <Content Include="Content\images\account\save.png" />
@@ -217,6 +218,8 @@
     <Content Include="Views\Account\EditProduct.cshtml" />
     <Content Include="Views\Account\ProductSubCategories.cshtml" />
     <Content Include="Views\Account\CategoryProducts.cshtml" />
+    <Content Include="Views\Account\Tenders.cshtml" />
+    <Content Include="Views\Account\EditTender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

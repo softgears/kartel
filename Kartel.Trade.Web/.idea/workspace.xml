@@ -4,7 +4,7 @@
     <list default="true" id="91385219-d411-4363-9b27-3ebb50b1a82d" name="Default" comment="" />
     <ignored path="Kartel.Trade.Web.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/account.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1366606622115" ignored="false" />
+    <file path="/account.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1366677167811" ignored="false" />
     <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365567872398" ignored="false" />
     <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365643390337" ignored="false" />
     <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
@@ -32,7 +32,7 @@
       <file leaf-file-name="account.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/account.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="12" selection-start="4795" selection-end="4795" vertical-scroll-proportion="0.6182033">
+            <state line="261" column="16" selection-start="4668" selection-end="4668" vertical-scroll-proportion="0.7234042">
               <folding />
             </state>
           </provider>
@@ -91,6 +91,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -165,7 +166,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,7 +345,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/account.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="12" selection-start="4795" selection-end="4795" vertical-scroll-proportion="0.6182033">
+        <state line="261" column="16" selection-start="4668" selection-end="4668" vertical-scroll-proportion="0.7234042">
           <folding />
         </state>
       </provider>

@@ -55,6 +55,9 @@ namespace Kartel.Domain.DAL
     partial void InsertHotProduct(Kartel.Domain.Entities.HotProduct instance);
     partial void UpdateHotProduct(Kartel.Domain.Entities.HotProduct instance);
     partial void DeleteHotProduct(Kartel.Domain.Entities.HotProduct instance);
+    partial void InsertTender(Kartel.Domain.Entities.Tender instance);
+    partial void UpdateTender(Kartel.Domain.Entities.Tender instance);
+    partial void DeleteTender(Kartel.Domain.Entities.Tender instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -150,6 +153,14 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.HotProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.Tender> Tenders
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.Tender>();
 			}
 		}
 	}
@@ -854,6 +865,8 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<Product> _Products;
 		
+		private EntitySet<Tender> _Tenders;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -977,6 +990,7 @@ namespace Kartel.Domain.Entities
 			this._UserLegalInfos = default(EntityRef<UserLegalInfo>);
 			this._UserCategories = new EntitySet<UserCategory>(new Action<UserCategory>(this.attach_UserCategories), new Action<UserCategory>(this.detach_UserCategories));
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
+			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
 			OnCreated();
 		}
 		
@@ -2177,6 +2191,19 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Tender", Storage="_Tenders", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<Tender> Tenders
+		{
+			get
+			{
+				return this._Tenders;
+			}
+			set
+			{
+				this._Tenders.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2228,6 +2255,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Tenders(Tender entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Tenders(Tender entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -2553,6 +2592,8 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<Product> _Products;
 		
+		private EntitySet<Tender> _Tenders;
+		
 		private EntityRef<Category> _ParentCategory;
 		
     #region Extensibility Method Definitions
@@ -2579,6 +2620,7 @@ namespace Kartel.Domain.Entities
 		{
 			this._ChildCategories = new EntitySet<Category>(new Action<Category>(this.attach_ChildCategories), new Action<Category>(this.detach_ChildCategories));
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
+			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
 			this._ParentCategory = default(EntityRef<Category>);
 			OnCreated();
 		}
@@ -2753,6 +2795,19 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Tender", Storage="_Tenders", ThisKey="Id", OtherKey="CategoryId")]
+		public EntitySet<Tender> Tenders
+		{
+			get
+			{
+				return this._Tenders;
+			}
+			set
+			{
+				this._Tenders.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Category", Storage="_ParentCategory", ThisKey="ParentId", OtherKey="Id", IsForeignKey=true)]
 		public Category ParentCategory
 		{
@@ -2826,6 +2881,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = null;
+		}
+		
+		private void attach_Tenders(Tender entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = this;
+		}
+		
+		private void detach_Tenders(Tender entity)
 		{
 			this.SendPropertyChanging();
 			entity.Category = null;
@@ -4349,6 +4416,510 @@ namespace Kartel.Domain.Entities
 						this._ProductId = default(int);
 					}
 					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tenders")]
+	public partial class Tender : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _UserId;
+		
+		private int _CategoryId;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private decimal _MinPrice;
+		
+		private decimal _MaxPrice;
+		
+		private string _Currency;
+		
+		private string _Size;
+		
+		private string _Measure;
+		
+		private System.Nullable<System.DateTime> _DateStart;
+		
+		private System.Nullable<System.DateTime> _DateEnd;
+		
+		private string _Period;
+		
+		private string _Image;
+		
+		private string _Keywords;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private EntityRef<Category> _Category;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnCategoryIdChanging(int value);
+    partial void OnCategoryIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnMinPriceChanging(decimal value);
+    partial void OnMinPriceChanged();
+    partial void OnMaxPriceChanging(decimal value);
+    partial void OnMaxPriceChanged();
+    partial void OnCurrencyChanging(string value);
+    partial void OnCurrencyChanged();
+    partial void OnSizeChanging(string value);
+    partial void OnSizeChanged();
+    partial void OnMeasureChanging(string value);
+    partial void OnMeasureChanged();
+    partial void OnDateStartChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateStartChanged();
+    partial void OnDateEndChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateEndChanged();
+    partial void OnPeriodChanging(string value);
+    partial void OnPeriodChanged();
+    partial void OnImageChanging(string value);
+    partial void OnImageChanged();
+    partial void OnKeywordsChanging(string value);
+    partial void OnKeywordsChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    #endregion
+		
+		public Tender()
+		{
+			this._Category = default(EntityRef<Category>);
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryId", DbType="Int NOT NULL")]
+		public int CategoryId
+		{
+			get
+			{
+				return this._CategoryId;
+			}
+			set
+			{
+				if ((this._CategoryId != value))
+				{
+					if (this._Category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryId = value;
+					this.SendPropertyChanged("CategoryId");
+					this.OnCategoryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinPrice", DbType="Decimal(10,2) NOT NULL")]
+		public decimal MinPrice
+		{
+			get
+			{
+				return this._MinPrice;
+			}
+			set
+			{
+				if ((this._MinPrice != value))
+				{
+					this.OnMinPriceChanging(value);
+					this.SendPropertyChanging();
+					this._MinPrice = value;
+					this.SendPropertyChanged("MinPrice");
+					this.OnMinPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxPrice", DbType="Decimal(10,2) NOT NULL")]
+		public decimal MaxPrice
+		{
+			get
+			{
+				return this._MaxPrice;
+			}
+			set
+			{
+				if ((this._MaxPrice != value))
+				{
+					this.OnMaxPriceChanging(value);
+					this.SendPropertyChanging();
+					this._MaxPrice = value;
+					this.SendPropertyChanged("MaxPrice");
+					this.OnMaxPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Currency", DbType="VarChar(10)")]
+		public string Currency
+		{
+			get
+			{
+				return this._Currency;
+			}
+			set
+			{
+				if ((this._Currency != value))
+				{
+					this.OnCurrencyChanging(value);
+					this.SendPropertyChanging();
+					this._Currency = value;
+					this.SendPropertyChanged("Currency");
+					this.OnCurrencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="VarChar(250)")]
+		public string Size
+		{
+			get
+			{
+				return this._Size;
+			}
+			set
+			{
+				if ((this._Size != value))
+				{
+					this.OnSizeChanging(value);
+					this.SendPropertyChanging();
+					this._Size = value;
+					this.SendPropertyChanged("Size");
+					this.OnSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Measure", DbType="VarChar(25)")]
+		public string Measure
+		{
+			get
+			{
+				return this._Measure;
+			}
+			set
+			{
+				if ((this._Measure != value))
+				{
+					this.OnMeasureChanging(value);
+					this.SendPropertyChanging();
+					this._Measure = value;
+					this.SendPropertyChanged("Measure");
+					this.OnMeasureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateStart", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> DateStart
+		{
+			get
+			{
+				return this._DateStart;
+			}
+			set
+			{
+				if ((this._DateStart != value))
+				{
+					this.OnDateStartChanging(value);
+					this.SendPropertyChanging();
+					this._DateStart = value;
+					this.SendPropertyChanged("DateStart");
+					this.OnDateStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateEnd", DbType="DateTime2")]
+		public System.Nullable<System.DateTime> DateEnd
+		{
+			get
+			{
+				return this._DateEnd;
+			}
+			set
+			{
+				if ((this._DateEnd != value))
+				{
+					this.OnDateEndChanging(value);
+					this.SendPropertyChanging();
+					this._DateEnd = value;
+					this.SendPropertyChanged("DateEnd");
+					this.OnDateEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Period", DbType="VarChar(25)")]
+		public string Period
+		{
+			get
+			{
+				return this._Period;
+			}
+			set
+			{
+				if ((this._Period != value))
+				{
+					this.OnPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._Period = value;
+					this.SendPropertyChanged("Period");
+					this.OnPeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(50)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Keywords", DbType="VarChar(MAX)")]
+		public string Keywords
+		{
+			get
+			{
+				return this._Keywords;
+			}
+			set
+			{
+				if ((this._Keywords != value))
+				{
+					this.OnKeywordsChanging(value);
+					this.SendPropertyChanging();
+					this._Keywords = value;
+					this.SendPropertyChanged("Keywords");
+					this.OnKeywordsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Tender", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true)]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.Tenders.Remove(this);
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.Tenders.Add(this);
+						this._CategoryId = value.Id;
+					}
+					else
+					{
+						this._CategoryId = default(int);
+					}
+					this.SendPropertyChanged("Category");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Tender", Storage="_User", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Tenders.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Tenders.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("User");
 				}
 			}
 		}

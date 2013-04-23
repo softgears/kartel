@@ -259,61 +259,71 @@
   margin-left: 20px;
 }
 /* line 224, ../sass/account.sass */
-.account .categories-table {
+.account #add-tender {
+  display: inline-block;
+  vertical-align: top;
+  width: 159px;
+  height: 28px;
+  cursor: pointer;
+  background: url(../../images/account/add-tender-inner.png) left top no-repeat;
+  margin-left: 20px;
+}
+/* line 233, ../sass/account.sass */
+.account .categories-table, .account .tenders-table {
   border-top: 2px solid #ddddde;
   width: 100%;
   margin-top: 15px;
 }
-/* line 231, ../sass/account.sass */
-.account .categories-table tbody tr td {
+/* line 240, ../sass/account.sass */
+.account .categories-table tbody tr td, .account .tenders-table tbody tr td {
   border: 1px solid #ddddde;
   padding: 15px;
   text-align: center;
   vertical-align: middle;
 }
-/* line 237, ../sass/account.sass */
-.account .categories-table tbody tr td a {
+/* line 246, ../sass/account.sass */
+.account .categories-table tbody tr td a, .account .tenders-table tbody tr td a {
   color: black;
 }
-/* line 240, ../sass/account.sass */
-.account .categories-table tbody tr td a:hover {
+/* line 249, ../sass/account.sass */
+.account .categories-table tbody tr td a:hover, .account .tenders-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 243, ../sass/account.sass */
-.account .categories-table tbody tr td:first-child {
+/* line 252, ../sass/account.sass */
+.account .categories-table tbody tr td:first-child, .account .tenders-table tbody tr td:first-child {
   border-left: 0;
   text-align: left;
 }
-/* line 247, ../sass/account.sass */
-.account .categories-table tbody tr td:first-child a {
+/* line 256, ../sass/account.sass */
+.account .categories-table tbody tr td:first-child a, .account .tenders-table tbody tr td:first-child a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 251, ../sass/account.sass */
-.account .categories-table tbody tr td:last-child {
+/* line 260, ../sass/account.sass */
+.account .categories-table tbody tr td:last-child, .account .tenders-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 254, ../sass/account.sass */
+/* line 263, ../sass/account.sass */
 .account .action-panel {
   background: #f0f0f0;
   padding: 10px;
 }
-/* line 258, ../sass/account.sass */
+/* line 267, ../sass/account.sass */
 .account .action-panel .select-all {
   width: 18px;
   height: 17px;
   cursor: pointer;
   margin-right: 15px;
 }
-/* line 264, ../sass/account.sass */
+/* line 273, ../sass/account.sass */
 .account .action-panel .select-all.top {
   background: url(../../images/account/top-check.png) left top no-repeat;
 }
-/* line 267, ../sass/account.sass */
+/* line 276, ../sass/account.sass */
 .account .action-panel .select-all.bottom {
   background: url(../../images/account/bottom-check.png) left top no-repeat;
 }
-/* line 270, ../sass/account.sass */
+/* line 279, ../sass/account.sass */
 .account .action-panel .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -330,59 +340,59 @@
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 286, ../sass/account.sass */
+/* line 295, ../sass/account.sass */
 .account .products-table {
   width: 100%;
 }
-/* line 289, ../sass/account.sass */
+/* line 298, ../sass/account.sass */
 .account .products-table tr {
   border-top: 1px solid #e2e2e2;
   border-bottom: 1px solid #e2e2e2;
 }
-/* line 293, ../sass/account.sass */
+/* line 302, ../sass/account.sass */
 .account .products-table tr:hover {
   background-color: #f0f0f0;
 }
-/* line 296, ../sass/account.sass */
+/* line 305, ../sass/account.sass */
 .account .products-table tr td {
   padding: 15px;
   text-align: center;
   vertical-align: middle;
 }
-/* line 301, ../sass/account.sass */
+/* line 310, ../sass/account.sass */
 .account .products-table tr td a {
   color: black;
 }
-/* line 304, ../sass/account.sass */
+/* line 313, ../sass/account.sass */
 .account .products-table tr td a:hover {
   text-decoration: underline;
 }
-/* line 307, ../sass/account.sass */
+/* line 316, ../sass/account.sass */
 .account .products-table tr td.name {
   text-align: left;
   width: 100%;
 }
-/* line 311, ../sass/account.sass */
+/* line 320, ../sass/account.sass */
 .account .products-table tr td.name a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 315, ../sass/account.sass */
+/* line 324, ../sass/account.sass */
 .account .hot-product-stats {
   margin: 15px 40px;
 }
-/* line 318, ../sass/account.sass */
+/* line 327, ../sass/account.sass */
 .account .hot-product-stats .item {
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 15px;
 }
-/* line 323, ../sass/account.sass */
+/* line 332, ../sass/account.sass */
 .account .hot-product-stats .pay-hot-product {
   float: right;
   margin-top: 10px;
 }
-/* line 327, ../sass/account.sass */
+/* line 336, ../sass/account.sass */
 .account .hot-product-stats .pay-hot-product .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -400,33 +410,33 @@
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 344, ../sass/account.sass */
+/* line 353, ../sass/account.sass */
 .account .send-title {
   margin-left: 40px;
 }
-/* line 347, ../sass/account.sass */
+/* line 356, ../sass/account.sass */
 .account .send-title a {
   color: #33a1c2;
   font-size: 13px;
 }
-/* line 351, ../sass/account.sass */
+/* line 360, ../sass/account.sass */
 .account .send-title a:hover {
   text-decoration: underline;
 }
-/* line 355, ../sass/account.sass */
+/* line 364, ../sass/account.sass */
 .account .send-title a b {
   font-weight: bold;
 }
-/* line 361, ../sass/account.sass */
+/* line 370, ../sass/account.sass */
 .account .categories-selector {
   width: 100%;
 }
-/* line 364, ../sass/account.sass */
+/* line 373, ../sass/account.sass */
 .account .categories-selector td {
   width: 25%;
   border: 1px solid #ddddde;
 }
-/* line 368, ../sass/account.sass */
+/* line 377, ../sass/account.sass */
 .account .categories-selector td select {
   width: 99%;
   height: auto;

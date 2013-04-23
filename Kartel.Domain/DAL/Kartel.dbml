@@ -88,6 +88,7 @@
       <Association Name="User_UserLegalInfo" Member="UserLegalInfos" ThisKey="Id" OtherKey="UserId" Type="UserLegalInfo" Cardinality="One" />
       <Association Name="User_UserCategory" Member="UserCategories" ThisKey="Id" OtherKey="UserId" Type="UserCategory" />
       <Association Name="User_Product" Member="Products" ThisKey="Id" OtherKey="UserId" Type="Product" />
+      <Association Name="User_Tender" Member="Tenders" ThisKey="Id" OtherKey="UserId" Type="Tender" />
     </Type>
   </Table>
   <Table Name="dbo.UserLegalInfo" Member="UserLegalInfos">
@@ -115,6 +116,7 @@
       <Column Name="ViewMode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Category_Category" Member="ChildCategories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
       <Association Name="Category_Product" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Product" />
+      <Association Name="Category_Tender" Member="Tenders" ThisKey="Id" OtherKey="CategoryId" Type="Tender" />
       <Association Name="Category_Category" Member="ParentCategory" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
   </Table>
@@ -185,6 +187,28 @@
       <Column Name="Clicks" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Views" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_HotProduct" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tenders" Member="Tenders">
+    <Type Name="Tender">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MinPrice" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MaxPrice" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Currency" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Size" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="DateStart" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="DateEnd" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Period" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Category_Tender" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="User_Tender" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

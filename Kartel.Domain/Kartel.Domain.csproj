@@ -65,9 +65,11 @@
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
     <Compile Include="DAL\Repositories\CategoriesRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
+    <Compile Include="DAL\Repositories\TendersRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Tender.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserCategory.cs" />
     <Compile Include="Infrastructure\Misc\DictionaryStringCache.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITendersRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsersRepository.cs" />
     <Compile Include="IoC\Locator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

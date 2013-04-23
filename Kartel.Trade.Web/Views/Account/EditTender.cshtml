@@ -1,0 +1,209 @@
+﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@using Kartel.Trade.Web.Controllers
+@model Kartel.Domain.Entities.Tender
+
+@{
+    ViewBag.Title = Model.Id <= 0 ? "Создание тендера" : string.Format("Редактирование тендера \"{0}\"", Model.Title);
+    Layout = "AccountLayout.cshtml";
+    var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
+    var catManager = Locator.GetService<CategoriesIndexManager>();
+    var categoriesPath = (Model.Category != null ? Model.Category.GetFullCategoriesPath() : Enumerable.Empty<Category>()).ToList();
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <form method="post" id="tender-form" action="/account/tenders/save-tender">
+        @if (Model.Id > 0 && Model.GetOffersCount() > 0)
+        {
+            <div class="fields-group">
+                <div class="fields-title">Заявки на участие</div>
+            </div>
+        }
+        <input type="hidden" name="Id" value="@Model.Id"/>
+        <div class="fields-group">
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">
+                        *
+                    </span>
+                    Название тендера
+                </div>
+                <div class="editor">
+                    <input type="text" name="Title" value="@Model.Title"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">
+                        *
+                    </span>
+                    Ключевые слова
+                </div>
+                <div class="editor">
+                    <input type="text" name="Keywords" value="@Model.Keywords"/>
+                    <div class="details">
+                        Введите ключевые слова, характеризующий ваш товар. Например: мобильный телефон, сотовый, iPhone, Samsung
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Категория в каталоге <a href="/">Картель.рф</a>
+                </div>
+                <div class="editor">
+                    <input type="hidden" name="CategoryId" value="@Model.CategoryId" id="category-id-field"/>
+                    <span id="selected-category" style="padding-top: 2px; font-weight: bold; max-width: 550px; line-height: 1.5">
+                        @String.Join(" / ",categoriesPath.Select(c => c.Title))
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <table class="categories-selector">
+                    <tr>
+                        <td>
+                            <select size="10" id="root-categories" level="0">
+                                @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
+                                {
+                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected":"")>@rootCategory.Title</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-1-categories" level="1">
+                                @if (categoriesPath.Count > 1)
+                                {
+                                    foreach (var childCat in categoriesPath[0].GetChildCategories())
+                                    {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-2-categories" level="2">
+                                @if (categoriesPath.Count > 2)
+                                {
+                                    foreach (var childCat in categoriesPath[1].GetChildCategories())
+                                    {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select size="10" id="level-3-categories" level="3">
+                                @if (categoriesPath.Count > 3)
+                                {
+                                    foreach (var childCat in categoriesPath[2].GetChildCategories())
+                                    {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="separator">
+            </div>
+            <div class="field">
+                <div class="label" style="margin-left: 115px; text-align: left;">
+                    <span class="asterix">*</span>Описание тендера
+                </div>
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <textarea class="ckeditor" name="Description">@Model.Description</textarea>
+                </div>
+            </div>
+            <div class="separator">
+            </div>
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Изображения
+                </div>
+                <div class="editor">
+                    <input type="file" name="ProductImage" multiple="true" />
+                    <div class="details">Выберите одно или несколько изображений для тендера (JPG или GIF), не более 200 килобайт</div>
+                    <div class="details">После выбора вы сможете задать описание каждому изображению</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="label">
+                    Цена
+                </div>
+                <div class="editor">
+                    <input type="text" class="small" name="MinPrice" placeholder="Мин. цена" value="@Model.MinPrice"/> &mdash;
+                    <input type="text" class="small" name="MaxPrice" placeholder="Макс. цена" value="@Model.MaxPrice"/>
+                    <input type="text" class="small" name="Currency" placeholder="Валюта" value="@Model.Measure"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Количество
+                </div>
+                <div class="editor">
+                    <input type="text" class="small" name="Size" placeholder="число" value="@Model.Size"/>
+                    <input type="text" class="small" name="Measure" placeholder="мера" value="@Model.Measure"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Срок размещения
+                </div>
+                <div class="editor">
+                    <input type="text" class="small datepicker" name="DateStart" placeholder="с" value="@Model.DateStart"/>
+                    <input type="text" class="small datepicker" name="DateEnd" placeholder="по" value="@Model.DateEnd"/>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <input type="submit" class="save" value=" " />
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tender-form").validate({
+            rules: {
+                Title: {
+                    required: true,
+                    maxlength: 255
+                },
+                Keywords: {
+                    required: true,
+                    maxlength: 255
+                },
+                Description: {
+                    required: true
+                }
+            },
+            submitHandler: function(form) {
+                form.submit(); // выполняем сабмит
+            }
+        });
+        $("[level]").click(function () {
+            var level = parseInt($(this).attr("level"));
+            $("#category-id-field").val($(this).val()).change();
+            if (level != 3) {
+                $("[level]").each(function (index, item) {
+                    if (parseInt($(item).attr("level")) > level) {
+                        $(item).find("option").remove();
+                    }
+                });
+                $("[level='" + (level + 1) + "']").load("/account/products/get-sub-categories/", { id: $(this).val() });
+            }
+        });
+        $("#category-id-field").change(function () {
+            $("#selected-category").load("/account/products/get-category-path", { id: $(this).val() });
+        });
+    });
+    
+</script>

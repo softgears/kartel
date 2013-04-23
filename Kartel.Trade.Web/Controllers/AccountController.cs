@@ -697,5 +697,153 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
+        #region Тендеры
+
+        /// <summary>
+        /// Отображает список тендеров и заявки на участие в тендерах если они есть
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/tenders")]
+        public ActionResult Tenders()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "/account", false);
+            PushNavigationChainItem("Тендеры", "/account/tenders", true);
+
+            return View();
+        }
+
+        /// <summary>
+        /// Отображает страницу создания нового тендера
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/tenders/add-tender")]
+        public ActionResult AddTender()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "/account", false);
+            PushNavigationChainItem("Тендеры", "/account/tenders", false);
+            PushNavigationChainItem("Новый тендер", "", true);
+
+            return View("EditTender", new Tender());
+        }
+
+        /// <summary>
+        /// Обрабатывает создание или сохранение нового тендера
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("account/tenders/save-tender")]
+        public ActionResult SaveTender(Tender model)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Сохраняем или создание
+            Tender tender = null;
+            if (model.Id <= 0)
+            {
+                tender = model;
+                tender.DateCreated = DateTime.Now;
+
+                // TODO: добавить сохранение фотографий по тендерам
+
+                CurrentUser.Tenders.Add(tender);
+            }
+            else
+            {
+                tender = CurrentUser.Tenders.First(t => t.Id == model.Id);
+                tender.Title = model.Title;
+                tender.Keywords = model.Keywords;
+                tender.Description = model.Description;
+                tender.MinPrice = model.MinPrice;
+                tender.MaxPrice = model.MaxPrice;
+                tender.Measure = model.Measure;
+                tender.Size = model.Size;
+                tender.Currency = model.Currency;
+                tender.DateStart = model.DateStart;
+                tender.DateEnd = model.DateEnd;
+            }
+            UsersRepository.SubmitChanges();
+
+            // Перенаправляемся на список тендеров
+            return RedirectToAction("Tenders");
+        }
+
+        /// <summary>
+        /// Отображает страницу редактирования тендера
+        /// </summary>
+        /// <param name="id">Идентификатор тендера</param>
+        /// <returns></returns>
+        [Route("account/tenders/edit/{id}")]
+        public ActionResult EditTender(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем тендер и открываем его
+            var tender = CurrentUser.Tenders.FirstOrDefault(p => p.Id == id);
+            if (tender == null)
+            {
+                return RedirectToAction("Tenders");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Тендеры", "/account/tenders", false);
+            PushNavigationChainItem(string.Format("Редактирование тендера \"{0}\"", tender.Title), "", true);
+
+            // Вид
+            return View("EditTender", tender);
+        }
+
+        /// <summary>
+        /// Обрабатывает удаление указанного тендера
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("account/tenders/delete/{id}")]
+        public ActionResult DeleteTender(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем тендер и открываем его
+            var tender = CurrentUser.Tenders.FirstOrDefault(p => p.Id == id);
+            if (tender == null)
+            {
+                return RedirectToAction("Tenders");
+            }
+
+            // Удаляем тендер
+            Locator.GetService<ITendersRepository>().Delete(tender);
+            UsersRepository.SubmitChanges();
+
+            // Переходим в запомненную категорию
+            return RedirectToAction("Tenders");
+        }
+
+        #endregion
+
     }
 }

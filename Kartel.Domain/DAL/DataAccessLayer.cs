@@ -36,6 +36,7 @@ namespace Kartel.Domain.DAL
             builder.RegisterType<UsersRepository>().As<IUsersRepository>();
             builder.RegisterType<CategoriesRepository>().As<ICategoriesRepository>();
             builder.RegisterType<ProductsRepository>().As<IProductsRepository>();
+            builder.RegisterType<TendersRepository>().As<ITendersRepository>();
         }
     }
 }

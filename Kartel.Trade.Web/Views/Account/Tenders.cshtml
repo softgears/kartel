@@ -1,0 +1,38 @@
+﻿@using Kartel.Trade.Web.Controllers
+@model dynamic
+
+@{
+    ViewBag.Title = "Тендеры";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <div class="fields-group">
+        <div id="add-tender" onclick="window.location.href='/account/tenders/add-tender'"></div>
+        <table class="tenders-table">
+            <tbody>
+                @{
+                    var tenders = ((BaseController)ViewContext.Controller).CurrentUser.GetTenders().ToList();
+                }
+                @foreach (var tender in tenders.OrderBy(t => t.DateCreated))
+                {
+                    <tr>
+                        <td width="100%">
+                            <a href="/account/tenders/edit/@tender.Id">@tender.Title</a>
+                            <div style="margin-top: 5px; font-weight: bold">Добавлен: @(tender.DateCreated.HasValue ? tender.DateCreated.Value.ToString("dd.MM.yyyy"):"" )</div>
+                        </td>
+                        <td style="">
+                            Предложений <span style="font-weight: bold">(@tender.GetOffersCount())</span>
+                        </td>
+                        <td>
+                            <a href="/account/tenders/delete/@tender.Id" onclick="return confirm('Действительно хотите удалить этот тендер?')">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
