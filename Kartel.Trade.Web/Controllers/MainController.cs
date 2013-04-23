@@ -77,5 +77,19 @@ namespace Kartel.Trade.Web.Controllers
             return View(cat);
         }
 
+        /// <summary>
+        /// Отображает список всех тендеров, разделенный по категориям
+        /// </summary>
+        /// <returns></returns>
+        [Route("tenders")]
+        public ActionResult Tenders()
+        {
+            // Пушим навигационную цепочку
+            PushNavigationChainItem("Главная", "/");
+            PushNavigationChainItem("Тендеры", "/tenders",true);
+
+            return View();
+        }
+
     }
 }

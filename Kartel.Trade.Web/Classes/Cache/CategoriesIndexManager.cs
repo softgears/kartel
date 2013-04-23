@@ -31,7 +31,12 @@ namespace Kartel.Trade.Web.Classes.Cache
         /// <summary>
         /// Кеш количества товаров в категории
         /// </summary>
-        public IDictionary<int, int> CategoriesCountCache { get; private set; }
+        public IDictionary<int, int> CategoriesProductsCountCache { get; private set; }
+
+        /// <summary>
+        /// Кеш количества тендеров в категории
+        /// </summary>
+        public IDictionary<int, int> CategoriesTendersCountCache { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:System.Object"/> class.
@@ -40,7 +45,8 @@ namespace Kartel.Trade.Web.Classes.Cache
         {
             var categoriesManager = Locator.GetService<ICategoriesRepository>();
             RootCategories = categoriesManager.GetRootCategories().ToList();
-            CategoriesCountCache = new ConcurrentDictionary<int, int>();
+            CategoriesProductsCountCache = new ConcurrentDictionary<int, int>();
+            CategoriesTendersCountCache = new ConcurrentDictionary<int, int>();
         }
 
         /// <summary>
@@ -69,14 +75,33 @@ namespace Kartel.Trade.Web.Classes.Cache
         public int GetProductsCount(Category category)
         {
             // Проверяем на наличие в кеше
-            if (CategoriesCountCache.ContainsKey(category.Id))
+            if (CategoriesProductsCountCache.ContainsKey(category.Id))
             {
-                return CategoriesCountCache[category.Id];
+                return CategoriesProductsCountCache[category.Id];
             }
 
             // Похоже что нет - кешируем
             var count = category.Products.Count;
-            CategoriesCountCache[category.Id] = count;
+            CategoriesProductsCountCache[category.Id] = count;
+            return count;
+        }
+
+        /// <summary>
+        /// Возвращает количество тендеров в указанной категории
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public int GetTendersCount(Category category)
+        {
+            // Проверяем на наличие в кеше
+            if (CategoriesTendersCountCache.ContainsKey(category.Id))
+            {
+                return CategoriesTendersCountCache[category.Id];
+            }
+
+            // Похоже что нет - кешируем
+            var count = Locator.GetService<ICategoriesRepository>().Load(category.Id).Tenders.Count;
+            CategoriesTendersCountCache[category.Id] = count;
             return count;
         }
     }

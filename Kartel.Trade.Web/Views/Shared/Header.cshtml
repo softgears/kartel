@@ -4,11 +4,39 @@
     <div id="header-content">
         <div id="top-menu-wrapper">
             <ul id="top-menu">
-                <li><a href="/buy">Купить</a> / </li>
-                <li><a href="/sell">Продать</a> / </li>
-                <li><a href="/services">Все сервисы</a> / </li>
-                <li><a href="/my">Мой Kartel</a> / </li>
-                <li><a href="/help">Помощь</a></li>
+                <li class="top"><a href="/buy">Купить</a> / 
+                    <ul class="popup">
+                        <li><a href="/products">Все товары</a></li>
+                        <li><a href="/how-to-search-products">Как искать товары</a></li>
+                        <li><a href="/account/products/add-product">Добавить товар</a></li>
+                    </ul>
+                </li>
+                <li class="top"><a href="/sell">Продать</a> / 
+                    <ul class="popup">
+                        <li><a href="/tenders">Все тендеры</a></li>
+                        <li><a href="/how-to-search-tenders">Как искать тендеры</a></li>
+                        <li><a href="/account/tenders/add-tender">Добавить тендер</a></li>
+                    </ul>
+                </li>
+                <li class="top"><a href="/services">Все сервисы</a> / 
+                    <ul class="popup">
+                        <li><a href="/account/products/add-product">Добавить товар</a></li>
+                        <li><a href="/account/tenders/add-tender">Добавить тендер</a></li>
+                        <li><a href="/premium">Премиальные услуги</a></li>
+                    </ul>
+                </li>
+                <li class="top"><a href="/my">Мой Kartel</a> / 
+                    <ul class="popup">
+                        <li><a href="/services">Все услуги</a></li>
+                    </ul>
+                </li>
+                <li class="top"><a href="/help">Помощь</a>
+                    <ul class="popup">
+                        <li><a href="/help/cursomers">Покупателям</a></li>
+                        <li><a href="/help/vendors">Поставщикам</a></li>
+                        <li><a href="/contacts">Контакты</a></li>
+                    </ul>
+                </li>
             </ul>
             <a id="top-login" href="/account/login">Вход в личный кабинет</a> / <a id="top-register" href="/account/register">Регистрация</a>
         </div>

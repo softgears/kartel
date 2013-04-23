@@ -74,12 +74,35 @@ body
 					float: right
 
 
-					li
+					li.top
 						display: inline-block
 						vertical-align: top
 						font-family: Arial
 						font-size: 13px
 						margin-right: 10px
+						position: relative
+
+						&:hover
+
+							.popup
+								display: block
+
+						.popup
+							position: absolute
+							display: none
+							left: 0px
+							padding: 5px
+							border: 1px solid #444444
+							background: url(../../images/layout/innerbg.png)
+							z-index: 1100
+
+
+							li
+								margin: 5px
+
+								a
+									color: white
+									white-space: nowrap
 
 						&:last-child
 							margin-right: 0px

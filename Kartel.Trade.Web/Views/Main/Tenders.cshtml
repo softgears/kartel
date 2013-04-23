@@ -1,0 +1,145 @@
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Cache
+@model dynamic
+
+@{
+    ViewBag.Title = "Тендеры";
+    Layout = "../Shared/_Layout.cshtml";
+    var catManager = Locator.GetService<CategoriesIndexManager>();
+}
+
+@* Хлебная крошка *@
+@Html.Partial("NavigationChain")
+
+<div id="page-tenders">
+    <div style="display: inline-block; vertical-align: top; width: 700px;">
+        <div class="tenders-title">
+            Категории тендеров
+        </div>
+        <div class="tenders-category">
+            <div class="category-title">
+                А-И
+            </div>
+            <div class="category-content">
+                @foreach (var category in catManager.RootCategories.Where(c => c.Title.First() >= 'A' && c.Title.First() <= 'И'))
+                {
+                    <div class="tender-category-1-level">
+                        <div class="category-1-title">
+                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tenders-category">
+            <div class="category-title">
+                К-Н
+            </div>
+            <div class="category-content">
+                @foreach (var category in catManager.RootCategories.Where(c => c.Title.First() >= 'К' && c.Title.First() <= 'Н'))
+                {
+                    <div class="tender-category-1-level">
+                        <div class="category-1-title">
+                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tenders-category">
+            <div class="category-title">
+                О-Р
+            </div>
+            <div class="category-content">
+                @foreach (var category in catManager.RootCategories.Where(c => c.Title.First() >= 'О' && c.Title.First() <= 'Р'))
+                {
+                    <div class="tender-category-1-level">
+                        <div class="category-1-title">
+                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tenders-category">
+            <div class="category-title">
+                С-Т
+            </div>
+            <div class="category-content">
+                @foreach (var category in catManager.RootCategories.Where(c => c.Title.First() >= 'С' && c.Title.First() <= 'Т'))
+                {
+                    <div class="tender-category-1-level">
+                        <div class="category-1-title">
+                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="tenders-category">
+            <div class="category-title">
+                У-Я
+            </div>
+            <div class="category-content">
+                @foreach (var category in catManager.RootCategories.Where(c => c.Title.First() >= 'У' && c.Title.First() <= 'Я'))
+                {
+                    <div class="tender-category-1-level">
+                        <div class="category-1-title">
+                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="customers-info">
+        <div class="title">
+            Последние тендеры
+        </div>
+        <ul>
+            @foreach (var lastTender in Locator.GetService<ITendersRepository>().FindAll().OrderByDescending(d => d.DateCreated).Take(7))
+            {
+                <li>
+                    <a href="/tenders/tender/@lastTender.Id">@lastTender.Title</a>
+                </li>
+            }
+        </ul>
+        <div class="separator"></div>
+        <div class="title">
+            Станьте участником Kartel
+        </div>
+        <ul>
+            <li>Профессиональный сайт компании
+            </li>
+            <li>Неограниченное количество товаров
+            </li>
+            <li>Доменное имя для сайта
+            </li>
+        </ul>
+        <div class="free">
+            И все это бесплатно
+        </div>
+        <div style="text-align: center">
+            <a href="/account/register">
+                <img src="~/Content/images/account/doreg.png" />
+            </a>
+        </div>
+        <div class="separator"></div>
+        <div class="title">
+            Премиальный тариф
+        </div>
+        <ul>
+            <li>Выбор дизайна сайта</li>
+            <li>Реклама в Интернете (Яндекс.Директ)</li>
+            <li>Email и SMS рассылки</li>
+            <li>Посещаемость в 28 раз выше</li>
+            <li>Доступ к 100% тендеров</li>
+        </ul>
+        <div style="text-align: center; margin-top: 5px">
+            <a href="/services/gold-vendor">
+                <img src="~/Content/images/account/goldvendor.png" />
+            </a>
+        </div>
+    </div>
+</div>

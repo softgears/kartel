@@ -65,7 +65,7 @@
             <div class="field">
                 <table class="categories-selector">
                     <tr>
-                        <td>
+                        <td style="width: 50%">
                             <select size="10" id="root-categories" level="0">
                                 @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
                                 {
@@ -73,35 +73,13 @@
                                 }
                             </select>
                         </td>
-                        <td>
+                        <td style="width: 50%">
                             <select size="10" id="level-1-categories" level="1">
                                 @if (categoriesPath.Count > 1)
                                 {
                                     foreach (var childCat in categoriesPath[0].GetChildCategories())
                                     {
                                         <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected":"")>@childCat.Title</option>
-                                    }
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <select size="10" id="level-2-categories" level="2">
-                                @if (categoriesPath.Count > 2)
-                                {
-                                    foreach (var childCat in categoriesPath[1].GetChildCategories())
-                                    {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected":"")>@childCat.Title</option>
-                                    }
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <select size="10" id="level-3-categories" level="3">
-                                @if (categoriesPath.Count > 3)
-                                {
-                                    foreach (var childCat in categoriesPath[2].GetChildCategories())
-                                    {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected":"")>@childCat.Title</option>
                                     }
                                 }
                             </select>
@@ -192,7 +170,7 @@
         $("[level]").click(function () {
             var level = parseInt($(this).attr("level"));
             $("#category-id-field").val($(this).val()).change();
-            if (level != 3) {
+            if (level != 1) {
                 $("[level]").each(function (index, item) {
                     if (parseInt($(item).attr("level")) > level) {
                         $(item).find("option").remove();
