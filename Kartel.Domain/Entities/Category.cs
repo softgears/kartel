@@ -54,5 +54,14 @@ namespace Kartel.Domain.Entities
             } while (category != null);
             return list;
         }
+
+        /// <summary>
+        /// Возвращает тендеры
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Tender> GetTenders()
+        {
+            return Tenders;
+        }
     }
 }

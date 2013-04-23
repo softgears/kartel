@@ -121,22 +121,6 @@
   text-align: center;
 }
 /* line 104, ../sass/categories.sass */
-#page-categories #paginator {
-  text-align: center;
-}
-/* line 107, ../sass/categories.sass */
-#page-categories #paginator a {
-  border: 1px solid black;
-  padding: 4px 8px;
-  cursor: pointer;
-  color: #444444;
-}
-/* line 113, ../sass/categories.sass */
-#page-categories #paginator span {
-  border: 1px solid transparent;
-  padding: 4px 8px;
-}
-/* line 117, ../sass/categories.sass */
 #page-categories .info {
   display: inline-block;
   vertical-align: top;
@@ -150,28 +134,45 @@
   text-align: left;
   margin-top: 25px;
 }
-/* line 130, ../sass/categories.sass */
+/* line 117, ../sass/categories.sass */
 #page-categories .info .info-title {
   font-size: 18px;
   font-weight: bold;
 }
-/* line 134, ../sass/categories.sass */
+/* line 121, ../sass/categories.sass */
 #page-categories .info .info-text {
   margin-top: 20px;
   line-height: 1.5;
 }
-/* line 138, ../sass/categories.sass */
+/* line 125, ../sass/categories.sass */
 #page-categories .info .action-text {
   margin-top: 15px;
   color: #004080;
   font-weight: bold;
   font-size: 13px;
 }
-/* line 144, ../sass/categories.sass */
+/* line 131, ../sass/categories.sass */
 #page-categories .info .action-button {
   float: right;
   margin-top: 15px;
   cursor: pointer;
+}
+
+/* line 136, ../sass/categories.sass */
+#paginator {
+  text-align: center;
+}
+/* line 139, ../sass/categories.sass */
+#paginator a {
+  border: 1px solid black;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #444444;
+}
+/* line 145, ../sass/categories.sass */
+#paginator span {
+  border: 1px solid transparent;
+  padding: 4px 8px;
 }
 
 /* line 151, ../sass/categories.sass */
@@ -277,4 +278,92 @@
 /* line 242, ../sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level ul li a:hover {
   text-decoration: underline;
+}
+/* line 245, ../sass/categories.sass */
+#page-tenders .tenders-banner {
+  width: 100%;
+  height: 230px;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+/* line 253, ../sass/categories.sass */
+#page-tenders .tenders-filter {
+  display: inline-block;
+  vertical-align: top;
+  width: 260px;
+  margin-left: 15px;
+}
+/* line 259, ../sass/categories.sass */
+#page-tenders .tenders-filter .title {
+  font-size: 15px;
+  color: white;
+  padding: 7px;
+  background: url(../../images/layout/innerbg.png);
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+/* line 267, ../sass/categories.sass */
+#page-tenders .tenders-center {
+  display: inline-block;
+  vertical-align: top;
+  width: 700px;
+  font-family: Arial;
+}
+/* line 273, ../sass/categories.sass */
+#page-tenders .tenders-center .hr-block {
+  font-size: 15px;
+  color: white;
+  padding: 7px;
+  text-align: right;
+  background: url(../../images/layout/innerbg.png);
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+/* line 282, ../sass/categories.sass */
+#page-tenders .tenders-center .tender {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #bababa;
+  margin: 10px;
+}
+/* line 287, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-date {
+  float: left;
+  margin-right: 15px;
+  color: silver;
+  font-size: 18px;
+  text-align: right;
+}
+/* line 294, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-date .day {
+  font-weight: bold;
+}
+/* line 300, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .tender-title {
+  margin-bottom: 5px;
+}
+/* line 303, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .tender-title a {
+  color: #008ac0;
+  font-size: 14px;
+  font-weight: bold;
+}
+/* line 308, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .tender-title a:hover {
+  text-decoration: underline;
+}
+/* line 311, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .desc {
+  font-size: 12px;
+  line-height: 1.5;
+  max-height: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* line 318, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .location {
+  margin-top: 10px;
+  font-size: 10px;
+  color: gray;
 }

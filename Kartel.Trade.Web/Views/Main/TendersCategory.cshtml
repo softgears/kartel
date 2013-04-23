@@ -1,0 +1,73 @@
+﻿@using Kartel.Trade.Web.Classes.Utils
+@model Kartel.Domain.Entities.Category
+
+@{
+    ViewBag.Title = "Тендеры в категории "+Model.Title;
+    Layout = "../Shared/_Layout.cshtml";
+    int page = ViewBag.page;
+    var totalPages = MathHelper.PagesCount(Model.GetTenders().Count(),20);
+}
+
+@* Хлебная крошка *@
+@Html.Partial("NavigationChain")
+
+<div id="page-tenders">
+    <div class="tenders-banner">
+        
+    </div>
+    <div class="tenders-center">
+        <div class="hr-block">
+            Страница @(page+1) из @totalPages
+        </div>    
+        
+        @foreach (var tender in Model.GetTenders().Skip(20*page).Take(20))
+        {
+            <div class="tender">
+                <div class="tender-date">
+                    @if (tender.DateCreated.HasValue)
+                    {
+                        <span class="day">@tender.DateCreated.Value.Day</span><br/>@tender.DateCreated.Value.ToString("MMMM")<br/>@tender.DateCreated.Value.Year <text>год</text>
+                    }
+                </div>
+                <div class="tender-details">
+                    <div class="tender-title">
+                        <a href="/tenders/tender/@tender.Id">@tender.Title</a>
+                    </div>
+                    <div class="desc">
+                        @tender.Description
+                    </div>
+                    <div class="location">
+                        @tender.User.City, @tender.User.Country
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="hr-block">
+            Страница @(page+1) из @totalPages
+        </div>  
+        
+        @* Пагинатор *@
+        @if (totalPages > 1)
+        {
+        <div id="paginator">
+            @for (var i = 0; i < totalPages; i++)
+            {
+                if (i == page)
+                {
+                    <span class="current-page">@(page+1)</span>
+                }
+                else
+                {
+                    <a href="/tenders/category/@Model.Id?page=@(i)">@(i+1)</a>
+                }
+            }
+        </div>
+        }
+    </div>
+    <div class="tenders-filter">
+        <div class="title">
+            Регион
+        </div>
+    </div>
+</div>

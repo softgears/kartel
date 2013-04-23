@@ -91,5 +91,32 @@ namespace Kartel.Trade.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Отображает список всех тендеров в указанной категории
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <param name="page">Страница</param>
+        /// <returns></returns>
+        [Route("tenders/category/{id}")]
+        public ActionResult TendersCategory(long id,int page = 0)
+        {
+            // Ищем категорию
+            var categoriesRep = Locator.GetService<ICategoriesRepository>();
+            var category = categoriesRep.Load(id);
+            if (category == null)
+            {
+                return RedirectToAction("Tenders");
+            }
+
+            // Нав цепочка
+            PushNavigationChainItem("Главная", "/");
+            PushNavigationChainItem("Тендеры", "/tenders", false);
+            PushNavigationChainItem(category.Title, "/", true);
+
+            // Вид
+            ViewBag.page = page;
+            return View(category);
+        }
+
     }
 }

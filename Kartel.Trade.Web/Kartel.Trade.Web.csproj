@@ -223,6 +223,7 @@
     <Content Include="Views\Account\Tenders.cshtml" />
     <Content Include="Views\Account\EditTender.cshtml" />
     <Content Include="Views\Main\Tenders.cshtml" />
+    <Content Include="Views\Main\TendersCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
