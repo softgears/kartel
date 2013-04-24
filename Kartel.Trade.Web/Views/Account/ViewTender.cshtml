@@ -22,63 +22,63 @@
             {
                 if (Model.User.Tarif != "gold")
                 {
-                    <div class="login">
-                        <div class="login-info">
-                            Чтобы принять участие в тендере, пожалуйста <b>авторизуйтесь</b>
-                        </div>
-                        <form method="POST" action="/account/login?returnUrl=/tenders/tender/@Model.Id">
-                            <div class="field">
-                                <div class="label">
-                                    Email
-                                </div>
-                                <div class="editor">
-                                    <input type="text" name="Login" maxlength="255" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="label">
-                                    Пароль
-                                </div>
-                                <div class="editor">
-                                    <input type="password" name="Password" maxlength="255" placeholder="" />
-                                </div>
-                            </div>
-                            <input type="submit" value="Войти" />
-                        </form>
-                        <div style="clear: both; margin-top: 5px">
-                            <a href="/account/forgot">Забыли пароль?</a>
-                        </div>
-                        <div class="separator">
-                        </div>
-                        <div class="login-info">
-                            Еще не зарегистрированы?<br/> <a href="/account/register" style="font-weight: bold">Сделайте это сейчас</a>
-                        </div>
+                <div class="login">
+                    <div class="login-info">
+                        Чтобы принять участие в тендере, пожалуйста <b>авторизуйтесь</b>
                     </div>
+                    <form method="POST" action="/account/login?returnUrl=/tenders/tender/@Model.Id">
+                        <div class="field">
+                            <div class="label">
+                                Email
+                            </div>
+                            <div class="editor">
+                                <input type="text" name="Login" maxlength="255" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="label">
+                                Пароль
+                            </div>
+                            <div class="editor">
+                                <input type="password" name="Password" maxlength="255" placeholder="" />
+                            </div>
+                        </div>
+                        <input type="submit" value="Войти" />
+                    </form>
+                    <div style="clear: both; margin-top: 5px">
+                        <a href="/account/forgot">Забыли пароль?</a>
+                    </div>
+                    <div class="separator">
+                    </div>
+                    <div class="login-info">
+                        Еще не зарегистрированы?<br />
+                        <a href="/account/register" style="font-weight: bold">Сделайте это сейчас</a>
+                    </div>
+                </div>
                 }
                 else
                 {
-                    @Html.Partial("TenderContacts", Model)
+                @Html.Partial("TenderContacts", Model)
                 }
             }
             else
             {
                 if (currentUser.Tarif != "gold")
                 {
-                    <div class="gold-alert">
-                        Контактные данные доступны только пользователям с тарифом <a href="/services/gold">"Золотой поставщик"</a>
-                        <div class="separator">
-                            
-                        </div>
-                        <div style="text-align: center">
-                            <a href="/services/gold/buy">
-                                <img src="~/Content/images/main/buy-gold.png" />
-                            </a>
-                        </div>
+                <div class="gold-alert">
+                    Контактные данные доступны только пользователям с тарифом <a href="/services/gold">"Золотой поставщик"</a>
+                    <div class="separator">
                     </div>
+                    <div style="text-align: center">
+                        <a href="/services/gold/buy">
+                            <img src="~/Content/images/main/buy-gold.png" />
+                        </a>
+                    </div>
+                </div>
                 }
                 else
                 {
-                    @Html.Partial("TenderContacts",Model)
+                @Html.Partial("TenderContacts", Model)
                 }
             }
         </div>
@@ -113,7 +113,7 @@
                         Цена
                     </div>
                     <div class="editor">
-                        <input type="text" name="Price"/>
+                        <input type="text" name="Price" />
                     </div>
                 </div>
                 <div class="field">
@@ -121,15 +121,16 @@
                         Доставка
                     </div>
                     <div class="editor">
-                        @foreach (var deliveryInfo in Enum.GetValues(typeof (TenderDeliveryInfo)))
+                        @foreach (var deliveryInfo in Enum.GetValues(typeof(TenderDeliveryInfo)))
                         {
-                            var asInt = (int) deliveryInfo;
+                            var asInt = (int)deliveryInfo;
                             if (asInt != 5)
                             {
-                                <input type="radio" name="DeliveryInfo" value="@asInt"/> @deliveryInfo.GetEnumMemberName()    <br/>
+                            <input type="radio" name="DeliveryInfo" value="@asInt"/> @deliveryInfo.GetEnumMemberName()    <br />
                             }
                         }
-                        <input type="radio" name="DeliveryInfo" value="5"/> <input type="text" name="DeliveryOtherInfo"/>
+                        <input type="radio" name="DeliveryInfo" value="5" />
+                        <input type="text" name="DeliveryOtherInfo" />
                     </div>
                 </div>
                 <div class="field">
@@ -137,15 +138,16 @@
                         Оплата
                     </div>
                     <div class="editor">
-                        @foreach (var paymentInfo in Enum.GetValues(typeof (TenderPaymentInfo)))
+                        @foreach (var paymentInfo in Enum.GetValues(typeof(TenderPaymentInfo)))
                         {
-                            var asInt = (int) paymentInfo;
+                            var asInt = (int)paymentInfo;
                             if (asInt != 6)
                             {
-                                <input type="radio" name="PaymentInfo" value="@asInt"/> @paymentInfo.GetEnumMemberName()    <br/>
+                            <input type="radio" name="PaymentInfo" value="@asInt"/> @paymentInfo.GetEnumMemberName()    <br />
                             }
                         }
-                        <input type="radio" name="PaymentInfo" value="6"/> <input type="text" name="PaymentOtherInfo"/>
+                        <input type="radio" name="PaymentInfo" value="6" />
+                        <input type="text" name="PaymentOtherInfo" />
                     </div>
                 </div>
                 <div class="field no-b">
@@ -153,18 +155,17 @@
                         Примечания
                     </div>
                     <div class="editor">
-                        <textarea name="Description" placeholder="Любые дополнительные сведения, которые вы считаете нужным указать (не более 100 символов)"></textarea>
+                        <textarea name="OfferText" placeholder="Любые дополнительные сведения, которые вы считаете нужным указать (не более 100 символов)"></textarea>
                     </div>
                 </div>
                 <div class="field no-b">
                     <div class="label">
-                        
                     </div>
                     <div class="editor">
-                        <input type="submit" value="Отправить"/>
+                        <input type="submit" value="Отправить" />
                     </div>
                 </div>
-                
+
             </form>
         </div>
         <div class="separator">
@@ -182,6 +183,48 @@
                 Предложения поступившие по тендеру:
             </div>
         </div>
+        @if (Model.GetOffersCount() > 0)
+        {
+            <table class="offers-table">
+                <thead>
+                    <tr>
+
+                        <th>Компания
+                        </th>
+                        <th>Цена
+                        </th>
+                        <th>Доставка
+                        </th>
+                        <th>Оплата
+                        </th>
+                        <th>Примечание
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var offer in Model.GetTenderOffers())
+                    {
+                        <tr>
+                            <td>
+                                <a href="/vendor/@Model.User">@offer.User.Company</a>
+                            </td>
+                            <td>
+                                @offer.Price
+                            </td>
+                            <td>
+                                @(offer.DeliveryInfo != 5 ? ((TenderDeliveryInfo)offer.DeliveryInfo).GetEnumMemberName() : offer.DeliveryOtherInfo)
+                            </td>
+                            <td>
+                                @(offer.DeliveryInfo != 6 ? ((TenderPaymentInfo)offer.PaymentInfo).GetEnumMemberName() : offer.PaymentOtherInfo)
+                            </td>
+                            <td>
+                                @offer.OfferText
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
     @if (currentUser == null)
     {

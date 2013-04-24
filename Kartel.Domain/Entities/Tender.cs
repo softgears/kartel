@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Kartel.Domain.Entities
 {
@@ -13,7 +15,7 @@ namespace Kartel.Domain.Entities
         /// <returns></returns>
         public int GetOffersCount()
         {
-            return 0;
+            return TenderOffers.Count;
         }
 
         /// <summary>
@@ -40,6 +42,15 @@ namespace Kartel.Domain.Entities
                 priceB.Append(" " + Currency);
             }
             return priceB.ToString();
+        }
+
+        /// <summary>
+        /// Возвращает все предложения по текущему тендеру
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TenderOffer> GetTenderOffers()
+        {
+            return TenderOffers;
         }
     }
 }

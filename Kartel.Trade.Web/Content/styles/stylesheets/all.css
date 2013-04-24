@@ -1171,18 +1171,68 @@ body #footer #footer-content a {
   left: -30px;
 }
 /* line 532, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table {
+  width: 100%;
+  margin-top: 10px;
+  color: black;
+}
+/* line 539, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table thead tr th {
+  font-size: 18px;
+  text-align: center;
+  border: 1px dashed #a1a2a2;
+  border-top: 0;
+  padding: 5px;
+}
+/* line 546, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table thead tr th:first-child {
+  border-left: 0;
+}
+/* line 549, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table thead tr th:last-child {
+  border-right: 0;
+}
+/* line 554, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr td {
+  font-size: 14px;
+  text-align: center;
+  border: 1px dashed #a1a2a2;
+  padding: 5px;
+}
+/* line 560, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr td:first-child {
+  border-left: 0;
+}
+/* line 563, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr td:last-child {
+  border-right: 0;
+}
+/* line 566, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr td a {
+  color: #3c9cff;
+  font-weight: bold;
+}
+/* line 570, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr td a:hover {
+  text-decoration: underline;
+}
+/* line 574, ../sass/categories.sass */
+#page-tenders .view-tender .offers-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+/* line 582, ../sass/categories.sass */
 #page-tenders .action {
   margin-top: 5px;
 }
-/* line 535, ../sass/categories.sass */
+/* line 585, ../sass/categories.sass */
 #page-tenders .action a {
   color: #33a1c2;
 }
-/* line 537, ../sass/categories.sass */
+/* line 587, ../sass/categories.sass */
 #page-tenders .action a:hover {
   text-decoration: underline;
 }
-/* line 542, ../sass/categories.sass */
+/* line 592, ../sass/categories.sass */
 #page-tenders .other-tenders {
   border: 2px solid silver;
   background-color: white;
@@ -1190,18 +1240,18 @@ body #footer #footer-content a {
   padding: 15px;
   margin-top: 15px;
 }
-/* line 549, ../sass/categories.sass */
+/* line 599, ../sass/categories.sass */
 #page-tenders .other-tenders .title {
   font-size: 18px;
 }
-/* line 552, ../sass/categories.sass */
+/* line 602, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block {
   display: inline-block;
   vertical-align: top;
   width: 470px;
   border-right: 1px dotted gray;
 }
-/* line 558, ../sass/categories.sass */
+/* line 608, ../sass/categories.sass */
 #page-tenders .other-tenders .other-2-block {
   display: inline-block;
   vertical-align: top;
@@ -1209,30 +1259,30 @@ body #footer #footer-content a {
   position: relative;
   left: -3px;
 }
-/* line 566, ../sass/categories.sass */
+/* line 616, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block, #page-tenders .other-tenders .other-2-block {
   margin-top: 10px;
 }
-/* line 569, ../sass/categories.sass */
+/* line 619, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender, #page-tenders .other-tenders .other-2-block .other-tender {
   clear: both;
   padding: 5px;
 }
-/* line 573, ../sass/categories.sass */
+/* line 623, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender:nth-child(odd), #page-tenders .other-tenders .other-2-block .other-tender:nth-child(odd) {
   background-color: #e4dee2;
 }
-/* line 576, ../sass/categories.sass */
+/* line 626, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender .tender-date, #page-tenders .other-tenders .other-2-block .other-tender .tender-date {
   color: gray;
   float: right;
   text-align: right;
 }
-/* line 581, ../sass/categories.sass */
+/* line 631, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a, #page-tenders .other-tenders .other-2-block .other-tender a {
   color: black;
 }
-/* line 584, ../sass/categories.sass */
+/* line 634, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a:hover, #page-tenders .other-tenders .other-2-block .other-tender a:hover {
   text-decoration: underline;
 }
