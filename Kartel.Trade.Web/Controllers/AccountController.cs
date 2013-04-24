@@ -843,6 +843,31 @@ namespace Kartel.Trade.Web.Controllers
             return RedirectToAction("Tenders");
         }
 
+        /// <summary>
+        /// Отображает страницу с указанным тендером
+        /// </summary>
+        /// <param name="id">Идентификатор тендера</param>
+        /// <returns></returns>
+        [Route("tenders/tender/{id}")]
+        public ActionResult ViewTender(long id)
+        {
+            // Ищем 
+            var rep = Locator.GetService<ITendersRepository>();
+            var tender = rep.Load(id);
+            if (tender == null)
+            {
+                return RedirectToAction("Tenders");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Тендеры", "/tenders", false);
+            PushNavigationChainItem(tender.Category.Title, "/tenders/category/"+tender.CategoryId, false);
+            PushNavigationChainItem(tender.Title, "", true);
+
+            return View(tender);
+        }
+
         #endregion
 
     }

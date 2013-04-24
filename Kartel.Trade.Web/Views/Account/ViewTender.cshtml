@@ -1,0 +1,159 @@
+﻿@using Kartel.Trade.Web.Classes.Ext
+@using Kartel.Trade.Web.Controllers
+@model Kartel.Domain.Entities.Tender
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "../Shared/_Layout.cshtml";
+    var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
+}
+
+@* Навигационная цепочка *@
+@Html.Partial("NavigationChain")
+
+<div id="page-tenders">
+    <div class="view-tender">
+        <div class="tender-contacts">
+            <div class="header">
+                Контакты
+            </div>
+            @if (currentUser == null)
+            {
+                if (Model.User.Tarif != "gold")
+                {
+                    <div class="login">
+                        <div class="login-info">
+                            Чтобы принять участие в тендере, пожалуйста <b>авторизуйтесь</b>
+                        </div>
+                        <form method="POST" action="/account/login?returnUrl=/tenders/tender/@Model.Id">
+                            <div class="field">
+                                <div class="label">
+                                    Email
+                                </div>
+                                <div class="editor">
+                                    <input type="text" name="Login" maxlength="255" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="label">
+                                    Пароль
+                                </div>
+                                <div class="editor">
+                                    <input type="password" name="Password" maxlength="255" placeholder="" />
+                                </div>
+                            </div>
+                            <input type="submit" value="Войти" />
+                        </form>
+                        <div style="clear: both; margin-top: 5px">
+                            <a href="/account/forgot">Забыли пароль?</a>
+                        </div>
+                        <div class="separator">
+                        </div>
+                        <div class="login-info">
+                            Еще не зарегистрированы?<br/> <a href="/account/register" style="font-weight: bold">Сделайте это сейчас</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    @Html.Partial("TenderContacts", Model)
+                }
+            }
+            else
+            {
+                if (currentUser.Tarif != "gold")
+                {
+                    <div class="gold-alert">
+                        Контактные данные доступны только пользователям с тарифом <a href="/services/gold">"Золотой поставщик"</a>
+                        <div class="separator">
+                            
+                        </div>
+                        <div style="text-align: center">
+                            <a href="/services/gold/buy">
+                                <img src="~/Content/images/main/buy-gold.png" />
+                            </a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    @Html.Partial("TenderContacts",Model)
+                }
+            }
+        </div>
+        @if (currentUser != null && currentUser.Tarif == "gold")
+        {
+            <div class="image">
+                <img src="@Model.Image"/>
+            </div>
+        }
+        <div class="info">
+            <div class="tender-title">
+                @Model.Title
+            </div>
+            <div class="info-item">
+                <b>Дата начала:</b> @Model.DateStart.FormatDate()
+            </div>
+            <div class="info-item">
+                <b>Дата окончания:</b> @Model.DateStart.FormatDate()
+            </div>
+            <div class="info-item">
+                <b>Стоимость:</b> @Model.GetPrice()
+            </div>
+        </div>
+        <div style="text-align: center; clear: both">
+            <img id="participate" src="~/Content/images/main/participate-tender.png" style="cursor: pointer" />
+        </div>
+        <div class="separator">
+        </div>
+        <div class="details">
+            <div class="title">
+                Детальное описание
+            </div>
+            <div class="details-content">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+        <div class="offers-wrapper">
+            <div class="offers">
+                Предложения поступившие по тендеру:
+            </div>
+        </div>
+    </div>
+    @if (currentUser == null)
+    {
+        <div class="action">
+            Разместите товары на <a href="/">Картель.рф</a> и покупатели найдут Вас сами. <a href="/account/register">Разместить товары сейчас и БЕСПЛАТНО</a>
+        </div>    
+    }
+    <div class="other-tenders">
+        <div class="title">
+            Другие тендеры в разделе @Model.Category.Title
+        </div>
+        @{
+            var otherTenders = Model.Category.GetTenders().Where(t => t.Id != Model.Id).Take(12);
+        }
+        <div class="other-1-block">
+            @foreach (var otherTender in otherTenders.Take(6))
+            {
+                <div class="other-tender">
+                    <div class="tender-date">
+                        @Model.DateCreated.FormatDateShort()
+                    </div>
+                    <a href="/tenders/tender/@otherTender.Id">@otherTender.Title</a>
+                </div>
+            }
+        </div>
+        <div class="other-2-block">
+            @foreach (var otherTender in otherTenders.Skip(6).Take(6))
+            {
+                <div class="other-tender">
+                    <div class="tender-date">
+                        @Model.DateCreated.FormatDateShort()
+                    </div>
+                    <a href="/tenders/tender/@otherTender.Id">@otherTender.Title</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

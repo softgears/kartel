@@ -1,0 +1,30 @@
+﻿@model Kartel.Domain.Entities.Tender
+
+<div class="contacts">
+    <div class="title">
+        <a href="/vendor/@Model.UserId">
+            @Model.User.Company
+        </a>
+    </div>
+    <div class="country">
+        @Model.User.Country
+    </div>
+    <ul>
+        <li>
+            @Model.User.Country
+        </li>
+        <li>
+            @Model.User.City
+        </li>
+        <li>
+            @Model.User.Address
+        </li>
+        <li>
+            @Model.User.Phone
+        </li>
+    </ul>
+    <div class="separator"></div>
+    <div style="text-align: center">
+        <a href="/vendor/contacts/@Model.UserId">Все контакты</a>
+    </div>
+</div>

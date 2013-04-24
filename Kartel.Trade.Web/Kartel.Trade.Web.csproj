@@ -126,6 +126,9 @@
   <ItemGroup>
     <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="Classes\Cache\CategoriesIndexManager.cs" />
+    <Compile Include="Classes\Ext\DateTimeExtensions.cs" />
+    <Compile Include="Classes\Ext\DateUtils.cs" />
+    <Compile Include="Classes\Ext\ViewContextExtensions.cs" />
     <Compile Include="Classes\Navigation\NavigationChain.cs" />
     <Compile Include="Classes\Navigation\NavigationChainItem.cs" />
     <Compile Include="Classes\Utils\MathHelper.cs" />
@@ -174,8 +177,10 @@
     <Content Include="Content\images\layout\search-separator.png" />
     <Content Include="Content\images\layout\search.png" />
     <Content Include="Content\images\main\banners-frame.png" />
+    <Content Include="Content\images\main\buy-gold.png" />
     <Content Include="Content\images\main\goldvendor.png" />
     <Content Include="Content\images\main\hr.png" />
+    <Content Include="Content\images\main\participate-tender.png" />
     <Content Include="Content\images\main\placegoods.png" />
     <Content Include="Content\images\main\placetenders.png" />
     <Content Include="Content\styles\stylesheets\all.css" />
@@ -224,6 +229,8 @@
     <Content Include="Views\Account\EditTender.cshtml" />
     <Content Include="Views\Main\Tenders.cshtml" />
     <Content Include="Views\Main\TendersCategory.cshtml" />
+    <Content Include="Views\Account\ViewTender.cshtml" />
+    <Content Include="Views\Account\TenderContacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
