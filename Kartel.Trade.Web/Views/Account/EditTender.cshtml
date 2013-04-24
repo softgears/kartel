@@ -1,4 +1,5 @@
 ﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.Enums
 @using Kartel.Domain.IoC
 @using Kartel.Trade.Web.Classes.Cache
 @using Kartel.Trade.Web.Controllers
@@ -21,14 +22,53 @@
         {
             <div class="fields-group">
                 <div class="fields-title">Заявки на участие</div>
+                <table class="offers-table">
+                    <thead>
+                        <tr>
+
+                            <th>Компания
+                            </th>
+                            <th>Цена
+                            </th>
+                            <th>Доставка
+                            </th>
+                            <th>Оплата
+                            </th>
+                            <th>Примечание
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var offer in Model.GetTenderOffers())
+                        {
+                            <tr>
+                                <td>
+                                    <a href="/vendor/@offer.UserId">@offer.User.Company</a>
+                                    <a class="answer" href="mailto:@offer.User.Email?subject=RE:Предложение">Ответить</a>
+                                </td>
+                                <td>
+                                    @offer.Price
+                                </td>
+                                <td>
+                                    @(offer.DeliveryInfo != 5 ? ((TenderDeliveryInfo)offer.DeliveryInfo).GetEnumMemberName() : offer.DeliveryOtherInfo)
+                                </td>
+                                <td>
+                                    @(offer.DeliveryInfo != 6 ? ((TenderPaymentInfo)offer.PaymentInfo).GetEnumMemberName() : offer.PaymentOtherInfo)
+                                </td>
+                                <td>
+                                    @offer.OfferText
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         }
         <input type="hidden" name="Id" value="@Model.Id"/>
         <div class="fields-group">
             <div class="field">
                 <div class="label">
-                    <span class="asterix">
-                        *
+                    <span class="asterix">*
                     </span>
                     Название тендера
                 </div>
@@ -38,8 +78,7 @@
             </div>
             <div class="field">
                 <div class="label">
-                    <span class="asterix">
-                        *
+                    <span class="asterix">*
                     </span>
                     Ключевые слова
                 </div>
@@ -58,7 +97,7 @@
                 <div class="editor">
                     <input type="hidden" name="CategoryId" value="@Model.CategoryId" id="category-id-field"/>
                     <span id="selected-category" style="padding-top: 2px; font-weight: bold; max-width: 550px; line-height: 1.5">
-                        @String.Join(" / ",categoriesPath.Select(c => c.Title))
+                        @String.Join(" / ", categoriesPath.Select(c => c.Title))
                     </span>
                 </div>
             </div>
@@ -69,7 +108,7 @@
                             <select size="10" id="root-categories" level="0">
                                 @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
                                 {
-                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected":"")>@rootCategory.Title</option>
+                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected" : "")>@rootCategory.Title</option>
                                 }
                             </select>
                         </td>
@@ -79,7 +118,7 @@
                                 {
                                     foreach (var childCat in categoriesPath[0].GetChildCategories())
                                     {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected" : "")>@childCat.Title</option>
                                     }
                                 }
                             </select>
@@ -117,7 +156,8 @@
                     Цена
                 </div>
                 <div class="editor">
-                    <input type="text" class="small" name="MinPrice" placeholder="Мин. цена" value="@Model.MinPrice"/> &mdash;
+                    <input type="text" class="small" name="MinPrice" placeholder="Мин. цена" value="@Model.MinPrice"/>
+                    &mdash;
                     <input type="text" class="small" name="MaxPrice" placeholder="Макс. цена" value="@Model.MaxPrice"/>
                     <input type="text" class="small" name="Currency" placeholder="Валюта" value="@Model.Measure"/>
                 </div>
@@ -163,7 +203,7 @@
                     required: true
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 form.submit(); // выполняем сабмит
             }
         });
@@ -183,5 +223,5 @@
             $("#selected-category").load("/account/products/get-category-path", { id: $(this).val() });
         });
     });
-    
+
 </script>

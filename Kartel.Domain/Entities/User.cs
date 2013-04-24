@@ -11,6 +11,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Kartel.Domain.Entities
 {
@@ -51,6 +52,15 @@ namespace Kartel.Domain.Entities
         public IEnumerable<Tender> GetTenders()
         {
             return Tenders;
+        }
+
+        /// <summary>
+        /// Отображает список всех отправленых заявок на участие в тендерах
+        /// </summary>
+        /// <returns></returns>
+        public IList<TenderOffer> GetTenderOffers()
+        {
+            return TenderOffers.OrderBy(to => to.DateCreated).ToList();
         }
     }
 }

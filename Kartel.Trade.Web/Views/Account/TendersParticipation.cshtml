@@ -1,0 +1,76 @@
+﻿@using Kartel.Domain.Enums
+@using Kartel.Trade.Web.Classes.Ext
+@using Kartel.Trade.Web.Controllers
+@model dynamic
+
+@{
+    ViewBag.Title = "Участие в тендерах";
+    Layout = "AccountLayout.cshtml";
+    var tenders = ViewContext.CurrentUser().GetTenderOffers();
+}
+
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    @if (tenders.Count > 0)
+    {
+        <div class="fields-group">
+            <div class="fields-title">
+                Ваши заявки на участие в тендерах
+            </div>
+            <table class="offers-table">
+                <thead>
+                    <tr>
+                        <th>Компания
+                        </th>
+                        <th>Тендер
+                        </th>
+                        <th>Ваша цена
+                        </th>
+                        <th>Доставка
+                        </th>
+                        <th>Оплата
+                        </th>
+                        <th>Примечание
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var offer in tenders)
+                    {
+                        <tr>
+                            <td>
+                                <a href="/vendor/@offer.Tender.User.Id">@offer.Tender.User.Company</a>
+                            </td>
+                            <td>
+                                @offer.Tender.Title
+                            </td>
+                            <td>
+                                @offer.Price
+                            </td>
+                            <td>
+                                @(offer.DeliveryInfo != 5 ? ((TenderDeliveryInfo) offer.DeliveryInfo).GetEnumMemberName() : offer.DeliveryOtherInfo)
+                            </td>
+                            <td>
+                                @(offer.DeliveryInfo != 6 ? ((TenderPaymentInfo) offer.PaymentInfo).GetEnumMemberName() : offer.PaymentOtherInfo)
+                            </td>
+                            <td>
+                                @offer.OfferText
+                            </td>
+                            <td>
+                                <a href="/account/tenders/delete-request/@offer.Id" onclick=" return confirm('Действительно хотите отказаться от участия в данном тендоре?') ">Отменить заявку</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div style="text-align: center; font-size: 18px">Вы не участвуете ни в одном тендере</div>
+    }
+</div>

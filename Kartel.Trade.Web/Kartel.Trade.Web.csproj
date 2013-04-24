@@ -150,6 +150,7 @@
     <Content Include="Content\images\account\add-category.png" />
     <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\add-tender-inner.png" />
+    <Content Include="Content\images\account\answer-tender.png" />
     <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\doreg.png" />
     <Content Include="Content\images\account\goldvendor.png" />
@@ -231,6 +232,7 @@
     <Content Include="Views\Main\TendersCategory.cshtml" />
     <Content Include="Views\Account\ViewTender.cshtml" />
     <Content Include="Views\Account\TenderContacts.cshtml" />
+    <Content Include="Views\Account\TendersParticipation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

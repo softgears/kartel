@@ -886,7 +886,7 @@ namespace Kartel.Trade.Web.Controllers
             var tender = Locator.GetService<ITendersRepository>().Load(model.TenderId);
             if (tender == null)
             {
-                return RedirectToAction("Tenders");
+                return RedirectToAction("Tenders","Main");
             }
 
             // Добавляем заявку по тендеру
@@ -898,6 +898,57 @@ namespace Kartel.Trade.Web.Controllers
             
             // перенаправляемся обратно на тендер
             return RedirectToAction("ViewTender", new {id = model.TenderId});
+        }
+
+        /// <summary>
+        /// Отображает список всех заявок на участие в тендерах, которые вы отправляли
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/tenders/participation")]
+        public ActionResult TendersParticipation()
+        {
+            // Проверяем авторизованность
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Тендеры", "/account/tenders", false);
+            PushNavigationChainItem("Участие в тендерах", "", true);
+
+            return View();
+        }
+
+        /// <summary>
+        /// Отменяет вашу заявку на участие в тендоре
+        /// </summary>
+        /// <param name="id">Идентификатор заявки</param>
+        /// <returns></returns>
+        [Route("account/tenders/delete-request/{id}")]
+        public ActionResult DeleteTenderRequest(long id)
+        {
+            // Проверяем авторизованность
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем заявку
+            var offer = CurrentUser.TenderOffers.FirstOrDefault(o => o.Id == id);
+            if (offer == null)
+            {
+                return RedirectToAction("TendersParticipation");
+            }
+
+            // удаляем
+            CurrentUser.TenderOffers.Remove(offer);
+            offer.Tender.TenderOffers.Remove(offer);
+            UsersRepository.SubmitChanges();
+
+            return RedirectToAction("TendersParticipation");
         }
 
         #endregion
