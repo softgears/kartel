@@ -1084,12 +1084,78 @@ body #footer #footer-content a {
   line-height: 1.5;
 }
 /* line 457, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request {
+  margin-top: 15px;
+  text-align: center;
+  display: none;
+}
+/* line 462, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form {
+  width: 600px;
+  border: 1px solid black;
+  text-align: left;
+  margin: 0px auto;
+  padding: 5px;
+}
+/* line 469, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field {
+  border-bottom: 1px dotted gray;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+/* line 474, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field.no-b {
+  border-bottom: 0;
+}
+/* line 477, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field .label {
+  display: inline-block;
+  vertical-align: top;
+  width: 130px;
+  font-size: 14px;
+  color: black;
+  text-align: right;
+  position: relative;
+  top: 4px;
+}
+/* line 487, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field .editor {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+/* line 492, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field .editor input[type='text'], #page-tenders .view-tender #participation-request form .field .editor textarea {
+  width: 244px;
+  border: 1px solid silver;
+  padding: 3px;
+}
+/* line 497, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field .editor textarea {
+  width: 340px;
+}
+/* line 500, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form .field .editor label.error {
+  color: red;
+  margin-left: 5px;
+}
+/* line 504, ../sass/categories.sass */
+#page-tenders .view-tender #participation-request form input[type='submit'] {
+  border: 1px solid black;
+  background-color: #008ac0;
+  font-weight: bold;
+  color: white;
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+/* line 513, ../sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper {
   position: relative;
   text-align: center;
   margin-top: 15px;
 }
-/* line 462, ../sass/categories.sass */
+/* line 518, ../sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper .offers {
   font-size: 20px;
   color: white;
@@ -1104,19 +1170,19 @@ body #footer #footer-content a {
   position: relative;
   left: -30px;
 }
-/* line 476, ../sass/categories.sass */
+/* line 532, ../sass/categories.sass */
 #page-tenders .action {
   margin-top: 5px;
 }
-/* line 479, ../sass/categories.sass */
+/* line 535, ../sass/categories.sass */
 #page-tenders .action a {
   color: #33a1c2;
 }
-/* line 481, ../sass/categories.sass */
+/* line 537, ../sass/categories.sass */
 #page-tenders .action a:hover {
   text-decoration: underline;
 }
-/* line 486, ../sass/categories.sass */
+/* line 542, ../sass/categories.sass */
 #page-tenders .other-tenders {
   border: 2px solid silver;
   background-color: white;
@@ -1124,18 +1190,18 @@ body #footer #footer-content a {
   padding: 15px;
   margin-top: 15px;
 }
-/* line 493, ../sass/categories.sass */
+/* line 549, ../sass/categories.sass */
 #page-tenders .other-tenders .title {
   font-size: 18px;
 }
-/* line 496, ../sass/categories.sass */
+/* line 552, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block {
   display: inline-block;
   vertical-align: top;
   width: 470px;
   border-right: 1px dotted gray;
 }
-/* line 502, ../sass/categories.sass */
+/* line 558, ../sass/categories.sass */
 #page-tenders .other-tenders .other-2-block {
   display: inline-block;
   vertical-align: top;
@@ -1143,30 +1209,30 @@ body #footer #footer-content a {
   position: relative;
   left: -3px;
 }
-/* line 510, ../sass/categories.sass */
+/* line 566, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block, #page-tenders .other-tenders .other-2-block {
   margin-top: 10px;
 }
-/* line 513, ../sass/categories.sass */
+/* line 569, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender, #page-tenders .other-tenders .other-2-block .other-tender {
   clear: both;
   padding: 5px;
 }
-/* line 517, ../sass/categories.sass */
+/* line 573, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender:nth-child(odd), #page-tenders .other-tenders .other-2-block .other-tender:nth-child(odd) {
   background-color: #e4dee2;
 }
-/* line 520, ../sass/categories.sass */
+/* line 576, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender .tender-date, #page-tenders .other-tenders .other-2-block .other-tender .tender-date {
   color: gray;
   float: right;
   text-align: right;
 }
-/* line 525, ../sass/categories.sass */
+/* line 581, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a, #page-tenders .other-tenders .other-2-block .other-tender a {
   color: black;
 }
-/* line 528, ../sass/categories.sass */
+/* line 584, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a:hover, #page-tenders .other-tenders .other-2-block .other-tender a:hover {
   text-decoration: underline;
 }

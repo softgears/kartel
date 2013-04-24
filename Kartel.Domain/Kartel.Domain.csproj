@@ -72,6 +72,10 @@
     <Compile Include="Entities\Tender.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserCategory.cs" />
+    <Compile Include="Enums\EnumDescriptionAttribute.cs" />
+    <Compile Include="Enums\EnumUtils.cs" />
+    <Compile Include="Enums\TenderDeliveryInfo.cs" />
+    <Compile Include="Enums\TenderPaymentInfo.cs" />
     <Compile Include="Infrastructure\Misc\DictionaryStringCache.cs" />
     <Compile Include="Infrastructure\Misc\DynamicJsonObject.cs" />
     <Compile Include="Infrastructure\Misc\PasswordUtils.cs" />
@@ -105,9 +109,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

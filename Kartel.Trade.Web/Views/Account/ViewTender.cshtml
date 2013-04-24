@@ -1,4 +1,5 @@
-﻿@using Kartel.Trade.Web.Classes.Ext
+﻿@using Kartel.Domain.Enums
+@using Kartel.Trade.Web.Classes.Ext
 @using Kartel.Trade.Web.Controllers
 @model Kartel.Domain.Entities.Tender
 
@@ -104,6 +105,68 @@
         <div style="text-align: center; clear: both">
             <img id="participate" src="~/Content/images/main/participate-tender.png" style="cursor: pointer" />
         </div>
+        <div id="participation-request">
+            <form action="/tenders/participate-tender" method="POST" id="participation-form">
+                <input type="hidden" name="TenderId" value="@Model.Id"/>
+                <div class="field">
+                    <div class="label">
+                        Цена
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="Price"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Доставка
+                    </div>
+                    <div class="editor">
+                        @foreach (var deliveryInfo in Enum.GetValues(typeof (TenderDeliveryInfo)))
+                        {
+                            var asInt = (int) deliveryInfo;
+                            if (asInt != 5)
+                            {
+                                <input type="radio" name="DeliveryInfo" value="@asInt"/> @deliveryInfo.GetEnumMemberName()    <br/>
+                            }
+                        }
+                        <input type="radio" name="DeliveryInfo" value="5"/> <input type="text" name="DeliveryOtherInfo"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Оплата
+                    </div>
+                    <div class="editor">
+                        @foreach (var paymentInfo in Enum.GetValues(typeof (TenderPaymentInfo)))
+                        {
+                            var asInt = (int) paymentInfo;
+                            if (asInt != 6)
+                            {
+                                <input type="radio" name="PaymentInfo" value="@asInt"/> @paymentInfo.GetEnumMemberName()    <br/>
+                            }
+                        }
+                        <input type="radio" name="PaymentInfo" value="6"/> <input type="text" name="PaymentOtherInfo"/>
+                    </div>
+                </div>
+                <div class="field no-b">
+                    <div class="label">
+                        Примечания
+                    </div>
+                    <div class="editor">
+                        <textarea name="Description" placeholder="Любые дополнительные сведения, которые вы считаете нужным указать (не более 100 символов)"></textarea>
+                    </div>
+                </div>
+                <div class="field no-b">
+                    <div class="label">
+                        
+                    </div>
+                    <div class="editor">
+                        <input type="submit" value="Отправить"/>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
         <div class="separator">
         </div>
         <div class="details">
@@ -157,3 +220,33 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#participate").click(function () {
+            @if (currentUser == null)
+            {
+<text>
+            window.location.href = '/account/login?returnUrl=/tenders/tender/@Model.Id';
+</text>
+            }
+            else
+            {
+<text>
+            $("#participation-request").slideDown("slow");
+</text>
+            }
+        });
+
+        $("#participation-form").validate({
+            rules: {
+                Price: {
+                    required: true,
+                    maxlength: 100
+                },
+                Description: {
+                    maxlength: 100
+                }
+            }
+        });
+    });
+</script>

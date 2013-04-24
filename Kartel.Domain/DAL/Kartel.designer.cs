@@ -58,6 +58,9 @@ namespace Kartel.Domain.DAL
     partial void InsertTender(Kartel.Domain.Entities.Tender instance);
     partial void UpdateTender(Kartel.Domain.Entities.Tender instance);
     partial void DeleteTender(Kartel.Domain.Entities.Tender instance);
+    partial void InsertTenderOffer(Kartel.Domain.Entities.TenderOffer instance);
+    partial void UpdateTenderOffer(Kartel.Domain.Entities.TenderOffer instance);
+    partial void DeleteTenderOffer(Kartel.Domain.Entities.TenderOffer instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -161,6 +164,14 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.Tender>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.TenderOffer> TenderOffers
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.TenderOffer>();
 			}
 		}
 	}
@@ -867,6 +878,8 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<Tender> _Tenders;
 		
+		private EntitySet<TenderOffer> _TenderOffers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -991,6 +1004,7 @@ namespace Kartel.Domain.Entities
 			this._UserCategories = new EntitySet<UserCategory>(new Action<UserCategory>(this.attach_UserCategories), new Action<UserCategory>(this.detach_UserCategories));
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
 			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
+			this._TenderOffers = new EntitySet<TenderOffer>(new Action<TenderOffer>(this.attach_TenderOffers), new Action<TenderOffer>(this.detach_TenderOffers));
 			OnCreated();
 		}
 		
@@ -2204,6 +2218,19 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TenderOffer", Storage="_TenderOffers", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<TenderOffer> TenderOffers
+		{
+			get
+			{
+				return this._TenderOffers;
+			}
+			set
+			{
+				this._TenderOffers.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2267,6 +2294,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_Tenders(Tender entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_TenderOffers(TenderOffer entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_TenderOffers(TenderOffer entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -4479,6 +4518,8 @@ namespace Kartel.Domain.Entities
 		
 		private System.Nullable<System.DateTime> _DateCreated;
 		
+		private EntitySet<TenderOffer> _TenderOffers;
+		
 		private EntityRef<Category> _Category;
 		
 		private EntityRef<User> _User;
@@ -4523,6 +4564,7 @@ namespace Kartel.Domain.Entities
 		
 		public Tender()
 		{
+			this._TenderOffers = new EntitySet<TenderOffer>(new Action<TenderOffer>(this.attach_TenderOffers), new Action<TenderOffer>(this.detach_TenderOffers));
 			this._Category = default(EntityRef<Category>);
 			this._User = default(EntityRef<User>);
 			OnCreated();
@@ -4856,6 +4898,19 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tender_TenderOffer", Storage="_TenderOffers", ThisKey="Id", OtherKey="TenderId")]
+		public EntitySet<TenderOffer> TenderOffers
+		{
+			get
+			{
+				return this._TenderOffers;
+			}
+			set
+			{
+				this._TenderOffers.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Tender", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true)]
 		public Category Category
 		{
@@ -4913,6 +4968,378 @@ namespace Kartel.Domain.Entities
 					if ((value != null))
 					{
 						value.Tenders.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TenderOffers(TenderOffer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tender = this;
+		}
+		
+		private void detach_TenderOffers(TenderOffer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tender = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TenderOffers")]
+	public partial class TenderOffer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _TenderId;
+		
+		private int _UserId;
+		
+		private string _Price;
+		
+		private int _DeliveryInfo;
+		
+		private string _DeliveryOtherInfo;
+		
+		private int _PaymentInfo;
+		
+		private string _PaymentOtherInfo;
+		
+		private string _OfferText;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private EntityRef<Tender> _Tender;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTenderIdChanging(int value);
+    partial void OnTenderIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnPriceChanging(string value);
+    partial void OnPriceChanged();
+    partial void OnDeliveryInfoChanging(int value);
+    partial void OnDeliveryInfoChanged();
+    partial void OnDeliveryOtherInfoChanging(string value);
+    partial void OnDeliveryOtherInfoChanged();
+    partial void OnPaymentInfoChanging(int value);
+    partial void OnPaymentInfoChanged();
+    partial void OnPaymentOtherInfoChanging(string value);
+    partial void OnPaymentOtherInfoChanged();
+    partial void OnOfferTextChanging(string value);
+    partial void OnOfferTextChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    #endregion
+		
+		public TenderOffer()
+		{
+			this._Tender = default(EntityRef<Tender>);
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenderId", DbType="Int NOT NULL")]
+		public int TenderId
+		{
+			get
+			{
+				return this._TenderId;
+			}
+			set
+			{
+				if ((this._TenderId != value))
+				{
+					if (this._Tender.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTenderIdChanging(value);
+					this.SendPropertyChanging();
+					this._TenderId = value;
+					this.SendPropertyChanged("TenderId");
+					this.OnTenderIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="VarChar(50)")]
+		public string Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryInfo", DbType="Int NOT NULL")]
+		public int DeliveryInfo
+		{
+			get
+			{
+				return this._DeliveryInfo;
+			}
+			set
+			{
+				if ((this._DeliveryInfo != value))
+				{
+					this.OnDeliveryInfoChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryInfo = value;
+					this.SendPropertyChanged("DeliveryInfo");
+					this.OnDeliveryInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryOtherInfo", DbType="VarChar(255)")]
+		public string DeliveryOtherInfo
+		{
+			get
+			{
+				return this._DeliveryOtherInfo;
+			}
+			set
+			{
+				if ((this._DeliveryOtherInfo != value))
+				{
+					this.OnDeliveryOtherInfoChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryOtherInfo = value;
+					this.SendPropertyChanged("DeliveryOtherInfo");
+					this.OnDeliveryOtherInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentInfo", DbType="Int NOT NULL")]
+		public int PaymentInfo
+		{
+			get
+			{
+				return this._PaymentInfo;
+			}
+			set
+			{
+				if ((this._PaymentInfo != value))
+				{
+					this.OnPaymentInfoChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentInfo = value;
+					this.SendPropertyChanged("PaymentInfo");
+					this.OnPaymentInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentOtherInfo", DbType="VarChar(255)")]
+		public string PaymentOtherInfo
+		{
+			get
+			{
+				return this._PaymentOtherInfo;
+			}
+			set
+			{
+				if ((this._PaymentOtherInfo != value))
+				{
+					this.OnPaymentOtherInfoChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentOtherInfo = value;
+					this.SendPropertyChanged("PaymentOtherInfo");
+					this.OnPaymentOtherInfoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferText", DbType="VarChar(100)")]
+		public string OfferText
+		{
+			get
+			{
+				return this._OfferText;
+			}
+			set
+			{
+				if ((this._OfferText != value))
+				{
+					this.OnOfferTextChanging(value);
+					this.SendPropertyChanging();
+					this._OfferText = value;
+					this.SendPropertyChanged("OfferText");
+					this.OnOfferTextChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tender_TenderOffer", Storage="_Tender", ThisKey="TenderId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Tender Tender
+		{
+			get
+			{
+				return this._Tender.Entity;
+			}
+			set
+			{
+				Tender previousValue = this._Tender.Entity;
+				if (((previousValue != value) 
+							|| (this._Tender.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tender.Entity = null;
+						previousValue.TenderOffers.Remove(this);
+					}
+					this._Tender.Entity = value;
+					if ((value != null))
+					{
+						value.TenderOffers.Add(this);
+						this._TenderId = value.Id;
+					}
+					else
+					{
+						this._TenderId = default(int);
+					}
+					this.SendPropertyChanged("Tender");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TenderOffer", Storage="_User", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.TenderOffers.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.TenderOffers.Add(this);
 						this._UserId = value.Id;
 					}
 					else

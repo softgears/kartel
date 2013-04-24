@@ -89,6 +89,7 @@
       <Association Name="User_UserCategory" Member="UserCategories" ThisKey="Id" OtherKey="UserId" Type="UserCategory" />
       <Association Name="User_Product" Member="Products" ThisKey="Id" OtherKey="UserId" Type="Product" />
       <Association Name="User_Tender" Member="Tenders" ThisKey="Id" OtherKey="UserId" Type="Tender" />
+      <Association Name="User_TenderOffer" Member="TenderOffers" ThisKey="Id" OtherKey="UserId" Type="TenderOffer" />
     </Type>
   </Table>
   <Table Name="dbo.UserLegalInfo" Member="UserLegalInfos">
@@ -207,8 +208,25 @@
       <Column Name="Image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Tender_TenderOffer" Member="TenderOffers" ThisKey="Id" OtherKey="TenderId" Type="TenderOffer" />
       <Association Name="Category_Tender" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
       <Association Name="User_Tender" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TenderOffers" Member="TenderOffers">
+    <Type Name="TenderOffer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DeliveryInfo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryOtherInfo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PaymentInfo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentOtherInfo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="OfferText" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Tender_TenderOffer" Member="Tender" ThisKey="TenderId" OtherKey="Id" Type="Tender" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="User_TenderOffer" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

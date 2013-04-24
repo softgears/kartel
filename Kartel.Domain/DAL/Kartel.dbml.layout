@@ -139,11 +139,31 @@
         <classShapeMoniker Id="9f7a8983-70b1-4858-b970-b7960763b2bf" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 11.4815991210938); (6.125 : 11.4815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 11.4815991210938); (6.125 : 11.4815991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/User/User_Tender" />
       <nodes>
         <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
         <classShapeMoniker Id="9f7a8983-70b1-4858-b970-b7960763b2bf" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d94b2e33-2431-4ed2-b489-c76bcfad3dbe" absoluteBounds="6.125, 13.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/KartelDataContext/TenderOffer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b5e535e-6ff3-44ce-9c8a-a8c0b7a9d829" absoluteBounds="6.14, 14.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.125 : 12.7612125651042); (7.125 : 13.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KartelDataContext/Tender/Tender_TenderOffer" />
+      <nodes>
+        <classShapeMoniker Id="9f7a8983-70b1-4858-b970-b7960763b2bf" />
+        <classShapeMoniker Id="d94b2e33-2431-4ed2-b489-c76bcfad3dbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0312525 : 12.3859684244792); (2.0312525 : 14.7075512695312); (6.125 : 14.7075512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KartelDataContext/User/User_TenderOffer" />
+      <nodes>
+        <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
+        <classShapeMoniker Id="d94b2e33-2431-4ed2-b489-c76bcfad3dbe" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

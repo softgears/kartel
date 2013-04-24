@@ -868,6 +868,38 @@ namespace Kartel.Trade.Web.Controllers
             return View(tender);
         }
 
+        /// <summary>
+        /// Обрабатывает заявку на тендер
+        /// </summary>
+        /// <param name="model">Модель данных заявки по тендеру</param>
+        /// <returns></returns>
+        [HttpPost][Route("tenders/participate-tender")]
+        public ActionResult ParticipateTender(TenderOffer model)
+        {
+            // Проверяем авторизованность
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Ищем тендер
+            var tender = Locator.GetService<ITendersRepository>().Load(model.TenderId);
+            if (tender == null)
+            {
+                return RedirectToAction("Tenders");
+            }
+
+            // Добавляем заявку по тендеру
+            model.User = CurrentUser;
+            model.Tender = tender;
+            model.DateCreated = DateTime.Now;
+            tender.TenderOffers.Add(model);
+            UsersRepository.SubmitChanges();
+            
+            // перенаправляемся обратно на тендер
+            return RedirectToAction("ViewTender", new {id = model.TenderId});
+        }
+
         #endregion
 
     }
