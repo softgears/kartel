@@ -14,70 +14,79 @@
     <div class="html-text">
         @Html.Raw(user.About)
     </div>
-    <div class="product-details" style="display: block; width: auto; margin-left: 0">
-        <div class="item">
-            <b>Название компании:
-            </b>
-            @user.Company
-        </div>
-        <div class="item">
-            <b>Бренд:
-            </b>
-            @user.Brand
-        </div>
-        <div class="item">
-            <b>Адрес:
-            </b>
-            @user.Country, @user.Region, @user.City, @user.Address
-        </div>
+    <table class="prop">
+        <tr class="item">
+            <td>Название компании:
+            </td>
+            <td>
+                @user.Company
+            </td>
+
+        </tr>
+        <tr class="item">
+            <td>Бренд:
+            </td>
+            <td>
+                @user.Brand
+            </td>
+
+        </tr>
+        <tr class="item">
+            <td>Адрес:
+            </td>
+            <td>@user.Country, @user.Region, @user.City, @user.Address</td>
+        </tr>
         @if (user.UserOccupationInfos != null)
         {
-            <div class="item">
-                <b>Основная деятельность:
-                </b>
-                @if (user.UserOccupationInfos.Agent)
-                {
-                    <text>агент,</text>
-                }
-                @if (user.UserOccupationInfos.Developer)
-                {
-                    <text>производитель,</text>
-                }
-                @if (user.UserOccupationInfos.Distributor)
-                {
-                    <text>дистрибьютор,</text>
-                }
-                @if (user.UserOccupationInfos.Exporter)
-                {
-                    <text>экспортер,</text>
-                }
-                @if (user.UserOccupationInfos.Importer)
-                {
-                    <text>импортер,</text>
-                }
-                @if (user.UserOccupationInfos.ODM)
-                {
-                    <text>ОДМ,</text>
-                }
-                @if (user.UserOccupationInfos.OEM)
-                {
-                    <text>ОЕМ,</text>
-                }
-                @if (user.UserOccupationInfos.SingleSeller)
-                {
-                    <text>розничный продавец,</text>
-                }
-                @if (user.UserOccupationInfos.Whoseller)
-                {
-                    <text>оптовый продавец</text>
-                }
-            </div>    
+            <tr class="item">
+                <td>Основная деятельность:
+                </td>
+                <td>
+                    @if (user.UserOccupationInfos.Agent)
+                    {
+                        <text>агент,</text>
+                    }
+                    @if (user.UserOccupationInfos.Developer)
+                    {
+                        <text>производитель,</text>
+                    }
+                    @if (user.UserOccupationInfos.Distributor)
+                    {
+                        <text>дистрибьютор,</text>
+                    }
+                    @if (user.UserOccupationInfos.Exporter)
+                    {
+                        <text>экспортер,</text>
+                    }
+                    @if (user.UserOccupationInfos.Importer)
+                    {
+                        <text>импортер,</text>
+                    }
+                    @if (user.UserOccupationInfos.ODM)
+                    {
+                        <text>ОДМ,</text>
+                    }
+                    @if (user.UserOccupationInfos.OEM)
+                    {
+                        <text>ОЕМ,</text>
+                    }
+                    @if (user.UserOccupationInfos.SingleSeller)
+                    {
+                        <text>розничный продавец,</text>
+                    }
+                    @if (user.UserOccupationInfos.Whoseller)
+                    {
+                        <text>оптовый продавец</text>
+                    }
+                </td>
+            </tr>    
         }
-
-        <div class="item">
-            <b>Диллер / Дистрибьютор:
-            </b>
-            @user.Dealer
-        </div>
-    </div>
+        <tr class="item">
+            <td>Диллер / Дистрибьютор:
+            </td>
+            <td>
+                @user.Dealer
+            </td>
+        </tr>
+    </table>
 </div>

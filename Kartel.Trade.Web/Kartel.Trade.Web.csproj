@@ -244,6 +244,7 @@
     <Content Include="Views\UserSite\CategoryProducts.cshtml" />
     <Content Include="Views\UserSite\ViewProduct.cshtml" />
     <Content Include="Views\UserSite\About.cshtml" />
+    <Content Include="Views\UserSite\Contacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

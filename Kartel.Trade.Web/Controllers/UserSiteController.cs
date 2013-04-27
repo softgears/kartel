@@ -178,7 +178,25 @@ namespace Kartel.Trade.Web.Controllers
 
             // Навигационная цепочка
             PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
-            PushNavigationChainItem("Товары", string.Format("/vendor/about/{0}", id), true);
+            PushNavigationChainItem("О компании", string.Format("/vendor/about/{0}", id), true);
+
+            return View();
+        }
+
+        /// <summary>
+        /// Отображает страницу контактов указанной фирмы
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("vendor/contacts/{id}")]
+        public ActionResult Contacts(long id)
+        {
+            // Инициализируем пользователя
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("О компании", string.Format("/vendor/about/{0}", id), true);
 
             return View();
         }
