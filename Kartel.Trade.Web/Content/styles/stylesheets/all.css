@@ -554,6 +554,15 @@ body #footer #footer-content a {
   height: 159px;
 }
 /* line 101, ../sass/page-main.sass */
+.mainblock .row .item .image {
+  height: 70px;
+}
+/* line 104, ../sass/page-main.sass */
+.mainblock .row .item .image img {
+  height: 70px;
+  width: auto;
+}
+/* line 108, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
@@ -988,7 +997,7 @@ body #footer #footer-content a {
 /* line 371, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgrey;
+  color: darkgray;
   margin-top: 5px;
 }
 /* line 377, ../sass/categories.sass */
@@ -1340,9 +1349,9 @@ body #footer #footer-content a {
 }
 /* line 45, ../sass/products.sass */
 .hot-product .title {
-  height: 26px;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0px 5px;
 }
 /* line 50, ../sass/products.sass */
 .hot-product .title a {
@@ -1350,38 +1359,37 @@ body #footer #footer-content a {
   font-size: 13px;
   font-weight: bold;
   font-family: Arial;
-  height: 26px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 59, ../sass/products.sass */
+/* line 58, ../sass/products.sass */
 .hot-product .title a:hover {
   text-decoration: underline;
 }
-/* line 62, ../sass/products.sass */
+/* line 61, ../sass/products.sass */
 .hot-product .image {
   margin-top: 15px;
   min-height: 85px;
 }
-/* line 66, ../sass/products.sass */
+/* line 65, ../sass/products.sass */
 .hot-product .image img {
   max-width: 150px;
   max-height: 120px;
   min-height: 100px;
 }
-/* line 71, ../sass/products.sass */
+/* line 70, ../sass/products.sass */
 .hot-product .price {
   color: #999999;
   margin-top: 25px;
   font-size: 14px;
 }
-/* line 76, ../sass/products.sass */
+/* line 75, ../sass/products.sass */
 .hot-product .price .price-holder {
   margin-left: 5px;
   color: #444444;
 }
 
-/* line 80, ../sass/products.sass */
+/* line 79, ../sass/products.sass */
 .product {
   display: inline-block;
   vertical-align: top;
@@ -1389,26 +1397,26 @@ body #footer #footer-content a {
   text-align: left;
   margin: 12px;
 }
-/* line 87, ../sass/products.sass */
+/* line 86, ../sass/products.sass */
 .product .image {
   border: 1px solid #c3c3c3;
   height: 200px;
   text-align: center;
   overflow: hidden;
 }
-/* line 93, ../sass/products.sass */
+/* line 92, ../sass/products.sass */
 .product .image img {
   width: 190px;
   height: auto;
 }
-/* line 97, ../sass/products.sass */
+/* line 96, ../sass/products.sass */
 .product .title {
   margin-top: 5px;
   height: 26px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 103, ../sass/products.sass */
+/* line 102, ../sass/products.sass */
 .product .title a {
   color: #3c9cff;
   font-family: Verdana;
@@ -1416,26 +1424,26 @@ body #footer #footer-content a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 110, ../sass/products.sass */
+/* line 109, ../sass/products.sass */
 .product .title a:hover {
   text-decoration: underline;
 }
-/* line 113, ../sass/products.sass */
+/* line 112, ../sass/products.sass */
 .product .details {
   margin-top: 15px;
   color: #919191;
   text-align: left;
   font-size: 10px;
 }
-/* line 119, ../sass/products.sass */
+/* line 118, ../sass/products.sass */
 .product .details .detailItem {
   margin-bottom: 5px;
 }
-/* line 122, ../sass/products.sass */
+/* line 121, ../sass/products.sass */
 .product .author {
   margin-top: 10px;
 }
-/* line 125, ../sass/products.sass */
+/* line 124, ../sass/products.sass */
 .product .author a {
   color: #919191;
 }
@@ -1798,7 +1806,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
-  border: 1px solid darkgrey;
+  border: 1px solid darkgray;
   padding: 5px;
 }
 /* line 211, ../sass/account.sass */
@@ -1813,7 +1821,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
-  border: 1px solid darkgrey;
+  border: 1px solid darkgray;
   padding: 5px;
 }
 /* line 225, ../sass/account.sass */

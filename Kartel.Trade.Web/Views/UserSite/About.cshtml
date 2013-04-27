@@ -1,0 +1,83 @@
+﻿@using Kartel.Domain.Entities
+@model dynamic
+
+@{
+    ViewBag.Title = "О Компании";
+    Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
+}
+
+<div class="product-info">
+    <div class="product-title">
+        О Компании
+    </div>
+    <div class="html-text">
+        @Html.Raw(user.About)
+    </div>
+    <div class="product-details" style="display: block; width: auto; margin-left: 0">
+        <div class="item">
+            <b>Название компании:
+            </b>
+            @user.Company
+        </div>
+        <div class="item">
+            <b>Бренд:
+            </b>
+            @user.Brand
+        </div>
+        <div class="item">
+            <b>Адрес:
+            </b>
+            @user.Country, @user.Region, @user.City, @user.Address
+        </div>
+        @if (user.UserOccupationInfos != null)
+        {
+            <div class="item">
+                <b>Основная деятельность:
+                </b>
+                @if (user.UserOccupationInfos.Agent)
+                {
+                    <text>агент,</text>
+                }
+                @if (user.UserOccupationInfos.Developer)
+                {
+                    <text>производитель,</text>
+                }
+                @if (user.UserOccupationInfos.Distributor)
+                {
+                    <text>дистрибьютор,</text>
+                }
+                @if (user.UserOccupationInfos.Exporter)
+                {
+                    <text>экспортер,</text>
+                }
+                @if (user.UserOccupationInfos.Importer)
+                {
+                    <text>импортер,</text>
+                }
+                @if (user.UserOccupationInfos.ODM)
+                {
+                    <text>ОДМ,</text>
+                }
+                @if (user.UserOccupationInfos.OEM)
+                {
+                    <text>ОЕМ,</text>
+                }
+                @if (user.UserOccupationInfos.SingleSeller)
+                {
+                    <text>розничный продавец,</text>
+                }
+                @if (user.UserOccupationInfos.Whoseller)
+                {
+                    <text>оптовый продавец</text>
+                }
+            </div>    
+        }
+
+        <div class="item">
+            <b>Диллер / Дистрибьютор:
+            </b>
+            @user.Dealer
+        </div>
+    </div>
+</div>

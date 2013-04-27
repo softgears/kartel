@@ -130,11 +130,57 @@ namespace Kartel.Trade.Web.Controllers
             // Навигационная цепочка
             PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
             PushNavigationChainItem("Товары", string.Format("/vendor/products/{0}", id));
-            PushNavigationChainItem(userCategory.Title, string.Format("/vendor/categiry/{0}?catId={1}", id,catId),true);
+            PushNavigationChainItem(userCategory.Title, string.Format("/vendor/category/{0}?catId={1}", id,catId),true);
 
             // Отображаем вид
             ViewBag.page = page;
             return View(userCategory);
+        }
+
+        /// <summary>
+        /// Отображает страницу указанного товара
+        /// </summary>
+        /// <param name="id">Идентификатор товара</param>
+        /// <returns></returns>
+        [Route("product/{id}")]
+        public ActionResult ViewProduct(long id)
+        {
+            // Ищем товар
+            var product = Locator.GetService<IProductsRepository>().Load(id);
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            // Подгатавливаем пользователя
+            InitializeUser(product.UserId);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Товары", string.Format("/vendor/products/{0}", id));
+            PushNavigationChainItem(product.UserCategory.Title, string.Format("/vendor/category/{0}?catId={1}", product.UserId, product.UserCategoryId));
+            PushNavigationChainItem(product.Title, string.Format("/product/{0}", product.Id),true);
+
+            // Отображаем вид
+            return View(product);
+        }
+
+        /// <summary>
+        /// Отображает страницу с информацией о компании
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("vendor/about/{id}")]
+        public ActionResult About(long id)
+        {
+            // Инициализируем пользователя
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Товары", string.Format("/vendor/about/{0}", id), true);
+
+            return View();
         }
     }
 }
