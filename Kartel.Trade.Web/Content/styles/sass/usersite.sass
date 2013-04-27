@@ -1,0 +1,234 @@
+@import "reset.sass"
+
+$maincolor: #006699
+$maincolor2: #000f2c
+
+.blue
+	font-family: Arial
+
+	.gradient
+		background: #006699
+		background: -moz-linear-gradient(top,  $maincolor 0%, $maincolor2 100%)
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$maincolor), color-stop(100%,$maincolor2))
+		background: -webkit-linear-gradient(top,  $maincolor 0%,$maincolor2 100%)
+		background: -o-linear-gradient(top,  $maincolor 0%,$maincolor2 100%)
+		background: -ms-linear-gradient(top,  $maincolor 0%,$maincolor2 100%)
+		background: linear-gradient(to bottom,  $maincolor 0%,$maincolor2 100%)
+
+
+	a
+		color: $maincolor
+		text-decoration:  none
+
+		&:hover
+			text-decoration: underline
+
+	#header
+
+		#header-content
+			width: 940px
+			margin:  10px auto
+
+			#logo-wrapper
+				display: inline-block
+				vertical-align: top
+				margin-top: 10px
+				height: 75px
+
+				img
+					height: 65px
+					width:  auto
+
+			#phones-wrapper
+				float: right
+				height: 75px
+
+
+				#phone
+					font-size: 18px
+					color: #555555
+					padding-left: 30px
+					font-weight: bold
+					margin-top: 10px
+					background:  url(../../images/usersite/phone.png) left center no-repeat
+
+				#write
+					display: block
+					font-size: 18px
+					color: #555555
+					padding-left: 30px
+					font-weight: bold
+					margin-top: 10px
+					background:  url(../../images/usersite/mail.png) left center no-repeat
+					margin-top: 10px
+
+			#main-menu
+				border-radius: 5px
+
+				#search-wrapper
+					float: right
+					margin-right: 10px
+					margin-top: 22px
+
+					input[type='text']
+						border: 0
+						background-color: white
+						padding: 2px
+						width: 190px
+						border-radius: 2px
+
+					input[type='submit']
+						border: 0
+						width: 18px
+						height:  18px
+						background: url(../../images/usersite/search-icon.png)
+						margin-left: 5px
+						cursor: pointer
+						position: relative
+						left:  -2px
+
+
+				ul
+					li
+						display: inline-block
+						vertical-align: top
+						border-right: 1px solid #384c69
+
+						a
+							border-right: 1px solid #000024
+							text-transform: uppercase
+							color:  white
+							font-size: 12px
+							font-weight: bold
+							padding: 25px 16px
+							display: block
+
+	#footer
+		background: #dedede
+		background: -moz-linear-gradient(top,  #dedede 0%, #b0b0b0 100%)
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dedede), color-stop(100%,#b0b0b0))
+		background: -webkit-linear-gradient(top,  #dedede 0%,#b0b0b0 100%)
+		background: -o-linear-gradient(top,  #dedede 0%,#b0b0b0 100%)
+		background: -ms-linear-gradient(top,  #dedede 0%,#b0b0b0 100%)
+		background: linear-gradient(to bottom,  #dedede 0%,#b0b0b0 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedede', endColorstr='#b0b0b0',GradientType=0 )
+		border: 1px solid #999999
+		text-align: center
+
+		.footer-item
+			display: inline-block
+			vertical-align: top
+			font-size: 14px
+			color: #333333
+			font-weight: bold
+			text-shadow: 3px 3px 5px rgba(0,0,0,0.3)
+			padding: 10px 15px
+			border-right: 1px solid #a2a2a2
+
+			a
+				color: #00527b
+
+		#kartel-button
+			background: #dedede
+			background: -moz-linear-gradient(top,  #6192ba 0%, #15396c 100%)
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6192ba), color-stop(100%,#15396c))
+			background: -webkit-linear-gradient(top,  #6192ba 0%,#15396c 100%)
+			background: -o-linear-gradient(top,  #6192ba 0%,#15396c 100%)
+			background: -ms-linear-gradient(top,  #6192ba 0%,#15396c 100%)
+			background: linear-gradient(to bottom,  #6192ba 0%,#15396c 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6192ba', endColorstr='#15396c',GradientType=0 )
+			color: white
+			cursor: pointer
+
+	#content
+
+		#content-wrapper
+			margin: 0px auto
+			width:  940px
+
+		#content-menu
+			display: inline-block
+			vertical-align: top
+			width: 240px
+
+			.group
+				position: relative
+				.group-title
+					border-radius: 5px
+					color: white
+					font-size: 14px
+					font-weight: bold
+					padding: 7px 10px
+
+				.group-content
+					border-right: 1px solid #bbbbbb
+					border-left: 1px solid #bbbbbb
+					margin: 0px 3px
+					padding: 5px 10px
+
+					.contacts-title
+						text-align: center
+						color:  $maincolor
+						font-size:  14px
+						margin-bottom: 10px
+						font-weight: bold
+
+					ul
+						margin-left: 10px
+
+						li
+							padding-bottom: 4px
+							border-bottom: 1px dashed #bbbbbb
+							margin: 4px 0px
+							list-style-image: url(../../images/layout/bullet.png)
+
+							a
+								font-size: 12px
+								color: #444444
+								padding-left: 3px
+
+								&:hover
+									color: $maincolor
+
+					.html-text
+						font-size: 12px
+
+						p
+							margin: 4px 0px
+							line-height: 1.25
+
+
+
+					form
+						.field
+							margin-bottom: 10px
+
+							.editor
+								input[type='text'], textarea
+									border: 1px solid #cccccc
+									border-radius: 3px
+									padding:  4px
+									width: 200px
+
+								textarea
+									height: 70px
+
+						.submit-wrapper
+							margin-top: 10px
+							text-align: center
+
+							input[type='submit']
+								border: 0
+								text-align:  center
+								padding: 5px 15px
+								font-size:  15px
+								color: white
+								font-weight: bold
+								cursor: pointer
+								border-radius: 7px
+
+					&.last
+						border-bottom: 1px solid #bbbbbb
+						border-bottom-left-radius: 10px
+						border-bottom-right-radius: 10px
+						margin-bottom: 10px

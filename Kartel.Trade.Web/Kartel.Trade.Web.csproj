@@ -136,6 +136,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\UserSiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,7 +185,11 @@
     <Content Include="Content\images\main\participate-tender.png" />
     <Content Include="Content\images\main\placegoods.png" />
     <Content Include="Content\images\main\placetenders.png" />
+    <Content Include="Content\images\usersite\mail.png" />
+    <Content Include="Content\images\usersite\phone.png" />
+    <Content Include="Content\images\usersite\search-icon.png" />
     <Content Include="Content\styles\stylesheets\all.css" />
+    <Content Include="Content\styles\stylesheets\usersite.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\Libs\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\Libs\jquery-1.9.1.js" />
@@ -233,6 +238,8 @@
     <Content Include="Views\Account\ViewTender.cshtml" />
     <Content Include="Views\Account\TenderContacts.cshtml" />
     <Content Include="Views\Account\TendersParticipation.cshtml" />
+    <Content Include="Views\UserSite\Index.cshtml" />
+    <Content Include="Views\UserSite\UserSiteLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

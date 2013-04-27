@@ -62,5 +62,14 @@ namespace Kartel.Domain.Entities
         {
             return TenderOffers.OrderBy(to => to.DateCreated).ToList();
         }
+
+        /// <summary>
+        /// Возвращает основной контактный телефон пользователя
+        /// </summary>
+        /// <returns></returns>
+        public string GetMainPhone()
+        {
+            return Phone.Substring(0,11); // TODO: сделать более сложную обработку
+        }
     }
 }
