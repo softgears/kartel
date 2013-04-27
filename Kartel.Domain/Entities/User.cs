@@ -9,6 +9,7 @@
 // 
 // ============================================================
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,25 @@ namespace Kartel.Domain.Entities
         public string GetMainPhone()
         {
             return Phone.Substring(0,11); // TODO: сделать более сложную обработку
+        }
+
+        /// <summary>
+        /// Возвращает указанное количество случайных товаров
+        /// </summary>
+        /// <param name="count">Количество товаров</param>
+        /// <returns></returns>
+        public IList<Product> GetRandomProducts(int count = 4)
+        {
+            return Products.OrderBy(d => Guid.NewGuid()).Take(count).ToList();
+        }
+
+        /// <summary>
+        /// Возвращает все товары пользователя
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Product> GetProducts()
+        {
+            return Products;
         }
     }
 }

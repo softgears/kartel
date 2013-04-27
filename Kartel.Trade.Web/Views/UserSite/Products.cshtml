@@ -1,0 +1,34 @@
+﻿@using Kartel.Domain.Entities
+@model dynamic
+
+@{
+    ViewBag.Title = "Все наши предложения";
+    Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
+    var goods = user.GetProducts().OrderBy(p => p.Title).ToList();
+}
+
+<div class="panel">
+    <div class="panel-title gradient">
+        Все наши товары
+    </div>
+    <div class="panel-content">
+        @if (goods.Count == 0)
+        {
+            <div style="margin: 15px; text-align: center">Нет товаров</div>
+        }
+        else
+        {
+            while(goods.Count > 0)
+            {
+                <div class="row">
+                    @foreach(var product in goods.Take(4).ToList())
+                    {
+                        goods.Remove(product);
+                        @Html.Partial("HotProduct",product)
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

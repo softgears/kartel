@@ -84,7 +84,7 @@
                                 @foreach(var userCategory in user.GetUserCategories().OrderBy(c => c.Position))
                                 {
                                     <li>
-                                        <a href="/vendor/category/@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
+                                        <a href="/vendor/category/@userCategory.UserId?catId=@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
                                     </li>
                                 }
                             </ul>

@@ -219,7 +219,7 @@
     <Content Include="Views\Main\BrowseCategory.cshtml" />
     <Content Include="Views\Shared\HotProduct.cshtml" />
     <Content Include="Views\Main\ProductsNavigator.cshtml" />
-    <Content Include="Views\Main\Product.cshtml" />
+    <Content Include="Views\Shared\Product.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\RegistrationResult.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -240,6 +240,8 @@
     <Content Include="Views\Account\TendersParticipation.cshtml" />
     <Content Include="Views\UserSite\Index.cshtml" />
     <Content Include="Views\UserSite\UserSiteLayout.cshtml" />
+    <Content Include="Views\UserSite\Products.cshtml" />
+    <Content Include="Views\UserSite\CategoryProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

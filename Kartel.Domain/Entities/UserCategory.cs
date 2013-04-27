@@ -8,6 +8,9 @@
 // 	 at 20.04.2013 16:14
 // 
 // ============================================================
+
+using System.Collections.Generic;
+
 namespace Kartel.Domain.Entities
 {
     /// <summary>
@@ -22,6 +25,15 @@ namespace Kartel.Domain.Entities
         public int GetProductsCount()
         {
             return Products.Count;
+        }
+
+        /// <summary>
+        /// Продукты, находящиеся в этой категории
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Product> GetProducts()
+        {
+            return Products;
         }
     }
 }

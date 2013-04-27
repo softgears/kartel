@@ -5,9 +5,9 @@
         <a href="/product/@Model.Id">@Model.Title</a>
     </div>
     <div class="image">
-        <img src="@Model.Img"/>
+        <img src="/files/prodimage/@Model.Img"/>
     </div>
     <div class="price">
-        Цена: <span class="price-holder">@Model.Field3</span>
+        Цена: <span class="price-holder">@Model.GetPrice() @Model.GetCurrency()</span>
     </div>
 </div>

@@ -140,6 +140,19 @@ $maincolor2: #000f2c
 			color: white
 			cursor: pointer
 
+	#paginator
+		text-align: center
+
+		a
+			border: 1px solid black
+			padding: 4px 8px
+			cursor: pointer
+			color: #444444
+
+		span
+			border: 1px solid transparent
+			padding: 4px 8px
+
 	#content
 
 		#content-wrapper
@@ -150,6 +163,7 @@ $maincolor2: #000f2c
 			display: inline-block
 			vertical-align: top
 			width: 240px
+			margin-right: 17px
 
 			.group
 				position: relative
@@ -158,7 +172,7 @@ $maincolor2: #000f2c
 					color: white
 					font-size: 14px
 					font-weight: bold
-					padding: 7px 10px
+					padding: 10px
 
 				.group-content
 					border-right: 1px solid #bbbbbb
@@ -232,3 +246,146 @@ $maincolor2: #000f2c
 						border-bottom-left-radius: 10px
 						border-bottom-right-radius: 10px
 						margin-bottom: 10px
+
+		#content-section
+			display: inline-block
+			vertical-align: top
+			width: 678px
+
+			.panel
+				.panel-title
+					border-radius: 5px
+					color: white
+					font-size: 14px
+					font-weight: bold
+					padding: 10px
+
+					.all
+						float: right
+						font-size: 13px
+						color: white
+						font-weight: normal
+
+				.panel-category-title
+					font-size: 26px
+					font-weight: bold
+					padding-bottom: 10px
+					border-bottom: 1px solid #bebebe
+
+
+				.panel-content
+					border-right: 1px solid #bbbbbb
+					border-left: 1px solid #bbbbbb
+					margin: 0px 3px
+					padding: 5px 10px
+					border-bottom: 1px solid #bbbbbb
+					border-bottom-left-radius: 10px
+					border-bottom-right-radius: 10px
+					margin-bottom: 10px
+
+					.row
+						border-bottom: 1px dashed #bbbbbb
+						padding: 10px 0px
+
+						.hot-product
+							display: inline-block
+							vertical-align: top
+							border-right: 1px dashed #bebebe
+							text-align: center
+							width: 158px
+							font-family: Arial
+
+							&:last-child
+								border-right: 0 !important
+
+							.title
+								height: 26px
+
+								a
+									color: #0099cc
+									font-size: 13px
+									font-weight: bold
+									font-family: Arial
+									height: 26px
+									overflow: hidden
+									text-overflow: ellipsis
+
+									&:hover
+										text-decoration: underline
+
+							.image
+								margin-top: 15px
+								min-height: 85px
+
+								img
+									max-width: 150px
+									max-height: 120px
+									min-height: 100px
+
+							.price
+								color: #999999
+								margin-top: 25px
+								font-size: 14px
+
+								.price-holder
+									margin-left: 5px
+									color: #444444
+
+						&:last-child
+							border-bottom: 0
+
+				.panel-products-content
+
+					.products
+						text-align: center
+
+						.product
+							display: inline-block
+							vertical-align: top
+							width: 200px
+							text-align: left
+							margin: 12px
+
+							.image
+								border: 1px solid #c3c3c3
+								height: 200px
+								text-align: center
+								overflow: hidden
+
+								img
+									width: 190px
+									height: auto
+
+							.title
+								margin-top: 5px
+								height: 26px
+								overflow: hidden
+								text-overflow: ellipsis
+
+								a
+									color: #3c9cff
+									font-family: Verdana
+									height: 26px
+									overflow: hidden
+									text-overflow: ellipsis
+
+									&:hover
+										text-decoration: underline
+
+							.details
+								margin-top: 15px
+								color: #919191
+								text-align: left
+								font-size: 10px
+
+								.detailItem
+									margin-bottom: 5px
+
+							.author
+								margin-top: 10px
+								display: none
+
+								a
+									color: #919191
+
+

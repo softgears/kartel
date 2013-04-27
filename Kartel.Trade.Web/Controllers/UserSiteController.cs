@@ -45,7 +45,7 @@ namespace Kartel.Trade.Web.Controllers
         /// Инициаилизирует пользователя во вьюбаг
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
-        private void InitializeUser(long id)
+        private User InitializeUser(long id)
         {
             // Загружаем пользователя
             var user = UsersRepository.Load(id);
@@ -53,7 +53,7 @@ namespace Kartel.Trade.Web.Controllers
             {
                 // Редиректим
                 Response.Redirect("/",true);
-                return;
+                return null;
             }
             ViewBag.user = user;
 
@@ -85,6 +85,56 @@ namespace Kartel.Trade.Web.Controllers
             }
             // Сохраняем
             UsersRepository.SubmitChanges();
+
+            return user;
+        }
+
+        /// <summary>
+        /// Отображает страницу со всеми товарами пользователя
+        /// </summary>
+        /// <param name="id">Идентификатор пользователя</param>
+        /// <returns></returns>
+        [Route("vendor/products/{id}")]
+        public ActionResult Products(long id)
+        {
+            // Инициализируем пользователя
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная",string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Товары",string.Format("/vendor/products/{0}", id),true);
+            
+            return View();
+        }
+
+        /// <summary>
+        /// Отображает страницу со всеми товарами пользователя в указаной пользовательской категории
+        /// </summary>
+        /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="catId">Идентификатор категории пользователя</param>
+        /// <param name="page">Текущая страница</param>
+        /// <returns></returns>
+        [Route("vendor/category/{id}")]
+        public ActionResult CategoryProducts(long id,long catId, int page = 0)
+        {
+            // Инициализируем пользователя
+            var user = InitializeUser(id);
+
+            // Проверяем категорию
+            var userCategory = user.UserCategories.FirstOrDefault(uc => uc.Id == catId);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Index", new {id = id});
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Товары", string.Format("/vendor/products/{0}", id));
+            PushNavigationChainItem(userCategory.Title, string.Format("/vendor/categiry/{0}?catId={1}", id,catId),true);
+
+            // Отображаем вид
+            ViewBag.page = page;
+            return View(userCategory);
         }
     }
 }
