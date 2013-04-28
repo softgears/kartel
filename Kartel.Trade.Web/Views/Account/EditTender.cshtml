@@ -17,7 +17,7 @@
     <div style="margin-top: 15px; margin-left: 15px">
         @Html.Partial("NavigationChain")
     </div>
-    <form method="post" id="tender-form" action="/account/tenders/save-tender">
+    <form method="post" id="tender-form" action="/account/tenders/save-tender" enctype="multipart/form-data">
         @if (Model.Id > 0 && Model.GetOffersCount() > 0)
         {
             <div class="fields-group">
@@ -142,12 +142,11 @@
             </div>
             <div class="field">
                 <div class="label">
-                    <span class="asterix">*</span>Изображения
+                    <span class="asterix">*</span>Основное изображение
                 </div>
                 <div class="editor">
-                    <input type="file" name="ProductImage" multiple="true" />
-                    <div class="details">Выберите одно или несколько изображений для тендера (JPG или GIF), не более 200 килобайт</div>
-                    <div class="details">После выбора вы сможете задать описание каждому изображению</div>
+                    <input type="file" name="TenderImage" multiple="false" />
+                    <div class="details">Выберите одно изображение для тендера (JPG или GIF), не более 200 килобайт</div>
                 </div>
             </div>
             <div class="separator"></div>

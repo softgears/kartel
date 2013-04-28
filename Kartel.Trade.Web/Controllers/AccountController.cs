@@ -805,6 +805,7 @@ namespace Kartel.Trade.Web.Controllers
                 tender.Description = model.Description;
                 tender.MinPrice = model.MinPrice;
                 tender.MaxPrice = model.MaxPrice;
+                tender.Category = Locator.GetService<ICategoriesRepository>().Load(model.CategoryId);
                 tender.Measure = model.Measure;
                 tender.Size = model.Size;
                 tender.Currency = model.Currency;
@@ -812,6 +813,18 @@ namespace Kartel.Trade.Web.Controllers
                 tender.DateEnd = model.DateEnd;
             }
             UsersRepository.SubmitChanges();
+
+            // Сохраняем фото к тендеру
+            var tenderImageFile = Request.Files["TenderImage"];
+            if (tenderImageFile != null && tenderImageFile.ContentLength > 0 && tenderImageFile.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("tender-{0}-{1}{2}", tender.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(tenderImageFile.FileName));
+                FileUtils.SavePostedFile(tenderImageFile, "tenderimage", fileName);
+                tender.Image = fileName;
+                UsersRepository.SubmitChanges();
+            }
 
             // Перенаправляемся на список тендеров
             return RedirectToAction("Tenders");
