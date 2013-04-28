@@ -16,7 +16,7 @@
     <div style="margin-top: 15px; margin-left: 15px">
         @Html.Partial("NavigationChain")
     </div>
-    <form method="post" id="product-form" action="/account/products/save-product">
+    <form method="post" id="product-form" action="/account/products/save-product" enctype="multipart/form-data">
         <div class="fields-group">
             <input type="hidden" name="Id" value="@Model.Id"/>
             <div class="fields-title">
@@ -131,12 +131,16 @@
             </div>
             <div class="field">
                 <div class="label">
-                    <span class="asterix">*</span>Изображения
+                    <span class="asterix">*</span>Основное фото
                 </div>
                 <div class="editor">
-                    <input type="file" name="ProductImage" multiple="true" />
-                    <div class="details">Выберите одно или несколько изображений товара (JPG или GIF), не более 200 килобайт</div>
-                    <div class="details">После выбора вы сможете задать описание каждому изображению</div>
+                    @if (Model.Id > 0 && !String.IsNullOrEmpty(Model.Img))
+                    {
+                        <img src="/files/prodimage/@Model.Img" style="height: 75px; width: auto"/>    
+                    }
+                    
+                    <input type="file" name="ProductImage" multiple="false" />
+                    <div class="details">Выберите одно изображение товара (JPG или GIF), не более 200 килобайт</div>
                 </div>
             </div>
             <div class="separator"></div>

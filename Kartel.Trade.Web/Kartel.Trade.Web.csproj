@@ -131,6 +131,7 @@
     <Compile Include="Classes\Ext\ViewContextExtensions.cs" />
     <Compile Include="Classes\Navigation\NavigationChain.cs" />
     <Compile Include="Classes\Navigation\NavigationChainItem.cs" />
+    <Compile Include="Classes\Utils\FileUtils.cs" />
     <Compile Include="Classes\Utils\MathHelper.cs" />
     <Compile Include="Classes\WebLayer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -191,6 +192,7 @@
     <Content Include="Content\styles\stylesheets\all.css" />
     <Content Include="Content\styles\stylesheets\usersite.css" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <None Include="Scripts\Libs\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\Libs\jquery-1.9.1.js" />
     <Content Include="Scripts\Libs\jquery-1.9.1.min.js" />

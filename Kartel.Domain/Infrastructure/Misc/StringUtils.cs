@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Kartel.Domain.Infrastructure.Misc
 {
@@ -75,6 +76,24 @@ namespace Kartel.Domain.Infrastructure.Misc
                 return string.Empty;
             }
             return string.Format("{0:N}", (long)price.Value).Replace(",00","");
+        }
+
+        /// <summary>
+        /// Обрезает строку после указанного количества символо
+        /// </summary>
+        /// <param name="str">Строка</param>
+        /// <param name="maxLength">Длина</param>
+        /// <returns></returns>
+        public static string TrimEllipsis(this string str, int maxLength)
+        {
+            if (str.Length > maxLength)
+            {
+                return String.Format("{0}...", str.Substring(0, maxLength));
+            }
+            else
+            {
+                return str;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-/* line 1, ../sass/reset.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,106 +21,106 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-/* line 22, ../sass/reset.sass */
+/* line 22, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 26, ../sass/reset.sass */
+/* line 26, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 body {
   line-height: 1;
 }
 
-/* line 29, ../sass/reset.sass */
+/* line 29, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 a, a:hover {
   text-decoration: none;
 }
 
-/* line 32, ../sass/reset.sass */
+/* line 32, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 ol, ul {
   list-style: none;
 }
 
-/* line 35, ../sass/reset.sass */
+/* line 35, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 blockquote, q {
   quotes: none;
 }
 
-/* line 38, ../sass/reset.sass */
+/* line 38, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: "";
   content: none;
 }
 
-/* line 43, ../sass/reset.sass */
+/* line 43, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 47, ../sass/reset.sass */
+/* line 47, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/reset.sass */
 span {
   display: inline-block;
 }
 
-/* line 1, ../sass/layout.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body {
   background-color: #fafafa;
   font-family: "Microsoft Sans Serif";
   font-size: 12px;
   color: #444444;
 }
-/* line 7, ../sass/layout.sass */
+/* line 7, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner {
   background: url(../../images/layout/innerbg.png) !important;
 }
-/* line 10, ../sass/layout.sass */
+/* line 10, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner #header {
   border-bottom: 0;
   background: none;
 }
-/* line 14, ../sass/layout.sass */
+/* line 14, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner #content {
   margin: 0;
 }
-/* line 17, ../sass/layout.sass */
+/* line 17, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner #content #content-section {
   width: 740px !important;
 }
-/* line 20, ../sass/layout.sass */
+/* line 20, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner #content #content-section #content-inner-wrapper {
   padding: 15px 35px;
   padding-right: 0px;
   padding-bottom: 5px;
 }
-/* line 25, ../sass/layout.sass */
+/* line 25, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body.inner #footer {
   border-top: 0;
   background: none;
   margin-top: 20px;
 }
-/* line 30, ../sass/layout.sass */
+/* line 30, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header {
   height: 102px;
   background: url(../../images/layout/header-bg.png) center top repeat-x;
   padding-bottom: 5px;
   border-bottom: 1px dashed #c5c5c5;
 }
-/* line 36, ../sass/layout.sass */
+/* line 36, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content {
   width: 970px;
   margin: 0px auto;
 }
-/* line 40, ../sass/layout.sass */
+/* line 40, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper {
   margin-left: 20px;
   padding-top: 10px;
   color: #efefef;
   font-family: Arial;
 }
-/* line 46, ../sass/layout.sass */
+/* line 46, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-login {
   padding-left: 42px;
   color: #efefef;
@@ -130,11 +130,11 @@ body #header #header-content #top-menu-wrapper #top-login {
   background: url(../../images/layout/login.png) left center no-repeat;
   margin-right: 10px;
 }
-/* line 55, ../sass/layout.sass */
+/* line 55, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-login:hover {
   text-decoration: underline;
 }
-/* line 58, ../sass/layout.sass */
+/* line 58, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-register {
   margin-left: 10px;
   padding-left: 23px;
@@ -145,17 +145,17 @@ body #header #header-content #top-menu-wrapper #top-register {
   background: url(../../images/layout/register.png) left center no-repeat;
   margin-right: 15px;
 }
-/* line 68, ../sass/layout.sass */
+/* line 68, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-register:hover {
   text-decoration: underline;
 }
-/* line 71, ../sass/layout.sass */
+/* line 71, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu {
   display: inline-block;
   vertical-align: top;
   float: right;
 }
-/* line 77, ../sass/layout.sass */
+/* line 77, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top {
   display: inline-block;
   vertical-align: top;
@@ -164,11 +164,11 @@ body #header #header-content #top-menu-wrapper #top-menu li.top {
   margin-right: 10px;
   position: relative;
 }
-/* line 87, ../sass/layout.sass */
+/* line 87, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top:hover .popup {
   display: block;
 }
-/* line 90, ../sass/layout.sass */
+/* line 90, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top .popup {
   position: absolute;
   display: none;
@@ -178,24 +178,24 @@ body #header #header-content #top-menu-wrapper #top-menu li.top .popup {
   background: url(../../images/layout/innerbg.png);
   z-index: 1100;
 }
-/* line 100, ../sass/layout.sass */
+/* line 100, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top .popup li {
   margin: 5px;
 }
-/* line 103, ../sass/layout.sass */
+/* line 103, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top .popup li a {
   color: white;
   white-space: nowrap;
 }
-/* line 107, ../sass/layout.sass */
+/* line 107, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top:last-child {
   margin-right: 0px;
 }
-/* line 109, ../sass/layout.sass */
+/* line 109, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top:last-child a {
   margin-right: 0px;
 }
-/* line 112, ../sass/layout.sass */
+/* line 112, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top a {
   color: #efefef;
   font-family: Arial;
@@ -205,27 +205,27 @@ body #header #header-content #top-menu-wrapper #top-menu li.top a {
   margin-right: 8px;
   padding-right: 11px;
 }
-/* line 121, ../sass/layout.sass */
+/* line 121, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #top-menu-wrapper #top-menu li.top a:hover {
   text-decoration: underline;
 }
-/* line 124, ../sass/layout.sass */
+/* line 124, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line {
   margin-top: 30px;
 }
-/* line 127, ../sass/layout.sass */
+/* line 127, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #logo {
   margin-left: 14px;
   display: inline-block;
   vertical-align: top;
 }
-/* line 132, ../sass/layout.sass */
+/* line 132, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper {
   display: inline-block;
   vertical-align: top;
   margin-left: 25px;
 }
-/* line 137, ../sass/layout.sass */
+/* line 137, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper #search-fields-wrapper {
   display: inline-block;
   vertical-align: top;
@@ -238,7 +238,7 @@ body #header #header-content #logo-line #search-wrapper #search-fields-wrapper {
   top: -2px;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
-/* line 149, ../sass/layout.sass */
+/* line 149, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #search-criteria {
   display: inline-block;
   vertical-align: top;
@@ -247,7 +247,7 @@ body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #
   height: 30px;
   cursor: pointer;
 }
-/* line 157, ../sass/layout.sass */
+/* line 157, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #search-criteria #selected-criteria {
   width: 120px;
   text-align: center;
@@ -256,19 +256,19 @@ body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #
   color: #666666;
   font-weight: bold;
 }
-/* line 165, ../sass/layout.sass */
+/* line 165, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #search-text-wrapper {
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
 }
-/* line 170, ../sass/layout.sass */
+/* line 170, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper #search-fields-wrapper #search-text-wrapper input[type='text'] {
   padding: 5px 7px;
   width: 400px;
   border: 0;
 }
-/* line 176, ../sass/layout.sass */
+/* line 176, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #header #header-content #logo-line #search-wrapper input[type='submit'] {
   border: 0px;
   width: 115px;
@@ -279,16 +279,16 @@ body #header #header-content #logo-line #search-wrapper input[type='submit'] {
   position: relative;
   top: -2px;
 }
-/* line 186, ../sass/layout.sass */
+/* line 186, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content {
   margin: 25px 0px;
 }
-/* line 189, ../sass/layout.sass */
+/* line 189, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper {
   width: 980px;
   margin: 0px auto;
 }
-/* line 193, ../sass/layout.sass */
+/* line 193, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories {
   display: inline-block;
   vertical-align: top;
@@ -300,14 +300,14 @@ body #content #content-wrapper #content-categories {
   border-radius: 5px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
-/* line 204, ../sass/layout.sass */
+/* line 204, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories-header {
   height: 66px;
   background: url(../../images/layout/cate-header.png) center top no-repeat;
   position: relative;
   top: -13px;
 }
-/* line 211, ../sass/layout.sass */
+/* line 211, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li {
   width: 214px;
   min-height: 14px;
@@ -315,15 +315,15 @@ body #content #content-wrapper #content-categories #categories li {
   cursor: pointer;
   padding: 8px;
 }
-/* line 218, ../sass/layout.sass */
+/* line 218, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li:hover {
   background: url(../../images/layout/catbg1.png) left -30px no-repeat;
 }
-/* line 221, ../sass/layout.sass */
+/* line 221, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li:hover a {
   color: white;
 }
-/* line 224, ../sass/layout.sass */
+/* line 224, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li.big {
   min-height: 33px;
   background: url(../../images/layout/catbg2.png) left top no-repeat !important;
@@ -331,21 +331,21 @@ body #content #content-wrapper #content-categories #categories li.big {
   padding-right: 12px;
   width: 210px;
 }
-/* line 231, ../sass/layout.sass */
+/* line 231, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li.big:hover {
   background: url(../../images/layout/catbg2.png) left -49px no-repeat !important;
 }
-/* line 236, ../sass/layout.sass */
+/* line 236, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li a {
   color: #4b4b4b;
   font-size: 13px;
   text-decoration: none;
 }
-/* line 241, ../sass/layout.sass */
+/* line 241, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-categories #categories li a:hover {
   text-decoration: none;
 }
-/* line 244, ../sass/layout.sass */
+/* line 244, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block {
   display: inline-block;
   vertical-align: top;
@@ -353,11 +353,11 @@ body #content #content-wrapper #left-menu-block {
   margin-right: 0px;
   padding-left: 15px;
 }
-/* line 251, ../sass/layout.sass */
+/* line 251, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block {
   margin-bottom: 25px;
 }
-/* line 254, ../sass/layout.sass */
+/* line 254, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block .menu-block-title {
   font-size: 14px;
   color: white;
@@ -366,7 +366,7 @@ body #content #content-wrapper #left-menu-block .menu-block .menu-block-title {
   padding-bottom: 10px;
   font-family: Arial;
 }
-/* line 263, ../sass/layout.sass */
+/* line 263, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block ul li {
   list-style-position: inside;
   list-style-image: url(../../images/layout/bullet.png);
@@ -374,17 +374,17 @@ body #content #content-wrapper #left-menu-block .menu-block ul li {
   margin: 5px 0px;
   padding-bottom: 10px;
 }
-/* line 270, ../sass/layout.sass */
+/* line 270, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block ul li a {
   color: white;
   font-family: Verdana;
   font-size: 12px;
 }
-/* line 275, ../sass/layout.sass */
+/* line 275, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block ul li a:hover {
   text-decoration: underline;
 }
-/* line 280, ../sass/layout.sass */
+/* line 280, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-section-bg {
   display: inline-block;
   vertical-align: top;
@@ -396,13 +396,13 @@ body #content #content-wrapper #content-section-bg {
   border-bottom-left-radius: 5px;
   z-index: 9;
 }
-/* line 291, ../sass/layout.sass */
+/* line 291, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-section-bg #content-section-inner {
   width: 100%;
   border: 1px dashed #c5c5c5;
   border-right: 0;
 }
-/* line 296, ../sass/layout.sass */
+/* line 296, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #content #content-wrapper #content-section {
   display: inline-block;
   vertical-align: top;
@@ -410,14 +410,14 @@ body #content #content-wrapper #content-section {
   position: relative;
   z-index: 10;
 }
-/* line 303, ../sass/layout.sass */
+/* line 303, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #footer {
   height: 28px;
   padding-top: 5px;
   border-top: 1px dashed #c5c5c5;
   background: url(../../images/layout/footer-bg.png) center bottom repeat-x;
 }
-/* line 309, ../sass/layout.sass */
+/* line 309, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #footer #footer-content {
   width: 970px;
   margin: 0px auto;
@@ -426,7 +426,7 @@ body #footer #footer-content {
   font-family: Arial;
   padding-top: 7px;
 }
-/* line 317, ../sass/layout.sass */
+/* line 317, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/layout.sass */
 body #footer #footer-content a {
   font-size: 14px;
   font-weight: bold;
@@ -435,13 +435,13 @@ body #footer #footer-content a {
   margin-right: 5px;
 }
 
-/* line 1, ../sass/page-main.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 #banners-block {
   height: 353px;
   background: url(../../images/main/banners-frame.png) top center no-repeat;
 }
 
-/* line 5, ../sass/page-main.sass */
+/* line 5, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .hr {
   height: 2px;
   width: 100%;
@@ -450,7 +450,7 @@ body #footer #footer-content a {
   margin-top: 5px;
 }
 
-/* line 12, ../sass/page-main.sass */
+/* line 12, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock {
   border: 1px solid #bbbbbb;
   padding: 10px;
@@ -458,14 +458,14 @@ body #footer #footer-content a {
   margin: 0px 5px;
   position: relative;
 }
-/* line 20, ../sass/page-main.sass */
+/* line 20, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock ul li {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   padding-left: 5px;
 }
-/* line 26, ../sass/page-main.sass */
+/* line 26, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #gold-vendor-info {
   display: inline-block;
   vertical-align: top;
@@ -473,21 +473,21 @@ body #footer #footer-content a {
   margin-left: 10px;
   border-right: 1px dashed #bbbbbb;
 }
-/* line 33, ../sass/page-main.sass */
+/* line 33, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #gold-vendor-info .title {
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 5px;
   margin-bottom: 10px;
 }
-/* line 39, ../sass/page-main.sass */
+/* line 39, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info {
   display: inline-block;
   vertical-align: top;
   width: 340px;
   text-align: center;
 }
-/* line 45, ../sass/page-main.sass */
+/* line 45, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info #place-goods {
   display: inline-block;
   vertical-align: top;
@@ -497,11 +497,11 @@ body #footer #footer-content a {
   background: url(../../images/main/placegoods.png) left top no-repeat;
   margin-right: 10px;
 }
-/* line 54, ../sass/page-main.sass */
+/* line 54, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info #place-goods:hover {
   background: url(../../images/main/placegoods.png) left -52px no-repeat;
 }
-/* line 57, ../sass/page-main.sass */
+/* line 57, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info #place-tenders {
   display: inline-block;
   vertical-align: top;
@@ -510,23 +510,23 @@ body #footer #footer-content a {
   cursor: pointer;
   background: url(../../images/main/placetenders.png) left top no-repeat;
 }
-/* line 65, ../sass/page-main.sass */
+/* line 65, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info #place-tenders:hover {
   background: url(../../images/main/placetenders.png) left -52px no-repeat;
 }
-/* line 68, ../sass/page-main.sass */
+/* line 68, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info ul {
   text-align: left;
   margin-left: 30px;
   margin-top: 10px;
 }
-/* line 73, ../sass/page-main.sass */
+/* line 73, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock #place-info .free {
   color: #004080;
   font-size: 20px;
   margin-top: 10px;
 }
-/* line 78, ../sass/page-main.sass */
+/* line 78, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .goldvendor {
   position: absolute;
   bottom: -8px;
@@ -535,16 +535,16 @@ body #footer #footer-content a {
   background: url(../../images/main/goldvendor.png) top center no-repeat;
   left: 55px;
 }
-/* line 86, ../sass/page-main.sass */
+/* line 86, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row {
   border-bottom: 1px dashed #bbbbbb;
   padding: 10px 0px;
 }
-/* line 90, ../sass/page-main.sass */
+/* line 90, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row:last-child {
   border-bottom: 0;
 }
-/* line 93, ../sass/page-main.sass */
+/* line 93, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row .item {
   padding: 5px;
   border-right: 1px dashed #bbbbbb;
@@ -553,56 +553,56 @@ body #footer #footer-content a {
   width: 159px;
   height: 159px;
 }
-/* line 101, ../sass/page-main.sass */
+/* line 101, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row .item .image {
   height: 70px;
 }
-/* line 104, ../sass/page-main.sass */
+/* line 104, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row .item .image img {
   height: 70px;
   width: auto;
 }
-/* line 108, ../sass/page-main.sass */
+/* line 108, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
 
-/* line 1, ../sass/categories.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #navigation-chain {
   margin-bottom: 15px;
 }
-/* line 4, ../sass/categories.sass */
+/* line 4, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #navigation-chain .navigation-chain-item, #navigation-chain .navigation-chain-inactive {
   color: #3f3f3f;
   font-family: Arial;
   font-size: 12px;
 }
-/* line 9, ../sass/categories.sass */
+/* line 9, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #navigation-chain a:hover {
   text-decoration: underline;
 }
 
-/* line 12, ../sass/categories.sass */
+/* line 12, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories {
   margin-left: 7px;
 }
-/* line 15, ../sass/categories.sass */
+/* line 15, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .current-category-title {
   font-size: 18px;
   color: #3f3f3f;
   margin-bottom: 20px;
 }
-/* line 20, ../sass/categories.sass */
+/* line 20, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .products-count {
   color: #a1a2a2;
   font-family: Arial;
 }
-/* line 24, ../sass/categories.sass */
+/* line 24, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level {
   margin-bottom: 15px;
   clear: both;
 }
-/* line 28, ../sass/categories.sass */
+/* line 28, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-title {
   padding: 5px 7px;
   font-size: 16px;
@@ -611,85 +611,85 @@ body #footer #footer-content a {
   background: url(../../images/layout/innerbg.png);
   margin-bottom: 15px;
 }
-/* line 36, ../sass/categories.sass */
+/* line 36, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-image {
   float: left;
   width: 165px;
   min-height: 165px;
 }
-/* line 41, ../sass/categories.sass */
+/* line 41, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child {
   display: inline-block;
   vertical-align: top;
   width: 530px;
 }
-/* line 46, ../sass/categories.sass */
+/* line 46, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level {
   display: inline-block;
   vertical-align: top;
   width: 260px;
   margin-bottom: 15px;
 }
-/* line 54, ../sass/categories.sass */
+/* line 54, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-title a {
   color: #008ac0;
   font-family: Arial;
   font-size: 14px;
 }
-/* line 59, ../sass/categories.sass */
+/* line 59, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-title a:hover {
   text-decoration: underline;
 }
-/* line 63, ../sass/categories.sass */
+/* line 63, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 69, ../sass/categories.sass */
+/* line 69, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 a {
   color: #686868;
   font-family: Arial;
   font-size: 13px;
 }
-/* line 74, ../sass/categories.sass */
+/* line 74, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 a:hover {
   text-decoration: underline;
 }
-/* line 78, ../sass/categories.sass */
+/* line 78, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-child li.level-3 .category-4-child li.level-4 {
   list-style-type: square;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 84, ../sass/categories.sass */
+/* line 84, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories #hot-products {
   border: 1px solid #bebebe;
   border-radius: 5px;
   background-color: white;
   padding: 5px;
 }
-/* line 90, ../sass/categories.sass */
+/* line 90, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories #hot-products #hot-actions {
   border-top: 1px dashed #bebebe;
   padding-top: 5px;
   margin-top: 5px;
 }
-/* line 95, ../sass/categories.sass */
+/* line 95, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories #hot-products #hot-actions a {
   color: #5f5f5f;
 }
-/* line 98, ../sass/categories.sass */
+/* line 98, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories #hot-products #hot-actions a:hover {
   text-decoration: underline;
 }
-/* line 101, ../sass/categories.sass */
+/* line 101, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories #products {
   text-align: center;
 }
-/* line 104, ../sass/categories.sass */
+/* line 104, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .info {
   display: inline-block;
   vertical-align: top;
@@ -703,52 +703,52 @@ body #footer #footer-content a {
   text-align: left;
   margin-top: 25px;
 }
-/* line 117, ../sass/categories.sass */
+/* line 117, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .info .info-title {
   font-size: 18px;
   font-weight: bold;
 }
-/* line 121, ../sass/categories.sass */
+/* line 121, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .info .info-text {
   margin-top: 20px;
   line-height: 1.5;
 }
-/* line 125, ../sass/categories.sass */
+/* line 125, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .info .action-text {
   margin-top: 15px;
   color: #004080;
   font-weight: bold;
   font-size: 13px;
 }
-/* line 131, ../sass/categories.sass */
+/* line 131, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-categories .info .action-button {
   float: right;
   margin-top: 15px;
   cursor: pointer;
 }
 
-/* line 136, ../sass/categories.sass */
+/* line 136, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #paginator {
   text-align: center;
 }
-/* line 139, ../sass/categories.sass */
+/* line 139, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #paginator a {
   border: 1px solid black;
   padding: 4px 8px;
   cursor: pointer;
   color: #444444;
 }
-/* line 145, ../sass/categories.sass */
+/* line 145, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #paginator span {
   border: 1px solid transparent;
   padding: 4px 8px;
 }
 
-/* line 149, ../sass/categories.sass */
+/* line 149, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders {
   font-family: Arial;
 }
-/* line 152, ../sass/categories.sass */
+/* line 152, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info {
   display: inline-block;
   vertical-align: top;
@@ -759,57 +759,57 @@ body #footer #footer-content a {
   margin-left: 15px;
   width: 230px;
 }
-/* line 162, ../sass/categories.sass */
+/* line 162, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info .title {
   font-size: 15px;
   font-weight: bold;
   color: #00659d;
   margin-bottom: 10px;
 }
-/* line 170, ../sass/categories.sass */
+/* line 170, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info ul li {
   list-style-type: disc;
   list-style-position: inside;
   margin: 2px 0px;
   font-size: 11px;
 }
-/* line 176, ../sass/categories.sass */
+/* line 176, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info ul li a {
   color: inherit;
   font-size: 11px;
   line-height: 1.5;
 }
-/* line 181, ../sass/categories.sass */
+/* line 181, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info ul li a:hover {
   text-decoration: underline;
 }
-/* line 184, ../sass/categories.sass */
+/* line 184, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info .separator {
   border-top: 1px dashed #aeaeae;
   margin: 15px 0px;
   height: 1px;
 }
-/* line 189, ../sass/categories.sass */
+/* line 189, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .customers-info .free {
   font-size: 16px;
   font-weight: bold;
   margin: 10px 0px;
 }
-/* line 196, ../sass/categories.sass */
+/* line 196, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-title {
   color: #424242;
   font-size: 20px;
 }
-/* line 200, ../sass/categories.sass */
+/* line 200, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .products-count {
   color: #a1a2a2;
   font-family: Arial;
 }
-/* line 204, ../sass/categories.sass */
+/* line 204, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category {
   margin-bottom: 20px;
 }
-/* line 207, ../sass/categories.sass */
+/* line 207, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-title {
   background: url(../../images/layout/innerbg.png);
   padding: 5px;
@@ -817,42 +817,42 @@ body #footer #footer-content a {
   color: white;
   margin: 10px 0px;
 }
-/* line 216, ../sass/categories.sass */
+/* line 216, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level {
   width: 45%;
   display: inline-block;
   vertical-align: top;
   margin-bottom: 10px;
 }
-/* line 222, ../sass/categories.sass */
+/* line 222, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level a {
   color: #008ac0;
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
 }
-/* line 228, ../sass/categories.sass */
+/* line 228, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level a:hover {
   text-decoration: underline;
 }
-/* line 232, ../sass/categories.sass */
+/* line 232, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level ul li {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 238, ../sass/categories.sass */
+/* line 238, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level ul li a {
   color: #686868;
   font-family: Arial;
   font-size: 13px;
 }
-/* line 243, ../sass/categories.sass */
+/* line 243, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-category .category-content .tender-category-1-level ul li a:hover {
   text-decoration: underline;
 }
-/* line 246, ../sass/categories.sass */
+/* line 246, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-banner {
   width: 100%;
   height: 230px;
@@ -861,14 +861,14 @@ body #footer #footer-content a {
   margin-bottom: 15px;
   background-color: white;
 }
-/* line 254, ../sass/categories.sass */
+/* line 254, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-filter {
   display: inline-block;
   vertical-align: top;
   width: 260px;
   margin-left: 15px;
 }
-/* line 260, ../sass/categories.sass */
+/* line 260, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-filter .title {
   font-size: 15px;
   color: white;
@@ -877,14 +877,14 @@ body #footer #footer-content a {
   margin: 5px 0px;
   border-radius: 5px;
 }
-/* line 268, ../sass/categories.sass */
+/* line 268, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center {
   display: inline-block;
   vertical-align: top;
   width: 700px;
   font-family: Arial;
 }
-/* line 274, ../sass/categories.sass */
+/* line 274, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .hr-block {
   font-size: 15px;
   color: white;
@@ -894,13 +894,13 @@ body #footer #footer-content a {
   margin: 5px 0px;
   border-radius: 5px;
 }
-/* line 283, ../sass/categories.sass */
+/* line 283, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender {
   padding-bottom: 10px;
   border-bottom: 1px solid #bababa;
   margin: 10px;
 }
-/* line 288, ../sass/categories.sass */
+/* line 288, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-date {
   float: left;
   margin-right: 15px;
@@ -908,25 +908,25 @@ body #footer #footer-content a {
   font-size: 18px;
   text-align: right;
 }
-/* line 295, ../sass/categories.sass */
+/* line 295, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-date .day {
   font-weight: bold;
 }
-/* line 301, ../sass/categories.sass */
+/* line 301, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title {
   margin-bottom: 5px;
 }
-/* line 304, ../sass/categories.sass */
+/* line 304, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title a {
   color: #008ac0;
   font-size: 14px;
   font-weight: bold;
 }
-/* line 309, ../sass/categories.sass */
+/* line 309, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title a:hover {
   text-decoration: underline;
 }
-/* line 312, ../sass/categories.sass */
+/* line 312, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .desc {
   font-size: 12px;
   line-height: 1.5;
@@ -934,20 +934,20 @@ body #footer #footer-content a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 319, ../sass/categories.sass */
+/* line 319, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .location {
   margin-top: 10px;
   font-size: 10px;
   color: gray;
 }
-/* line 324, ../sass/categories.sass */
+/* line 324, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender {
   border: 2px solid silver;
   background-color: white;
   border-radius: 10px;
   padding: 15px;
 }
-/* line 330, ../sass/categories.sass */
+/* line 330, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts {
   float: right;
   width: 250px;
@@ -960,20 +960,20 @@ body #footer #footer-content a {
   top: -17px;
   overflow: hidden;
 }
-/* line 342, ../sass/categories.sass */
+/* line 342, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts a {
   color: #33a1c2;
 }
-/* line 345, ../sass/categories.sass */
+/* line 345, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts a:hover {
   text-decoration: underline;
 }
-/* line 348, ../sass/categories.sass */
+/* line 348, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .separator {
   margin: 10px 0px;
   border-top-style: dotted;
 }
-/* line 353, ../sass/categories.sass */
+/* line 353, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .header {
   font-size: 15px;
   color: white;
@@ -981,46 +981,46 @@ body #footer #footer-content a {
   padding: 5px;
   background: url(../../images/layout/innerbg.png);
 }
-/* line 360, ../sass/categories.sass */
+/* line 360, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .gold-alert {
   padding: 10px 5px;
   line-height: 1.2;
 }
-/* line 364, ../sass/categories.sass */
+/* line 364, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts {
   padding: 5px 10px;
 }
-/* line 368, ../sass/categories.sass */
+/* line 368, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .title a {
   font-size: 20px;
 }
-/* line 371, ../sass/categories.sass */
+/* line 371, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
   color: darkgray;
   margin-top: 5px;
 }
-/* line 377, ../sass/categories.sass */
+/* line 377, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts ul li {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 383, ../sass/categories.sass */
+/* line 383, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login {
   padding: 5px 10px;
 }
-/* line 386, ../sass/categories.sass */
+/* line 386, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .login-info {
   margin: 5px 0px;
   line-height: 1.2;
 }
-/* line 390, ../sass/categories.sass */
+/* line 390, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field {
   margin-bottom: 5px;
 }
-/* line 393, ../sass/categories.sass */
+/* line 393, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1031,19 +1031,19 @@ body #footer #footer-content a {
   position: relative;
   top: 7px;
 }
-/* line 403, ../sass/categories.sass */
+/* line 403, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
 }
-/* line 408, ../sass/categories.sass */
+/* line 408, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .editor input[type='text'], #page-tenders .view-tender .tender-contacts .login .field .editor input[type='password'] {
   border: 1px solid black;
   width: 141px;
   padding: 2px;
 }
-/* line 413, ../sass/categories.sass */
+/* line 413, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login input[type='submit'] {
   border: 1px solid black;
   background-color: #008ac0;
@@ -1053,52 +1053,52 @@ body #footer #footer-content a {
   margin-right: 20px;
   cursor: pointer;
 }
-/* line 424, ../sass/categories.sass */
+/* line 424, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .info {
   width: 410px;
   margin-right: auto;
   margin-bottom: 15px;
 }
-/* line 429, ../sass/categories.sass */
+/* line 429, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .info .tender-title {
   font-size: 30px;
   color: #3c9cff;
   margin-bottom: 10px;
 }
-/* line 434, ../sass/categories.sass */
+/* line 434, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .info .info-item {
   margin-bottom: 3px;
   padding-bottom: 2px;
   border-bottom: 1px dashed #5f5f5f;
 }
-/* line 439, ../sass/categories.sass */
+/* line 439, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .info .info-item b {
   font-weight: bold;
   width: 110px;
   display: inline-block;
 }
-/* line 444, ../sass/categories.sass */
+/* line 444, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .separator {
   border-top: 1px dashed #aeaeae;
   margin: 15px 0px;
   height: 1px;
 }
-/* line 450, ../sass/categories.sass */
+/* line 450, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .details .title {
   font-size: 20px;
 }
-/* line 453, ../sass/categories.sass */
+/* line 453, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .details .details-content {
   margin-top: 10px;
   line-height: 1.5;
 }
-/* line 457, ../sass/categories.sass */
+/* line 457, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request {
   margin-top: 15px;
   text-align: center;
   display: none;
 }
-/* line 462, ../sass/categories.sass */
+/* line 462, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form {
   width: 600px;
   border: 1px solid black;
@@ -1106,17 +1106,17 @@ body #footer #footer-content a {
   margin: 0px auto;
   padding: 5px;
 }
-/* line 469, ../sass/categories.sass */
+/* line 469, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field {
   border-bottom: 1px dotted gray;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
-/* line 474, ../sass/categories.sass */
+/* line 474, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field.no-b {
   border-bottom: 0;
 }
-/* line 477, ../sass/categories.sass */
+/* line 477, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1127,28 +1127,28 @@ body #footer #footer-content a {
   position: relative;
   top: 4px;
 }
-/* line 487, ../sass/categories.sass */
+/* line 487, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
 }
-/* line 492, ../sass/categories.sass */
+/* line 492, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor input[type='text'], #page-tenders .view-tender #participation-request form .field .editor textarea {
   width: 244px;
   border: 1px solid silver;
   padding: 3px;
 }
-/* line 497, ../sass/categories.sass */
+/* line 497, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor textarea {
   width: 340px;
 }
-/* line 500, ../sass/categories.sass */
+/* line 500, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor label.error {
   color: red;
   margin-left: 5px;
 }
-/* line 504, ../sass/categories.sass */
+/* line 504, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender #participation-request form input[type='submit'] {
   border: 1px solid black;
   background-color: #008ac0;
@@ -1158,13 +1158,13 @@ body #footer #footer-content a {
   cursor: pointer;
   padding: 5px;
 }
-/* line 513, ../sass/categories.sass */
+/* line 513, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper {
   position: relative;
   text-align: center;
   margin-top: 15px;
 }
-/* line 518, ../sass/categories.sass */
+/* line 518, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper .offers {
   font-size: 20px;
   color: white;
@@ -1179,13 +1179,13 @@ body #footer #footer-content a {
   position: relative;
   left: -30px;
 }
-/* line 532, ../sass/categories.sass */
+/* line 532, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table {
   width: 100%;
   margin-top: 10px;
   color: black;
 }
-/* line 539, ../sass/categories.sass */
+/* line 539, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
@@ -1193,55 +1193,55 @@ body #footer #footer-content a {
   border-top: 0;
   padding: 5px;
 }
-/* line 546, ../sass/categories.sass */
+/* line 546, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th:first-child {
   border-left: 0;
 }
-/* line 549, ../sass/categories.sass */
+/* line 549, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th:last-child {
   border-right: 0;
 }
-/* line 554, ../sass/categories.sass */
+/* line 554, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
   border: 1px dashed #a1a2a2;
   padding: 5px;
 }
-/* line 560, ../sass/categories.sass */
+/* line 560, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td:first-child {
   border-left: 0;
 }
-/* line 563, ../sass/categories.sass */
+/* line 563, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 566, ../sass/categories.sass */
+/* line 566, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td a {
   color: #3c9cff;
   font-weight: bold;
 }
-/* line 570, ../sass/categories.sass */
+/* line 570, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 574, ../sass/categories.sass */
+/* line 574, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr:last-child td {
   border-bottom: 0;
 }
-/* line 582, ../sass/categories.sass */
+/* line 582, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .action {
   margin-top: 5px;
 }
-/* line 585, ../sass/categories.sass */
+/* line 585, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .action a {
   color: #33a1c2;
 }
-/* line 587, ../sass/categories.sass */
+/* line 587, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .action a:hover {
   text-decoration: underline;
 }
-/* line 592, ../sass/categories.sass */
+/* line 592, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders {
   border: 2px solid silver;
   background-color: white;
@@ -1249,18 +1249,18 @@ body #footer #footer-content a {
   padding: 15px;
   margin-top: 15px;
 }
-/* line 599, ../sass/categories.sass */
+/* line 599, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .title {
   font-size: 18px;
 }
-/* line 602, ../sass/categories.sass */
+/* line 602, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block {
   display: inline-block;
   vertical-align: top;
   width: 470px;
   border-right: 1px dotted gray;
 }
-/* line 608, ../sass/categories.sass */
+/* line 608, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-2-block {
   display: inline-block;
   vertical-align: top;
@@ -1268,35 +1268,35 @@ body #footer #footer-content a {
   position: relative;
   left: -3px;
 }
-/* line 616, ../sass/categories.sass */
+/* line 616, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block, #page-tenders .other-tenders .other-2-block {
   margin-top: 10px;
 }
-/* line 619, ../sass/categories.sass */
+/* line 619, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender, #page-tenders .other-tenders .other-2-block .other-tender {
   clear: both;
   padding: 5px;
 }
-/* line 623, ../sass/categories.sass */
+/* line 623, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender:nth-child(odd), #page-tenders .other-tenders .other-2-block .other-tender:nth-child(odd) {
   background-color: #e4dee2;
 }
-/* line 626, ../sass/categories.sass */
+/* line 626, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender .tender-date, #page-tenders .other-tenders .other-2-block .other-tender .tender-date {
   color: gray;
   float: right;
   text-align: right;
 }
-/* line 631, ../sass/categories.sass */
+/* line 631, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a, #page-tenders .other-tenders .other-2-block .other-tender a {
   color: black;
 }
-/* line 634, ../sass/categories.sass */
+/* line 634, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a:hover, #page-tenders .other-tenders .other-2-block .other-tender a:hover {
   text-decoration: underline;
 }
 
-/* line 1, ../sass/products.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .products-navigator {
   margin: 15px 0px;
   background: url(../../images/layout/innerbg.png);
@@ -1307,11 +1307,11 @@ body #footer #footer-content a {
   min-height: 15px;
   border-radius: 5px;
 }
-/* line 11, ../sass/products.sass */
+/* line 11, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .products-navigator .product-sort {
   float: right;
 }
-/* line 14, ../sass/products.sass */
+/* line 14, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .products-navigator .prev {
   padding-left: 32px;
   position: relative;
@@ -1321,7 +1321,7 @@ body #footer #footer-content a {
   padding-right: 8px;
   cursor: pointer;
 }
-/* line 23, ../sass/products.sass */
+/* line 23, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .products-navigator .next {
   padding-right: 32px;
   position: relative;
@@ -1329,12 +1329,12 @@ body #footer #footer-content a {
   cursor: pointer;
   background: url(../../images/layout/pnext.png) right center no-repeat;
 }
-/* line 30, ../sass/products.sass */
+/* line 30, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .products-navigator .next:hover, .products-navigator .prev:hover {
   text-decoration: underline;
 }
 
-/* line 34, ../sass/products.sass */
+/* line 34, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product {
   display: inline-block;
   vertical-align: top;
@@ -1343,17 +1343,18 @@ body #footer #footer-content a {
   width: 170px;
   font-family: Arial;
 }
-/* line 42, ../sass/products.sass */
+/* line 42, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product:last-child {
   border-right: 0 !important;
 }
-/* line 45, ../sass/products.sass */
+/* line 45, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .title {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0px 5px;
+  height: 28px;
 }
-/* line 50, ../sass/products.sass */
+/* line 51, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .title a {
   color: #0099cc;
   font-size: 13px;
@@ -1362,34 +1363,34 @@ body #footer #footer-content a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 58, ../sass/products.sass */
+/* line 59, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .title a:hover {
   text-decoration: underline;
 }
-/* line 61, ../sass/products.sass */
+/* line 62, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .image {
   margin-top: 15px;
   min-height: 85px;
 }
-/* line 65, ../sass/products.sass */
+/* line 66, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .image img {
   max-width: 150px;
   max-height: 120px;
   min-height: 100px;
 }
-/* line 70, ../sass/products.sass */
+/* line 71, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .price {
   color: #999999;
   margin-top: 25px;
   font-size: 14px;
 }
-/* line 75, ../sass/products.sass */
+/* line 76, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .hot-product .price .price-holder {
   margin-left: 5px;
   color: #444444;
 }
 
-/* line 79, ../sass/products.sass */
+/* line 80, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product {
   display: inline-block;
   vertical-align: top;
@@ -1397,26 +1398,27 @@ body #footer #footer-content a {
   text-align: left;
   margin: 12px;
 }
-/* line 86, ../sass/products.sass */
+/* line 87, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .image {
   border: 1px solid #c3c3c3;
   height: 200px;
   text-align: center;
   overflow: hidden;
 }
-/* line 92, ../sass/products.sass */
+/* line 93, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .image img {
   width: 190px;
   height: auto;
 }
-/* line 96, ../sass/products.sass */
+/* line 97, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .title {
   margin-top: 5px;
   height: 26px;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 32px;
 }
-/* line 102, ../sass/products.sass */
+/* line 104, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .title a {
   color: #3c9cff;
   font-family: Verdana;
@@ -1424,38 +1426,38 @@ body #footer #footer-content a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 109, ../sass/products.sass */
+/* line 111, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .title a:hover {
   text-decoration: underline;
 }
-/* line 112, ../sass/products.sass */
+/* line 114, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .details {
   margin-top: 15px;
   color: #919191;
   text-align: left;
   font-size: 10px;
 }
-/* line 118, ../sass/products.sass */
+/* line 120, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .details .detailItem {
   margin-bottom: 5px;
 }
-/* line 121, ../sass/products.sass */
+/* line 123, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .author {
   margin-top: 10px;
 }
-/* line 124, ../sass/products.sass */
+/* line 126, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/products.sass */
 .product .author a {
   color: #919191;
 }
 
-/* line 1, ../sass/page-register.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register {
   margin-top: 5px;
   margin-left: 15px;
   min-height: 600px;
   font-family: Arial;
 }
-/* line 7, ../sass/page-register.sass */
+/* line 7, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #registration-info {
   float: right;
   border: 1px solid #bebebe;
@@ -1463,22 +1465,22 @@ body #footer #footer-content a {
   padding: 10px;
   width: 195px;
 }
-/* line 14, ../sass/page-register.sass */
+/* line 14, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #registration-info .title {
   font-weight: bold;
   font-size: 16px;
   margin-top: 5px;
 }
-/* line 19, ../sass/page-register.sass */
+/* line 19, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #registration-info .info {
   margin-top: 20px;
   line-height: 1.5;
 }
-/* line 23, ../sass/page-register.sass */
+/* line 23, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #registration-info .info .digit {
   color: #b8b8b8;
 }
-/* line 26, ../sass/page-register.sass */
+/* line 26, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #registration-info .free {
   margin-top: 20px;
   color: #02659e;
@@ -1486,18 +1488,18 @@ body #footer #footer-content a {
   font-size: 16px;
   text-align: center;
 }
-/* line 33, ../sass/page-register.sass */
+/* line 33, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .required-warning {
   font-size: 16px;
   margin: 20px 0px;
   color: #0170a5;
   font-style: italic;
 }
-/* line 39, ../sass/page-register.sass */
+/* line 39, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field {
   margin-bottom: 3px;
 }
-/* line 42, ../sass/page-register.sass */
+/* line 42, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1507,23 +1509,23 @@ body #footer #footer-content a {
   padding-top: 10px;
   font-weight: bold;
 }
-/* line 51, ../sass/page-register.sass */
+/* line 51, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .label.header {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 15px;
   margin-top: 10px;
 }
-/* line 57, ../sass/page-register.sass */
+/* line 57, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .label .asterix {
   color: #0170a5;
 }
-/* line 60, ../sass/page-register.sass */
+/* line 60, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor {
   display: inline-block;
   vertical-align: top;
 }
-/* line 64, ../sass/page-register.sass */
+/* line 64, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor input[type='text'], #page-register .field .editor input[type='password'] {
   background-color: white;
   padding: 5px;
@@ -1531,30 +1533,30 @@ body #footer #footer-content a {
   border: 1px solid #cecece;
   border-radius: 3px;
 }
-/* line 71, ../sass/page-register.sass */
+/* line 71, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor input[type='text'].small, #page-register .field .editor input[type='password'].small {
   width: 80px !important;
 }
-/* line 74, ../sass/page-register.sass */
+/* line 74, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor input[type='text'].error, #page-register .field .editor input[type='password'].error {
   background-color: #ffc7bb;
 }
-/* line 77, ../sass/page-register.sass */
+/* line 77, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor #captcha-image {
   width: 115px;
   height: 37px;
   margin-right: 5px;
 }
-/* line 82, ../sass/page-register.sass */
+/* line 82, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor #captcha-field {
   width: 150px;
 }
-/* line 85, ../sass/page-register.sass */
+/* line 85, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register .field .editor label.error {
   color: red;
   margin-left: 5px;
 }
-/* line 89, ../sass/page-register.sass */
+/* line 89, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/page-register.sass */
 #page-register #reg-button {
   margin-top: 25px;
   width: 149px;
@@ -1565,43 +1567,43 @@ body #footer #footer-content a {
   margin-left: 220px;
 }
 
-/* line 1, ../sass/account.sass */
+/* line 1, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account {
   background: url(../../images/layout/innerbg.png) !important;
   font-family: Arial;
 }
-/* line 5, ../sass/account.sass */
+/* line 5, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header {
   border-bottom: 0;
   background: none;
   height: auto !important;
   margin-bottom: 15px;
 }
-/* line 11, ../sass/account.sass */
+/* line 11, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content {
   width: 1240px;
   margin: 0px auto;
   margin-top: 25px;
 }
-/* line 16, ../sass/account.sass */
+/* line 16, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #select-name {
   float: right;
   color: #bebebe;
   margin-right: 0px;
 }
-/* line 21, ../sass/account.sass */
+/* line 21, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #select-name .name-part {
   font-weight: bold;
   color: white;
 }
-/* line 25, ../sass/account.sass */
+/* line 25, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #select-name input[type='text'] {
   border: 0;
   background-color: white;
   padding: 3px;
   width: 95px;
 }
-/* line 31, ../sass/account.sass */
+/* line 31, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #select-name input[type='submit'] {
   border: 0;
   width: 30px;
@@ -1610,17 +1612,17 @@ body #footer #footer-content a {
   margin-left: 5px;
   cursor: pointer;
 }
-/* line 39, ../sass/account.sass */
+/* line 39, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #logo {
   margin-left: 0px;
 }
-/* line 42, ../sass/account.sass */
+/* line 42, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #header-links {
   border-top: 1px solid white;
   padding-top: 15px;
   margin-top: 15px;
 }
-/* line 47, ../sass/account.sass */
+/* line 47, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #header #header-content #header-links #ask {
   background: url(../../images/account/message.png) left center no-repeat;
   padding-left: 30px;
@@ -1628,12 +1630,12 @@ body #footer #footer-content a {
   font-size: 14px;
   text-decoration: underline;
 }
-/* line 55, ../sass/account.sass */
+/* line 55, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content {
   margin: 0;
   position: relative;
 }
-/* line 59, ../sass/account.sass */
+/* line 59, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-section-bg {
   display: inline-block;
   vertical-align: top;
@@ -1646,29 +1648,29 @@ body #footer #footer-content a {
   left: 0px;
   top: 0px;
 }
-/* line 71, ../sass/account.sass */
+/* line 71, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-section-bg #content-section-inner {
   width: 100%;
   border: 1px dashed #c5c5c5;
   border-left: 0;
 }
-/* line 76, ../sass/account.sass */
+/* line 76, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper {
   width: 1240px;
   margin: 0px auto;
   position: relative;
   z-index: 10;
 }
-/* line 82, ../sass/account.sass */
+/* line 82, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block {
   float: right;
   width: 220px;
 }
-/* line 86, ../sass/account.sass */
+/* line 86, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block {
   margin-bottom: 35px;
 }
-/* line 89, ../sass/account.sass */
+/* line 89, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block .title {
   font-size: 14px;
   color: #33a1c2;
@@ -1677,7 +1679,7 @@ body #footer #footer-content a {
   padding-bottom: 10px;
   font-family: Arial;
 }
-/* line 98, ../sass/account.sass */
+/* line 98, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li {
   list-style-position: inside;
   list-style-image: url(../../images/layout/bullet.png);
@@ -1685,21 +1687,21 @@ body #footer #footer-content a {
   margin: 5px 0px;
   padding-bottom: 10px;
 }
-/* line 105, ../sass/account.sass */
+/* line 105, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li a {
   color: white;
   font-family: Verdana;
   font-size: 12px;
 }
-/* line 110, ../sass/account.sass */
+/* line 110, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #menu-block .menu-block ul li a:hover {
   text-decoration: underline;
 }
-/* line 113, ../sass/account.sass */
+/* line 113, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #content #content-wrapper #content-section {
   width: 990px;
 }
-/* line 116, ../sass/account.sass */
+/* line 116, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group {
   margin: 15px;
   margin-bottom: 30px;
@@ -1709,14 +1711,14 @@ body #footer #footer-content a {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-/* line 125, ../sass/account.sass */
+/* line 125, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .column {
   display: inline-block;
   vertical-align: top;
   width: 30%;
   margin-left: 30px;
 }
-/* line 131, ../sass/account.sass */
+/* line 131, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .fields-title {
   font-size: 20px;
   font-weight: bold;
@@ -1726,21 +1728,21 @@ body #footer #footer-content a {
   border-bottom: 1px solid #ddddde;
   margin-bottom: 15px;
 }
-/* line 140, ../sass/account.sass */
+/* line 140, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .separator {
   margin: 25px 0px;
   height: 1px;
   border-bottom: 1px solid #ddddde;
 }
-/* line 145, ../sass/account.sass */
+/* line 145, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field {
   margin-bottom: 10px;
 }
-/* line 148, ../sass/account.sass */
+/* line 148, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field:first-child {
   margin-top: 15px;
 }
-/* line 151, ../sass/account.sass */
+/* line 151, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1748,100 +1750,100 @@ body #footer #footer-content a {
   width: 293px;
   padding-top: 5px;
 }
-/* line 158, ../sass/account.sass */
+/* line 158, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .label .asterix {
   color: red;
 }
-/* line 161, ../sass/account.sass */
+/* line 161, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .label a {
   color: black;
 }
-/* line 164, ../sass/account.sass */
+/* line 164, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
 }
-/* line 169, ../sass/account.sass */
+/* line 169, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor:first-child {
   text-align: center;
 }
-/* line 172, ../sass/account.sass */
+/* line 172, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor:first-child textarea {
   width: 720px;
   margin-left: 100px;
 }
-/* line 177, ../sass/account.sass */
+/* line 177, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor input[type='text'], .account .fields-group .field .editor textarea {
   border: 1px solid #cdcdcd;
   padding: 3px;
   width: 390px;
 }
-/* line 182, ../sass/account.sass */
+/* line 182, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor input[type='text'].small, .account .fields-group .field .editor textarea.small {
   width: 123px;
 }
-/* line 186, ../sass/account.sass */
+/* line 186, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor textarea {
   min-height: 150px;
 }
-/* line 189, ../sass/account.sass */
+/* line 189, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor label.error {
   margin-left: 5px;
   color: red;
 }
-/* line 193, ../sass/account.sass */
+/* line 193, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .field .editor .details {
   color: gray;
   font-size: 10px;
   margin-top: 5px;
 }
-/* line 198, ../sass/account.sass */
+/* line 198, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table {
   width: 100%;
   margin-top: 10px;
   color: black;
 }
-/* line 205, ../sass/account.sass */
+/* line 205, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
   border: 1px solid darkgray;
   padding: 5px;
 }
-/* line 211, ../sass/account.sass */
+/* line 211, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table thead tr th:first-child {
   border-left: 0;
 }
-/* line 214, ../sass/account.sass */
+/* line 214, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table thead tr th:last-child {
   border-right: 0;
 }
-/* line 219, ../sass/account.sass */
+/* line 219, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
   border: 1px solid darkgray;
   padding: 5px;
 }
-/* line 225, ../sass/account.sass */
+/* line 225, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td:first-child {
   border-left: 0;
 }
-/* line 228, ../sass/account.sass */
+/* line 228, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 231, ../sass/account.sass */
+/* line 231, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td a {
   color: #3c9cff;
   font-weight: bold;
 }
-/* line 235, ../sass/account.sass */
+/* line 235, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 238, ../sass/account.sass */
+/* line 238, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .fields-group .offers-table tbody tr td .answer {
   margin-top: 5px;
   display: block;
@@ -1856,7 +1858,7 @@ body #footer #footer-content a {
   text-align: left;
   margin-left: 30px;
 }
-/* line 252, ../sass/account.sass */
+/* line 252, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account input.save[type='submit'] {
   width: 229px;
   height: 47px;
@@ -1865,7 +1867,7 @@ body #footer #footer-content a {
   cursor: pointer;
   margin-bottom: 25px;
 }
-/* line 260, ../sass/account.sass */
+/* line 260, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #add-product {
   display: inline-block;
   vertical-align: top;
@@ -1875,7 +1877,7 @@ body #footer #footer-content a {
   background: url(../../images/account/add-product.png) left top no-repeat;
   margin-left: 20px;
 }
-/* line 269, ../sass/account.sass */
+/* line 269, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #add-category {
   display: inline-block;
   vertical-align: top;
@@ -1885,7 +1887,7 @@ body #footer #footer-content a {
   background: url(../../images/account/add-category.png) left top no-repeat;
   margin-left: 20px;
 }
-/* line 278, ../sass/account.sass */
+/* line 278, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account #add-tender {
   display: inline-block;
   vertical-align: top;
@@ -1895,62 +1897,62 @@ body #footer #footer-content a {
   background: url(../../images/account/add-tender-inner.png) left top no-repeat;
   margin-left: 20px;
 }
-/* line 287, ../sass/account.sass */
+/* line 287, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table, .account .tenders-table {
   border-top: 2px solid #ddddde;
   width: 100%;
   margin-top: 15px;
 }
-/* line 294, ../sass/account.sass */
+/* line 294, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td, .account .tenders-table tbody tr td {
   border: 1px solid #ddddde;
   padding: 15px;
   text-align: center;
   vertical-align: middle;
 }
-/* line 300, ../sass/account.sass */
+/* line 300, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td a, .account .tenders-table tbody tr td a {
   color: black;
 }
-/* line 303, ../sass/account.sass */
+/* line 303, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td a:hover, .account .tenders-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 306, ../sass/account.sass */
+/* line 306, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td:first-child, .account .tenders-table tbody tr td:first-child {
   border-left: 0;
   text-align: left;
 }
-/* line 310, ../sass/account.sass */
+/* line 310, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td:first-child a, .account .tenders-table tbody tr td:first-child a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 314, ../sass/account.sass */
+/* line 314, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-table tbody tr td:last-child, .account .tenders-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 317, ../sass/account.sass */
+/* line 317, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .action-panel {
   background: #f0f0f0;
   padding: 10px;
 }
-/* line 321, ../sass/account.sass */
+/* line 321, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .action-panel .select-all {
   width: 18px;
   height: 17px;
   cursor: pointer;
   margin-right: 15px;
 }
-/* line 327, ../sass/account.sass */
+/* line 327, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .action-panel .select-all.top {
   background: url(../../images/account/top-check.png) left top no-repeat;
 }
-/* line 330, ../sass/account.sass */
+/* line 330, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .action-panel .select-all.bottom {
   background: url(../../images/account/bottom-check.png) left top no-repeat;
 }
-/* line 333, ../sass/account.sass */
+/* line 333, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .action-panel .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -1967,59 +1969,59 @@ body #footer #footer-content a {
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 349, ../sass/account.sass */
+/* line 349, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table {
   width: 100%;
 }
-/* line 352, ../sass/account.sass */
+/* line 352, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr {
   border-top: 1px solid #e2e2e2;
   border-bottom: 1px solid #e2e2e2;
 }
-/* line 356, ../sass/account.sass */
+/* line 356, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr:hover {
   background-color: #f0f0f0;
 }
-/* line 359, ../sass/account.sass */
+/* line 359, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr td {
   padding: 15px;
   text-align: center;
   vertical-align: middle;
 }
-/* line 364, ../sass/account.sass */
+/* line 364, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr td a {
   color: black;
 }
-/* line 367, ../sass/account.sass */
+/* line 367, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr td a:hover {
   text-decoration: underline;
 }
-/* line 370, ../sass/account.sass */
+/* line 370, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr td.name {
   text-align: left;
   width: 100%;
 }
-/* line 374, ../sass/account.sass */
+/* line 374, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .products-table tr td.name a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 378, ../sass/account.sass */
+/* line 378, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .hot-product-stats {
   margin: 15px 40px;
 }
-/* line 381, ../sass/account.sass */
+/* line 381, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .hot-product-stats .item {
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 15px;
 }
-/* line 386, ../sass/account.sass */
+/* line 386, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .hot-product-stats .pay-hot-product {
   float: right;
   margin-top: 10px;
 }
-/* line 390, ../sass/account.sass */
+/* line 390, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .hot-product-stats .pay-hot-product .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -2037,33 +2039,33 @@ body #footer #footer-content a {
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 407, ../sass/account.sass */
+/* line 407, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .send-title {
   margin-left: 40px;
 }
-/* line 410, ../sass/account.sass */
+/* line 410, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .send-title a {
   color: #33a1c2;
   font-size: 13px;
 }
-/* line 414, ../sass/account.sass */
+/* line 414, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .send-title a:hover {
   text-decoration: underline;
 }
-/* line 418, ../sass/account.sass */
+/* line 418, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .send-title a b {
   font-weight: bold;
 }
-/* line 424, ../sass/account.sass */
+/* line 424, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-selector {
   width: 100%;
 }
-/* line 427, ../sass/account.sass */
+/* line 427, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-selector td {
   width: 25%;
   border: 1px solid #ddddde;
 }
-/* line 431, ../sass/account.sass */
+/* line 431, D:/Projects/Проекты SoftGears/Kartel/Kartel.Trade.Web/Content/styles/sass/account.sass */
 .account .categories-selector td select {
   width: 99%;
   height: auto;

@@ -1,11 +1,12 @@
-﻿@model Kartel.Domain.Entities.Product
+﻿@using Kartel.Domain.Infrastructure.Misc
+@model Kartel.Domain.Entities.Product
 
 <div class="product">
     <div class="image">
         <img src="/files/prodimage/@Model.Img"/>
     </div>
     <div class="title">
-        <a href="/product/@Model.Id">@Model.Title</a>
+        <a href="/product/@Model.Id">@Model.Title.TrimEllipsis(30)</a>
     </div>
     <div class="details">
         <div class="detailItem">

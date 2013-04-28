@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
+using Kartel.Trade.Web.Classes.Utils;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
 
@@ -576,9 +578,6 @@ namespace Kartel.Trade.Web.Controllers
                 product = model;
                 product.Date = DateTime.Now;
                 product.User = CurrentUser;
-
-                // TODO: добавить сохранение фотографий продукту
-
                 CurrentUser.Products.Add(product);
             }
             else
@@ -627,6 +626,18 @@ namespace Kartel.Trade.Web.Controllers
 
             // Сохраняем изменения
             UsersRepository.SubmitChanges();
+
+            // Сохраняем фотографию
+            var productImageFile = Request.Files["ProductImage"];
+            if (productImageFile != null && productImageFile.ContentLength > 0 && productImageFile.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("prod-{0}-{1}{2}", product.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(productImageFile.FileName));
+                FileUtils.SavePostedFile(productImageFile,"prodimage",fileName);
+                product.Img = fileName;
+                UsersRepository.SubmitChanges();
+            }
 
             // Перенаправляемся на список продуктов
             return RedirectToAction("CategoryProducts",new {id = product.UserCategoryId});

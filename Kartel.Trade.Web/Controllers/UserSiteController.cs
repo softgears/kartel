@@ -62,7 +62,7 @@ namespace Kartel.Trade.Web.Controllers
             {
                 var startPos = 0;
                 // Добавляем пользователю категории товаров
-                foreach(var product in user.Products)
+                foreach(var product in user.Products.Where(p => p.Category != null))
                 {
                     // Ищем категорию
                     var category = user.UserCategories.FirstOrDefault(uc => uc.Title == product.Category.Title);
@@ -158,7 +158,8 @@ namespace Kartel.Trade.Web.Controllers
             // Навигационная цепочка
             PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
             PushNavigationChainItem("Товары", string.Format("/vendor/products/{0}", id));
-            PushNavigationChainItem(product.UserCategory.Title, string.Format("/vendor/category/{0}?catId={1}", product.UserId, product.UserCategoryId));
+            if (product.UserCategory != null)
+                PushNavigationChainItem(product.UserCategory.Title, string.Format("/vendor/category/{0}?catId={1}", product.UserId, product.UserCategoryId));
             PushNavigationChainItem(product.Title, string.Format("/product/{0}", product.Id),true);
 
             // Отображаем вид
