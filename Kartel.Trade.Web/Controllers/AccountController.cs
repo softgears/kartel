@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Enums;
 using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
@@ -143,6 +144,13 @@ namespace Kartel.Trade.Web.Controllers
                     Date = DateTime.Now,
                     Tarif = "free"
                 };
+            newUser.UserPhones.Add(new UserPhone()
+                {
+                    User = newUser,
+                    CityCode = model.CityCode,
+                    CountryCode = model.CountryCode,
+                    PhoneNumber = model.PhoneNumber
+                });
             UsersRepository.Add(newUser);
             UsersRepository.SubmitChanges();
             // TODO: добавить авторизацию пользователя
@@ -243,7 +251,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost][Route("account/save-profile")]
-        public ActionResult SaveCompanyProfile(User model)
+        public ActionResult SaveCompanyProfile(User model, FormCollection collection)
         {
             if (!IsAuthentificated)
             {
@@ -254,10 +262,45 @@ namespace Kartel.Trade.Web.Controllers
             // Основное инфо
             CurrentUser.Company = model.Company;
             CurrentUser.Brand = model.Brand;
-            // TODO: доабвить сохранение лого компании
             CurrentUser.FIO = model.FIO;
-            // TODO: добавить сохранение портрета пользователя
-            // TODO: добавить сохранение номером телефона
+
+            // Основной телефон
+            var mainPhone = CurrentUser.GetMainUserPhone();
+            if (mainPhone.User == null)
+            {
+                mainPhone.User = CurrentUser;
+                mainPhone.Type = (short) CustomPhoneType.MainPhone;
+                CurrentUser.UserPhones.Add(mainPhone);
+            }
+            mainPhone.CountryCode = collection["PhoneCountryCode"];
+            mainPhone.CityCode = collection["PhoneCityCode"];
+            mainPhone.PhoneNumber = collection["PhoneNumber"];
+
+            // Факс
+            var faxPhone = CurrentUser.GetMainFaxPhone();
+            if (faxPhone.User == null)
+            {
+                faxPhone.User = CurrentUser;
+                faxPhone.Type = (short) CustomPhoneType.MainFax;
+                CurrentUser.UserPhones.Add(faxPhone);
+            }
+            faxPhone.CountryCode = collection["FaxCountryCode"];
+            faxPhone.CityCode = collection["FaxCityCode"];
+            faxPhone.PhoneNumber = collection["FaxNumber"];
+
+            // Сотовый
+            var cellPhone = CurrentUser.GetMainCellPhone();
+            if (cellPhone.User == null)
+            {
+                cellPhone.User = CurrentUser;
+                cellPhone.Type = (short) CustomPhoneType.MainCell;
+                CurrentUser.UserPhones.Add(cellPhone);
+            }
+            cellPhone.CountryCode = collection["CellPhoneCountryCode"];
+            cellPhone.CityCode = collection["CellPhoneCityCode"];
+            cellPhone.PhoneNumber = collection["CellPhoneNumber"];
+
+            // Другие контакты
             CurrentUser.Skype = model.Skype;
             CurrentUser.ICQ = model.ICQ;
             CurrentUser.Url = model.Url;

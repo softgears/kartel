@@ -72,6 +72,7 @@
     <Compile Include="Entities\Tender.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserCategory.cs" />
+    <Compile Include="Enums\CustomPhoneType.cs" />
     <Compile Include="Enums\EnumDescriptionAttribute.cs" />
     <Compile Include="Enums\EnumUtils.cs" />
     <Compile Include="Enums\TenderDeliveryInfo.cs" />
