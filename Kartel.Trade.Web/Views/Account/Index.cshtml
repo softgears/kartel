@@ -36,9 +36,10 @@
                     Логотип
                 </div>
                 <div class="editor">
-                    <div class="image-wrapper">
-                        <img src="/files/logos/" />
-                    </div>
+                    @if (!String.IsNullOrEmpty(current.LogoUrl))
+                    {
+                        <img src="/files/userimage/@current.LogoUrl" style="height: 75px; width: auto"/>    
+                    }
                     <input type="file" name="LogoImage" placeholder="GIF или JPEG не более 200кб" />
                 </div>
             </div>
@@ -68,6 +69,10 @@
                     Фотография
                 </div>
                 <div class="editor">
+                    @if (!String.IsNullOrEmpty(current.FIOImg))
+                    {
+                        <img src="/files/userimage/@current.FIOImg" style="height: 75px; width: auto"/>    
+                    }
                     <input type="file" name="FIOImage" placeholder="GIF или JPEG не более 200кб" />
                 </div>
             </div>
@@ -173,7 +178,7 @@
                     Индекс
                 </div>
                 <div class="editor">
-                    <input type="text" name="Postcode" value="@current.PostCode" />
+                    <input type="text" name="ZIP" value="@current.ZIP" />
                 </div>
             </div>
         </div>

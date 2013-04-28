@@ -307,8 +307,29 @@ namespace Kartel.Trade.Web.Controllers
             // Дилер
             CurrentUser.Dealer = model.Dealer;
 
+            // Сохраняем фотографии товара и контактного лица
+            var logoImage = Request.Files["LogoImage"];
+            if (logoImage != null && logoImage.ContentLength > 0 && logoImage.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("logo-{0}-{1}{2}", CurrentUser.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(logoImage.FileName));
+                FileUtils.SavePostedFile(logoImage, "userimage", fileName);
+                CurrentUser.LogoUrl = fileName;
+            }
+            var fioImage = Request.Files["FIOImage"];
+            if (fioImage != null && fioImage.ContentLength > 0 && fioImage.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("fio-{0}-{1}{2}", CurrentUser.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(fioImage.FileName));
+                FileUtils.SavePostedFile(fioImage, "userimage", fileName);
+                CurrentUser.FIOImg = fileName;
+            }
+
             // Сохраняем
             UsersRepository.SubmitChanges();
+
             return View("ProfileSaved");
         }
 
