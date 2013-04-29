@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Enums;
 using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
+using Kartel.Trade.Web.Classes.Utils;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
 
@@ -141,6 +144,13 @@ namespace Kartel.Trade.Web.Controllers
                     Date = DateTime.Now,
                     Tarif = "free"
                 };
+            newUser.UserPhones.Add(new UserPhone()
+                {
+                    User = newUser,
+                    CityCode = model.CityCode,
+                    CountryCode = model.CountryCode,
+                    PhoneNumber = model.PhoneNumber
+                });
             UsersRepository.Add(newUser);
             UsersRepository.SubmitChanges();
             // TODO: добавить авторизацию пользователя
@@ -241,7 +251,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost][Route("account/save-profile")]
-        public ActionResult SaveCompanyProfile(User model)
+        public ActionResult SaveCompanyProfile(User model, FormCollection collection)
         {
             if (!IsAuthentificated)
             {
@@ -252,10 +262,45 @@ namespace Kartel.Trade.Web.Controllers
             // Основное инфо
             CurrentUser.Company = model.Company;
             CurrentUser.Brand = model.Brand;
-            // TODO: доабвить сохранение лого компании
             CurrentUser.FIO = model.FIO;
-            // TODO: добавить сохранение портрета пользователя
-            // TODO: добавить сохранение номером телефона
+
+            // Основной телефон
+            var mainPhone = CurrentUser.GetMainUserPhone();
+            if (mainPhone.User == null)
+            {
+                mainPhone.User = CurrentUser;
+                mainPhone.Type = (short) CustomPhoneType.MainPhone;
+                CurrentUser.UserPhones.Add(mainPhone);
+            }
+            mainPhone.CountryCode = collection["PhoneCountryCode"];
+            mainPhone.CityCode = collection["PhoneCityCode"];
+            mainPhone.PhoneNumber = collection["PhoneNumber"];
+
+            // Факс
+            var faxPhone = CurrentUser.GetMainFaxPhone();
+            if (faxPhone.User == null)
+            {
+                faxPhone.User = CurrentUser;
+                faxPhone.Type = (short) CustomPhoneType.MainFax;
+                CurrentUser.UserPhones.Add(faxPhone);
+            }
+            faxPhone.CountryCode = collection["FaxCountryCode"];
+            faxPhone.CityCode = collection["FaxCityCode"];
+            faxPhone.PhoneNumber = collection["FaxNumber"];
+
+            // Сотовый
+            var cellPhone = CurrentUser.GetMainCellPhone();
+            if (cellPhone.User == null)
+            {
+                cellPhone.User = CurrentUser;
+                cellPhone.Type = (short) CustomPhoneType.MainCell;
+                CurrentUser.UserPhones.Add(cellPhone);
+            }
+            cellPhone.CountryCode = collection["CellPhoneCountryCode"];
+            cellPhone.CityCode = collection["CellPhoneCityCode"];
+            cellPhone.PhoneNumber = collection["CellPhoneNumber"];
+
+            // Другие контакты
             CurrentUser.Skype = model.Skype;
             CurrentUser.ICQ = model.ICQ;
             CurrentUser.Url = model.Url;
@@ -305,8 +350,29 @@ namespace Kartel.Trade.Web.Controllers
             // Дилер
             CurrentUser.Dealer = model.Dealer;
 
+            // Сохраняем фотографии товара и контактного лица
+            var logoImage = Request.Files["LogoImage"];
+            if (logoImage != null && logoImage.ContentLength > 0 && logoImage.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("logo-{0}-{1}{2}", CurrentUser.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(logoImage.FileName));
+                FileUtils.SavePostedFile(logoImage, "userimage", fileName);
+                CurrentUser.LogoUrl = fileName;
+            }
+            var fioImage = Request.Files["FIOImage"];
+            if (fioImage != null && fioImage.ContentLength > 0 && fioImage.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("fio-{0}-{1}{2}", CurrentUser.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(fioImage.FileName));
+                FileUtils.SavePostedFile(fioImage, "userimage", fileName);
+                CurrentUser.FIOImg = fileName;
+            }
+
             // Сохраняем
             UsersRepository.SubmitChanges();
+
             return View("ProfileSaved");
         }
 
@@ -576,9 +642,6 @@ namespace Kartel.Trade.Web.Controllers
                 product = model;
                 product.Date = DateTime.Now;
                 product.User = CurrentUser;
-
-                // TODO: добавить сохранение фотографий продукту
-
                 CurrentUser.Products.Add(product);
             }
             else
@@ -627,6 +690,18 @@ namespace Kartel.Trade.Web.Controllers
 
             // Сохраняем изменения
             UsersRepository.SubmitChanges();
+
+            // Сохраняем фотографию
+            var productImageFile = Request.Files["ProductImage"];
+            if (productImageFile != null && productImageFile.ContentLength > 0 && productImageFile.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("prod-{0}-{1}{2}", product.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(productImageFile.FileName));
+                FileUtils.SavePostedFile(productImageFile,"prodimage",fileName);
+                product.Img = fileName;
+                UsersRepository.SubmitChanges();
+            }
 
             // Перенаправляемся на список продуктов
             return RedirectToAction("CategoryProducts",new {id = product.UserCategoryId});
@@ -773,6 +848,7 @@ namespace Kartel.Trade.Web.Controllers
                 tender.Description = model.Description;
                 tender.MinPrice = model.MinPrice;
                 tender.MaxPrice = model.MaxPrice;
+                tender.Category = Locator.GetService<ICategoriesRepository>().Load(model.CategoryId);
                 tender.Measure = model.Measure;
                 tender.Size = model.Size;
                 tender.Currency = model.Currency;
@@ -780,6 +856,18 @@ namespace Kartel.Trade.Web.Controllers
                 tender.DateEnd = model.DateEnd;
             }
             UsersRepository.SubmitChanges();
+
+            // Сохраняем фото к тендеру
+            var tenderImageFile = Request.Files["TenderImage"];
+            if (tenderImageFile != null && tenderImageFile.ContentLength > 0 && tenderImageFile.ContentType.Contains("image"))
+            {
+                var fileName = String.Format("tender-{0}-{1}{2}", tender.Id,
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(tenderImageFile.FileName));
+                FileUtils.SavePostedFile(tenderImageFile, "tenderimage", fileName);
+                tender.Image = fileName;
+                UsersRepository.SubmitChanges();
+            }
 
             // Перенаправляемся на список тендеров
             return RedirectToAction("Tenders");

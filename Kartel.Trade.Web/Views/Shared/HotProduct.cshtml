@@ -1,13 +1,14 @@
-﻿@model Kartel.Domain.Entities.Product
+﻿@using Kartel.Domain.Infrastructure.Misc
+@model Kartel.Domain.Entities.Product
 
 <div class="hot-product">
     <div class="title">
-        <a href="/product/@Model.Id">@Model.Title</a>
+        <a href="/product/@Model.Id">@Model.Title.TrimEllipsis(30)</a>
     </div>
     <div class="image">
-        <img src="@Model.Img"/>
+        <img src="/files/prodimage/@Model.Img"/>
     </div>
     <div class="price">
-        Цена: <span class="price-holder">@Model.Field3</span>
+        Цена: <span class="price-holder">@Model.GetPrice() @Model.GetCurrency()</span>
     </div>
 </div>

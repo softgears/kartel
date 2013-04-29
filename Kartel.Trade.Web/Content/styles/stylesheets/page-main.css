@@ -117,6 +117,15 @@
   height: 159px;
 }
 /* line 101, ../sass/page-main.sass */
+.mainblock .row .item .image {
+  height: 70px;
+}
+/* line 104, ../sass/page-main.sass */
+.mainblock .row .item .image img {
+  height: 70px;
+  width: auto;
+}
+/* line 108, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }

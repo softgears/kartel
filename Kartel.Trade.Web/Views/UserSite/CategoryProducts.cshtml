@@ -1,0 +1,40 @@
+﻿@using Kartel.Trade.Web.Classes.Utils
+@model Kartel.Domain.Entities.UserCategory
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "UserSiteLayout.cshtml";
+    int page = ViewBag.page;
+    int totalPages = MathHelper.PagesCount(Model.GetProductsCount(), 9);
+}
+
+<div class="panel">
+    <div class="panel-category-title">
+        @Model.Title
+    </div>
+    <div class="panel-products-content">
+        <div class="products">
+            @foreach(var product in Model.GetProducts().Skip(page*9).Take(9))
+            {
+                @Html.Partial("Product",product)
+            }
+        </div>
+        @* Пагинатор *@
+        @if (totalPages > 1)
+        {
+        <div id="paginator">
+            @for (var i = 0; i < totalPages; i++)
+            {
+                if (i == page)
+                {
+                    <span class="current-page">@(page+1)</span>
+                }
+                else
+                {
+                    <a href="/vendor/category/@Model.UserId?catId=@Model.Id&page=@(i)">@(i+1)</a>
+                }
+            }
+        </div>
+        }
+    </div>
+</div>

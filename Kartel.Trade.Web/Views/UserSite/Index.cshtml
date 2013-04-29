@@ -1,0 +1,50 @@
+﻿@using Kartel.Domain.Entities
+@model dynamic
+
+@{
+    ViewBag.Title = "Наши предложения";
+    Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
+    var goods = user.GetRandomProducts(12);
+}
+
+<div class="panel">
+    <div class="panel-title gradient">
+        <a href="/vendor/products/@ViewBag.user.Id" class="all">Все</a>
+        Наши предложения
+    </div>
+    <div class="panel-content">
+        @if (goods.Count == 0)
+        {
+            <div style="margin: 15px; text-align: center">Нет товаров</div>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var product in goods.Take(4))
+                {
+                    @Html.Partial("HotProduct", product)
+                }
+            </div>
+                if (goods.Count > 4)
+                {
+            <div class="row">
+                @foreach (var product in goods.Skip(4).Take(4))
+                {
+                    @Html.Partial("HotProduct", product)
+                }
+            </div>
+                }
+                if (goods.Count > 8)
+                {
+            <div class="row">
+                @foreach (var product in goods.Skip(8).Take(4))
+                {
+                    @Html.Partial("HotProduct", product)
+                }
+            </div>
+                }
+        }
+
+    </div>
+</div>

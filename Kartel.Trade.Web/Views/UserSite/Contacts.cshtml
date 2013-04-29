@@ -1,0 +1,142 @@
+﻿@using Kartel.Domain.Entities
+@model dynamic
+
+@{
+    ViewBag.Title = "Контактная информация";
+    Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
+}
+
+<div class="contacts-info">
+    <div class="title">
+        Контактные данные
+    </div>
+    <div>
+        <table class="prop">
+            <tr>
+                <td>Контактное лицо 
+                </td>
+                <td align="right">
+                    <img src="/files/userimage/@user.FIOImg" alt="@user.FIO" style="float: left; max-height: 150px; width: auto"/>
+                    <span class="fio">@user.FIO</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Название компании
+                </td>
+                <td>
+                    @user.Company
+                </td>
+            </tr>
+            <tr>
+                <td>Страна
+                </td>
+                <td>
+                    @user.Country
+                </td>
+            </tr>
+            <tr>
+                <td>Регион
+                </td>
+                <td>
+                    @user.Region
+                </td>
+            </tr>
+            <tr>
+                <td>Город
+                </td>
+                <td>
+                    @user.City
+                </td>
+            </tr>
+            <tr>
+                <td>Индекс
+                </td>
+                <td>
+                    @user.ZIP
+                </td>
+            </tr>
+            <tr>
+                <td>Телефон
+                </td>
+                <td>
+                    @user.Phone
+                </td>
+            </tr>
+            <tr>
+                <td>Факс
+                </td>
+                <td>
+                    @user.Fax
+                </td>
+            </tr>
+            <tr>
+                <td>Сайт
+                </td>
+                <td>
+                    <a href="@(user.Url != null && !user.Url.StartsWith("http://") ? "http://"+user.Url : user.Url)">@user.Url</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @if (user.UserLegalInfos != null)
+    {
+        <div class="title">
+            Банковские реквизиты
+        </div>
+        <div>
+            <table class="prop">
+                <tr>
+                    <td>ОГРН (ИП)
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.OGRN
+                    </td>
+                </tr>
+                <tr>
+                    <td>ИНН
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.INN
+                    </td>
+                </tr>
+                <tr>
+                    <td>КПП
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.KPP
+                    </td>
+                </tr>
+                <tr>
+                    <td>Р.счет
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.AccountRNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>К.счет
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.AccountKNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>Банк
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.AccountBank
+                    </td>
+                </tr>
+                <tr>
+                    <td>БИК Банка
+                    </td>
+                    <td>
+                        @user.UserLegalInfos.AccountBankBIK
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>

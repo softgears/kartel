@@ -1,19 +1,17 @@
-﻿@model Kartel.Domain.Entities.Product
+﻿@using Kartel.Domain.Infrastructure.Misc
+@model Kartel.Domain.Entities.Product
 
 <div class="product">
     <div class="image">
-        <img src="@Model.Img"/>
+        <img src="/files/prodimage/@Model.Img"/>
     </div>
     <div class="title">
-        <a href="/product/@Model.Id">@Model.Title</a>
+        <a href="/product/@Model.Id">@Model.Title.TrimEllipsis(30)</a>
     </div>
     <div class="details">
-        @if (!String.IsNullOrEmpty(Model.Field3))
-        {
-            <div class="detailItem">
-                Цена: @Model.Field3
-            </div>    
-        }
+        <div class="detailItem">
+            Цена: @Model.GetPrice() @Model.GetCurrency()
+        </div>
         @if (!String.IsNullOrEmpty(Model.Field4))
         {
             <div class="detailItem">
@@ -22,9 +20,9 @@
         }
         <div class="detailItem">
             @Model.User.City
-        </div>    
+        </div>
     </div>
     <div class="author">
-        <a href="/vendor/@Model.UserId">@Model.User.Dealer</a>
+        <a href="/vendor/@Model.UserId">@Model.User.Company</a>
     </div>
 </div>

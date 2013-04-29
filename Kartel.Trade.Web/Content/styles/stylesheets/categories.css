@@ -344,20 +344,33 @@
   font-weight: bold;
 }
 /* line 301, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .tender-image {
+  float: left;
+  margin-right: 10px;
+  overflow: hidden;
+  max-height: 65px;
+}
+/* line 307, ../sass/categories.sass */
+#page-tenders .tenders-center .tender .tender-details .tender-image img {
+  height: 80px;
+  width: auto;
+  max-width: 150px;
+}
+/* line 312, ../sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title {
   margin-bottom: 5px;
 }
-/* line 304, ../sass/categories.sass */
+/* line 315, ../sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title a {
   color: #008ac0;
   font-size: 14px;
   font-weight: bold;
 }
-/* line 309, ../sass/categories.sass */
+/* line 320, ../sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .tender-title a:hover {
   text-decoration: underline;
 }
-/* line 312, ../sass/categories.sass */
+/* line 323, ../sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .desc {
   font-size: 12px;
   line-height: 1.5;
@@ -365,20 +378,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 319, ../sass/categories.sass */
+/* line 330, ../sass/categories.sass */
 #page-tenders .tenders-center .tender .tender-details .location {
   margin-top: 10px;
   font-size: 10px;
   color: gray;
 }
-/* line 324, ../sass/categories.sass */
+/* line 335, ../sass/categories.sass */
 #page-tenders .view-tender {
   border: 2px solid silver;
   background-color: white;
   border-radius: 10px;
   padding: 15px;
 }
-/* line 330, ../sass/categories.sass */
+/* line 341, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts {
   float: right;
   width: 250px;
@@ -391,20 +404,20 @@
   top: -17px;
   overflow: hidden;
 }
-/* line 342, ../sass/categories.sass */
+/* line 353, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts a {
   color: #33a1c2;
 }
-/* line 345, ../sass/categories.sass */
+/* line 356, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts a:hover {
   text-decoration: underline;
 }
-/* line 348, ../sass/categories.sass */
+/* line 359, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .separator {
   margin: 10px 0px;
   border-top-style: dotted;
 }
-/* line 353, ../sass/categories.sass */
+/* line 364, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .header {
   font-size: 15px;
   color: white;
@@ -412,46 +425,46 @@
   padding: 5px;
   background: url(../../images/layout/innerbg.png);
 }
-/* line 360, ../sass/categories.sass */
+/* line 371, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .gold-alert {
   padding: 10px 5px;
   line-height: 1.2;
 }
-/* line 364, ../sass/categories.sass */
+/* line 375, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts {
   padding: 5px 10px;
 }
-/* line 368, ../sass/categories.sass */
+/* line 379, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .title a {
   font-size: 20px;
 }
-/* line 371, ../sass/categories.sass */
+/* line 382, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgrey;
+  color: darkgray;
   margin-top: 5px;
 }
-/* line 377, ../sass/categories.sass */
+/* line 388, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts ul li {
   list-style-type: disc;
   list-style-position: inside;
   margin: 5px 0px;
   margin-left: 7px;
 }
-/* line 383, ../sass/categories.sass */
+/* line 394, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login {
   padding: 5px 10px;
 }
-/* line 386, ../sass/categories.sass */
+/* line 397, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .login-info {
   margin: 5px 0px;
   line-height: 1.2;
 }
-/* line 390, ../sass/categories.sass */
+/* line 401, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field {
   margin-bottom: 5px;
 }
-/* line 393, ../sass/categories.sass */
+/* line 404, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .label {
   display: inline-block;
   vertical-align: top;
@@ -462,19 +475,19 @@
   position: relative;
   top: 7px;
 }
-/* line 403, ../sass/categories.sass */
+/* line 414, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 5px;
 }
-/* line 408, ../sass/categories.sass */
+/* line 419, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login .field .editor input[type='text'], #page-tenders .view-tender .tender-contacts .login .field .editor input[type='password'] {
   border: 1px solid black;
   width: 141px;
   padding: 2px;
 }
-/* line 413, ../sass/categories.sass */
+/* line 424, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .login input[type='submit'] {
   border: 1px solid black;
   background-color: #008ac0;
@@ -484,52 +497,52 @@
   margin-right: 20px;
   cursor: pointer;
 }
-/* line 424, ../sass/categories.sass */
+/* line 435, ../sass/categories.sass */
 #page-tenders .view-tender .info {
   width: 410px;
   margin-right: auto;
   margin-bottom: 15px;
 }
-/* line 429, ../sass/categories.sass */
+/* line 440, ../sass/categories.sass */
 #page-tenders .view-tender .info .tender-title {
   font-size: 30px;
   color: #3c9cff;
   margin-bottom: 10px;
 }
-/* line 434, ../sass/categories.sass */
+/* line 445, ../sass/categories.sass */
 #page-tenders .view-tender .info .info-item {
   margin-bottom: 3px;
   padding-bottom: 2px;
   border-bottom: 1px dashed #5f5f5f;
 }
-/* line 439, ../sass/categories.sass */
+/* line 450, ../sass/categories.sass */
 #page-tenders .view-tender .info .info-item b {
   font-weight: bold;
   width: 110px;
   display: inline-block;
 }
-/* line 444, ../sass/categories.sass */
+/* line 455, ../sass/categories.sass */
 #page-tenders .view-tender .separator {
   border-top: 1px dashed #aeaeae;
   margin: 15px 0px;
   height: 1px;
 }
-/* line 450, ../sass/categories.sass */
+/* line 461, ../sass/categories.sass */
 #page-tenders .view-tender .details .title {
   font-size: 20px;
 }
-/* line 453, ../sass/categories.sass */
+/* line 464, ../sass/categories.sass */
 #page-tenders .view-tender .details .details-content {
   margin-top: 10px;
   line-height: 1.5;
 }
-/* line 457, ../sass/categories.sass */
+/* line 468, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request {
   margin-top: 15px;
   text-align: center;
   display: none;
 }
-/* line 462, ../sass/categories.sass */
+/* line 473, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form {
   width: 600px;
   border: 1px solid black;
@@ -537,17 +550,17 @@
   margin: 0px auto;
   padding: 5px;
 }
-/* line 469, ../sass/categories.sass */
+/* line 480, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field {
   border-bottom: 1px dotted gray;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
-/* line 474, ../sass/categories.sass */
+/* line 485, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field.no-b {
   border-bottom: 0;
 }
-/* line 477, ../sass/categories.sass */
+/* line 488, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .label {
   display: inline-block;
   vertical-align: top;
@@ -558,28 +571,28 @@
   position: relative;
   top: 4px;
 }
-/* line 487, ../sass/categories.sass */
+/* line 498, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
 }
-/* line 492, ../sass/categories.sass */
+/* line 503, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor input[type='text'], #page-tenders .view-tender #participation-request form .field .editor textarea {
   width: 244px;
   border: 1px solid silver;
   padding: 3px;
 }
-/* line 497, ../sass/categories.sass */
+/* line 508, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor textarea {
   width: 340px;
 }
-/* line 500, ../sass/categories.sass */
+/* line 511, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form .field .editor label.error {
   color: red;
   margin-left: 5px;
 }
-/* line 504, ../sass/categories.sass */
+/* line 515, ../sass/categories.sass */
 #page-tenders .view-tender #participation-request form input[type='submit'] {
   border: 1px solid black;
   background-color: #008ac0;
@@ -589,13 +602,13 @@
   cursor: pointer;
   padding: 5px;
 }
-/* line 513, ../sass/categories.sass */
+/* line 524, ../sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper {
   position: relative;
   text-align: center;
   margin-top: 15px;
 }
-/* line 518, ../sass/categories.sass */
+/* line 529, ../sass/categories.sass */
 #page-tenders .view-tender .offers-wrapper .offers {
   font-size: 20px;
   color: white;
@@ -610,13 +623,13 @@
   position: relative;
   left: -30px;
 }
-/* line 532, ../sass/categories.sass */
+/* line 543, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table {
   width: 100%;
   margin-top: 10px;
   color: black;
 }
-/* line 539, ../sass/categories.sass */
+/* line 550, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
@@ -624,55 +637,55 @@
   border-top: 0;
   padding: 5px;
 }
-/* line 546, ../sass/categories.sass */
+/* line 557, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th:first-child {
   border-left: 0;
 }
-/* line 549, ../sass/categories.sass */
+/* line 560, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table thead tr th:last-child {
   border-right: 0;
 }
-/* line 554, ../sass/categories.sass */
+/* line 565, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
   border: 1px dashed #a1a2a2;
   padding: 5px;
 }
-/* line 560, ../sass/categories.sass */
+/* line 571, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td:first-child {
   border-left: 0;
 }
-/* line 563, ../sass/categories.sass */
+/* line 574, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 566, ../sass/categories.sass */
+/* line 577, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td a {
   color: #3c9cff;
   font-weight: bold;
 }
-/* line 570, ../sass/categories.sass */
+/* line 581, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 574, ../sass/categories.sass */
+/* line 585, ../sass/categories.sass */
 #page-tenders .view-tender .offers-table tbody tr:last-child td {
   border-bottom: 0;
 }
-/* line 582, ../sass/categories.sass */
+/* line 593, ../sass/categories.sass */
 #page-tenders .action {
   margin-top: 5px;
 }
-/* line 585, ../sass/categories.sass */
+/* line 596, ../sass/categories.sass */
 #page-tenders .action a {
   color: #33a1c2;
 }
-/* line 587, ../sass/categories.sass */
+/* line 598, ../sass/categories.sass */
 #page-tenders .action a:hover {
   text-decoration: underline;
 }
-/* line 592, ../sass/categories.sass */
+/* line 603, ../sass/categories.sass */
 #page-tenders .other-tenders {
   border: 2px solid silver;
   background-color: white;
@@ -680,18 +693,18 @@
   padding: 15px;
   margin-top: 15px;
 }
-/* line 599, ../sass/categories.sass */
+/* line 610, ../sass/categories.sass */
 #page-tenders .other-tenders .title {
   font-size: 18px;
 }
-/* line 602, ../sass/categories.sass */
+/* line 613, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block {
   display: inline-block;
   vertical-align: top;
   width: 470px;
   border-right: 1px dotted gray;
 }
-/* line 608, ../sass/categories.sass */
+/* line 619, ../sass/categories.sass */
 #page-tenders .other-tenders .other-2-block {
   display: inline-block;
   vertical-align: top;
@@ -699,30 +712,30 @@
   position: relative;
   left: -3px;
 }
-/* line 616, ../sass/categories.sass */
+/* line 627, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block, #page-tenders .other-tenders .other-2-block {
   margin-top: 10px;
 }
-/* line 619, ../sass/categories.sass */
+/* line 630, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender, #page-tenders .other-tenders .other-2-block .other-tender {
   clear: both;
   padding: 5px;
 }
-/* line 623, ../sass/categories.sass */
+/* line 634, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender:nth-child(odd), #page-tenders .other-tenders .other-2-block .other-tender:nth-child(odd) {
   background-color: #e4dee2;
 }
-/* line 626, ../sass/categories.sass */
+/* line 637, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender .tender-date, #page-tenders .other-tenders .other-2-block .other-tender .tender-date {
   color: gray;
   float: right;
   text-align: right;
 }
-/* line 631, ../sass/categories.sass */
+/* line 642, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a, #page-tenders .other-tenders .other-2-block .other-tender a {
   color: black;
 }
-/* line 634, ../sass/categories.sass */
+/* line 645, ../sass/categories.sass */
 #page-tenders .other-tenders .other-1-block .other-tender a:hover, #page-tenders .other-tenders .other-2-block .other-tender a:hover {
   text-decoration: underline;
 }

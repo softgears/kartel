@@ -41,5 +41,44 @@ namespace Kartel.Domain.Entities
         {
             return HotProducts != null ? HotProducts.Views : 0;   
         }
+
+        /// <summary>
+        /// Возвращаем цену на товар
+        /// </summary>
+        /// <returns></returns>
+        public string GetPrice()
+        {
+            if (!string.IsNullOrEmpty(Price))
+            {
+                return Price;
+            }
+            else if (!string.IsNullOrEmpty(Field3))
+            {
+                var parts = Field3.Split('|');
+                return parts[0];
+            }
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Возвращает валюту товара
+        /// </summary>
+        /// <returns></returns>
+        public string GetCurrency()
+        {
+            if (!string.IsNullOrEmpty(Currency))
+            {
+                return Currency;
+            }
+            else if (!string.IsNullOrEmpty(Field3))
+            {
+                var parts = Field3.Split('|');
+                if (parts.Length >= 2)
+                {
+                    return parts[1];
+                }
+            }
+            return string.Empty;
+        }
     }
 }
