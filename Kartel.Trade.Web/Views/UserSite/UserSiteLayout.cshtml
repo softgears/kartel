@@ -93,18 +93,20 @@
                     @* О Компании кратко *@
                     <div class="group">
                         <div class="group-title gradient">
+                            <a href="/vendor/about/@user.Id">
                             О Компании
+                            </a>
                         </div>
                         <div class="group-content">
-                            <div class="html-text">
-                                @Html.Raw(user.About)    
-                            </div>
+                            
                         </div>
                     </div>
                     @* Обратная связь *@
                     <div class="group">
                         <div class="group-title gradient">
+                            <a href="/vendor/contacts/@user.Id">
                             Контакты
+                            </a>
                         </div>
                         <div class="group-content last">
                             <div class="contacts-title">

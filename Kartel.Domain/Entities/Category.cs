@@ -59,9 +59,19 @@ namespace Kartel.Domain.Entities
         /// Возвращает тендеры
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Tender> GetTenders()
+        public IEnumerable<Tender> GetTenders(bool recursive = false)
         {
-            return Tenders;
+            if (!recursive)
+            {
+                return Tenders;    
+            }
+            else
+            {
+                return Tenders.Union(from category in ChildCategories
+                                     from tender in category.GetTenders(true)
+                                     select tender);
+            }
+            
         }
     }
 }

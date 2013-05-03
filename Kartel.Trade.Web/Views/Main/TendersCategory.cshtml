@@ -20,7 +20,7 @@
             Страница @(page+1) из @totalPages
         </div>    
         
-        @foreach (var tender in Model.GetTenders().Skip(20*page).Take(20))
+        @foreach (var tender in Model.GetTenders(true).Skip(20*page).Take(20))
         {
             <div class="tender">
                 <div class="tender-date">
@@ -30,12 +30,6 @@
                     }
                 </div>
                 <div class="tender-details">
-                    @if (!String.IsNullOrEmpty(tender.Image))
-                    {
-                    <div class="tender-image">
-                        <img src="/files/tenderimage/@tender.Image"/>
-                    </div>    
-                    }
                     <div class="tender-title">
                         <a href="/tenders/tender/@tender.Id">@tender.Title</a>
                     </div>
