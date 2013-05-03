@@ -326,16 +326,18 @@ body #content #content-wrapper #content-section-bg {
   background-color: #fafafa;
   padding: 5px;
   border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom: 0;
   z-index: 9;
 }
-/* line 291, ../sass/layout.sass */
+/* line 292, ../sass/layout.sass */
 body #content #content-wrapper #content-section-bg #content-section-inner {
   width: 100%;
   border: 1px dashed #c5c5c5;
   border-right: 0;
+  border-bottom: 0;
 }
-/* line 296, ../sass/layout.sass */
+/* line 298, ../sass/layout.sass */
 body #content #content-wrapper #content-section {
   display: inline-block;
   vertical-align: top;
@@ -343,14 +345,14 @@ body #content #content-wrapper #content-section {
   position: relative;
   z-index: 10;
 }
-/* line 303, ../sass/layout.sass */
+/* line 305, ../sass/layout.sass */
 body #footer {
   height: 28px;
   padding-top: 5px;
   border-top: 1px dashed #c5c5c5;
   background: url(../../images/layout/footer-bg.png) center bottom repeat-x;
 }
-/* line 309, ../sass/layout.sass */
+/* line 311, ../sass/layout.sass */
 body #footer #footer-content {
   width: 970px;
   margin: 0px auto;
@@ -359,7 +361,7 @@ body #footer #footer-content {
   font-family: Arial;
   padding-top: 7px;
 }
-/* line 317, ../sass/layout.sass */
+/* line 319, ../sass/layout.sass */
 body #footer #footer-content a {
   font-size: 14px;
   font-weight: bold;
