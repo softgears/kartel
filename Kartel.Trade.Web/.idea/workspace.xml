@@ -38,10 +38,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usersite.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="usersite.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/usersite.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="54" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.4875312">
+            <state line="184" column="54" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page-main.sass" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="12" selection-start="456" selection-end="456" vertical-scroll-proportion="0.5006135">
               <folding />
             </state>
           </provider>
@@ -62,10 +71,10 @@
         <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/account.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/usersite.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
       </list>
     </option>
   </component>
@@ -325,13 +334,6 @@
         <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.4797546" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="31" selection-start="1974" selection-end="1974" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="18" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.0">
@@ -355,7 +357,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/usersite.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="54" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.4875312">
+        <state line="184" column="54" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="12" selection-start="456" selection-end="456" vertical-scroll-proportion="0.5006135">
           <folding />
         </state>
       </provider>

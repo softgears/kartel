@@ -222,6 +222,21 @@ namespace Kartel.Trade.Web.Controllers
 
         }
 
+        /// <summary>
+        /// Отрабатывает выход из личного кабинета
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logoff()
+        {
+            // Если авторизованы то закрываем.
+            if (IsAuthentificated)
+            {
+                CloseAuthorization();
+            }
+
+            return RedirectToAction("Index","Main");
+        }
+
         #endregion
 
         #region Главная страница
