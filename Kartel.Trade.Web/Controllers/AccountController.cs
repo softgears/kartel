@@ -153,7 +153,6 @@ namespace Kartel.Trade.Web.Controllers
                 });
             UsersRepository.Add(newUser);
             UsersRepository.SubmitChanges();
-            // TODO: добавить авторизацию пользователя
 
             // Уведомляем об успешном создании
             ViewBag.message = "Вы были успешно зарегистрированы на нашем сайте. Теперь вы можете войти в личный кабинет и добавить свои товары в наш каталог";
@@ -781,6 +780,39 @@ namespace Kartel.Trade.Web.Controllers
 
             // Переходим в запомненную категорию
             return RedirectToAction("CategoryProducts", new {id = catId});
+        }
+
+        /// <summary>
+        /// Обрабатывает перемещение указанных товаров между пользовательскими категориями
+        /// </summary>
+        /// <param name="selectedIds"></param>
+        /// <param name="newCategoryId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("account/move-products")]
+        public ActionResult MoveProducts(string selectedIds, int newCategoryId)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Загружаем продукты
+            var products =
+                selectedIds.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).Select(s => Convert.ToInt32(s)).
+                    Select(i => CurrentUser.Products.FirstOrDefault(p => p.Id == i)).Where(p => p != null).ToList();
+
+            var targetCategory = CurrentUser.UserCategories.FirstOrDefault(c => c.Id == newCategoryId);
+            if (products.Count > 0 && targetCategory != null)
+            {
+                foreach(var prod in products)
+                {
+                    prod.UserCategory = targetCategory;
+                }
+                UsersRepository.SubmitChanges();
+            }
+
+            return RedirectToAction("CategoryProducts", new {id = newCategoryId});
         }
 
         #endregion

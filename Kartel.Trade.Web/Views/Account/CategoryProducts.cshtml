@@ -1,4 +1,5 @@
-﻿@model System.Collections.Generic.List<Kartel.Domain.Entities.Product>
+﻿@using Kartel.Trade.Web.Classes.Ext
+@model System.Collections.Generic.List<Kartel.Domain.Entities.Product>
 
 @{
     ViewBag.Title = "Товары в категории";
@@ -59,4 +60,42 @@
         <span class="round change-category">Сменить категорию</span>
         <span class="round make-hot">Показывать в "Горячих Товарах"</span>
     </div>
+    <div class="fields-group" style="display: none;" id="move-form-wrapper">
+        <div class="fields-title">
+            Перемещение товаров
+        </div>
+        <form method="POST" id="move-product-form" action="/account/move-products">
+            <input type="hidden" name="selectedIds" id="selected-ids-field"/>
+            <div class="field">
+                <div class="label">
+                    Новая категория
+                </div>
+                <div class="editor">
+                    <select name="newCategoryId">
+                        @foreach(var cat in ViewContext.CurrentUser().GetUserCategories())
+                        {
+                            <option value="@cat.Id">@cat.Title</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <input type="submit" class="save" value=" "/>    
+            </div>
+            
+        </form>
+    </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".change-category").click(function () {
+            var selectedIds = "";
+            $(".products-table :checked").each(function (index, item) {
+                var id = $(item).parent().parent().data("id");
+                selectedIds += id + ',';
+            });
+            $("#selected-ids-field").val(selectedIds);
+            $("#move-form-wrapper").stop(true,true).slideToggle("slow");
+        });
+    });
+</script>
