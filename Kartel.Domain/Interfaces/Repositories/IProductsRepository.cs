@@ -11,13 +11,14 @@
 
 using System.Collections.Generic;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Interfaces.Search;
 
 namespace Kartel.Domain.Interfaces.Repositories
 {
     /// <summary>
     /// Абстрактный репозиторий продуктов
     /// </summary>
-    public interface IProductsRepository: IBaseRepository<Product>
+    public interface IProductsRepository: IBaseRepository<Product>, IIndexableRepository
     {
         /// <summary>
         /// Возвращает указанное случайное количество товаров из системы

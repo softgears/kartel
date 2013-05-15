@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Interfaces.Repositories;
+using Lucene.Net.Documents;
 
 namespace Kartel.Domain.DAL.Repositories
 {
@@ -64,6 +65,24 @@ namespace Kartel.Domain.DAL.Repositories
             }
             // Отдаем
             return resultList;
+        }
+
+        /// <summary>
+        /// Возвращает индекс указанных документов
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Document> BuildIndex()
+        {
+            // Перебираем все товары
+            foreach (var product in FindAll())
+            {
+                // Документ
+                var doc = new Document();
+                doc.Add(new Field("Id", product.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+                doc.Add(new Field("EntityType", "Product", Field.Store.YES, Field.Index.NOT_ANALYZED));
+                doc.Add(new Field("Text", String.Format("{0};{1};{2}",product.Title,product.Keywords,product.Description), Field.Store.YES, Field.Index.ANALYZED));
+                yield return doc;
+            }
         }
     }
 }

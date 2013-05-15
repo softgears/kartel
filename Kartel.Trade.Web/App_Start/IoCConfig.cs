@@ -10,6 +10,8 @@
 // ============================================================
 
 using Kartel.Domain.DAL;
+using Kartel.Domain.Infrastructure;
+using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Classes;
 using Kartel.Trade.Web.Classes.Cache;
@@ -26,7 +28,10 @@ namespace Kartel.Trade.Web
         /// </summary>
         public static void Init()
         {
-            Locator.Init(new DataAccessLayer(),new WebLayer());
+            Locator.Init(new DataAccessLayer(),new InfrastructureLayer(),new WebLayer());
+
+            // Инициаилизируем механизм поиска
+            Locator.GetService<ISearchManager>().Init();
         }
     }
 }
