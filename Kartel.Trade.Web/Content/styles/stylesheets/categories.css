@@ -326,13 +326,13 @@
   border-radius: 5px;
 }
 /* line 283, ../sass/categories.sass */
-#page-tenders .tenders-center .tender {
+#page-tenders .tender {
   padding-bottom: 10px;
   border-bottom: 1px solid #bababa;
   margin: 10px;
 }
 /* line 288, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-date {
+#page-tenders .tender .tender-date {
   float: left;
   margin-right: 15px;
   color: silver;
@@ -340,38 +340,38 @@
   text-align: right;
 }
 /* line 295, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-date .day {
+#page-tenders .tender .tender-date .day {
   font-weight: bold;
 }
 /* line 301, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .tender-image {
+#page-tenders .tender .tender-details .tender-image {
   float: left;
   margin-right: 10px;
   overflow: hidden;
   max-height: 65px;
 }
 /* line 307, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .tender-image img {
+#page-tenders .tender .tender-details .tender-image img {
   height: 80px;
   width: auto;
   max-width: 150px;
 }
 /* line 312, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .tender-title {
+#page-tenders .tender .tender-details .tender-title {
   margin-bottom: 5px;
 }
 /* line 315, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .tender-title a {
+#page-tenders .tender .tender-details .tender-title a {
   color: #008ac0;
   font-size: 14px;
   font-weight: bold;
 }
 /* line 320, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .tender-title a:hover {
+#page-tenders .tender .tender-details .tender-title a:hover {
   text-decoration: underline;
 }
 /* line 323, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .desc {
+#page-tenders .tender .tender-details .desc {
   font-size: 12px;
   line-height: 1.5;
   max-height: 85px;
@@ -379,7 +379,7 @@
   text-overflow: ellipsis;
 }
 /* line 330, ../sass/categories.sass */
-#page-tenders .tenders-center .tender .tender-details .location {
+#page-tenders .tender .tender-details .location {
   margin-top: 10px;
   font-size: 10px;
   color: gray;

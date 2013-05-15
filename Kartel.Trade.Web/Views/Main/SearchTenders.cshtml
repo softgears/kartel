@@ -1,0 +1,42 @@
+﻿@model IList<Kartel.Domain.Entities.Tender>
+
+@{
+    ViewBag.Title = "Результаты поиска тендеров по запросу "+ViewBag.term;
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@* Навигационная цепочка *@
+@Html.Partial("NavigationChain")
+
+<div id="page-tenders">
+    @if (Model.Count > 0)
+    {
+        <div style="text-align: center; margin: 15px; font-size: 13px">По запросу "@ViewBag.term" найдено @Model.Count тендеров:</div>
+        foreach(var tender in Model.Where(t => t != null))
+        {
+            <div class="tender">
+                <div class="tender-date">
+                    @if (tender.DateCreated.HasValue)
+                    {
+                        <span class="day">@tender.DateCreated.Value.Day</span><br/>@tender.DateCreated.Value.ToString("MMMM")<br/>@tender.DateCreated.Value.Year <text>год</text>
+                    }
+                </div>
+                <div class="tender-details">
+                    <div class="tender-title">
+                        <a href="/tenders/tender/@tender.Id">@tender.Title</a>
+                    </div>
+                    <div class="desc">
+                        @tender.Description
+                    </div>
+                    <div class="location">
+                        @tender.User.City, @tender.User.Country
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div style="margin-top: 15px; text-align: center; font-size: 15px">К сожалению, по запросу "@ViewBag.term" тендеров не найдено</div>
+    }
+</div>

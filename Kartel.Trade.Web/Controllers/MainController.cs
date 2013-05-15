@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Classes.Utils;
 
@@ -116,6 +117,44 @@ namespace Kartel.Trade.Web.Controllers
             // Вид
             ViewBag.page = page;
             return View(category);
+        }
+
+        /// <summary>
+        /// Обрабатывает глобальный поиск по сайту
+        /// </summary>
+        /// <param name="term">Строка для поиска</param>
+        /// <param name="what">Что именно ищем - товары или тендеры</param>
+        /// <returns>страница с результатами поиска</returns>
+        [Route("search")]
+        public ActionResult Search(string term, string what)
+        {
+            // Пушим навигационную цепочку
+            PushNavigationChainItem("Главная", "/");
+
+            var manager = Locator.GetService<ISearchManager>();
+            if (manager.IsIndexingInProgress)
+            {
+                // Индекс перестраивается - подождем
+                PushNavigationChainItem("Поиск не доступен", "/",true);
+                return View("SearchIndexing");
+            }
+
+            // Анализируем то, что мы хотим найти
+            PushNavigationChainItem("Результаты поиска", "/", true);
+            ViewBag.term = term;
+            if (what == "products")
+            {
+                var searched = manager.SearchProducts(term);
+                return View("SearchProducts",searched.ToList());
+            }
+            else if (what == "tenders")
+            {
+                var searched = manager.SearchTenders(term);
+                return View("SearchTenders", searched.ToList());
+            }
+
+            // Какие то мазафаки пытаются взломать
+            return Content("Fuck the goose");
         }
 
     }

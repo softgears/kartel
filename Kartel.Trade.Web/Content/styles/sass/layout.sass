@@ -153,6 +153,7 @@ body
 							background: url(../../images/layout/search-separator.png) right center no-repeat
 							height: 30px
 							cursor: pointer
+							position: relative
 
 							#selected-criteria
 								width: 120px
@@ -161,6 +162,30 @@ body
 								font-size:  14px
 								color: #666666
 								font-weight: bold
+
+							#search-criteria-types
+								display: none
+								position: absolute
+								width:  140px
+								left: 0px
+								top: 30px
+								z-index: 3000
+								border: 1px solid #222222
+								border-bottom-left-radius: 5px
+								border-bottom-right-radius: 5px
+								background-color: white
+								overflow: hidden
+
+
+								li
+									text-align: center
+									padding: 5px 0px
+									font-size:  14px
+									color: #666666
+									font-weight: bold
+
+									&:hover
+										background-color: #e2e2e2
 
 						#search-text-wrapper
 							display: inline-block

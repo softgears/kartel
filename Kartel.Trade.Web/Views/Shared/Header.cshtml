@@ -45,18 +45,41 @@
                 <img src="/Content/images/layout/logo.png" />
             </a>
             <div id="search-wrapper">
-                <div id="search-fields-wrapper">
-                    <div id="search-criteria">
-                        <div id="selected-criteria">
-                            Товары    
+                <form method="get" id="search-form" action="/search/">
+                    <input type="hidden" name="what" id="search-criteria-field" value="products"/>
+                    <div id="search-fields-wrapper">
+                        <div id="search-criteria">
+                            <div id="selected-criteria">
+                                Товары    
+                            </div>
+                            <ul id="search-criteria-types">
+                                <li data-what="products">
+                                    Товары
+                                </li>
+                                <li data-what="tenders">
+                                    Тендеры
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="search-text-wrapper">
+                            <input type="text" name="term" />
                         </div>
                     </div>
-                    <div id="search-text-wrapper">
-                        <input type="text" name="query" />
-                    </div>
-                </div>
-                <input type="submit" value=" " />
+                    <input type="submit" value=" " />
+                </form>
             </div>
         </div>
     </div>
 </header>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#selected-criteria").click(function () {
+            $("#search-criteria-types").stop(true,true).slideToggle("normal");
+        });
+        $("#search-criteria-types li").click(function () {
+            $("#selected-criteria").text($(this).text());
+            $("#search-criteria-field").val($(this).data("what"));
+            $("#search-criteria-types").slideUp("normal");
+        });
+    });
+</script>

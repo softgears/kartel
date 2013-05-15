@@ -30,7 +30,7 @@ namespace Kartel.Domain.Interfaces.Search
         /// <param name="term">Фраза для поиска</param>
         /// <param name="categoryId">Идентификатор категории</param>
         /// <returns>Коллекция найденых товаров</returns>
-        IList<Product> SearchProducts(string term, int categoryId = -1);
+        IEnumerable<Product> SearchProducts(string term, int categoryId = -1);
 
         /// <summary>
         /// Осуществляет поиск по тендерам. Опционально с учетом указаной категории
@@ -38,7 +38,7 @@ namespace Kartel.Domain.Interfaces.Search
         /// <param name="term">Фраза для поиска</param>
         /// <param name="categoryId">Идентификатор категории</param>
         /// <returns>Коллекция найденых тендеров</returns>
-        IList<Tender> SearchTenders(string term, int categoryId = -1);
+        IEnumerable<Tender> SearchTenders(string term, int categoryId = -1);
 
         /// <summary>
         /// Выполняет построения индекса по товарам и тендерам
