@@ -3,7 +3,9 @@
 
 <div class="product">
     <div class="image">
-        <img src="/files/prodimage/@Model.Img"/>
+        <a href="/product/@Model.Id">
+            <img src="/files/prodimage/@Model.Img"/>    
+        </a>
     </div>
     <div class="title">
         <a href="/product/@Model.Id">@Model.Title.TrimEllipsis(30)</a>

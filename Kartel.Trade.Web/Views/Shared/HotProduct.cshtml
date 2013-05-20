@@ -6,7 +6,9 @@
         <a href="/product/@Model.Id">@Model.Title.TrimEllipsis(30)</a>
     </div>
     <div class="image">
-        <img src="/files/prodimage/@Model.Img"/>
+        <a href="/product/@Model.Id">
+            <img src="/files/prodimage/@Model.Img"/>
+        </a>
     </div>
     <div class="price">
         Цена: <span class="price-holder">@Model.GetPrice() @Model.GetCurrency()</span>

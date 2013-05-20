@@ -1,0 +1,32 @@
+﻿@model System.Collections.Generic.IEnumerable<Kartel.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Результаты поиска по запросу: "+ViewBag.term;
+    Layout = "UserSiteLayout.cshtml";
+    var goods = Model.ToList();
+}
+
+<div class="panel">
+    <div class="panel-title gradient">
+        Результаты поиска по запросу: @ViewBag.term
+    </div>
+    <div class="panel-content">
+        @if (goods.Count == 0)
+        {
+            <div style="margin: 15px; text-align: center">Не найдено товаров по запросу @ViewBag.term</div>
+        }
+        else
+        {
+            while(goods.Count > 0)
+            {
+                <div class="row">
+                    @foreach(var product in goods.Take(4).ToList())
+                    {
+                        goods.Remove(product);
+                        @Html.Partial("HotProduct",product)
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

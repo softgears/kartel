@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 
 namespace Kartel.Trade.Web.Controllers
@@ -200,6 +201,31 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem("О компании", string.Format("/vendor/about/{0}", id), true);
 
             return View();
+        }
+
+        /// <summary>
+        /// Обрабатывает пользовательский поиск
+        /// </summary>
+        /// <param name="term">Идентификатор поискового запроса</param>
+        /// <param name="id">Идентификатор пользователя у которого осуществляется поиск</param>
+        /// <returns></returns>
+        [Route("vendor/search/{id}")]
+        public ActionResult Search(string term, long id)
+        {
+            // Инициализируем пользотваеля
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Результаты поиска", string.Format("/vendor/search/{0}", id), true);
+
+            // Осуществляем поиск
+            var manager = Locator.GetService<ISearchManager>();
+            var products = manager.SearchProducts(term).Where(p => p.UserId == id);
+
+            // Отдаем вид
+            ViewBag.term = term;
+            return View(products);
         }
     }
 }

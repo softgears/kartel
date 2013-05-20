@@ -4,12 +4,12 @@
     <list default="true" id="91385219-d411-4363-9b27-3ebb50b1a82d" name="Default" comment="" />
     <ignored path="Kartel.Trade.Web.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/page-register.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365651776257" ignored="false" />
-    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365652768988" ignored="false" />
-    <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
-    <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365643390337" ignored="false" />
-    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365567872398" ignored="false" />
     <file path="/account.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1366086541983" ignored="false" />
+    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365567872398" ignored="false" />
+    <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365643390337" ignored="false" />
+    <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
+    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365652768988" ignored="false" />
+    <file path="/page-register.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365651776257" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +50,7 @@
       <file leaf-file-name="categories.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="332" column="4" selection-start="5368" selection-end="5368" vertical-scroll-proportion="1.208589">
+            <state line="332" column="4" selection-start="5368" selection-end="5368" vertical-scroll-proportion="0.020858895">
               <folding />
             </state>
           </provider>
@@ -119,7 +119,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,6 +193,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,12 +215,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24821003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24821003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -363,9 +363,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-register.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.4797546">
-          <folding />
-        </state>
+        <state line="23" column="41" selection-start="353" selection-end="353" vertical-scroll-proportion="0.4797546" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
@@ -377,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="332" column="4" selection-start="5368" selection-end="5368" vertical-scroll-proportion="1.208589">
+        <state line="332" column="4" selection-start="5368" selection-end="5368" vertical-scroll-proportion="0.020858895">
           <folding />
         </state>
       </provider>

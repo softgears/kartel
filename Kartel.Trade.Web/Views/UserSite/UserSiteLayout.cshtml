@@ -30,8 +30,7 @@
                 @* Главное меню *@
                 <nav id="main-menu" class="gradient">
                     <div id="search-wrapper">
-                        <form action="/vendor/search" method="GET">
-                            <input type="hidden" name="userId" value="@user.Id"/>
+                        <form action="/vendor/search/@user.Id" method="GET">
                             <input type="text" name="term" id="search-field" placeholder="Поиск товаров..."/>
                             <input type="submit" value=" "/>
                         </form>
