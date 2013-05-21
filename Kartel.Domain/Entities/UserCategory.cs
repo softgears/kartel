@@ -10,6 +10,7 @@
 // ============================================================
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Kartel.Domain.Entities
 {
@@ -33,7 +34,7 @@ namespace Kartel.Domain.Entities
         /// <returns></returns>
         public IEnumerable<Product> GetProducts()
         {
-            return Products;
+            return Products.OrderBy(p => p.Title);
         }
     }
 }

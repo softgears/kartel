@@ -90,7 +90,7 @@ namespace Kartel.Domain.Entities
         /// <returns></returns>
         public IEnumerable<Product> GetProducts()
         {
-            return Products;
+            return Products.OrderBy(p => p.Title);
         }
 
         /// <summary>
