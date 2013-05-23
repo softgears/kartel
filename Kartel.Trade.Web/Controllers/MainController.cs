@@ -157,5 +157,22 @@ namespace Kartel.Trade.Web.Controllers
             return Content("Fuck the goose");
         }
 
+        /// <summary>
+        /// Отображает статическую страницу с указанным идентификатором
+        /// </summary>
+        /// <param name="id">Идентификатор страницы</param>
+        /// <returns></returns>
+        public ActionResult StaticPage(long id)
+        {
+            var rep = Locator.GetService<IStaticPagesRepository>();
+            var page = rep.Load(id);
+            if (page == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(page);
+        }
+
     }
 }

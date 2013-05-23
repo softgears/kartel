@@ -1,0 +1,37 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Требуется авторизация</title>
+    </head>
+    <body>
+        <div align="center" style="padding: 50px">
+            <form method="post" action="@Url.Action("Login","Root")">
+                <fieldset style="width: auto">
+                    <legend>
+                        Требуется авторизация чтобы войти в панель управления
+                    </legend>
+                    <div class="title">
+                        Логин
+                    </div>
+                    <div class="editor">
+                        @Html.TextBox("login")
+                    </div>
+                    <div class="title">
+                        Пароль
+                    </div>
+                    <div class="editor">
+                        @Html.Password("password")
+                    </div>
+                    <input type="submit" value="Попробовать"/>
+                </fieldset>
+            </form>  
+        </div>
+    </body>
+</html>

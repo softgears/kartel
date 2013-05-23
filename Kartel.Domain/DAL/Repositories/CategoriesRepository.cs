@@ -47,5 +47,15 @@ namespace Kartel.Domain.DAL.Repositories
         {
             return Search(c => c.ParentId == 0).OrderBy(c => c.Sort);
         }
+
+        /// <summary>
+        /// Возвращает список всех дочерних категорий указанной категории
+        /// </summary>
+        /// <param name="parentId">Идентификатор родительской</param>
+        /// <returns></returns>
+        public IEnumerable<Category> GetChildCategories(int parentId)
+        {
+            return Search(c => c.ParentId == parentId);
+        }
     }
 }

@@ -24,5 +24,12 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// </summary>
         /// <returns></returns>
         IEnumerable<Category> GetRootCategories();
+
+        /// <summary>
+        /// Возвращает список всех дочерних категорий указанной категории
+        /// </summary>
+        /// <param name="parentId">Идентификатор родительской</param>
+        /// <returns></returns>
+        IEnumerable<Category> GetChildCategories(int parentId);
     }
 }

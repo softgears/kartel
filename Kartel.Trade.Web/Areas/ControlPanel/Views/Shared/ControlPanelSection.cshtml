@@ -1,0 +1,10 @@
+﻿@model Kartel.Trade.Web.Areas.ControlPanel.Models.ControlPanelSectionModel
+@{
+    Layout = null;
+    ViewBag.Title = @Model.Title;
+}
+
+<script language="javascript" type="text/javascript">
+    var sectionId = "@Model.SectionId";
+</script>
+<script src="@Url.Content("/Areas/ControlPanel/Scripts/"+@Model.ScriptName)" type="text/javascript"></script>

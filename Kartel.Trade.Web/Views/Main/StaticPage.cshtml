@@ -1,0 +1,10 @@
+﻿@model Kartel.Domain.Entities.StaticPage
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<div class="page-static">
+    @Html.Raw(Model.Content)
+</div>

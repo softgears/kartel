@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Kartel.Domain.Infrastructure.Routing;
+using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.IoC;
 
 namespace Kartel.Trade.Web
 {
@@ -15,6 +17,16 @@ namespace Kartel.Trade.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             RoutesManager.RegisterActionRoutes();
+
+            // Регистрация роутов статических страниц
+            using (var httpScope = Locator.BeginNestedHttpRequestScope())
+            {
+                var pagesRep = Locator.GetService<IStaticPagesRepository>();
+                foreach (var staticPage in pagesRep.FindAll())
+                {
+                    RoutesManager.RegisterRoute("Static-page-" + staticPage.Id, staticPage.Route, new { controller = "Main", Action = "StaticPage", id = staticPage.Id });
+                }
+            }
 
             routes.MapRoute(
                 name: "Default",
