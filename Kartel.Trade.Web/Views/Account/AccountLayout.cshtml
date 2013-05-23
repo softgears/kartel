@@ -1,4 +1,5 @@
-﻿@using Kartel.Trade.Web.Controllers
+﻿@using Kartel.Trade.Web.Classes.Ext
+@using Kartel.Trade.Web.Controllers
 @{
     Layout = null;
 }
@@ -103,6 +104,12 @@
                             Настройки аккаунта
                         </div>
                         <ul>
+                            @if (ViewContext.CurrentUser().Administrator > 0)
+                            {
+                            <li>
+                                <a href="/ControlPanel/">Администрирование</a>
+                            </li>
+                            }
                             <li>
                                 <a href="/account/change-password">Сменить пароль</a>
                             </li>
