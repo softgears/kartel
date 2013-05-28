@@ -64,6 +64,9 @@ namespace Kartel.Domain.DAL
     partial void InsertStaticPage(Kartel.Domain.Entities.StaticPage instance);
     partial void UpdateStaticPage(Kartel.Domain.Entities.StaticPage instance);
     partial void DeleteStaticPage(Kartel.Domain.Entities.StaticPage instance);
+    partial void InsertBanner(Kartel.Domain.Entities.Banner instance);
+    partial void UpdateBanner(Kartel.Domain.Entities.Banner instance);
+    partial void DeleteBanner(Kartel.Domain.Entities.Banner instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -183,6 +186,14 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.StaticPage>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.Banner> Banners
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.Banner>();
 			}
 		}
 	}
@@ -5564,6 +5575,260 @@ namespace Kartel.Domain.Entities
 					this._DateModified = value;
 					this.SendPropertyChanged("DateModified");
 					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Banners")]
+	public partial class Banner : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Title;
+		
+		private string _Img;
+		
+		private string _Html;
+		
+		private string _Href;
+		
+		private int _Sort;
+		
+		private string _Objects;
+		
+		private string _Categories;
+		
+		private string _Extra;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnImgChanging(string value);
+    partial void OnImgChanged();
+    partial void OnHtmlChanging(string value);
+    partial void OnHtmlChanged();
+    partial void OnHrefChanging(string value);
+    partial void OnHrefChanged();
+    partial void OnSortChanging(int value);
+    partial void OnSortChanged();
+    partial void OnObjectsChanging(string value);
+    partial void OnObjectsChanged();
+    partial void OnCategoriesChanging(string value);
+    partial void OnCategoriesChanged();
+    partial void OnExtraChanging(string value);
+    partial void OnExtraChanged();
+    #endregion
+		
+		public Banner()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Img
+		{
+			get
+			{
+				return this._Img;
+			}
+			set
+			{
+				if ((this._Img != value))
+				{
+					this.OnImgChanging(value);
+					this.SendPropertyChanging();
+					this._Img = value;
+					this.SendPropertyChanged("Img");
+					this.OnImgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Html", DbType="VarChar(MAX)")]
+		public string Html
+		{
+			get
+			{
+				return this._Html;
+			}
+			set
+			{
+				if ((this._Html != value))
+				{
+					this.OnHtmlChanging(value);
+					this.SendPropertyChanging();
+					this._Html = value;
+					this.SendPropertyChanged("Html");
+					this.OnHtmlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Href", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Href
+		{
+			get
+			{
+				return this._Href;
+			}
+			set
+			{
+				if ((this._Href != value))
+				{
+					this.OnHrefChanging(value);
+					this.SendPropertyChanging();
+					this._Href = value;
+					this.SendPropertyChanged("Href");
+					this.OnHrefChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sort", DbType="Int NOT NULL")]
+		public int Sort
+		{
+			get
+			{
+				return this._Sort;
+			}
+			set
+			{
+				if ((this._Sort != value))
+				{
+					this.OnSortChanging(value);
+					this.SendPropertyChanging();
+					this._Sort = value;
+					this.SendPropertyChanged("Sort");
+					this.OnSortChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Objects", DbType="VarChar(MAX)")]
+		public string Objects
+		{
+			get
+			{
+				return this._Objects;
+			}
+			set
+			{
+				if ((this._Objects != value))
+				{
+					this.OnObjectsChanging(value);
+					this.SendPropertyChanging();
+					this._Objects = value;
+					this.SendPropertyChanged("Objects");
+					this.OnObjectsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categories", DbType="VarChar(MAX)")]
+		public string Categories
+		{
+			get
+			{
+				return this._Categories;
+			}
+			set
+			{
+				if ((this._Categories != value))
+				{
+					this.OnCategoriesChanging(value);
+					this.SendPropertyChanging();
+					this._Categories = value;
+					this.SendPropertyChanged("Categories");
+					this.OnCategoriesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Extra", DbType="VarChar(MAX)")]
+		public string Extra
+		{
+			get
+			{
+				return this._Extra;
+			}
+			set
+			{
+				if ((this._Extra != value))
+				{
+					this.OnExtraChanging(value);
+					this.SendPropertyChanging();
+					this._Extra = value;
+					this.SendPropertyChanged("Extra");
+					this.OnExtraChanged();
 				}
 			}
 		}

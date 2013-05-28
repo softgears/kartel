@@ -129,10 +129,12 @@
     <Compile Include="Areas\ControlPanel\Classes\JsonModelBinder.cs" />
     <Compile Include="Areas\ControlPanel\Classes\JsonNetResult.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\BaseRootController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\ManageBannersController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManagePagesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\RootController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
+    <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryItemModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryTreeNodeModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\ControlPanelSectionModel.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Areas\ControlPanel\Scripts\Banners.js" />
     <Content Include="Areas\ControlPanel\Scripts\Categories.js" />
     <Content Include="Areas\ControlPanel\Scripts\Global.js" />
     <Content Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\adapter\ext\ext-base-debug.js" />
