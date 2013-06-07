@@ -12,6 +12,8 @@
     <title>@ViewBag.Title | @user.Company | Картель.рф</title>
     @* Включения *@
     <link href="~/Content/styles/stylesheets/usersite.css" rel="stylesheet" />
+    <script src="~/Scripts/Libs/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/Libs/jquery.validate.min.js"></script>
 </head>
 <body>
     <div class="blue">
@@ -104,7 +106,7 @@
                     <div class="group">
                         <div class="group-title gradient">
                             <a href="/vendor/about/@user.Id">
-                            О Компании
+                                О Компании
                             </a>
                         </div>
                         <div class="group-content">
@@ -115,14 +117,15 @@
                     <div class="group">
                         <div class="group-title gradient">
                             <a href="/vendor/contacts/@user.Id">
-                            Контакты
+                                Контакты
                             </a>
                         </div>
                         <div class="group-content last">
                             <div class="contacts-title">
                                 Написать письмо
                             </div>
-                            <form action="/vendor/feedback" method="POST">
+                            <form action="/vendor/feedback/@user.Id" method="POST" id="layout-feedback-form">
+                                <input type="hidden" name="Subject" value="Сообщение с формы обратной связи"/>
                                 <div class="field">
                                     <div class="editor">
                                         <input type="text" name="Name" placeholder="Ваше имя"/>
@@ -158,5 +161,30 @@
             <div class="footer-item">Не нашли что искали? <a href="/account/tenders/add-tender">Разместите тендер</a></div>
         </footer>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#layout-feedback-form").validate({
+                rules: {
+                    Name: {
+                        required: true,
+                        maxlength: 65
+                    },
+                    Email: {
+                        required: true,
+                        maxlength: 120,
+                        email: true
+                    },
+                    Content: {
+                        required: true,
+                        maxlength: 255,
+                        minlength: 10
+                    }
+                }
+            });
+            $(window).resize(function() {
+                $("#footer").css("top", $(window).height() - $("#footer").outerHeight());
+            }).resize();
+        });
+    </script>
 </body>
 </html>

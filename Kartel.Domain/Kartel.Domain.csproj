@@ -78,6 +78,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -101,6 +104,7 @@
     <Compile Include="DAL\Repositories\BannersRepository.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
     <Compile Include="DAL\Repositories\CategoriesRepository.cs" />
+    <Compile Include="DAL\Repositories\MailNotificationMessagesRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="DAL\Repositories\StaticPagesRepository.cs" />
     <Compile Include="DAL\Repositories\TendersRepository.cs" />
@@ -117,6 +121,11 @@
     <Compile Include="Enums\TenderPaymentInfo.cs" />
     <Compile Include="Infrastructure\Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Infrastructure\InfrastructureLayer.cs" />
+    <Compile Include="Infrastructure\Mailing\MailConnectionString.cs" />
+    <Compile Include="Infrastructure\Mailing\MailNotificationManager.cs" />
+    <Compile Include="Infrastructure\Mailing\Templates\BaseTemplate.cs" />
+    <Compile Include="Infrastructure\Mailing\Templates\FileTemplate.cs" />
+    <Compile Include="Infrastructure\Mailing\Templates\ParametrizedFileTemplate.cs" />
     <Compile Include="Infrastructure\Misc\DictionaryStringCache.cs" />
     <Compile Include="Infrastructure\Misc\DynamicJsonObject.cs" />
     <Compile Include="Infrastructure\Misc\PasswordUtils.cs" />
@@ -125,9 +134,11 @@
     <Compile Include="Infrastructure\Routing\RoutesManager.cs" />
     <Compile Include="Infrastructure\Search\SearchManager.cs" />
     <Compile Include="Interfaces\Cache\IStringCache.cs" />
+    <Compile Include="Interfaces\Infrastructure\IMailNotificationManager.cs" />
     <Compile Include="Interfaces\Repositories\IBannersRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IMailNotificationMessagesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IStaticPagesRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITendersRepository.cs" />

@@ -11,6 +11,7 @@
 
 using Kartel.Domain.DAL;
 using Kartel.Domain.Infrastructure;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Classes;
@@ -32,6 +33,7 @@ namespace Kartel.Trade.Web
 
             // Инициаилизируем механизм поиска
             Locator.GetService<ISearchManager>().Init();
+            Locator.GetService<IMailNotificationManager>().Init();
         }
     }
 }

@@ -10,7 +10,9 @@
 // ============================================================
 
 using Autofac;
+using Kartel.Domain.Infrastructure.Mailing;
 using Kartel.Domain.Infrastructure.Search;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 
@@ -32,6 +34,7 @@ namespace Kartel.Domain.Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SearchManager>().As<ISearchManager>().SingleInstance();
+            builder.RegisterType<MailNotificationManager>().As<IMailNotificationManager>().SingleInstance();
         }
     }
 }

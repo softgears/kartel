@@ -67,6 +67,9 @@ namespace Kartel.Domain.DAL
     partial void InsertBanner(Kartel.Domain.Entities.Banner instance);
     partial void UpdateBanner(Kartel.Domain.Entities.Banner instance);
     partial void DeleteBanner(Kartel.Domain.Entities.Banner instance);
+    partial void InsertMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
+    partial void UpdateMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
+    partial void DeleteMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -194,6 +197,14 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.Banner>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.MailNotificationMessage> MailNotificationMessages
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.MailNotificationMessage>();
 			}
 		}
 	}
@@ -5829,6 +5840,212 @@ namespace Kartel.Domain.Entities
 					this._Extra = value;
 					this.SendPropertyChanged("Extra");
 					this.OnExtraChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MailNotificationMessages")]
+	public partial class MailNotificationMessage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private string _Recipient;
+		
+		private string _Subject;
+		
+		private string _Content;
+		
+		private bool _Sended;
+		
+		private System.Nullable<System.DateTime> _DateEnqued;
+		
+		private System.Nullable<System.DateTime> _DateSended;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnRecipientChanging(string value);
+    partial void OnRecipientChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnContentChanging(string value);
+    partial void OnContentChanged();
+    partial void OnSendedChanging(bool value);
+    partial void OnSendedChanged();
+    partial void OnDateEnquedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateEnquedChanged();
+    partial void OnDateSendedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateSendedChanged();
+    #endregion
+		
+		public MailNotificationMessage()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recipient", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Recipient
+		{
+			get
+			{
+				return this._Recipient;
+			}
+			set
+			{
+				if ((this._Recipient != value))
+				{
+					this.OnRecipientChanging(value);
+					this.SendPropertyChanging();
+					this._Recipient = value;
+					this.SendPropertyChanged("Recipient");
+					this.OnRecipientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(255)")]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Content", DbType="NVarChar(MAX)")]
+		public string Content
+		{
+			get
+			{
+				return this._Content;
+			}
+			set
+			{
+				if ((this._Content != value))
+				{
+					this.OnContentChanging(value);
+					this.SendPropertyChanging();
+					this._Content = value;
+					this.SendPropertyChanged("Content");
+					this.OnContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sended", DbType="Bit NOT NULL")]
+		public bool Sended
+		{
+			get
+			{
+				return this._Sended;
+			}
+			set
+			{
+				if ((this._Sended != value))
+				{
+					this.OnSendedChanging(value);
+					this.SendPropertyChanging();
+					this._Sended = value;
+					this.SendPropertyChanged("Sended");
+					this.OnSendedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateEnqued", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateEnqued
+		{
+			get
+			{
+				return this._DateEnqued;
+			}
+			set
+			{
+				if ((this._DateEnqued != value))
+				{
+					this.OnDateEnquedChanging(value);
+					this.SendPropertyChanging();
+					this._DateEnqued = value;
+					this.SendPropertyChanged("DateEnqued");
+					this.OnDateEnquedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateSended", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateSended
+		{
+			get
+			{
+				return this._DateSended;
+			}
+			set
+			{
+				if ((this._DateSended != value))
+				{
+					this.OnDateSendedChanging(value);
+					this.SendPropertyChanging();
+					this._DateSended = value;
+					this.SendPropertyChanged("DateSended");
+					this.OnDateSendedChanged();
 				}
 			}
 		}

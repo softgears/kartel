@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Infrastructure.Mailing.Templates;
 using Kartel.Domain.Infrastructure.Routing;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
@@ -226,6 +229,47 @@ namespace Kartel.Trade.Web.Controllers
             // Отдаем вид
             ViewBag.term = term;
             return View(products);
+        }
+
+        /// <summary>
+        /// Обрабатывает подачу отправку сообщения указанному пользователю
+        /// </summary>
+        /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="Name">Ваше имя</param>
+        /// <param name="Email">Ваш email</param>
+        /// <param name="Content">Текст вопроса</param>
+        /// <returns></returns>
+        [HttpPost][Route("vendor/feedback/{id}")]
+        public ActionResult Feedback(long id, string Name, string Email, string Content, string Subject)
+        {
+            // Инициализируем пользотваеля
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Отправка сообщения", string.Format("/vendor/feedback", id), true);
+            
+            // Формируем шаблон
+            var template =
+                new ParametrizedFileTemplate(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "Feedback.html"), new
+                        {
+                            Subject = Subject,
+                            Email = Email,
+                            Content = Content,
+                            Name = Name,
+                            IP = Request.UserHostAddress
+                        });
+
+            var user = UsersRepository.Load(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index",new {id = id});
+            }
+
+            Locator.GetService<IMailNotificationManager>().Notify(user,"Картель.рф: "+Subject,template.ToString());
+
+            return View();
         }
     }
 }

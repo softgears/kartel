@@ -27,7 +27,7 @@
         <classShapeMoniker Id="7efb85b5-a8ef-444e-83af-3406526f2f95" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.5 : 12.3859684244792); (1.5 : 16.4623527018229); (3.5 : 16.4623527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(0.53125 : 12.3859684244792); (0.53125 : 15.65625); (3.5 : 15.65625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/KartelDataContext/User/User_UserOccupationInfo" />
       <nodes>
         <classShapeMoniker Id="60863a33-1ea4-4cf7-97a3-239dce89a4e0" />
@@ -176,6 +176,12 @@
       <DataClassMoniker Name="/KartelDataContext/Banner" />
       <nestedChildShapes>
         <elementListCompartment Id="9dc8210c-5cba-40bc-a9a4-429445b222f3" absoluteBounds="6.14, 17.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5d98271-e37b-45aa-b375-0d7d9b1b36f7" absoluteBounds="0.625, 16.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/KartelDataContext/MailNotificationMessage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fcdcdc9b-8d51-4ec8-a553-f09a18dfb07a" absoluteBounds="0.63999999999999968, 16.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
