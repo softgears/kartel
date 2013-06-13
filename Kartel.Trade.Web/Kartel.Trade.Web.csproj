@@ -2412,7 +2412,9 @@
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
     <Content Include="Scripts\Libs\jquery.validate.min.js" />
-    <Content Include="Templates\Mail\Feedback.html" />
+    <Content Include="Templates\Mail\Feedback.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
