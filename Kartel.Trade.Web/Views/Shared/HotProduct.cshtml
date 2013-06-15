@@ -11,6 +11,14 @@
         </a>
     </div>
     <div class="price">
-        Цена: <span class="price-holder">@Model.GetPrice() @Model.GetCurrency()</span>
+        Цена: 
+        @if (Model.GetPrice() != String.Empty)
+        {
+            <span class="price-holder">@Model.GetPrice() @Model.GetCurrency()</span>
+        }
+        else
+        {
+            <span class="price-holder">- - -</span>
+        }
     </div>
 </div>

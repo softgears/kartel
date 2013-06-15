@@ -9,17 +9,17 @@
   height: 2px;
   width: 100%;
   background: url(../../images/main/hr.png) top center no-repeat;
-  margin: 15px 0px;
-  margin-top: 5px;
+  margin: 5px 0 20px 0px;
 }
 
-/* line 12, ../sass/page-main.sass */
+/* line 11, ../sass/page-main.sass */
 .mainblock {
   border: 1px solid #bbbbbb;
   padding: 10px;
   border-radius: 5px;
   margin: 0px 5px;
   position: relative;
+  background-color: white;
 }
 /* line 20, ../sass/page-main.sass */
 .mainblock ul li {
@@ -106,13 +106,17 @@
 /* line 101, ../sass/page-main.sass */
 .mainblock .row {
   border-bottom: 1px dashed #bbbbbb;
-  padding: 10px 0px;
+  padding: 15px 0px 20px 0;
 }
 /* line 105, ../sass/page-main.sass */
+.mainblock .row:first-child {
+  padding-top: 5px;
+}
+/* line 108, ../sass/page-main.sass */
 .mainblock .row:last-child {
   border-bottom: 0;
 }
-/* line 108, ../sass/page-main.sass */
+/* line 111, ../sass/page-main.sass */
 .mainblock .row .item {
   padding: 5px;
   border-right: 1px dashed #bbbbbb;
@@ -121,16 +125,32 @@
   width: 159px;
   height: 159px;
 }
-/* line 116, ../sass/page-main.sass */
+/* line 119, ../sass/page-main.sass */
 .mainblock .row .item .image {
   height: 70px;
 }
-/* line 119, ../sass/page-main.sass */
+/* line 122, ../sass/page-main.sass */
 .mainblock .row .item .image img {
   height: 70px;
   width: auto;
 }
-/* line 123, ../sass/page-main.sass */
+/* line 126, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
+}
+/* line 129, ../sass/page-main.sass */
+.mainblock .mainblock-bottom {
+  margin: 10px 17px 3px 10px;
+}
+/* line 132, ../sass/page-main.sass */
+.mainblock .mainblock-bottom .extra-link {
+  color: #444444;
+}
+/* line 135, ../sass/page-main.sass */
+.mainblock .mainblock-bottom .extra-link span {
+  color: #006699;
+}
+/* line 138, ../sass/page-main.sass */
+.mainblock .mainblock-bottom .extra-link:last-child {
+  float: right;
 }
