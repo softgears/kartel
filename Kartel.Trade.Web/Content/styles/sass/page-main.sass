@@ -20,16 +20,18 @@
 		li
 			list-style-type: disc
 			list-style-position: inside
-			margin: 5px 0px
+			margin: 5px 0px 10px 0
 			padding-left: 5px
 			font-size: 13px
+
+			&:first-child
+				margin-top: 14px
 
 	#gold-vendor-info
 		display: inline-block
 		vertical-align: top
 		width: 325px
-		margin-left: 10px
-		border-right: 1px dashed #bbbbbb
+		margin-left: 20px
 
 		.title
 			font-weight: bold
@@ -37,11 +39,17 @@
 			margin-top: 5px
 			margin-bottom: 10px
 
+
 	#place-info
 		display: inline-block
 		vertical-align: top
-		width: 340px
+		width: 330px
 		text-align: center
+		border-left : 1px dashed #bbbbbb
+		//margin-bottom: 6px
+
+		#place-goods, #place-tenders
+			margin-top : 5px
 
 		#place-goods
 			display: inline-block
@@ -49,11 +57,12 @@
 			width: 138px
 			height: 52px
 			cursor: pointer
-			background: url(../../images/main/placegoods.png) left top no-repeat
+			//background: url(../../images/main/placegoods.png) left top no-repeat
+			background: url(../../images/main/placegoods.png) left -52px no-repeat
 			margin-right: 10px
 
-			&:hover
-				background: url(../../images/main/placegoods.png) left -52px no-repeat
+			//&:hover
+			//	background: url(../../images/main/placegoods.png) left -52px no-repeat
 
 		#place-tenders
 			display: inline-block
@@ -61,20 +70,25 @@
 			width: 138px
 			height: 52px
 			cursor: pointer
-			background: url(../../images/main/placetenders.png) left top no-repeat
+			//background: url(../../images/main/placetenders.png) left top no-repeat
+			background: url(../../images/main/placetenders.png) left -51px no-repeat
 
-			&:hover
-				background: url(../../images/main/placetenders.png) left -52px no-repeat
+			//&:hover
+			//	background: url(../../images/main/placetenders.png) left -52px no-repeat
 
 		ul
 			text-align: left
 			margin-left: 30px
 			margin-top: 10px
+			margin-bottom: 15px
 
 		.free
 			color: #004080
-			font-size: 20px
-			margin-top: 10px
+			font-size: 24px
+			margin-top: 12px
+			margin-bottom: 6px
+			font-weight : bold
+			font-family : Calibri !important
 
 	.goldvendor
 		position: absolute

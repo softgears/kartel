@@ -491,72 +491,76 @@ body #footer #footer-content a {
 .mainblock ul li {
   list-style-type: disc;
   list-style-position: inside;
-  margin: 5px 0px;
+  margin: 5px 0px 10px 0;
   padding-left: 5px;
   font-size: 13px;
 }
 /* line 27, ../sass/page-main.sass */
+.mainblock ul li:first-child {
+  margin-top: 14px;
+}
+/* line 30, ../sass/page-main.sass */
 .mainblock #gold-vendor-info {
   display: inline-block;
   vertical-align: top;
   width: 325px;
-  margin-left: 10px;
-  border-right: 1px dashed #bbbbbb;
+  margin-left: 20px;
 }
-/* line 34, ../sass/page-main.sass */
+/* line 36, ../sass/page-main.sass */
 .mainblock #gold-vendor-info .title {
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 5px;
   margin-bottom: 10px;
 }
-/* line 40, ../sass/page-main.sass */
+/* line 43, ../sass/page-main.sass */
 .mainblock #place-info {
   display: inline-block;
   vertical-align: top;
-  width: 340px;
+  width: 330px;
   text-align: center;
+  border-left: 1px dashed #bbbbbb;
 }
-/* line 46, ../sass/page-main.sass */
+/* line 51, ../sass/page-main.sass */
+.mainblock #place-info #place-goods, .mainblock #place-info #place-tenders {
+  margin-top: 5px;
+}
+/* line 54, ../sass/page-main.sass */
 .mainblock #place-info #place-goods {
   display: inline-block;
   vertical-align: top;
   width: 138px;
   height: 52px;
   cursor: pointer;
-  background: url(../../images/main/placegoods.png) left top no-repeat;
+  background: url(../../images/main/placegoods.png) left -52px no-repeat;
   margin-right: 10px;
 }
-/* line 55, ../sass/page-main.sass */
-.mainblock #place-info #place-goods:hover {
-  background: url(../../images/main/placegoods.png) left -52px no-repeat;
-}
-/* line 58, ../sass/page-main.sass */
+/* line 67, ../sass/page-main.sass */
 .mainblock #place-info #place-tenders {
   display: inline-block;
   vertical-align: top;
   width: 138px;
   height: 52px;
   cursor: pointer;
-  background: url(../../images/main/placetenders.png) left top no-repeat;
+  background: url(../../images/main/placetenders.png) left -51px no-repeat;
 }
-/* line 66, ../sass/page-main.sass */
-.mainblock #place-info #place-tenders:hover {
-  background: url(../../images/main/placetenders.png) left -52px no-repeat;
-}
-/* line 69, ../sass/page-main.sass */
+/* line 79, ../sass/page-main.sass */
 .mainblock #place-info ul {
   text-align: left;
   margin-left: 30px;
   margin-top: 10px;
+  margin-bottom: 15px;
 }
-/* line 74, ../sass/page-main.sass */
+/* line 85, ../sass/page-main.sass */
 .mainblock #place-info .free {
   color: #004080;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 24px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-family: Calibri !important;
 }
-/* line 79, ../sass/page-main.sass */
+/* line 93, ../sass/page-main.sass */
 .mainblock .goldvendor {
   position: absolute;
   bottom: -8px;
@@ -565,16 +569,16 @@ body #footer #footer-content a {
   background: url(../../images/main/goldvendor.png) top center no-repeat;
   left: 55px;
 }
-/* line 87, ../sass/page-main.sass */
+/* line 101, ../sass/page-main.sass */
 .mainblock .row {
   border-bottom: 1px dashed #bbbbbb;
   padding: 10px 0px;
 }
-/* line 91, ../sass/page-main.sass */
+/* line 105, ../sass/page-main.sass */
 .mainblock .row:last-child {
   border-bottom: 0;
 }
-/* line 94, ../sass/page-main.sass */
+/* line 108, ../sass/page-main.sass */
 .mainblock .row .item {
   padding: 5px;
   border-right: 1px dashed #bbbbbb;
@@ -583,16 +587,16 @@ body #footer #footer-content a {
   width: 159px;
   height: 159px;
 }
-/* line 102, ../sass/page-main.sass */
+/* line 116, ../sass/page-main.sass */
 .mainblock .row .item .image {
   height: 70px;
 }
-/* line 105, ../sass/page-main.sass */
+/* line 119, ../sass/page-main.sass */
 .mainblock .row .item .image img {
   height: 70px;
   width: auto;
 }
-/* line 109, ../sass/page-main.sass */
+/* line 123, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
@@ -1040,7 +1044,7 @@ body #footer #footer-content a {
 /* line 382, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgray;
+  color: darkgrey;
   margin-top: 5px;
 }
 /* line 388, ../sass/categories.sass */
@@ -1852,7 +1856,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 212, ../sass/account.sass */
@@ -1867,7 +1871,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 226, ../sass/account.sass */
