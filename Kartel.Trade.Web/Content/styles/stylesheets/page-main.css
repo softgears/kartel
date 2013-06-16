@@ -9,7 +9,7 @@
   height: 2px;
   width: 100%;
   background: url(../../images/main/hr.png) top center no-repeat;
-  margin: 5px 0 20px 0px;
+  margin: 10px 0 25px 0px;
 }
 
 /* line 11, ../sass/page-main.sass */
@@ -25,7 +25,7 @@
 .mainblock ul li {
   list-style-type: disc;
   list-style-position: inside;
-  margin: 5px 0px 10px 0;
+  margin: 5px 0px 13px 0;
   padding-left: 5px;
   font-size: 13px;
 }
@@ -39,15 +39,16 @@
   vertical-align: top;
   width: 325px;
   margin-left: 20px;
+  margin-bottom: 25px;
 }
-/* line 36, ../sass/page-main.sass */
+/* line 37, ../sass/page-main.sass */
 .mainblock #gold-vendor-info .title {
   font-weight: bold;
   text-transform: uppercase;
-  margin-top: 5px;
+  margin-top: 8px;
   margin-bottom: 10px;
 }
-/* line 43, ../sass/page-main.sass */
+/* line 44, ../sass/page-main.sass */
 .mainblock #place-info {
   display: inline-block;
   vertical-align: top;
@@ -55,11 +56,11 @@
   text-align: center;
   border-left: 1px dashed #bbbbbb;
 }
-/* line 51, ../sass/page-main.sass */
+/* line 52, ../sass/page-main.sass */
 .mainblock #place-info #place-goods, .mainblock #place-info #place-tenders {
   margin-top: 5px;
 }
-/* line 54, ../sass/page-main.sass */
+/* line 55, ../sass/page-main.sass */
 .mainblock #place-info #place-goods {
   display: inline-block;
   vertical-align: top;
@@ -69,7 +70,7 @@
   background: url(../../images/main/placegoods.png) left -52px no-repeat;
   margin-right: 10px;
 }
-/* line 67, ../sass/page-main.sass */
+/* line 68, ../sass/page-main.sass */
 .mainblock #place-info #place-tenders {
   display: inline-block;
   vertical-align: top;
@@ -78,14 +79,14 @@
   cursor: pointer;
   background: url(../../images/main/placetenders.png) left -51px no-repeat;
 }
-/* line 79, ../sass/page-main.sass */
+/* line 80, ../sass/page-main.sass */
 .mainblock #place-info ul {
   text-align: left;
   margin-left: 30px;
   margin-top: 10px;
   margin-bottom: 15px;
 }
-/* line 85, ../sass/page-main.sass */
+/* line 86, ../sass/page-main.sass */
 .mainblock #place-info .free {
   color: #004080;
   font-size: 24px;
@@ -94,7 +95,7 @@
   font-weight: bold;
   font-family: Calibri !important;
 }
-/* line 93, ../sass/page-main.sass */
+/* line 94, ../sass/page-main.sass */
 .mainblock .goldvendor {
   position: absolute;
   bottom: -8px;
@@ -103,20 +104,20 @@
   background: url(../../images/main/goldvendor.png) top center no-repeat;
   left: 55px;
 }
-/* line 101, ../sass/page-main.sass */
+/* line 102, ../sass/page-main.sass */
 .mainblock .row {
   border-bottom: 1px dashed #bbbbbb;
-  padding: 15px 0px 20px 0;
+  padding: 15px 0px 25px 0;
 }
-/* line 105, ../sass/page-main.sass */
+/* line 106, ../sass/page-main.sass */
 .mainblock .row:first-child {
   padding-top: 5px;
 }
-/* line 108, ../sass/page-main.sass */
+/* line 109, ../sass/page-main.sass */
 .mainblock .row:last-child {
   border-bottom: 0;
 }
-/* line 111, ../sass/page-main.sass */
+/* line 112, ../sass/page-main.sass */
 .mainblock .row .item {
   padding: 5px;
   border-right: 1px dashed #bbbbbb;
@@ -125,32 +126,32 @@
   width: 159px;
   height: 159px;
 }
-/* line 119, ../sass/page-main.sass */
+/* line 120, ../sass/page-main.sass */
 .mainblock .row .item .image {
   height: 70px;
 }
-/* line 122, ../sass/page-main.sass */
+/* line 123, ../sass/page-main.sass */
 .mainblock .row .item .image img {
   height: 70px;
   width: auto;
 }
-/* line 126, ../sass/page-main.sass */
+/* line 127, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
-/* line 129, ../sass/page-main.sass */
+/* line 130, ../sass/page-main.sass */
 .mainblock .mainblock-bottom {
-  margin: 10px 17px 3px 10px;
+  margin: 12px 17px 5px 10px;
 }
-/* line 132, ../sass/page-main.sass */
+/* line 133, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link {
   color: #444444;
 }
-/* line 135, ../sass/page-main.sass */
+/* line 136, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link span {
   color: #006699;
 }
-/* line 138, ../sass/page-main.sass */
+/* line 139, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link:last-child {
   float: right;
 }
