@@ -1,10 +1,14 @@
-﻿@model Kartel.Domain.Entities.Category
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@model Kartel.Domain.Entities.Category
 
 @{
     ViewBag.Title = Model.Title;
     Layout = "../Shared/InnerLayout.cshtml";
     int page = ViewBag.page;
     int totalPages = ViewBag.totalPages;
+    var countries = Locator.GetService<ICountriesRepository>().GetAllCountries();
+    var currentRegion = ViewBag.CurrentRegion;
 }
 
 @section LeftMenuBlock
@@ -27,18 +31,12 @@
             Регион
         </div>
         <ul>
-            <li>
-                <a href="/browse-category/@Model.Id?region=ru">Россия</a>
-            </li>
-            <li>
-                <a href="/browse-category/@Model.Id?region=bru">Беларусь</a>
-            </li>
-            <li>
-                <a href="/browse-category/@Model.Id?region=ukr">Украина</a>
-            </li>
-            <li>
-                <a href="/browse-category/@Model.Id?region=de">Германия</a>
-            </li>
+            @foreach (var c in countries)
+            {
+                <li>
+                    <a href="/browse-category/@Model.Id?region=@c.Code">@c.Name</a>
+                </li>
+            }
         </ul>
     </div>
 }
@@ -46,55 +44,64 @@
 <div id="page-categories">
     @* навигационная цепочка *@
     @Html.Partial("NavigationChain")
-    
+
     @* Заголовок *@
     <div class="current-category-title">
         @Model.Title
     </div>
-    
+
     @* Горячие товары *@
     <div id="hot-products">
         @foreach (var product in Model.GetRandomProducts())
         {
-            @Html.Partial("HotProduct",product)
+            @Html.Partial("HotProduct", product)
         }
         <div id="hot-actions">
-            <a href="/help/hot" style="float: right">Узнать больше <img src="~/Content/images/layout/bullet.png" /></a>
-            <a href="#">Добавить свои товары <img src="~/Content/images/layout/bullet.png" /></a>
+            <a href="/help/hot" style="float: right">Узнать больше
+                <img src="~/Content/images/layout/bullet.png" /></a>
+            <a href="#">Добавить свои товары
+                <img src="~/Content/images/layout/bullet.png" /></a>
         </div>
     </div>
-    
+
     @* Верхний навигатор *@
     @Html.Partial("ProductsNavigator")
-    
+
     <div id="products">
-        @foreach (var product in Model.GetProducts().Skip(page*9).Take(9))
+        @foreach (var product in Model.GetProducts().Skip(page * 9).Take(9))
         {
-            @Html.Partial("Product",product)
+            @Html.Partial("Product", product)
         }
     </div>
 
     @* нижний навигатор *@
     @Html.Partial("ProductsNavigator")
-    
+
     @* Пагинатор *@
     @if (totalPages > 1)
     {
-    <div id="paginator">
-        @for (var i = 0; i < totalPages; i++)
-        {
-            if (i == page)
+        <div id="paginator">
+            @for (var i = 0; i < totalPages; i++)
             {
-                <span class="current-page">@(page+1)</span>
+                if (i == page)
+                {
+                <span class="current-page">@(page + 1)</span>
+                }
+                else
+                {
+                    if (currentRegion == null)
+                    {
+                        <a href="/browse-category/@Model.Id?page=@(i)">@(i + 1)</a>
+                    }
+                    else
+                    {
+                        <a href="/browse-category/@Model.Id?page=@(i)&region=@currentRegion">@(i + 1)</a>
+                    }
+                }
             }
-            else
-            {
-                <a href="/browse-category/@Model.Id?page=@(i)">@(i+1)</a>
-            }
-        }
-    </div>
+        </div>
     }
-    
+
     <div style="text-align: center">
         <div class="info">
             <div class="info-title">
@@ -106,9 +113,10 @@
             <div class="action-button">
                 <img src="~/Content/images/layout/addtender.png" />
             </div>
-            <div class="action-text">Разместите тендер!<br/> Бесплатно</div>
+            <div class="action-text">Разместите тендер!<br />
+                Бесплатно</div>
         </div>
-    
+
         <div class="info">
             <div class="info-title">
                 Поставщикам
@@ -120,6 +128,6 @@
                 <img src="~/Content/images/layout/addproduct.png" />
             </div>
             <div class="action-text">Зарегистрируйтесь сейчас! Бесплатно</div>
-        </div>    
+        </div>
     </div>
 </div>

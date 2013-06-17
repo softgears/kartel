@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kartel.Domain.Entities;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.Interfaces.Search;
@@ -54,10 +56,11 @@ namespace Kartel.Trade.Web.Controllers
         /// Просматривает содержимое указанной категории
         /// </summary>
         /// <param name="id">Идентификатор категории</param>
+        /// <param name="region">Страна для отображения</param>
         /// <param name="page">Страница для отображения</param>
         /// <returns></returns>
         [Route("browse-category/{id}")]
-        public ActionResult BrowseCategory(long id, int page = 0)
+        public ActionResult BrowseCategory(long id, string region, int page = 0)
         {
             // Пушим навигационную цепочку
             PushNavigationChainItem("Главная", "/");
@@ -70,11 +73,34 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("NotFound");
             }
 
+            // Отображает товары c учётом страны
+            if (region != null)
+            {
+                var countryRep = Locator.GetService<ICountriesRepository>();
+                var country = countryRep.GetAllCountries().FirstOrDefault(c => c.Code == region);
+
+                if (country != null)
+                {
+                    // Создаём временную коллекцию для отфильтрованных товаров
+                    var tempProducts = new EntitySet<Product>();
+                    foreach (var prod in cat.Products)
+                    {
+                        if (prod.User.Country == country.Name)
+                        {
+                            tempProducts.Add(prod);
+                        }
+                    }
+                    ViewBag.CurrentRegion = country.Code;
+                    cat.Products = tempProducts;
+                }
+            }
+
             PushNavigationChainItem(cat.Title, "", true);
 
             // Отображает вьюху категории с товарами
             ViewBag.page = page;
             ViewBag.totalPages = MathHelper.PagesCount(cat.Products.Count, 9);
+
             return View(cat);
         }
 
@@ -173,6 +199,5 @@ namespace Kartel.Trade.Web.Controllers
 
             return View(page);
         }
-
     }
 }

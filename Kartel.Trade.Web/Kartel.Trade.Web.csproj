@@ -2320,6 +2320,7 @@
     <Content Include="Content\images\usersite\search-icon.png" />
     <Content Include="Content\styles\stylesheets\all.css" />
     <Content Include="Content\styles\stylesheets\usersite.css" />
+    <Content Include="Countries.xml" />
     <Content Include="Global.asax" />
     <Content Include="Areas\ControlPanel\Views\Web.config" />
     <Content Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\examples\direct\direct-form.php" />

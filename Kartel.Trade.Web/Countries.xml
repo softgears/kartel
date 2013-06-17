@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Countries>
+    <Country>
+        <Name>Россия</Name>
+        <Code>ru</Code>
+        <Flag>http://google.com/</Flag>
+        <Cities>
+            <City>Moscow</City>
+            <City>Khabarovsk</City>
+        </Cities>
+    </Country>
+    <Country>
+        <Name>Украина</Name>
+        <Code>ua</Code>
+        <Flag>http://google.com/</Flag>
+        <Cities>
+            <City>Киев</City>
+        </Cities>
+    </Country>
+    <Country>
+        <Name>Беларусь</Name>
+        <Code>by</Code>
+        <Flag>http://google.com/</Flag>
+        <Cities>
+            <City>Минск</City>
+        </Cities>
+    </Country>
+    <Country>
+        <Name>Германия</Name>
+        <Code>de</Code>
+        <Flag>http://google.com/</Flag>
+        <Cities>
+            <City>Берлин</City>
+        </Cities>
+    </Country>
+</Countries>

@@ -34,26 +34,7 @@
     <favorites_list name="Kartel.Trade.Web" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="page-main.sass" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="19" selection-start="2159" selection-end="2160" vertical-scroll-proportion="0.42828685">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="products.sass" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="22" selection-start="1279" selection-end="1280" vertical-scroll-proportion="-8.64">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -76,10 +57,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
-    <option name="y" value="-8" />
-    <option name="width" value="1234" />
-    <option name="height" value="1040" />
+    <option name="x" value="58" />
+    <option name="y" value="-4" />
+    <option name="width" value="1866" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -190,8 +171,8 @@
     <property name="options.lastSelected" value="preferences.sourceCode.SASS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Beepas/Beepas.Web" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -224,22 +205,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1234" height="1040" extended-state="6" />
-    <editor active="true" />
+    <frame x="58" y="-4" width="1866" height="1088" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22677824" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.226703" sideWeight="0.6709129" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32908705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -308,9 +289,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="49" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="182" column="49" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
@@ -330,9 +309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="45" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="124" column="45" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
@@ -367,35 +344,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/usersite.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="35" selection-end="41" vertical-scroll-proportion="0.0910816">
-          <folding />
-        </state>
+        <state line="2" column="19" selection-start="35" selection-end="41" vertical-scroll-proportion="0.0910816" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="6" selection-start="194" selection-end="194" vertical-scroll-proportion="0.17777778">
-          <folding />
-        </state>
+        <state line="11" column="6" selection-start="194" selection-end="194" vertical-scroll-proportion="0.17777778" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="42" selection-start="5075" selection-end="5075" vertical-scroll-proportion="0.7286528">
+        <state line="246" column="42" selection-start="5075" selection-end="5075" vertical-scroll-proportion="0.7286528" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="19" selection-start="2159" selection-end="2160" vertical-scroll-proportion="0.04130809">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="22" selection-start="1279" selection-end="1280" vertical-scroll-proportion="-8.64">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="19" selection-start="2159" selection-end="2160" vertical-scroll-proportion="0.42828685">
+        <state line="74" column="22" selection-start="1279" selection-end="1280" vertical-scroll-proportion="0.04130809">
           <folding />
         </state>
       </provider>

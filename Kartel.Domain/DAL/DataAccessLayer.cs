@@ -40,6 +40,7 @@ namespace Kartel.Domain.DAL
             builder.RegisterType<StaticPagesRepository>().As<IStaticPagesRepository>();
             builder.RegisterType<BannersRepository>().As<IBannersRepository>();
             builder.RegisterType<MailNotificationMessagesRepository>().As<IMailNotificationMessagesRepository>();
+            builder.RegisterType<CountriesRepository>().As<ICountriesRepository>();
         }
     }
 }
