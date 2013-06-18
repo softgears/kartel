@@ -53,6 +53,15 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                                             {"url", "/ControlPanel/ManageCategories/"},
                                             {"objectType", "section"}
                                         },
+                                    // Контроллер управления продуктами
+                                    new Dictionary<string, object>()
+                                        {
+                                            {"id", "categoriesMap"},
+                                            {"leaf", true},
+                                            {"text", "Карта категорий"},
+                                            {"url", "/ControlPanel/ManageCategoriesMap/"},
+                                            {"objectType", "section"}
+                                        },
                                     // Контроллер управления баннерами на главной
                                     new Dictionary<string, object>()
                                         {

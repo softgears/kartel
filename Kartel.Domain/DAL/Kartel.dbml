@@ -118,6 +118,8 @@
       <Association Name="Category_Category" Member="ChildCategories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
       <Association Name="Category_Product" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Product" />
       <Association Name="Category_Tender" Member="Tenders" ThisKey="Id" OtherKey="CategoryId" Type="Tender" />
+      <Association Name="Category_CategoryMapItem" Member="CategoryMapItems" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMapItem" />
+      <Association Name="Category_CategoryMap" Member="CategoryMaps" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMap" Cardinality="One" />
       <Association Name="Category_Category" Member="ParentCategory" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
   </Table>
@@ -262,6 +264,28 @@
       <Column Name="Sended" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DateEnqued" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DateSended" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryMapItems" Member="CategoryMapItems">
+    <Type Name="CategoryMapItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryMapId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Category_CategoryMapItem" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="CategoryMap_CategoryMapItem" Member="CategoryMap" ThisKey="CategoryMapId" OtherKey="Id" Type="CategoryMap" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryMaps" Member="CategoryMaps">
+    <Type Name="CategoryMap">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CategoryMap_CategoryMapItem" Member="CategoryMapItems" ThisKey="Id" OtherKey="CategoryMapId" Type="CategoryMapItem" />
+      <Association Name="Category_CategoryMap" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

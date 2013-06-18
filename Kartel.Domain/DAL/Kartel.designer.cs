@@ -70,6 +70,12 @@ namespace Kartel.Domain.DAL
     partial void InsertMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
     partial void UpdateMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
     partial void DeleteMailNotificationMessage(Kartel.Domain.Entities.MailNotificationMessage instance);
+    partial void InsertCategoryMapItem(Kartel.Domain.Entities.CategoryMapItem instance);
+    partial void UpdateCategoryMapItem(Kartel.Domain.Entities.CategoryMapItem instance);
+    partial void DeleteCategoryMapItem(Kartel.Domain.Entities.CategoryMapItem instance);
+    partial void InsertCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
+    partial void UpdateCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
+    partial void DeleteCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -205,6 +211,22 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.MailNotificationMessage>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.CategoryMapItem> CategoryMapItems
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.CategoryMapItem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.CategoryMap> CategoryMaps
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.CategoryMap>();
 			}
 		}
 	}
@@ -2666,6 +2688,10 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<Tender> _Tenders;
 		
+		private EntitySet<CategoryMapItem> _CategoryMapItems;
+		
+		private EntityRef<CategoryMap> _CategoryMaps;
+		
 		private EntityRef<Category> _ParentCategory;
 		
     #region Extensibility Method Definitions
@@ -2693,6 +2719,8 @@ namespace Kartel.Domain.Entities
 			this._ChildCategories = new EntitySet<Category>(new Action<Category>(this.attach_ChildCategories), new Action<Category>(this.detach_ChildCategories));
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
 			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
+			this._CategoryMapItems = new EntitySet<CategoryMapItem>(new Action<CategoryMapItem>(this.attach_CategoryMapItems), new Action<CategoryMapItem>(this.detach_CategoryMapItems));
+			this._CategoryMaps = default(EntityRef<CategoryMap>);
 			this._ParentCategory = default(EntityRef<Category>);
 			OnCreated();
 		}
@@ -2880,6 +2908,48 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_CategoryMapItem", Storage="_CategoryMapItems", ThisKey="Id", OtherKey="CategoryId")]
+		public EntitySet<CategoryMapItem> CategoryMapItems
+		{
+			get
+			{
+				return this._CategoryMapItems;
+			}
+			set
+			{
+				this._CategoryMapItems.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_CategoryMap", Storage="_CategoryMaps", ThisKey="Id", OtherKey="CategoryId", IsUnique=true, IsForeignKey=false)]
+		public CategoryMap CategoryMaps
+		{
+			get
+			{
+				return this._CategoryMaps.Entity;
+			}
+			set
+			{
+				CategoryMap previousValue = this._CategoryMaps.Entity;
+				if (((previousValue != value) 
+							|| (this._CategoryMaps.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CategoryMaps.Entity = null;
+						previousValue.Category = null;
+					}
+					this._CategoryMaps.Entity = value;
+					if ((value != null))
+					{
+						value.Category = this;
+					}
+					this.SendPropertyChanged("CategoryMaps");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Category", Storage="_ParentCategory", ThisKey="ParentId", OtherKey="Id", IsForeignKey=true)]
 		public Category ParentCategory
 		{
@@ -2965,6 +3035,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_Tenders(Tender entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = null;
+		}
+		
+		private void attach_CategoryMapItems(CategoryMapItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.Category = this;
+		}
+		
+		private void detach_CategoryMapItems(CategoryMapItem entity)
 		{
 			this.SendPropertyChanging();
 			entity.Category = null;
@@ -6068,6 +6150,473 @@ namespace Kartel.Domain.Entities
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CategoryMapItems")]
+	public partial class CategoryMapItem : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _CategoryMapId;
+		
+		private int _CategoryId;
+		
+		private int _SortOrder;
+		
+		private EntityRef<Category> _Category;
+		
+		private EntityRef<CategoryMap> _CategoryMap;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCategoryMapIdChanging(int value);
+    partial void OnCategoryMapIdChanged();
+    partial void OnCategoryIdChanging(int value);
+    partial void OnCategoryIdChanged();
+    partial void OnSortOrderChanging(int value);
+    partial void OnSortOrderChanged();
+    #endregion
+		
+		public CategoryMapItem()
+		{
+			this._Category = default(EntityRef<Category>);
+			this._CategoryMap = default(EntityRef<CategoryMap>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryMapId", DbType="Int NOT NULL")]
+		public int CategoryMapId
+		{
+			get
+			{
+				return this._CategoryMapId;
+			}
+			set
+			{
+				if ((this._CategoryMapId != value))
+				{
+					if (this._CategoryMap.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryMapIdChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryMapId = value;
+					this.SendPropertyChanged("CategoryMapId");
+					this.OnCategoryMapIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryId", DbType="Int NOT NULL")]
+		public int CategoryId
+		{
+			get
+			{
+				return this._CategoryId;
+			}
+			set
+			{
+				if ((this._CategoryId != value))
+				{
+					if (this._Category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryId = value;
+					this.SendPropertyChanged("CategoryId");
+					this.OnCategoryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int NOT NULL")]
+		public int SortOrder
+		{
+			get
+			{
+				return this._SortOrder;
+			}
+			set
+			{
+				if ((this._SortOrder != value))
+				{
+					this.OnSortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._SortOrder = value;
+					this.SendPropertyChanged("SortOrder");
+					this.OnSortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_CategoryMapItem", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true)]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.CategoryMapItems.Remove(this);
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.CategoryMapItems.Add(this);
+						this._CategoryId = value.Id;
+					}
+					else
+					{
+						this._CategoryId = default(int);
+					}
+					this.SendPropertyChanged("Category");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CategoryMap_CategoryMapItem", Storage="_CategoryMap", ThisKey="CategoryMapId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public CategoryMap CategoryMap
+		{
+			get
+			{
+				return this._CategoryMap.Entity;
+			}
+			set
+			{
+				CategoryMap previousValue = this._CategoryMap.Entity;
+				if (((previousValue != value) 
+							|| (this._CategoryMap.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CategoryMap.Entity = null;
+						previousValue.CategoryMapItems.Remove(this);
+					}
+					this._CategoryMap.Entity = value;
+					if ((value != null))
+					{
+						value.CategoryMapItems.Add(this);
+						this._CategoryMapId = value.Id;
+					}
+					else
+					{
+						this._CategoryMapId = default(int);
+					}
+					this.SendPropertyChanged("CategoryMap");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CategoryMaps")]
+	public partial class CategoryMap : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _CategoryId;
+		
+		private string _DisplayName;
+		
+		private int _SortOrder;
+		
+		private string _Image;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private EntitySet<CategoryMapItem> _CategoryMapItems;
+		
+		private EntityRef<Category> _Category;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCategoryIdChanging(int value);
+    partial void OnCategoryIdChanged();
+    partial void OnDisplayNameChanging(string value);
+    partial void OnDisplayNameChanged();
+    partial void OnSortOrderChanging(int value);
+    partial void OnSortOrderChanged();
+    partial void OnImageChanging(string value);
+    partial void OnImageChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    #endregion
+		
+		public CategoryMap()
+		{
+			this._CategoryMapItems = new EntitySet<CategoryMapItem>(new Action<CategoryMapItem>(this.attach_CategoryMapItems), new Action<CategoryMapItem>(this.detach_CategoryMapItems));
+			this._Category = default(EntityRef<Category>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryId", DbType="Int NOT NULL")]
+		public int CategoryId
+		{
+			get
+			{
+				return this._CategoryId;
+			}
+			set
+			{
+				if ((this._CategoryId != value))
+				{
+					if (this._Category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCategoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._CategoryId = value;
+					this.SendPropertyChanged("CategoryId");
+					this.OnCategoryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this.OnDisplayNameChanging(value);
+					this.SendPropertyChanging();
+					this._DisplayName = value;
+					this.SendPropertyChanged("DisplayName");
+					this.OnDisplayNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortOrder", DbType="Int NOT NULL")]
+		public int SortOrder
+		{
+			get
+			{
+				return this._SortOrder;
+			}
+			set
+			{
+				if ((this._SortOrder != value))
+				{
+					this.OnSortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._SortOrder = value;
+					this.SendPropertyChanged("SortOrder");
+					this.OnSortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(255)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this.OnImageChanging(value);
+					this.SendPropertyChanging();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CategoryMap_CategoryMapItem", Storage="_CategoryMapItems", ThisKey="Id", OtherKey="CategoryMapId")]
+		public EntitySet<CategoryMapItem> CategoryMapItems
+		{
+			get
+			{
+				return this._CategoryMapItems;
+			}
+			set
+			{
+				this._CategoryMapItems.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_CategoryMap", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true)]
+		public Category Category
+		{
+			get
+			{
+				return this._Category.Entity;
+			}
+			set
+			{
+				Category previousValue = this._Category.Entity;
+				if (((previousValue != value) 
+							|| (this._Category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Category.Entity = null;
+						previousValue.CategoryMaps = null;
+					}
+					this._Category.Entity = value;
+					if ((value != null))
+					{
+						value.CategoryMaps = this;
+						this._CategoryId = value.Id;
+					}
+					else
+					{
+						this._CategoryId = default(int);
+					}
+					this.SendPropertyChanged("Category");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CategoryMapItems(CategoryMapItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.CategoryMap = this;
+		}
+		
+		private void detach_CategoryMapItems(CategoryMapItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.CategoryMap = null;
 		}
 	}
 }

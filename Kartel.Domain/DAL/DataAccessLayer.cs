@@ -41,6 +41,8 @@ namespace Kartel.Domain.DAL
             builder.RegisterType<BannersRepository>().As<IBannersRepository>();
             builder.RegisterType<MailNotificationMessagesRepository>().As<IMailNotificationMessagesRepository>();
             builder.RegisterType<CountriesRepository>().As<ICountriesRepository>();
+            builder.RegisterType<CategoriesMapRepository>().As<ICategoriesMapRepository>();
+            builder.RegisterType<CategoryMapItemsRepository>().As<ICategoriesMapItemsRepository>();
         }
     }
 }

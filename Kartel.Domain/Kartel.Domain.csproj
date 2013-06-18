@@ -103,7 +103,9 @@
     <Compile Include="DAL\KartelDataContext.cs" />
     <Compile Include="DAL\Repositories\BannersRepository.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\CategoriesMapRepository.cs" />
     <Compile Include="DAL\Repositories\CategoriesRepository.cs" />
+    <Compile Include="DAL\Repositories\CategoryMapItemsRepository.cs" />
     <Compile Include="DAL\Repositories\CountriesRepository.cs" />
     <Compile Include="DAL\Repositories\MailNotificationMessagesRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
@@ -137,6 +139,8 @@
     <Compile Include="Infrastructure\Search\SearchManager.cs" />
     <Compile Include="Interfaces\Cache\IStringCache.cs" />
     <Compile Include="Interfaces\Infrastructure\IMailNotificationManager.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriesMapItemsRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriesMapRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICountriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBannersRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
