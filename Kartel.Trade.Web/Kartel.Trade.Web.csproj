@@ -2472,6 +2472,7 @@
     <Content Include="Views\UserSite\Search.cshtml" />
     <Content Include="Views\Main\StaticPage.cshtml" />
     <Content Include="Views\UserSite\Feedback.cshtml" />
+    <Content Include="Views\UserSite\ProductFeedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
