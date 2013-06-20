@@ -3,7 +3,7 @@
     <Country>
         <Name>Россия</Name>
         <Code>ru</Code>
-        <Flag>http://google.com/</Flag>
+        <Flag>/Content/images/flags/ru.jpg</Flag>
         <Cities>
             <City>Moscow</City>
             <City>Khabarovsk</City>
@@ -12,7 +12,7 @@
     <Country>
         <Name>Украина</Name>
         <Code>ua</Code>
-        <Flag>http://google.com/</Flag>
+        <Flag>/Content/images/flags/ua.jpg</Flag>
         <Cities>
             <City>Киев</City>
         </Cities>
@@ -20,7 +20,7 @@
     <Country>
         <Name>Беларусь</Name>
         <Code>by</Code>
-        <Flag>http://google.com/</Flag>
+        <Flag>/Content/images/flags/by.jpg</Flag>
         <Cities>
             <City>Минск</City>
         </Cities>
@@ -28,7 +28,7 @@
     <Country>
         <Name>Германия</Name>
         <Code>de</Code>
-        <Flag>http://google.com/</Flag>
+        <Flag>/Content/images/flags/de.jpg</Flag>
         <Cities>
             <City>Берлин</City>
         </Cities>

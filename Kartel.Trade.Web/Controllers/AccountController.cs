@@ -1088,5 +1088,59 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
+        #region Изменение пароля
+
+        /// <summary>
+        /// Отображает страницу с формой изменения пароля
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/change-password")]
+        public ActionResult ChangePassword()
+        {
+            // Проверяем авторизованность
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Изменение пароля", "/account/change-password", false);
+
+            // Отображаем вид
+            return View();
+        }
+
+        /// <summary>
+        /// Обрабатывает изменение пароля пользователем
+        /// </summary>
+        /// <param name="model">Модель</param>
+        /// <returns></returns>
+        [HttpPost][Route("account/do-change-password")]
+        public ActionResult DoChangePassword(ChangePasswordModel model)
+        {
+            // Проверяем авторизованность
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Сверяем пароль
+            if (CurrentUser.PasswordHash != PasswordUtils.QuickMD5(model.OldPassword))
+            {
+                ModelState.AddModelError("Password","Неправильный пароль");
+                return View("ChangePassword");
+            }
+
+            // Меняем
+            CurrentUser.PasswordHash = PasswordUtils.QuickMD5(model.NewPassword);
+            UsersRepository.SubmitChanges();
+
+            return View("ChangePasswordSuccess");
+        }
+
+        #endregion
+
     }
 }

@@ -271,35 +271,5 @@ namespace Kartel.Trade.Web.Controllers
 
             return View();
         }
-
-        /// <summary>
-        /// Обрабатывает форму обратной связи для задания вопроса по товару
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [Route("product-feedback/{id}")]
-        public ActionResult ProductFeedback(long id)
-        {
-            // Ищем товар
-            var product = Locator.GetService<IProductsRepository>().Load(id);
-            if (product == null)
-            {
-                return RedirectToAction("Index", "Main");
-            }
-
-            // Подгатавливаем пользователя
-            InitializeUser(product.UserId);
-
-            // Навигационная цепочка
-            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
-            PushNavigationChainItem("Товары", string.Format("/vendor/products/{0}", id));
-            if (product.UserCategory != null)
-                PushNavigationChainItem(product.UserCategory.Title, string.Format("/vendor/category/{0}?catId={1}", product.UserId, product.UserCategoryId));
-            PushNavigationChainItem(product.Title, string.Format("/product/{0}", product.Id), false);
-            PushNavigationChainItem("Задать вопрос", string.Format("/product-feedback/{0}", product.Id), true);
-
-            // Отображаем вид
-            return View(product);
-        }
     }
 }
