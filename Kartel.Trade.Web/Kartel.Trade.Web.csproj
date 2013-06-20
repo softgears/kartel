@@ -2291,6 +2291,10 @@
     <Content Include="Content\images\account\save.png" />
     <Content Include="Content\images\account\submitdomain.png" />
     <Content Include="Content\images\account\top-check.png" />
+    <Content Include="Content\images\flags\by.jpg" />
+    <Content Include="Content\images\flags\de.jpg" />
+    <Content Include="Content\images\flags\ru.jpg" />
+    <Content Include="Content\images\flags\ua.jpg" />
     <Content Include="Content\images\layout\addproduct.png" />
     <Content Include="Content\images\layout\addtender.png" />
     <Content Include="Content\images\layout\arrow-bottom.png" />

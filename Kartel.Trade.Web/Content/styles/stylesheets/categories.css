@@ -747,3 +747,8 @@
 #page-tenders .other-tenders .other-1-block .other-tender a:hover, #page-tenders .other-tenders .other-2-block .other-tender a:hover {
   text-decoration: underline;
 }
+
+/* line 654, ../sass/categories.sass */
+.countries img {
+  margin-right: 5px;
+}

@@ -30,11 +30,14 @@
         <div class="menu-block-title">
             Регион
         </div>
-        <ul>
+        <ul class="countries">
+            <li>
+                    <a href="/browse-category/@Model.Id">Все регионы</a>
+                </li>
             @foreach (var c in countries)
             {
                 <li>
-                    <a href="/browse-category/@Model.Id?region=@c.Code">@c.Name</a>
+                    <img src="@c.Flag"/><a href="/browse-category/@Model.Id?region=@c.Code">@c.Name</a>
                 </li>
             }
         </ul>
