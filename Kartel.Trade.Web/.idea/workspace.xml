@@ -4,18 +4,18 @@
     <list default="true" id="91385219-d411-4363-9b27-3ebb50b1a82d" name="Default" comment="" />
     <ignored path="Kartel.Trade.Web.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/Content/styles/stylesheets/all.css" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349973025" ignored="false" />
-    <file path="$PROJECT_DIR$/Content/styles/stylesheets/page-main.css" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349973025" ignored="false" />
-    <file path="/page-main.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349643145" ignored="false" />
-    <file path="/a.dummy" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349939916" ignored="false" />
-    <file path="/a.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297563542" ignored="false" />
-    <file path="$PROJECT_DIR$/Areas/ControlPanel/Views/Web.config" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297493161" ignored="false" />
-    <file path="/page-register.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365651776257" ignored="false" />
-    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349262236" ignored="false" />
-    <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
-    <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365643390337" ignored="false" />
-    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371348555051" ignored="false" />
     <file path="/account.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1366086541983" ignored="false" />
+    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371348555051" ignored="false" />
+    <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365643390337" ignored="false" />
+    <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
+    <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349262236" ignored="false" />
+    <file path="/page-register.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365651776257" ignored="false" />
+    <file path="$PROJECT_DIR$/Areas/ControlPanel/Views/Web.config" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297493161" ignored="false" />
+    <file path="/a.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297563542" ignored="false" />
+    <file path="/a.dummy" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349939916" ignored="false" />
+    <file path="/page-main.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349643145" ignored="false" />
+    <file path="$PROJECT_DIR$/Content/styles/stylesheets/page-main.css" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349973025" ignored="false" />
+    <file path="$PROJECT_DIR$/Content/styles/stylesheets/all.css" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349973025" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="usersite.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/usersite.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="346" column="32" selection-start="7586" selection-end="7586" vertical-scroll-proportion="0.8331288">
+            <state line="346" column="32" selection-start="7586" selection-end="7586" vertical-scroll-proportion="0.14601228">
               <folding />
             </state>
           </provider>
@@ -98,6 +98,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,7 +173,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,8 +181,8 @@
     <property name="options.lastSelected" value="preferences.sourceCode.SASS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Beepas/Beepas.Web" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -348,7 +348,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/usersite.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="32" selection-start="7586" selection-end="7586" vertical-scroll-proportion="0.8331288">
+        <state line="346" column="32" selection-start="7586" selection-end="7586" vertical-scroll-proportion="0.14601228">
           <folding />
         </state>
       </provider>
