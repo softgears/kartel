@@ -86,7 +86,15 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
 
                 if (file != null && file.ContentLength > 0)
                 {
-                    categoryMap.Image = repository.UploadImage(file, categoryMap);
+                    // Загружаем изображение для карты категорий
+                    try
+                    {
+                        categoryMap.UploadImage(file);
+                    }
+                    catch (Exception e)
+                    {
+                        return JsonErrors(e);
+                    }
                 }
 
                 // Сохраняем изменения

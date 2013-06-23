@@ -113,6 +113,7 @@
     <Compile Include="DAL\Repositories\StaticPagesRepository.cs" />
     <Compile Include="DAL\Repositories\TendersRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
+    <Compile Include="Entities\CategoryMap.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Product.cs" />
