@@ -9,6 +9,7 @@
 // 
 // ============================================================
 
+using System.Web;
 using Kartel.Domain.Entities;
 
 namespace Kartel.Domain.Interfaces.Repositories
@@ -18,6 +19,11 @@ namespace Kartel.Domain.Interfaces.Repositories
     /// </summary>
     public interface ICategoriesMapRepository: IBaseRepository<CategoryMap>
     {
-         
+        /// <summary>
+        /// Сохраняет файл изображения в указанную папку
+        /// </summary>
+        /// <param name="file">Изображение</param>
+        /// <param name="map">Карта категорий</param>
+        string UploadImage(HttpPostedFileBase file, CategoryMap map);
     }
 }

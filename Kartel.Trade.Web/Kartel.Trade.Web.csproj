@@ -137,6 +137,7 @@
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryItemModel.cs" />
+    <Compile Include="Areas\ControlPanel\Models\CategoryMapJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryTreeNodeModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\ControlPanelSectionModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\ExtJSTreeNodeModel.cs" />
@@ -2497,6 +2498,7 @@
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\logger\assets\skins\sam\" />
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\yuitest\assets\skins\sam\" />
     <Folder Include="Content\styles\sass\" />
+    <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -2523,7 +2525,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>42811</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:8676/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

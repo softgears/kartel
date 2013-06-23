@@ -12,7 +12,8 @@ Ext.onReady(function () {
         autoScroll: true,
         animate: true,
         loader: new Ext.tree.TreeLoader({
-            url: '/ControlPanel/ManageCategories/GetCategories'
+            url: '/ControlPanel/ManageCategories/GetCategories',
+            requestMethod: 'GET'
         }),
         root: new Ext.tree.AsyncTreeNode({
             id: -1,

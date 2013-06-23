@@ -66,7 +66,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     Text = c.Title,
                     Tooltip = "",
                     Leaf = false,
-                    Category =  
+                    Category =
                         {
                             Description = "",
                             DisplayName = c.Title,
