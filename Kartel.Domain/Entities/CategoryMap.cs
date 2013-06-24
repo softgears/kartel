@@ -38,10 +38,11 @@ namespace Kartel.Domain.Entities
         /// </summary>
         /// <param name="file">Файл</param>
         /// <param name="configDir">Папка для сохранения файлов, указанная в Web.config</param>
-        /// <returns></returns>
+        /// <returns>Имя файла</returns>
         private string SaveImage(HttpPostedFileBase file, string configDir)
         {
             var stream = file.InputStream;
+
             // Возможные форматы изображений
             string[] extensions = { ".jpeg", ".jpg", ".png", ".gif" };
             var fileExtension = Path.GetExtension(file.FileName);
@@ -68,7 +69,6 @@ namespace Kartel.Domain.Entities
                     stream.Read(bytesInStream, 0, bytesInStream.Length);
                     fileStream.Write(bytesInStream, 0, bytesInStream.Length);
 
-                    // Возвращает имя файла
                     return fileName;
                 }
 

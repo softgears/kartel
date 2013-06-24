@@ -27,7 +27,6 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         /// Загружает древо категорий на клиент
         /// </summary>
         /// <returns>Все категории системы в JSON структуре</returns>
-        [HttpPost]
         public JsonResult GetCategories()
         {
             try

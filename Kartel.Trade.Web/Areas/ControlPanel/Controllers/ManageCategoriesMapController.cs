@@ -47,6 +47,23 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
             }
         }
 
+        [AccessAuthorize]
+        public JsonResult GetCategoriesOfMap(int id)
+        {
+            var repository = Locator.GetService<ICategoriesMapRepository>();
+            var map = repository.Load(id);
+            var mapItems = map.CategoryMapItems;
+
+            var result = new List<object>();
+
+            foreach (var categoryMapItem in mapItems)
+            {
+                result.Add(new {id = categoryMapItem.Category.Id, title = categoryMapItem.Category.Title});
+            }
+
+            return JsonSuccess(result);
+        }
+
         [HttpPost]
         [AccessAuthorize]
         [ValidateInput(false)]

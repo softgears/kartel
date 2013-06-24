@@ -17,7 +17,8 @@ Ext.onReady(function () {
 				'displayName',
 				'image',
 				'sortOrder',
-				'dateCreated'
+				'dateCreated',
+				'categories'
 			]
 		}),
 		height           : 400,
@@ -209,7 +210,10 @@ Ext.onReady(function () {
 									]
 								},
 								{
-									title : 'Категории'
+									title  : 'Категории',
+									layout : 'form',
+									margin : 10,
+									items  : []
 								}
 							]
 						}
@@ -251,5 +255,6 @@ Ext.onReady(function () {
 			]
 		});
 		wnd.show();
+		Ext.getCmp('tree').getRootNode().expand(true);
 	}
 });
