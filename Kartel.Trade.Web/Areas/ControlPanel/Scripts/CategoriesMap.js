@@ -213,7 +213,68 @@ Ext.onReady(function () {
 									title  : 'Категории',
 									layout : 'form',
 									margin : 10,
-									items  : []
+									items  : [
+										{
+											xtype         : 'combo',
+											id            : 'parentsCombo',
+											dataField     : 'id',
+											displayField  : 'title',
+											width         : '90%',
+											mode          : 'local',
+											triggerAction : 'all',
+											editable      : false,
+											lazyInit      : false,
+											fieldLabel    : 'Выберите раздел',
+											store         : new Ext.data.Store({
+												url        : '/ControlPanel/ManageCategories/GetParentCategories',
+												root       : 'data',
+												idProperty : 'id',
+												autoLoad   : 'true',
+												sortInfo   : {field : 'id', direction : "ASC"},
+												reader     : new Ext.data.JsonReader({
+													root   : 'data',
+													fields : ['id', 'title']
+												})
+											})
+										},
+										{
+											xtype   : 'grid',
+											store   : new Ext.data.GroupingStore({
+												url        : '/ControlPanel/ManageCategories/GetFirstLevelSubCategories',
+												root       : 'data',
+												idProperty : 'parentId',
+												autoLoad   : 'true',
+												sortInfo   : {field : 'id', direction : "ASC"},
+												groupField : 'parentTitle',
+												reader     : new Ext.data.JsonReader({
+													root   : 'data',
+													fields : ['id', 'title', 'parentId', 'parentTitle']
+												})
+											}),
+											columns : [
+												new Ext.grid.CheckboxSelectionModel({
+													checkOnly    : false,
+													singleSelect : false,
+													sortable     : false,
+													dataIndex    : 'selected',
+													width        : 20
+												}),
+												{id : 'title', dataIndex : 'title', header : "Категория"},
+												{id : 'parentTitle', dataIndex : 'parentTitle', header : "Раздел", hidden : true}
+											],
+
+											view : new Ext.grid.GroupingView({
+												forceFit       : true,
+												groupTextTpl   : '{text}',
+												showGroupName  : false,
+												startCollapsed : true
+											}),
+
+											width       : '100%',
+											height      : 500,
+											collapsible : false
+										}
+									]
 								}
 							]
 						}
@@ -254,7 +315,13 @@ Ext.onReady(function () {
 				}
 			]
 		});
+
+		var combo = Ext.getCmp('parentsCombo');
+		var store = combo.getStore();
+		store.on('load', function (ds, records, o) {
+			combo.setValue(records[0].data.title);
+		});
+
 		wnd.show();
-		Ext.getCmp('tree').getRootNode().expand(true);
 	}
 });
