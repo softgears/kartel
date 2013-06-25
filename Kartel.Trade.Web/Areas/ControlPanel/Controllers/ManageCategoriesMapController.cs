@@ -52,12 +52,15 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         [ValidateInput(false)]
         public JsonResult Save([ModelBinder(typeof(JsonModelBinder))] CategoryMapJsonModel model, HttpPostedFileBase file, int parent, string categoryIds)
         {
+            // TODO: refactor
             try
             {
                 // Репозиторий
                 var repository = Locator.GetService<ICategoriesMapRepository>();
                 var categoriesRepository = Locator.GetService<ICategoriesRepository>();
                 var mapItemsRepository = Locator.GetService<ICategoriesMapItemsRepository>();
+                var mapItems = mapItemsRepository.FindAll().ToList();
+                var map = repository.Load(model.Id);
 
                 CategoryMap categoryMap;
 
@@ -86,21 +89,32 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     categoryMap.SortOrder = model.SortOrder;
                     categoryMap.CategoryId = parent;
 
-                    // TODO: реализовать механизм связывания карты и категорий
-                    /*if (!string.IsNullOrEmpty(categoryIds))
+                    if (categoryIds != null)
                     {
-                        var categoryIdsArr = categoryIds.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
-                        var categories = categoryIdsArr.Select(id => categoriesRepository.Load(id)).ToList();
-
-                        foreach (var category in categories)
+                        var itemsOfMap = mapItems.Where(f => f.CategoryMapId == map.Id);
+                        foreach (var item in itemsOfMap)
                         {
-                            mapItemsRepository.Add(new CategoryMapItem
-                                {
-                                    CategoryId = category.Id,
-                                    CategoryMapId = model.Id
-                                });
+                            mapItemsRepository.Delete(item);
                         }
-                    }*/
+
+                        if (categoryIds.Length > 0)
+                        {
+                            var categoryIdsArr = categoryIds.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                            var categories = categoryIdsArr.Select(id => categoriesRepository.Load(id)).ToList();
+
+                            if (categories.Any())
+                            {
+                                foreach (var category in categories)
+                                {
+                                    mapItemsRepository.Add(new CategoryMapItem
+                                    {
+                                        Category = category,
+                                        CategoryMap = map
+                                    });
+                                }
+                            }
+                        }
+                    }
                 }
 
                 if (file != null && file.ContentLength > 0)
