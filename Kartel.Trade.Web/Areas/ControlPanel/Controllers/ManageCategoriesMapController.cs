@@ -50,24 +50,26 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         [HttpPost]
         [AccessAuthorize]
         [ValidateInput(false)]
-        public JsonResult Save([ModelBinder(typeof(JsonModelBinder))] CategoryMapJsonModel model, HttpPostedFileBase file)
+        public JsonResult Save([ModelBinder(typeof(JsonModelBinder))] CategoryMapJsonModel model, HttpPostedFileBase file, int parent, string categoryIds)
         {
             try
             {
                 // Репозиторий
                 var repository = Locator.GetService<ICategoriesMapRepository>();
                 var categoriesRepository = Locator.GetService<ICategoriesRepository>();
+                var mapItemsRepository = Locator.GetService<ICategoriesMapItemsRepository>();
 
                 CategoryMap categoryMap;
 
                 if (model.Id <= 0)
                 {
-                    // Создаем новую элемент
+                    // Создаем новый элемент
                     categoryMap = new CategoryMap
                     {
                         DisplayName = model.DisplayName,
                         DateCreated = DateTime.Now,
-                        SortOrder = model.SortOrder
+                        SortOrder = model.SortOrder,
+                        CategoryId = parent
                     };
                     repository.Add(categoryMap);
                 }
@@ -82,6 +84,23 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
 
                     categoryMap.DisplayName = model.DisplayName;
                     categoryMap.SortOrder = model.SortOrder;
+                    categoryMap.CategoryId = parent;
+
+                    // TODO: реализовать механизм связывания карты и категорий
+                    /*if (!string.IsNullOrEmpty(categoryIds))
+                    {
+                        var categoryIdsArr = categoryIds.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                        var categories = categoryIdsArr.Select(id => categoriesRepository.Load(id)).ToList();
+
+                        foreach (var category in categories)
+                        {
+                            mapItemsRepository.Add(new CategoryMapItem
+                                {
+                                    CategoryId = category.Id,
+                                    CategoryMapId = model.Id
+                                });
+                        }
+                    }*/
                 }
 
                 if (file != null && file.ContentLength > 0)
@@ -98,6 +117,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                 }
 
                 // Сохраняем изменения
+                mapItemsRepository.SubmitChanges();
                 repository.SubmitChanges();
 
                 return JsonSuccess();

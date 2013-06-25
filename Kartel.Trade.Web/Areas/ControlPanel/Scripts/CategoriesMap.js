@@ -146,6 +146,13 @@ Ext.onReady(function () {
 	 * Отображает диалог создания или редактирования страницы
 	 * @param page
 	 */
+	var selModel = new Ext.grid.CheckboxSelectionModel({
+		checkOnly    : true,
+		singleSelect : false,
+		sortable     : false,
+		width        : 20
+	});
+
 	function showMapDialog(map) {
 		var wnd = new Ext.Window({
 			title     : map != undefined ? "Редактирование карты " + map.data.categoryName : "Создание карты",
@@ -163,9 +170,15 @@ Ext.onReady(function () {
 					fileUpload     : true,
 					items          : [
 						{
-							xtype     : 'tabpanel',
-							activeTab : 0,
-							border    : false,
+							xtype          : 'tabpanel',
+							activeTab      : 0,
+							border         : false,
+
+							// Без этой строчки в CheckboxSelectionModel grid будет = undefined
+							// а следовательно, ничего не будет работать
+							// (на поиск решения этой проблемы потратил 3 часа)...
+							// Оно того стоило!
+							deferredRender : false,
 
 							items : [
 								{
@@ -177,6 +190,18 @@ Ext.onReady(function () {
 											xtype : 'hidden',
 											name  : 'id',
 											id    : 'id',
+											value : map != undefined ? map.data.id : -1
+										},
+										{
+											xtype : 'hidden',
+											name  : 'parent',
+											id    : 'parent',
+											value : map != undefined ? map.data.id : -1
+										},
+										{
+											xtype : 'hidden',
+											name  : 'categoryIds',
+											id    : 'categoryIds',
 											value : map != undefined ? map.data.id : -1
 										},
 										{
@@ -217,9 +242,10 @@ Ext.onReady(function () {
 										{
 											xtype         : 'combo',
 											id            : 'parentsCombo',
-											dataField     : 'id',
+											name          : 'parentsCombo',
+											valueField    : 'id',
 											displayField  : 'title',
-											width         : '90%',
+											width         : 250,
 											mode          : 'local',
 											triggerAction : 'all',
 											editable      : false,
@@ -229,36 +255,52 @@ Ext.onReady(function () {
 												url        : '/ControlPanel/ManageCategories/GetParentCategories',
 												root       : 'data',
 												idProperty : 'id',
+												baseParams : {'categoryId' : map != undefined ? map.get('categoryId') : ''},
 												autoLoad   : 'true',
 												sortInfo   : {field : 'id', direction : "ASC"},
 												reader     : new Ext.data.JsonReader({
 													root   : 'data',
 													fields : ['id', 'title']
-												})
+												}),
+												listeners  : {
+													load : function () {
+														Ext.getCmp('parentsCombo').setValue(map != undefined ? map.data.categoryId : 1);
+													}
+												}
 											})
 										},
 										{
-											xtype   : 'grid',
-											store   : new Ext.data.GroupingStore({
+											xtype    : 'grid',
+											selModel : selModel,
+											loadMask : {msg : 'Идёт загрузка данных. Пожалуйста, подождите...'},
+											store    : new Ext.data.GroupingStore({
 												url        : '/ControlPanel/ManageCategories/GetFirstLevelSubCategories',
 												root       : 'data',
 												idProperty : 'parentId',
-												autoLoad   : 'true',
+												autoLoad   : 'false',
+												baseParams : {'mapId' : map != undefined ? map.get('id') : ''},
 												sortInfo   : {field : 'id', direction : "ASC"},
 												groupField : 'parentTitle',
 												reader     : new Ext.data.JsonReader({
 													root   : 'data',
-													fields : ['id', 'title', 'parentId', 'parentTitle']
-												})
-											}),
-											columns : [
-												new Ext.grid.CheckboxSelectionModel({
-													checkOnly    : false,
-													singleSelect : false,
-													sortable     : false,
-													dataIndex    : 'selected',
-													width        : 20
+													fields : ['id', 'title', 'parentId', 'parentTitle', 'selected']
 												}),
+												listeners  : {
+													load : function () {
+														var selected = [];
+														this.each(function (e) {
+															if (e.get('selected') === true) {
+																selected.push(e);
+															}
+														});
+														selModel.grid.getView().collapseAllGroups();
+														selModel.clearSelections();
+														selModel.selectRecords(selected)
+													}
+												}
+											}),
+											columns  : [
+												selModel,
 												{id : 'title', dataIndex : 'title', header : "Категория"},
 												{id : 'parentTitle', dataIndex : 'parentTitle', header : "Раздел", hidden : true}
 											],
@@ -271,7 +313,7 @@ Ext.onReady(function () {
 											}),
 
 											width       : '100%',
-											height      : 500,
+											height      : 400,
 											collapsible : false
 										}
 									]
@@ -291,12 +333,24 @@ Ext.onReady(function () {
 							return;
 						}
 
+						var parentsCombo = Ext.getCmp('parentsCombo');
+
+						var selectedIds = [];
+						var selected = selModel.getSelections();
+						Ext.each(selected, function (e) {
+							selectedIds.push(e.get('id'));
+						});
+
+						Ext.getCmp('categoryIds').setValue(selectedIds.toString());
+						Ext.getCmp('parent').setValue(parentsCombo.getValue());
+
 						Ext.getCmp('categoriesMapForm').getForm().submit({
 							url              : '/ControlPanel/ManageCategoriesMap/Save',
 							clientValidation : true,
 							isUpload         : true,
 							success          : function (form, action) {
 								// Успешно сохранили
+								selModel.clearSelections();
 								wnd.close();
 								reloadMaps();
 							},
@@ -315,13 +369,6 @@ Ext.onReady(function () {
 				}
 			]
 		});
-
-		var combo = Ext.getCmp('parentsCombo');
-		var store = combo.getStore();
-		store.on('load', function (ds, records, o) {
-			combo.setValue(records[0].data.title);
-		});
-
 		wnd.show();
 	}
 });

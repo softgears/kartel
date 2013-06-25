@@ -56,17 +56,17 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         /// </summary>
         /// <returns></returns>
         [AccessAuthorize]
-        public JsonResult GetFirstLevelSubCategories(int? id)
+        public JsonResult GetFirstLevelSubCategories(int? mapId)
         {
             var repository = Locator.GetService<ICategoriesRepository>();
             var  selectedMapItems = new List<CategoryMapItem>();
 
-            if (id != null)
+            if (mapId != null)
             {
                 var mapRepository = Locator.GetService<ICategoriesMapRepository>();
-                var map = mapRepository.Load((int) id);
+                var map = mapRepository.Load((int) mapId);
                 var mapItems = map.CategoryMapItems;
-                selectedMapItems = mapItems.Where(f => f.CategoryMapId == id).ToList();
+                selectedMapItems = mapItems.Where(f => f.CategoryMapId == mapId).ToList();
             }
 
             var parentCategories = repository.FindAll().Where(f => f.ParentId == 0).ToList();
