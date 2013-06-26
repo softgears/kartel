@@ -18,8 +18,10 @@
         <header id="header">
             <div id="header-content">
                 <div id="select-name">
-                    Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" value="@(((BaseController) ViewContext.Controller).CurrentUser.Subdomain)" /><span class="name-part">.karteltrade.ru</span>
-                    <input type="submit" id="domain-submit" value=" " />
+                    <form action="/account/domain-save" id="domain-form" method="POST">
+                        Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" value="@(((BaseController) ViewContext.Controller).CurrentUser.Subdomain)" /><span class="name-part">.karteltrade.ru</span>
+                        <input type="submit" id="domain-submit" value=" " />    
+                    </form>
                 </div>
                 <a id="logo" href="/">
                     <img src="/Content/images/layout/logo.png" />

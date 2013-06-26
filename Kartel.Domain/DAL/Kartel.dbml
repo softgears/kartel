@@ -119,7 +119,7 @@
       <Association Name="Category_Product" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Product" />
       <Association Name="Category_Tender" Member="Tenders" ThisKey="Id" OtherKey="CategoryId" Type="Tender" />
       <Association Name="Category_CategoryMapItem" Member="CategoryMapItems" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMapItem" />
-      <Association Name="Category_CategoryMap" Member="CategoryMaps" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMap" Cardinality="One" />
+      <Association Name="Category_CategoryMap" Member="CategoryMaps" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMap" />
       <Association Name="Category_Category" Member="ParentCategory" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
   </Table>

@@ -9,6 +9,7 @@
 // 
 // ============================================================
 
+using System.Web;
 using Kartel.Domain.Entities;
 
 namespace Kartel.Domain.Interfaces.Repositories
@@ -18,6 +19,5 @@ namespace Kartel.Domain.Interfaces.Repositories
     /// </summary>
     public interface ICategoriesMapRepository: IBaseRepository<CategoryMap>
     {
-         
     }
 }

@@ -390,6 +390,41 @@ namespace Kartel.Trade.Web.Controllers
             return View("ProfileSaved");
         }
 
+        /// <summary>
+        /// Обрабатывает сохранение поддомена для текущего пользователя
+        /// </summary>
+        /// <param name="domain">Выбранный поддомен</param>
+        /// <returns></returns>
+        [HttpPost][Route("account/domain-save")]
+        public ActionResult DomainSave(string domain)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            if (string.IsNullOrEmpty(domain))
+            {
+                domain = CurrentUser.Id.ToString();
+            }
+
+            // Проверяем
+            var exists = UsersRepository.Find(u => u.Subdomain.ToLower() == domain.ToLower() && u.Id != CurrentUser.Id) != null;
+            if  (exists)
+            {
+                ViewBag.message = "Такой домен уже зарегистрирован в системе";
+                return View();
+            }
+
+            // Устанавливаем
+            CurrentUser.Subdomain = domain.ToLower();
+            UsersRepository.SubmitChanges();
+
+            // Отображаем вид
+            ViewBag.message = string.Format("Ваш поддомен был успешно изменен. Теперь вы можете зайти на ваш сайт по адрес <a href='http://{0}.karteltrade.ru'>http://{0}.karteltrade.ru</a>", domain.ToLower());
+            return View();
+        }
+
         #endregion
 
         #region Управление товарами

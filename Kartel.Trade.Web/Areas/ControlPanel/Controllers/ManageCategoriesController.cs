@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -27,7 +28,6 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         /// Загружает древо категорий на клиент
         /// </summary>
         /// <returns>Все категории системы в JSON структуре</returns>
-        [HttpPost]
         public JsonResult GetCategories()
         {
             try
@@ -52,6 +52,67 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
         }
 
         /// <summary>
+        /// Получает подкатегории первого уровня
+        /// </summary>
+        /// <returns></returns>
+        [AccessAuthorize]
+        public JsonResult GetFirstLevelSubCategories(int? mapId)
+        {
+            var repository = Locator.GetService<ICategoriesRepository>();
+            var  selectedMapItems = new List<CategoryMapItem>();
+
+            if (mapId != null)
+            {
+                var mapRepository = Locator.GetService<ICategoriesMapRepository>();
+                var map = mapRepository.Load((int) mapId);
+                var mapItems = map.CategoryMapItems;
+                selectedMapItems = mapItems.Where(f => f.CategoryMapId == mapId).ToList();
+            }
+
+            var parentCategories = repository.FindAll().Where(f => f.ParentId == 0).ToList();
+            var childCategories = new List<object>();
+
+            foreach (var parentCategory in parentCategories)
+            {
+                foreach (var childCategory in parentCategory.ChildCategories)
+                {
+                    childCategories.Add(new
+                    {
+                        id = childCategory.Id,
+                        title = childCategory.Title,
+                        parentId = childCategory.ParentId,
+                        parentTitle = repository.Load(childCategory.ParentId).Title,
+                        selected = selectedMapItems.Any(f => f.CategoryId == childCategory.Id)
+                    });
+                }
+            }
+
+            return JsonSuccess(childCategories);
+        }
+
+        /// <summary>
+        /// Получает родительские категории
+        /// </summary>
+        /// <returns></returns>
+        [AccessAuthorize]
+        public JsonResult GetParentCategories()
+        {
+            var repository = Locator.GetService<ICategoriesRepository>();
+            var parentCategories = repository.FindAll().Where(f => f.ParentId == 0).ToList();
+            var result = new List<object>();
+            foreach (var parentCategory in parentCategories)
+            {
+                result.Add(new
+                {
+                    id = parentCategory.Id,
+                    title = parentCategory.Title
+                });
+            }
+
+            return JsonSuccess(result);
+        }
+
+        /// <summary>
         /// Рекурсивная функция для построения иерархии объектов в списке
         /// </summary>
         /// <param name="parentId">Идентификатор родительской категории</param>
@@ -66,7 +127,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     Text = c.Title,
                     Tooltip = "",
                     Leaf = false,
-                    Category =  
+                    Category =
                         {
                             Description = "",
                             DisplayName = c.Title,

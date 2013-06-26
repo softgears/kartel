@@ -196,21 +196,21 @@
         <elementListCompartment Id="4c682dbe-7c32-431e-b7fd-15df7f7194da" absoluteBounds="9.14, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.125 : 2.86464680989583); (11.875 : 2.86464680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.125 : 2.86464680989583); (11.875 : 2.86464680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/Category/Category_CategoryMapItem" />
       <nodes>
         <classShapeMoniker Id="ac56d11c-a81e-4462-8be2-41600d2b81e6" />
         <classShapeMoniker Id="d8a91c05-eed7-42e4-9d93-567f1c6988ef" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.125 : 2.04409912109375); (11.875 : 2.04409912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11.125 : 2.04409912109375); (11.875 : 2.04409912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/CategoryMap/CategoryMap_CategoryMapItem" />
       <nodes>
         <classShapeMoniker Id="9c838e58-8073-4ac0-891f-2c9fa7f4a9fa" />
         <classShapeMoniker Id="d8a91c05-eed7-42e4-9d93-567f1c6988ef" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.125 : 1.91909912109375); (9.125 : 1.91909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.125 : 1.91909912109375); (9.125 : 1.91909912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KartelDataContext/Category/Category_CategoryMap" />
       <nodes>
         <classShapeMoniker Id="ac56d11c-a81e-4462-8be2-41600d2b81e6" />
