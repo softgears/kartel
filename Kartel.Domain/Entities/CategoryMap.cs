@@ -26,10 +26,9 @@ namespace Kartel.Domain.Entities
             var configDir = ConfigurationManager.AppSettings["FilesUrl"];
 
             // Сохраняем изображение
-            var fileName = SaveImage(file, configDir);
+            Image = SaveImage(file, configDir);
 
             // Сохраняем относительный путь к изображению
-            Image = configDir + fileName;
             Locator.GetService<ICategoriesMapRepository>().SubmitChanges();
         }
 
@@ -68,6 +67,7 @@ namespace Kartel.Domain.Entities
                     byte[] bytesInStream = new byte[stream.Length];
                     stream.Read(bytesInStream, 0, bytesInStream.Length);
                     fileStream.Write(bytesInStream, 0, bytesInStream.Length);
+                    fileStream.Close();
 
                     return fileName;
                 }

@@ -215,6 +215,12 @@ Ext.onReady(function () {
 											value      : map != undefined ? map.data.displayName : ""
 										},
 										{
+											xtype  : 'panel',
+											id     : 'panel',
+											html   : map != undefined ? '<img src="/files/' + map.data.image + '" style="width: 72px; height: 72px">' : '',
+											border : false
+										},
+										{
 											xtype      : 'fileuploadfield',
 											anchor     : '100%',
 											name       : 'file',
