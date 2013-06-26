@@ -1,4 +1,6 @@
-﻿@using Kartel.Domain.IoC
+﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
 @using Kartel.Trade.Web.Classes.Cache
 @model Kartel.Domain.Entities.Category
 
@@ -6,6 +8,8 @@
     ViewBag.Title = Model.Title;
     Layout = "../Shared/InnerLayout.cshtml";
     var catManager = Locator.GetService<CategoriesIndexManager>();
+    var maps = Locator.GetService<ICategoriesMapRepository>().FindAll().Where(f => f.CategoryId == Model.Id);
+    var catRep = Locator.GetService<ICategoriesRepository>();
 }
 
 @section LeftMenuBlock
@@ -36,49 +40,105 @@
 <div id="page-categories">
     @* Навигационная цепочка *@
     @Html.Partial("NavigationChain")
-    
+
     @* Заголовок *@
     <div class="current-category-title">
         @Model.Title
     </div>
 
     @* рендерим категории *@
-    @foreach (var category in Model.GetChildCategories())
+    @foreach (var map in maps)
     {
         <div class="category-1-level">
             <div class="category-1-title">
-                @category.Title
+                @map.DisplayName
             </div>
             <div class="category-1-image">
-                <img src="@catManager.GetCategoryImage(category)"/>
+                <img src="/files/@map.Image" style="max-width: 150px;"/>
             </div>
             <div class="category-1-child">
-                @foreach (var category2child in category.GetChildCategories())
+                @{
+        var commonCatList = new List<Category>();
+                }
+
+                @foreach (var catOfMap in catRep.GetCateroriesOfMap(map))
                 {
                     <div class="category-2-level">
                         <div class="category-2-title">
-                            <a href="/browse-category/@category2child.Id">@category2child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category2child))</span>
+                            <a href="/browse-category/@catOfMap.Id">@catOfMap.Title </a><span class="products-count">(@catManager.GetProductsCount(catOfMap))</span>
                         </div>
                         <ul class="category-2-child">
-                            @foreach (var category3child in category2child.GetChildCategories())
+                            @foreach (var category3Child in catOfMap.GetChildCategories())
                             {
+                                category3Child.SetLevel(3);
+                                commonCatList.Add(category3Child);
                                 <li class="level-3">
-                                    <a href="/browse-category/@category3child.Id">@category3child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category3child))</span>
-                                    <ul class="category-3-child">
-                                        @foreach (var category4child in category3child.GetChildCategories())
+                                    <a href="/browse-category/@category3Child.Id">@category3Child.Title </a>
+                                    <span class="products-count">(@catManager.GetProductsCount(category3Child))</span>
+                                    <ul class="category-4-child">
+
+                                        @foreach (var category4Child in category3Child.GetChildCategories())
                                         {
+                                            category4Child.SetLevel(4);
+                                            commonCatList.Add(category4Child);
                                             <li class="level-4">
-                                                <a href="/browse-category/@category4child.Id">@category4child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category4child))</span>
+                                                <a href="/browse-category/@category4Child.Id">@category4Child.Title </a>
+                                                <span class="products-count">(@catManager.GetProductsCount(category4Child))</span>
                                             </li>
                                         }
+
                                     </ul>
                                 </li>
+                                
                             }
                         </ul>
                     </div>
                 }
+                @{
+                    var list1 = new List<Category>();
+                    var list2 = new List<Category>();
+                }
+                @for (int i = 0; i < commonCatList.Count; i++)
+                {
+                    if (i <= commonCatList.Count/2)
+                    {
+                        list1.Add(commonCatList[i]);
+                    }
+                    else
+                    {
+                        list2.Add(commonCatList[i]);
+                    }
+                }
+                <ul>
+                    @foreach (var comListItem in list1)
+                    {
+                        if (comListItem.GetLevel() == 3)
+                        {
+                            <li>@comListItem.Title (@comListItem.GetLevel())</li>
+                        }
+                        if (comListItem.GetLevel() == 4)
+                        {
+                            <li>---@comListItem.Title (@comListItem.GetLevel())</li>
+                        }
+                    }
+                </ul>
+                <br/>
+                <br/>
+                <ul>
+                    @foreach (var comListItem in list2)
+                    {
+                        if (comListItem.GetLevel() == 3)
+                        {
+                            <li>@comListItem.Title (@comListItem.GetLevel())</li>
+                        }
+                        if (comListItem.GetLevel() == 4)
+                        {
+                            <li>---@comListItem.Title (@comListItem.GetLevel())</li>
+                        }
+                    }
+                </ul>
             </div>
         </div>
-    }    
+    }
 </div>
 

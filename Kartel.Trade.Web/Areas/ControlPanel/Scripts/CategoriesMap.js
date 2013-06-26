@@ -174,13 +174,17 @@ Ext.onReady(function () {
 							activeTab      : 0,
 							border         : false,
 
-							// Без этой строчки в CheckboxSelectionModel grid будет = undefined
+							// Без этой строчки в CheckboxSelectionModel grid == undefined
 							// а следовательно, ничего не будет работать
 							// (на поиск решения этой проблемы потратил 3 часа)...
 							// Оно того стоило!
 							deferredRender : false,
-
-							items : [
+							listeners      : {
+								tabchange : function () {
+									wnd.doLayout();
+								}
+							},
+							items          : [
 								{
 									title  : 'Осн. характеристики',
 									layout : 'form',
