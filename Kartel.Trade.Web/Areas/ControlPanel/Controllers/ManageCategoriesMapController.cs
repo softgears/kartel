@@ -60,7 +60,6 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                 var categoriesRepository = Locator.GetService<ICategoriesRepository>();
                 var mapItemsRepository = Locator.GetService<ICategoriesMapItemsRepository>();
                 var mapItems = mapItemsRepository.FindAll().ToList();
-                var map = repository.Load(model.Id);
 
                 CategoryMap categoryMap;
 
@@ -75,6 +74,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                         CategoryId = parent
                     };
                     repository.Add(categoryMap);
+                    repository.SubmitChanges();
                 }
                 else
                 {
@@ -88,33 +88,6 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     categoryMap.DisplayName = model.DisplayName;
                     categoryMap.SortOrder = model.SortOrder;
                     categoryMap.CategoryId = parent;
-
-                    if (categoryIds != null)
-                    {
-                        var itemsOfMap = mapItems.Where(f => f.CategoryMapId == map.Id);
-                        foreach (var item in itemsOfMap)
-                        {
-                            mapItemsRepository.Delete(item);
-                        }
-
-                        if (categoryIds.Length > 0)
-                        {
-                            var categoryIdsArr = categoryIds.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
-                            var categories = categoryIdsArr.Select(id => categoriesRepository.Load(id)).ToList();
-
-                            if (categories.Any())
-                            {
-                                foreach (var category in categories)
-                                {
-                                    mapItemsRepository.Add(new CategoryMapItem
-                                    {
-                                        Category = category,
-                                        CategoryMap = map
-                                    });
-                                }
-                            }
-                        }
-                    }
                 }
 
                 if (file != null && file.ContentLength > 0)
@@ -130,6 +103,34 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     }
                 }
 
+                if (categoryIds != null)
+                {
+                    var itemsOfMap = mapItems.Where(f => f.CategoryMapId == categoryMap.Id).ToList();
+
+                    foreach (var item in itemsOfMap)
+                    {
+                        mapItemsRepository.Delete(item);
+                    }
+
+                    if (categoryIds.Length > 0)
+                    {
+                        var categoryIdsArr = categoryIds.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                        var categories = categoryIdsArr.Select(id => categoriesRepository.Load(id)).ToList();
+
+                        if (categories.Any())
+                        {
+                            foreach (var category in categories)
+                            {
+                                mapItemsRepository.Add(new CategoryMapItem
+                                {
+                                    Category = category,
+                                    CategoryMap = categoryMap
+                                });
+                            }
+                        }
+                    }
+                }
+
                 // Сохраняем изменения
                 mapItemsRepository.SubmitChanges();
                 repository.SubmitChanges();
@@ -140,6 +141,18 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
             {
                 return JsonErrors(e);
             }
+        }
+
+        [HttpPost]
+        [AccessAuthorize]
+        [ValidateInput(false)]
+        public JsonResult Delete(int id)
+        {
+            var repository = Locator.GetService<ICategoriesMapRepository>();
+            var map = repository.Load(id);
+            repository.Delete(map);
+            repository.SubmitChanges();
+            return JsonSuccess();
         }
     }
 }

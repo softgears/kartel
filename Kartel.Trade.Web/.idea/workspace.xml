@@ -39,7 +39,7 @@
       <file leaf-file-name="CategoriesMap.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Scripts/CategoriesMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="274" column="109" selection-start="7550" selection-end="7550" vertical-scroll-proportion="0.039538715">
+            <state line="288" column="72" selection-start="8205" selection-end="8205" vertical-scroll-proportion="2.3580787">
               <folding>
                 <element signature="e#1349#1375#0" expanded="true" />
                 <element signature="e#1518#1547#0" expanded="true" />
@@ -51,7 +51,6 @@
                 <element signature="e#3132#3401#0" expanded="true" />
                 <element signature="e#3333#3392#0" expanded="true" />
                 <element signature="e#7247#7358#0" expanded="true" />
-                <element signature="e#8204#8558#0" expanded="true" />
                 <element signature="e#8276#8393#0" expanded="true" />
                 <element signature="e#9261#10281#0" expanded="true" />
                 <element signature="e#9622#9669#0" expanded="true" />
@@ -125,8 +124,8 @@
     <property name="options.lastSelected" value="preferences.sourceCode.JavaScript" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Beepas/Beepas.Web" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -151,7 +150,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3280255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -280,31 +279,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Scripts/Pages.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="137" selection-end="137" vertical-scroll-proportion="-1.5458515">
-          <folding>
-            <element signature="e#137#10152#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="4" column="24" selection-start="137" selection-end="137" vertical-scroll-proportion="-1.5458515" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Scripts/Global.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="50" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.86710966">
-          <folding>
-            <element signature="e#1618#2535#0" expanded="false" />
-            <element signature="e#2587#3287#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="53" column="50" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.86710966" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Scripts/Root.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="27" selection-start="695" selection-end="695" vertical-scroll-proportion="-0.02310231">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#968#2272#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="24" column="27" selection-start="695" selection-end="695" vertical-scroll-proportion="-0.02310231" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Controllers/RootController.cs">
@@ -314,7 +299,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Areas/ControlPanel/Scripts/CategoriesMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="274" column="109" selection-start="7550" selection-end="7550" vertical-scroll-proportion="0.039538715">
+        <state line="288" column="72" selection-start="8205" selection-end="8205" vertical-scroll-proportion="2.3580787">
           <folding>
             <element signature="e#1349#1375#0" expanded="true" />
             <element signature="e#1518#1547#0" expanded="true" />
@@ -326,7 +311,6 @@
             <element signature="e#3132#3401#0" expanded="true" />
             <element signature="e#3333#3392#0" expanded="true" />
             <element signature="e#7247#7358#0" expanded="true" />
-            <element signature="e#8204#8558#0" expanded="true" />
             <element signature="e#8276#8393#0" expanded="true" />
             <element signature="e#9261#10281#0" expanded="true" />
             <element signature="e#9622#9669#0" expanded="true" />
