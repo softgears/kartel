@@ -71,6 +71,15 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                                             {"url", "/ControlPanel/ManageBanners/"},
                                             {"objectType", "section"}
                                         },
+                                    // Контроллер управления выставленными счетами
+                                    new Dictionary<string, object>()
+                                        {
+                                            {"id", "bills"},
+                                            {"leaf", true},
+                                            {"text", "Выставленные счета"},
+                                            {"url", "/ControlPanel/ManageBills/"},
+                                            {"objectType", "section"}
+                                        },
                                 };
             return Json(menuItems);
         }

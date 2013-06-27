@@ -91,6 +91,7 @@
       <Association Name="User_Product" Member="Products" ThisKey="Id" OtherKey="UserId" Type="Product" />
       <Association Name="User_Tender" Member="Tenders" ThisKey="Id" OtherKey="UserId" Type="Tender" />
       <Association Name="User_TenderOffer" Member="TenderOffers" ThisKey="Id" OtherKey="UserId" Type="TenderOffer" />
+      <Association Name="User_Bill" Member="Bills" ThisKey="Id" OtherKey="AuthorId" Type="Bill" />
     </Type>
   </Table>
   <Table Name="dbo.UserLegalInfo" Member="UserLegalInfos">
@@ -287,6 +288,21 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="CategoryMap_CategoryMapItem" Member="CategoryMapItems" ThisKey="Id" OtherKey="CategoryMapId" Type="CategoryMapItem" />
       <Association Name="Category_CategoryMap" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bills" Member="Bills">
+    <Type Name="Bill">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Payed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ActivationTarget" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ActivationAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivationTargetId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Bill" Member="User" ThisKey="AuthorId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

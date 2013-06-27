@@ -76,6 +76,9 @@ namespace Kartel.Domain.DAL
     partial void InsertCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
     partial void UpdateCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
     partial void DeleteCategoryMap(Kartel.Domain.Entities.CategoryMap instance);
+    partial void InsertBill(Kartel.Domain.Entities.Bill instance);
+    partial void UpdateBill(Kartel.Domain.Entities.Bill instance);
+    partial void DeleteBill(Kartel.Domain.Entities.Bill instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -227,6 +230,14 @@ namespace Kartel.Domain.DAL
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.CategoryMap>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.Bill> Bills
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.Bill>();
 			}
 		}
 	}
@@ -937,6 +948,8 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<TenderOffer> _TenderOffers;
 		
+		private EntitySet<Bill> _Bills;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1064,6 +1077,7 @@ namespace Kartel.Domain.Entities
 			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
 			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
 			this._TenderOffers = new EntitySet<TenderOffer>(new Action<TenderOffer>(this.attach_TenderOffers), new Action<TenderOffer>(this.detach_TenderOffers));
+			this._Bills = new EntitySet<Bill>(new Action<Bill>(this.attach_Bills), new Action<Bill>(this.detach_Bills));
 			OnCreated();
 		}
 		
@@ -2310,6 +2324,19 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Bill", Storage="_Bills", ThisKey="Id", OtherKey="AuthorId")]
+		public EntitySet<Bill> Bills
+		{
+			get
+			{
+				return this._Bills;
+			}
+			set
+			{
+				this._Bills.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2385,6 +2412,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_TenderOffers(TenderOffer entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Bills(Bill entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Bills(Bill entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -6637,6 +6676,325 @@ namespace Kartel.Domain.Entities
 		{
 			this.SendPropertyChanging();
 			entity.CategoryMap = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bills")]
+	public partial class Bill : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _AuthorId;
+		
+		private decimal _Amount;
+		
+		private bool _Payed;
+		
+		private string _ActivationTarget;
+		
+		private int _ActivationAmount;
+		
+		private int _ActivationTargetId;
+		
+		private bool _Activated;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateActivated;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnAuthorIdChanging(int value);
+    partial void OnAuthorIdChanged();
+    partial void OnAmountChanging(decimal value);
+    partial void OnAmountChanged();
+    partial void OnPayedChanging(bool value);
+    partial void OnPayedChanged();
+    partial void OnActivationTargetChanging(string value);
+    partial void OnActivationTargetChanged();
+    partial void OnActivationAmountChanging(int value);
+    partial void OnActivationAmountChanged();
+    partial void OnActivationTargetIdChanging(int value);
+    partial void OnActivationTargetIdChanged();
+    partial void OnActivatedChanging(bool value);
+    partial void OnActivatedChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateActivatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateActivatedChanged();
+    #endregion
+		
+		public Bill()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AuthorId", DbType="Int NOT NULL")]
+		public int AuthorId
+		{
+			get
+			{
+				return this._AuthorId;
+			}
+			set
+			{
+				if ((this._AuthorId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAuthorIdChanging(value);
+					this.SendPropertyChanging();
+					this._AuthorId = value;
+					this.SendPropertyChanged("AuthorId");
+					this.OnAuthorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money NOT NULL")]
+		public decimal Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Payed", DbType="Bit NOT NULL")]
+		public bool Payed
+		{
+			get
+			{
+				return this._Payed;
+			}
+			set
+			{
+				if ((this._Payed != value))
+				{
+					this.OnPayedChanging(value);
+					this.SendPropertyChanging();
+					this._Payed = value;
+					this.SendPropertyChanged("Payed");
+					this.OnPayedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivationTarget", DbType="NVarChar(MAX)")]
+		public string ActivationTarget
+		{
+			get
+			{
+				return this._ActivationTarget;
+			}
+			set
+			{
+				if ((this._ActivationTarget != value))
+				{
+					this.OnActivationTargetChanging(value);
+					this.SendPropertyChanging();
+					this._ActivationTarget = value;
+					this.SendPropertyChanged("ActivationTarget");
+					this.OnActivationTargetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivationAmount", DbType="Int NOT NULL")]
+		public int ActivationAmount
+		{
+			get
+			{
+				return this._ActivationAmount;
+			}
+			set
+			{
+				if ((this._ActivationAmount != value))
+				{
+					this.OnActivationAmountChanging(value);
+					this.SendPropertyChanging();
+					this._ActivationAmount = value;
+					this.SendPropertyChanged("ActivationAmount");
+					this.OnActivationAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivationTargetId", DbType="Int NOT NULL")]
+		public int ActivationTargetId
+		{
+			get
+			{
+				return this._ActivationTargetId;
+			}
+			set
+			{
+				if ((this._ActivationTargetId != value))
+				{
+					this.OnActivationTargetIdChanging(value);
+					this.SendPropertyChanging();
+					this._ActivationTargetId = value;
+					this.SendPropertyChanged("ActivationTargetId");
+					this.OnActivationTargetIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this.OnActivatedChanging(value);
+					this.SendPropertyChanging();
+					this._Activated = value;
+					this.SendPropertyChanged("Activated");
+					this.OnActivatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateActivated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateActivated
+		{
+			get
+			{
+				return this._DateActivated;
+			}
+			set
+			{
+				if ((this._DateActivated != value))
+				{
+					this.OnDateActivatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateActivated = value;
+					this.SendPropertyChanged("DateActivated");
+					this.OnDateActivatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Bill", Storage="_User", ThisKey="AuthorId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Bills.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Bills.Add(this);
+						this._AuthorId = value.Id;
+					}
+					else
+					{
+						this._AuthorId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

@@ -104,6 +104,7 @@
     <Compile Include="DAL\KartelDataContext.cs" />
     <Compile Include="DAL\Repositories\BannersRepository.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\BillsRepository.cs" />
     <Compile Include="DAL\Repositories\CategoriesMapRepository.cs" />
     <Compile Include="DAL\Repositories\CategoriesRepository.cs" />
     <Compile Include="DAL\Repositories\CategoryMapItemsRepository.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Interfaces\Cache\IStringCache.cs" />
     <Compile Include="Interfaces\Infrastructure\IMailNotificationManager.cs" />
     <Compile Include="Interfaces\Infrastructure\IUniSenderAPI.cs" />
+    <Compile Include="Interfaces\Repositories\IBillsRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesMapItemsRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesMapRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICountriesRepository.cs" />

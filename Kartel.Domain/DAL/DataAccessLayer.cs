@@ -43,6 +43,7 @@ namespace Kartel.Domain.DAL
             builder.RegisterType<CountriesRepository>().As<ICountriesRepository>();
             builder.RegisterType<CategoriesMapRepository>().As<ICategoriesMapRepository>();
             builder.RegisterType<CategoryMapItemsRepository>().As<ICategoriesMapItemsRepository>();
+            builder.RegisterType<BillsRepository>().As<IBillsRepository>();
         }
     }
 }
