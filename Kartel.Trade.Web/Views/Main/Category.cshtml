@@ -46,7 +46,7 @@
         @Model.Title
     </div>
 
-    @* рендерим категории *@
+    @* Карты категорий *@
     @foreach (var map in maps)
     {
         <div class="category-1-level">
@@ -62,7 +62,8 @@
                     var categories1 = new List<Category>();
                     var categories2 = new List<Category>();
                 }
-
+                
+                @* Помещаем всё дерево категорий в одну коллекцию *@
                 @foreach (var category2child in catRep.GetCateroriesOfMap(map))
                 {
                     category2child.SetLevel(2);
@@ -80,8 +81,9 @@
                             }
                         }
                 }
-
-                @for (int i = 0; i < allCategories.Count; i++)
+                
+                @* Разбиваем пополам коллекцию категорий *@
+                @for (var i = 0; i < allCategories.Count; i++)
                 {
                     if (i <= allCategories.Count / 2)
                     {
@@ -92,7 +94,8 @@
                         categories2.Add(allCategories[i]);
                     }
                 }
-
+                
+                @* Выводим 1 список (с разбитием по уровням) *@
                 <ul class="category-2-level">
                     @foreach (var category in categories1)
                     {
@@ -119,7 +122,8 @@
                         }
                     }
                 </ul>
-
+                
+                @* Выводим 2 список (с разбитием по уровням) *@
                 <ul class="category-2-level">
                     @foreach (var category in categories2)
                     {
