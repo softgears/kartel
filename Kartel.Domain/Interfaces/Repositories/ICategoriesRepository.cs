@@ -31,5 +31,12 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// <param name="parentId">Идентификатор родительской</param>
         /// <returns></returns>
         IEnumerable<Category> GetChildCategories(int parentId);
+
+        /// <summary>
+        /// Возвращает список всех категорий карты категорий
+        /// </summary>
+        /// <param name="map">Карта</param>
+        /// <returns></returns>
+        IEnumerable<Category> GetCateroriesOfMap(CategoryMap map);
     }
 }

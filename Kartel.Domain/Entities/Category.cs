@@ -73,5 +73,25 @@ namespace Kartel.Domain.Entities
             }
             
         }
+
+        /// <summary>
+        /// Уровень вложенности категорий (нужно только для представления)
+        /// </summary>
+        private int? Level { get; set; }
+        /// <summary>
+        /// Присваивает категории уровень вложенности
+        /// </summary>
+        /// <param name="level">Уровень</param>
+        public void SetLevel(int level)
+        {
+            Level = level;
+        }
+        /// <summary>
+        /// Берёт уровень вложенности
+        /// </summary>
+        public int? GetLevel()
+        {
+            return Level ?? 0;
+        }
     }
 }

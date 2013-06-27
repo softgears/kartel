@@ -1,4 +1,6 @@
-﻿@using Kartel.Domain.IoC
+﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
 @using Kartel.Trade.Web.Classes.Cache
 @model Kartel.Domain.Entities.Category
 
@@ -6,6 +8,8 @@
     ViewBag.Title = Model.Title;
     Layout = "../Shared/InnerLayout.cshtml";
     var catManager = Locator.GetService<CategoriesIndexManager>();
+    var maps = Locator.GetService<ICategoriesMapRepository>().FindAll().Where(f => f.CategoryId == Model.Id);
+    var catRep = Locator.GetService<ICategoriesRepository>();
 }
 
 @section LeftMenuBlock
@@ -36,49 +40,114 @@
 <div id="page-categories">
     @* Навигационная цепочка *@
     @Html.Partial("NavigationChain")
-    
+
     @* Заголовок *@
     <div class="current-category-title">
         @Model.Title
     </div>
 
     @* рендерим категории *@
-    @foreach (var category in Model.GetChildCategories())
+    @foreach (var map in maps)
     {
         <div class="category-1-level">
             <div class="category-1-title">
-                @category.Title
+                @map.DisplayName
             </div>
             <div class="category-1-image">
-                <img src="@catManager.GetCategoryImage(category)"/>
+                <img src="/files/@map.Image" style="max-width: 150px;"/>
             </div>
             <div class="category-1-child">
-                @foreach (var category2child in category.GetChildCategories())
-                {
-                    <div class="category-2-level">
-                        <div class="category-2-title">
-                            <a href="/browse-category/@category2child.Id">@category2child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category2child))</span>
-                        </div>
-                        <ul class="category-2-child">
-                            @foreach (var category3child in category2child.GetChildCategories())
-                            {
-                                <li class="level-3">
-                                    <a href="/browse-category/@category3child.Id">@category3child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category3child))</span>
-                                    <ul class="category-3-child">
-                                        @foreach (var category4child in category3child.GetChildCategories())
-                                        {
-                                            <li class="level-4">
-                                                <a href="/browse-category/@category4child.Id">@category4child.Title </a> <span class="products-count"> (@catManager.GetProductsCount(@category4child))</span>
-                                            </li>
-                                        }
-                                    </ul>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                @{
+                    var allCategories = new List<Category>();
+                    var categories1 = new List<Category>();
+                    var categories2 = new List<Category>();
                 }
+
+                @foreach (var category2child in catRep.GetCateroriesOfMap(map))
+                {
+                    category2child.SetLevel(2);
+                    allCategories.Add(category2child);
+                        
+                        foreach (var category3Child in category2child.GetChildCategories())
+                        {
+                            category3Child.SetLevel(3);
+                            allCategories.Add(category3Child);
+                                
+                            foreach (var category4Child in category3Child.GetChildCategories())
+                            {
+                                category4Child.SetLevel(4);
+                                allCategories.Add(category4Child);
+                            }
+                        }
+                }
+
+                @for (int i = 0; i < allCategories.Count; i++)
+                {
+                    if (i <= allCategories.Count / 2)
+                    {
+                        categories1.Add(allCategories[i]);
+                    }
+                    else
+                    {
+                        categories2.Add(allCategories[i]);
+                    }
+                }
+
+                <ul class="category-2-level">
+                    @foreach (var category in categories1)
+                    {
+                        if (category.GetLevel() == 2)
+                        {
+                            <li class="category-2-title">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                        if (category.GetLevel() == 3)
+                        {
+                            <li class="level-3">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                        if (category.GetLevel() == 4)
+                        {
+                            <li class="level-4">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                <ul class="category-2-level">
+                    @foreach (var category in categories2)
+                    {
+                        if (category.GetLevel() == 2)
+                        {
+                            <li class="category-2-title">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                        if (category.GetLevel() == 3)
+                        {
+                            <li class="level-3">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                        if (category.GetLevel() == 4)
+                        {
+                            <li class="level-4">
+                                <a href="/browse-category/@category.Id">@category.Title </a>
+                                <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            </li>
+                        }
+                    }
+                </ul>
             </div>
         </div>
-    }    
+    }
 </div>
 

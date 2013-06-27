@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.IoC;
 
 namespace Kartel.Domain.DAL.Repositories
 {
@@ -56,6 +57,18 @@ namespace Kartel.Domain.DAL.Repositories
         public IEnumerable<Category> GetChildCategories(int parentId)
         {
             return Search(c => c.ParentId == parentId);
+        }
+
+        /// <summary>
+        /// Возвращает список всех категорий карты категорий
+        /// </summary>
+        /// <param name="map">Карта</param>
+        /// <returns></returns>
+        public IEnumerable<Category> GetCateroriesOfMap(CategoryMap map)
+        {
+            var mapItems = map.CategoryMapItems;
+            var categories = FindAll().ToList();
+            return mapItems.Select(mapItem => categories.FirstOrDefault(f => f.Id == mapItem.CategoryId)).ToList();
         }
     }
 }
