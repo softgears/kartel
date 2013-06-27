@@ -9,6 +9,7 @@ using Kartel.Domain.Entities;
 using Kartel.Domain.Enums;
 using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Classes.Utils;
@@ -1173,6 +1174,79 @@ namespace Kartel.Trade.Web.Controllers
             UsersRepository.SubmitChanges();
 
             return View("ChangePasswordSuccess");
+        }
+
+        #endregion
+
+        #region Интеграция с UniSender
+
+        /// <summary>
+        /// Обрабатывает редирект либо регистрацию пользователя в системе unisender
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/sending")]
+        public ActionResult UniSender()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Переводим на юнисендер
+            if (CurrentUser.UniSenderActivated)
+            {
+                return Redirect("http://mailing.karteltrade.ru");
+            }
+            else
+            {
+                // Навигационная цепочка
+                PushNavigationChainItem("Главная страница", "/");
+                PushNavigationChainItem("Личный кабинет", "", false);
+                PushNavigationChainItem("Регистрация в UniSender", "/account/sending", true);
+
+                return View("UniSenderRegistration");
+            }
+        }
+
+        /// <summary>
+        /// Обрабатывает запрос пользователя на регистрацию в системе UniSender
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/sending/registration")]
+        public ActionResult UniSenderRegistration()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            if (CurrentUser.UniSenderActivated)
+            {
+                return RedirectToAction("UniSender");
+            }
+
+            // Менеджер
+            var api = Locator.GetService<IUniSenderAPI>();
+            
+            // Выполняем регистрацию
+            var login = CurrentUser.Email.GetEmailLogin() + "_kartel";
+            var successfull = api.RegisterUser(CurrentUser.Email, login);
+            if (successfull)
+            {
+                // Навигационная цепочка
+                PushNavigationChainItem("Главная страница", "/");
+                PushNavigationChainItem("Личный кабинет", "", false);
+                PushNavigationChainItem("Успешная регистрация в UniSender", "/account/sending", true);
+
+                CurrentUser.UniSenderActivated = true;
+                UsersRepository.SubmitChanges();
+
+                return View("UniSenderRegistrationSuccess");
+            }
+            else
+            {
+                throw new Exception("Shit happens");
+            }
         }
 
         #endregion

@@ -11,6 +11,7 @@
 
 using Autofac;
 using Kartel.Domain.Infrastructure.Mailing;
+using Kartel.Domain.Infrastructure.Mailing.UniSender;
 using Kartel.Domain.Infrastructure.Search;
 using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Search;
@@ -35,6 +36,7 @@ namespace Kartel.Domain.Infrastructure
         {
             builder.RegisterType<SearchManager>().As<ISearchManager>().SingleInstance();
             builder.RegisterType<MailNotificationManager>().As<IMailNotificationManager>().SingleInstance();
+            builder.RegisterType<UniSenderAPI>().As<IUniSenderAPI>();
         }
     }
 }

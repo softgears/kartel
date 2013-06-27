@@ -33,6 +33,24 @@ namespace Kartel.Trade.Web.Controllers
         }
 
         /// <summary>
+        /// Обрабатывает
+        /// </summary>
+        /// <param name="subdomain">Обрабатывает редирект на пользовательский сайт при заходе через поддомен</param>
+        /// <returns></returns>
+        public ActionResult Subdomain(string subdomain)
+        {
+            // Ищем пользователя по поддомену
+            var user = UsersRepository.Find(u => u.Subdomain != null && u.Subdomain.ToLower() == subdomain.ToLower());
+            if (user == null)
+            {
+                // Пользователь не найден
+                return RedirectToAction("Index", "Main");
+            }
+
+            return RedirectToAction("Index", new {id = user.Id});
+        }
+
+        /// <summary>
         /// Отображает главную страницу сайта пользователя
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>

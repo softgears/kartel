@@ -95,5 +95,24 @@ namespace Kartel.Domain.Infrastructure.Misc
                 return str;
             }
         }
+
+        /// <summary>
+        /// Извлекает логин из указанного email адреса
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string GetEmailLogin(this string str)
+        {
+            if (String.IsNullOrEmpty(str))
+            {
+                return "";
+            }
+            var idx = str.IndexOf('@');
+            if (idx < 0)
+            {
+                return str;
+            }
+            return str.Substring(0, idx);
+        }
     }
 }
