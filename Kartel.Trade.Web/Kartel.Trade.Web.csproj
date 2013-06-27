@@ -2484,6 +2484,7 @@
     <Content Include="Views\Account\DomainSave.cshtml" />
     <Content Include="Views\Account\UniSenderRegistration.cshtml" />
     <Content Include="Views\Account\UniSenderRegistrationSuccess.cshtml" />
+    <Content Include="Views\Main\StaticCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

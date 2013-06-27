@@ -28,7 +28,7 @@ namespace Kartel.Trade.Web
                 }
             }
 
-            routes.Add("DomainRoute", new Kartel.Domain.Infrastructure.Routing.DomainRoute("www.{subdomain}.example.com", "{action}/{id}" , new { controller = "UserSite", action = "Subdomain", subdomain = "" }));
+            routes.Add("DomainRoute", new Kartel.Domain.Infrastructure.Routing.DomainRoute("{subdomain}.karteltrade.ru", "{action}/{id}" , new { controller = "UserSite", action = "Subdomain", subdomain = "" }));
 
             routes.MapRoute(
                 name: "Default",

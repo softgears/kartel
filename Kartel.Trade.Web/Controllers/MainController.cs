@@ -49,7 +49,15 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem(cat.Title,"",true);
 
             // Отображаем вьху указанной категории
-            return View(cat);
+            if (cat.CategoryMaps.Count > 0)
+            {
+                return View(cat);    
+            }
+            else
+            {
+                return View("StaticCategories", cat);
+            }
+            
         }
 
         /// <summary>
