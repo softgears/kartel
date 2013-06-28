@@ -178,7 +178,7 @@ span {
 }
 /* line 107, ../sass/usersite.sass */
 .blue #header #header-content #navigation-chain {
-  background-color: #d3d3d3;
+  background-color: lightgrey;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 5px 10px;
