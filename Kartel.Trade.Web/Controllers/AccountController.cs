@@ -11,6 +11,7 @@ using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Classes.Utils;
 using Kartel.Trade.Web.Models;
@@ -237,6 +238,26 @@ namespace Kartel.Trade.Web.Controllers
             return RedirectToAction("Index","Main");
         }
 
+        #endregion
+
+        #region Восстановление забытого пароля
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string login)
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var repository = Locator.GetService<IUsersRepository>();
+            var user = repository.FindAll().ToList().Where(f => (f.Login == login || f.Email == login));
+            return View("PasswordRecovery");
+        }
         #endregion
 
         #region Главная страница

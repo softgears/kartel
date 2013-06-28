@@ -9,7 +9,7 @@
 @Html.Partial("NavigationChain")
 
 <div id="page-register">
-    
+
     @Html.ValidationSummary()
 
     <form method="POST" action="/account/login" id="login-form">
@@ -24,7 +24,7 @@
                 <span class="asterix">*</span> Логин (Email)
             </div>
             <div class="editor">
-                <input type="text" name="Login" maxlength="255" placeholder=""/>
+                <input type="text" name="Login" maxlength="255" placeholder="" />
             </div>
         </div>
         <div class="field">
@@ -32,18 +32,24 @@
                 <span class="asterix">*</span> Пароль
             </div>
             <div class="editor">
-                <input type="password" name="Password" maxlength="255" placeholder=""/>
+                <input type="password" name="Password" maxlength="255" placeholder="" />
             </div>
         </div>
         <div class="field">
-            <div class="label">
-                Запомнить на сайте
+            <div style="float: left;">
+                <div class="label">
+                    Запомнить на сайте
+                </div>
+                <div class="editor" style="padding-top: 5px">
+                    @Html.CheckBox("Remember")
+                </div>
             </div>
-            <div class="editor" style="padding-top: 5px">
-                @Html.CheckBox("Remember")
+            <div style="float: left; margin: 10px 0 0 165px;">
+                <a href="@Url.Action("ForgotPassword")" class="link-blue">Забыли пароль?</a>
             </div>
+            <div style="clear: both;"></div>
         </div>
-        
-        <input type="submit" id="reg-button" value=" "/>
+
+        <input type="submit" id="reg-button" value=" " />
     </form>
 </div>
