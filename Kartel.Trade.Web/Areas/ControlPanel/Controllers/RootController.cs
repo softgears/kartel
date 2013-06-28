@@ -80,6 +80,15 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                                             {"url", "/ControlPanel/ManageBills/"},
                                             {"objectType", "section"}
                                         },
+                                    // Контроллер управления настройками
+                                    new Dictionary<string, object>()
+                                        {
+                                            {"id", "settings"},
+                                            {"leaf", true},
+                                            {"text", "Настройки"},
+                                            {"url", "/ControlPanel/ManageSettings/"},
+                                            {"objectType", "section"}
+                                        },
                                 };
             return Json(menuItems);
         }

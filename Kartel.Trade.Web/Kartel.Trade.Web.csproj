@@ -134,6 +134,7 @@
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesMapController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManagePagesController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\ManageSettingsController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\RootController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
@@ -2285,6 +2286,7 @@
     <Content Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\widgets\WindowManager.js" />
     <Content Include="Areas\ControlPanel\Scripts\Pages.js" />
     <Content Include="Areas\ControlPanel\Scripts\Root.js" />
+    <Content Include="Areas\ControlPanel\Scripts\Settings.js" />
     <Content Include="Content\images\account\add-category.png" />
     <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\add-tender-inner.png" />
