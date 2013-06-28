@@ -2427,6 +2427,9 @@
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
     <Content Include="Scripts\Libs\jquery.validate.min.js" />
+    <Content Include="Templates\Mail\ResetPassword.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Mail\Feedback.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2495,6 +2498,8 @@
     <Content Include="Views\Account\GoldVendorLegalBill.cshtml" />
     <Content Include="Views\Account\GoldVendorPhysBill.cshtml" />
     <Content Include="Views\UserSite\ProductFeedback.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

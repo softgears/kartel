@@ -77,8 +77,8 @@ namespace Kartel.Domain.Infrastructure.Misc
             StringBuilder sbSignature = new StringBuilder();
             foreach (byte b in bSignature)
                 sbSignature.AppendFormat("{0:x2}", b);
-
-            return sbSignature.ToString();
+            var result = sbSignature.ToString();
+            return result;
         }
     }
 }
