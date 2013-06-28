@@ -1251,5 +1251,87 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
+        #region Золотой поставщик
+
+        [Route("account/gold")]
+        public ActionResult GoldVendor()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Золотой поставщик", "", true);
+
+            // Отображаем вид
+            return View();
+        }
+
+        /// <summary>
+        /// Создает и отображает счет для юридического лица за золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/gold/bill-legal")][HttpPost]
+        public ActionResult GoldVendorLegalBill(long period, string companyName)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            var settingsRep = Locator.GetService<ISettingsRepository>();
+            var price = settingsRep.GetValue<decimal>("gold" + period);
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+                {
+                    User = CurrentUser,
+                    ActivationTarget = "tariff",
+                    ActivationAmount = (int) period,
+                    DateCreated = DateTime.Now,
+                    Amount = price
+                };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.company = companyName;
+            ViewBag.price = price;
+            ViewBag.period = period;
+            return View(bill);
+        }
+
+        /// <summary>
+        /// Создает и отображает счет для физического лица за услугу золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/gold/bill-phys")]
+        [HttpPost]
+        public ActionResult GoldVendorPhysBill(long period, string fio, string address)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            var settingsRep = Locator.GetService<ISettingsRepository>();
+            var price = settingsRep.GetValue<decimal>("gold" + period);
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+            {
+                User = CurrentUser,
+                ActivationTarget = "tariff",
+                ActivationAmount = (int)period,
+                DateCreated = DateTime.Now,
+                Amount = price
+            };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.fio = fio;
+            ViewBag.address = address;
+            ViewBag.price = price;
+            ViewBag.period = period;
+            return View(bill);
+        }
+
+        #endregion
     }
 }

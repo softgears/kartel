@@ -111,7 +111,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Models
             {
                 case "tariff":
                     ActivationTarget = "Тариф 'Золотой Поставщик'";
-                    ActivationAmount = String.Format("на {0} дней", bill.ActivationAmount);
+                    ActivationAmount = String.Format("на {0} месяцев", bill.ActivationAmount);
                     break;
                 case "hot-products":
                     ActivationTarget = "Оплата показа Горячих товаров";

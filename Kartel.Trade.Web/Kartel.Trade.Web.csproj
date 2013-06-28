@@ -2291,6 +2291,7 @@
     <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\add-tender-inner.png" />
     <Content Include="Content\images\account\answer-tender.png" />
+    <Content Include="Content\images\account\bill.png" />
     <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\doreg.png" />
     <Content Include="Content\images\account\goldvendor.png" />
@@ -2490,6 +2491,9 @@
     <Content Include="Views\Account\UniSenderRegistration.cshtml" />
     <Content Include="Views\Account\UniSenderRegistrationSuccess.cshtml" />
     <Content Include="Views\Main\StaticCategories.cshtml" />
+    <Content Include="Views\Account\GoldVendor.cshtml" />
+    <Content Include="Views\Account\GoldVendorLegalBill.cshtml" />
+    <Content Include="Views\Account\GoldVendorPhysBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

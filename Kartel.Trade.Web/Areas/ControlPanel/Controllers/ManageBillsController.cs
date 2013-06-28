@@ -88,7 +88,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     case "tariff":
                         // Активируем золотого поставщика
                         bill.User.Tarif = "gold";
-                        bill.User.TariffExpiration = DateTime.Now.AddDays(bill.ActivationAmount);
+                        bill.User.TariffExpiration = DateTime.Now.AddMonths(bill.ActivationAmount);
 
                         // Помечаем счет как активированный
                         bill.Activated = true;

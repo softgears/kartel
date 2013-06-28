@@ -1,0 +1,165 @@
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Ext
+@model dynamic
+
+@{
+    ViewBag.Title = "Золотой поставщик";
+    Layout = "AccountLayout.cshtml";
+    var settingsRep = Locator.GetService<ISettingsRepository>();
+    var gold3Price = settingsRep.GetValue("gold3");
+    var gold6Price = settingsRep.GetValue("gold6");
+    var gold12Price = settingsRep.GetValue("gold12");
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <div class="fields-group">
+        <div class="fields-title">
+            Золотой поставщик
+        </div>
+        @if (ViewContext.CurrentUser().Tarif == "gold")
+        {
+            <div class="field">
+                <div class="label" style="font-weight: bold">
+                    Действующий тариф
+                </div>
+                <div class="editor">
+                    <span style="position: relative; top: 7px">
+                        Золотой поставщик    
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label" style="font-weight: bold">
+                    Действует до
+                </div>
+                <div class="editor">
+                    <span style="position: relative; top: 7px">
+                        @ViewContext.CurrentUser().TariffExpiration.FormatDate()
+                    </span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div style="float: right; margin-top: 45px; margin-right: 40px">
+                <a href="http://karteltrade.ru/zolotoy_postavshik.html">Узнать больше</a>
+            </div>
+            <div style="font-weight: bold; margin-left: 15px">С тарифом "Золотой поставщик" вы получаете:</div>
+            <ul>
+                <li>Доступ к 100% тендеров
+                </li>
+                <li>Привилегированное отображение товаров на сайте
+                </li>
+                <li>Посещаемость в 28 раз выше
+                </li>
+                <li>Отсутствие рекламного блока на Вашем сайте
+                </li>
+                <li>Отсутствие товаров других поставщиков на сайте Вашей компании
+                </li>
+                <li>Слайдшоу на главной странице Вашего сайта
+                </li>
+            </ul>
+        }
+    </div>
+    <div class="fields-group">
+        <div class="fields-title">
+            Оплата тарифа
+        </div>
+        <table width="100%">
+            <tbody>
+                <tr style="font-size: 13px; line-height: 1.5">
+                    <td style="text-align: center">
+                        <input type="radio" value="3" class="price-selector"/><br/>
+                        <span style="color: #33A1C2">3 месяца:</span> <span style="font-weight: bold">@gold3Price руб.</span>
+                    </td>
+                    <td style="text-align: center">
+                        <input type="radio" value="6" class="price-selector"/><br/>
+                        <span style="color: #33A1C2">6 месяцев:</span> <span style="font-weight: bold">@gold6Price руб.</span>
+                    </td>
+                    <td style="text-align: center">
+                        <input type="radio" value="12" class="price-selector"/><br/>
+                        <span style="color: #33A1C2">12 месяцев:</span> <span style="font-weight: bold">@gold12Price руб.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="fields-group" id="payments-wrapper" style="display: none">
+        <div class="fields-title">
+            Выберите способ оплаты
+        </div>
+        <table width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">1.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Юр. лиц)</span>
+                        <br/>
+                        <a href="#" id="legal-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+                        
+                        <div id="legal-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/gold/bill-legal" target="_blank" method="post" id="legal-bill-form">
+                                <input type="hidden" name="period"  class="selected-period"/>
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="companyName" style="width: 100%" type="text" placeholder="Название компании"/>
+                                    </div>
+                                </div>
+                                <a href="#" id="legal-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#legal-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">2.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Физ. лиц)</span>
+                        <br/>
+                        <a href="#" id="phys-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+                        
+                        <div id="phys-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/gold/bill-phys" target="_blank" method="post" id="phys-bill-form">
+                                <input type="hidden" name="period" class="selected-period"/>
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="fio"  style="width: 100%" type="text" placeholder="ФИО Плательщика"/>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="address" style="width: 100%" type="text" placeholder="Адрес"/>
+                                    </div>
+                                </div>
+                                <a href="#" id="phys-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#phys-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".price-selector").click(function () {
+            $("#payments-wrapper").slideDown();
+            $(".selected-period").val($(this).val());
+        }).attr("checked",null).attr("selected",null).attr("name","price");
+        $("#legal-bill-button").click(function () {
+            $(this).hide();
+            $("#legal-form-wrapper").slideDown();
+        });
+        $("#phys-bill-button").click(function () {
+            $(this).hide();
+            $("#phys-form-wrapper").slideDown();
+        });
+    });
+</script>
