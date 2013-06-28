@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Enums;
+using Kartel.Domain.Infrastructure.Mailing.Templates;
 using Kartel.Domain.Infrastructure.Misc;
 using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Infrastructure;
@@ -237,6 +238,112 @@ namespace Kartel.Trade.Web.Controllers
             return RedirectToAction("Index","Main");
         }
 
+        #endregion
+
+        #region Восстановление забытого пароля
+        /// <summary>
+        /// Страница восстановления пароля
+        /// </summary>
+        public ActionResult ForgotPassword()
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index", "Main");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string email)
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            var userRepository = Locator.GetService<IUsersRepository>();
+            var user = userRepository.Find(f => f.Email == email);
+            if (user == null)
+            {
+                TempData["Error"] = "Пользователь с таким логином (email) не найден.";
+                return View("ForgotPassword");
+            }
+
+            user.PasswordHash = PasswordUtils.Hashify(user.PasswordHash, 5).ToLower();
+
+            const string subject = "Восстановление пароля";
+            var template =
+                new ParametrizedFileTemplate(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "ResetPassword.html"), new
+                        {
+                            Subject = subject,
+                            Content = Url.Action("ResetPassword", null, 
+                            new { email = user.Email, reset =  user.PasswordHash }, Request.Url.Scheme)
+                        });
+
+            Locator.GetService<IMailNotificationManager>().Notify(user, subject, template.ToString());
+            userRepository.SubmitChanges();
+            TempData["Message"] = "Инструкция по восстановлению пароля отправлена на e-mail, указанный при регистрации";
+
+            return View();
+        }
+
+        public ActionResult ResetPassword(string email, string reset)
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            var repository = Locator.GetService<IUsersRepository>();
+            var user = repository.GetUserByLoginAndPasswordHash(email, reset);
+            if (user == null)
+            {
+                TempData["Error"] = "Введён неправильный код восстановления";
+                return View("ForgotPassword");
+            }
+            return View("ResetPassword", user);
+        }
+
+        [HttpPost]
+        public ActionResult DoResetPassword(string password, string confirm, string email)
+        {
+            if (IsAuthentificated)
+            {
+                return RedirectToAction("Index", "Main");
+            }
+
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirm))
+            {
+                TempData["Error"] = "Поля должны быть заполнены";
+                return View("ResetPassword");
+            }
+
+            if (password != confirm)
+            {
+                TempData["Error"] = "Пароли не совпадают";
+                return View("ResetPassword");
+            }
+
+            if(string.IsNullOrEmpty(email))
+            {
+                TempData["Error"] = "Пользователь не найден";
+                return View("ResetPassword");
+            }
+
+            var repository = Locator.GetService<IUsersRepository>();
+            var user = repository.Find(f => f.Email == email);
+            if (user == null)
+            {
+                TempData["Error"] = "Пользователь не найден";
+                return View("ResetPassword");
+            }
+
+            user.PasswordHash = PasswordUtils.QuickMD5(password);
+            TempData["Message"] = "Новый пароль установлен. Заполните форму, чтобы авторизоваться";
+            repository.SubmitChanges();
+            return RedirectToAction("Login");
+        }
         #endregion
 
         #region Главная страница

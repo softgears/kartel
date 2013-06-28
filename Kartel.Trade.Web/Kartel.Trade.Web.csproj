@@ -130,15 +130,12 @@
     <Compile Include="Areas\ControlPanel\Classes\JsonNetResult.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\BaseRootController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageBannersController.cs" />
-    <Compile Include="Areas\ControlPanel\Controllers\ManageBillsController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesMapController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManagePagesController.cs" />
-    <Compile Include="Areas\ControlPanel\Controllers\ManageSettingsController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\RootController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
-    <Compile Include="Areas\ControlPanel\Models\BillJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryItemModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryMapJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryTreeNodeModel.cs" />
@@ -171,7 +168,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\ControlPanel\Scripts\Banners.js" />
-    <Content Include="Areas\ControlPanel\Scripts\Bills.js" />
     <Content Include="Areas\ControlPanel\Scripts\Categories.js" />
     <Content Include="Areas\ControlPanel\Scripts\CategoriesMap.js" />
     <Content Include="Areas\ControlPanel\Scripts\Global.js" />
@@ -2286,12 +2282,10 @@
     <Content Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\widgets\WindowManager.js" />
     <Content Include="Areas\ControlPanel\Scripts\Pages.js" />
     <Content Include="Areas\ControlPanel\Scripts\Root.js" />
-    <Content Include="Areas\ControlPanel\Scripts\Settings.js" />
     <Content Include="Content\images\account\add-category.png" />
     <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\add-tender-inner.png" />
     <Content Include="Content\images\account\answer-tender.png" />
-    <Content Include="Content\images\account\bill.png" />
     <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\doreg.png" />
     <Content Include="Content\images\account\goldvendor.png" />
@@ -2427,6 +2421,9 @@
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
     <Content Include="Scripts\Libs\jquery.validate.min.js" />
+    <Content Include="Templates\Mail\ResetPassword.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Mail\Feedback.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2495,6 +2492,8 @@
     <Content Include="Views\Account\GoldVendorLegalBill.cshtml" />
     <Content Include="Views\Account\GoldVendorPhysBill.cshtml" />
     <Content Include="Views\UserSite\ProductFeedback.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
