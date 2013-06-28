@@ -2494,6 +2494,7 @@
     <Content Include="Views\Account\GoldVendor.cshtml" />
     <Content Include="Views\Account\GoldVendorLegalBill.cshtml" />
     <Content Include="Views\Account\GoldVendorPhysBill.cshtml" />
+    <Content Include="Views\UserSite\ProductFeedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

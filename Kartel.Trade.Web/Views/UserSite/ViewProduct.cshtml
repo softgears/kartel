@@ -20,7 +20,8 @@
             <b>Минимальная партия:</b> @Model.Field4
         </div>
         <div class="write">
-            <span id="write-customer" class="gradient">Написать</span>
+            <a href="/product-feedback/@Model.Id">
+                <span id="write-customer" class="gradient">Написать</span></a>
         </div>
     </div>
     <div class="html-info">
@@ -36,7 +37,7 @@
         <div class="panel-content">
             <div class="products">
                 @{
-                    var goods = Model.Category.GetRandomProducts().ToList();
+    var goods = Model.Category.GetRandomProducts().ToList();
                 }
                 @while (goods.Count > 0)
                 {
