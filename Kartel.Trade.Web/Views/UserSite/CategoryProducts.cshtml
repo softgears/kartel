@@ -6,6 +6,7 @@
     Layout = "UserSiteLayout.cshtml";
     int page = ViewBag.page;
     int totalPages = MathHelper.PagesCount(Model.GetProductsCount(), 9);
+    var anyProduct = Model.GetProducts().FirstOrDefault();
 }
 
 <div class="panel">
@@ -14,27 +15,52 @@
     </div>
     <div class="panel-products-content">
         <div class="products">
-            @foreach(var product in Model.GetProducts().Skip(page*9).Take(9))
+            @foreach (var product in Model.GetProducts().Skip(page * 9).Take(9))
             {
-                @Html.Partial("Product",product)
+                @Html.Partial("Product", product)
             }
         </div>
         @* Пагинатор *@
         @if (totalPages > 1)
         {
-        <div id="paginator">
-            @for (var i = 0; i < totalPages; i++)
-            {
-                if (i == page)
+            <div id="paginator">
+                @for (var i = 0; i < totalPages; i++)
                 {
-                    <span class="current-page">@(page+1)</span>
+                    if (i == page)
+                    {
+                    <span class="current-page">@(page + 1)</span>
+                    }
+                    else
+                    {
+                    <a href="/vendor/category/@Model.UserId?catId=@Model.Id&page=@(i)">@(i + 1)</a>
+                    }
                 }
-                else
-                {
-                    <a href="/vendor/category/@Model.UserId?catId=@Model.Id&page=@(i)">@(i+1)</a>
-                }
-            }
-        </div>
+            </div>
         }
     </div>
 </div>
+@if (Model.User.Tarif != "gold" && anyProduct != null)
+{
+    <div class="panel" style="margin-top: 15px">
+        <div class="panel-title gradient">
+            Предложения других поставщиков
+        </div>
+        <div class="panel-content">
+            <div class="products">
+                @{
+                    var goods = anyProduct.Category.GetRandomProducts().ToList();
+                }
+                @while (goods.Count > 0)
+                {
+                    <div class="row">
+                        @foreach (var product in goods.Take(4).ToList())
+                        {
+                            goods.Remove(product);
+                            @Html.Partial("HotProduct", product)
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div> 
+}

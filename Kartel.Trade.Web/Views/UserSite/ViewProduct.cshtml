@@ -27,3 +27,28 @@
         @Html.Raw(Model.Description)
     </div>
 </div>
+@if (Model.User.Tarif != "gold")
+{
+    <div class="panel" style="margin-top: 15px">
+        <div class="panel-title gradient">
+            Предложения других поставщиков
+        </div>
+        <div class="panel-content">
+            <div class="products">
+                @{
+                    var goods = Model.Category.GetRandomProducts().ToList();
+                }
+                @while (goods.Count > 0)
+                {
+                    <div class="row">
+                        @foreach (var product in goods.Take(4).ToList())
+                        {
+                            goods.Remove(product);
+                            @Html.Partial("HotProduct", product)
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
