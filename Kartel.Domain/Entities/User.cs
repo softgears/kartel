@@ -71,7 +71,22 @@ namespace Kartel.Domain.Entities
         /// <returns></returns>
         public string GetMainPhone()
         {
-            return Phone.Substring(0,11); // TODO: сделать более сложную обработку
+            if (UserPhones.Count > 0)
+            {
+                return UserPhones.First().ToString();
+            }
+            else
+            {
+                var parts = Phone.Split('|');
+                if(parts.Length > 0)
+                {
+                    return parts[0];
+                }
+                else
+                {
+                    return Phone.Substring(0, 11);
+                }
+            }
         }
 
         /// <summary>
