@@ -15,176 +15,155 @@
     <script src="~/Scripts/Libs/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/Libs/jquery.validate.min.js"></script>
 </head>
-<body>
-    <div class="blue">
-        @* Шапка *@
-        <header id="header">
-            <div id="header-content">
-                @* Контакты *@
-                <div id="phones-wrapper">
-                    <div id="phone">@user.GetMainPhone()</div>
-                    <a href="mailto:@user.Email" id="write">Написать</a>
-                </div>
-                @* Логотип *@
-                <div id="logo-wrapper">
-                    <a href="/vendor/@user.Id">
-                        @if (!String.IsNullOrEmpty(user.LogoUrl))
-                        {
-                            <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" />    
-                        }
-                        else
-                        {
-                            <span style="font-size: 25px; color: black">@Html.Raw(user.Company)</span>
-                        }
-                    </a>
-                </div>
-                @* Главное меню *@
-                <nav id="main-menu" class="gradient">
-                    <div id="search-wrapper">
-                        <form action="/vendor/search/@user.Id" method="GET">
-                            <input type="text" name="term" id="search-field" placeholder="Поиск товаров..."/>
-                            <input type="submit" value=" "/>
-                        </form>
+    <body>
+        <div class="blue">
+            @* Шапка *@
+            <header id="header">
+                <div id="header-content">
+                    @* Контакты *@
+                    <div id="phones-wrapper">
+                        <div id="phone">@user.GetMainPhone()</div>
+                        <a href="mailto:@user.Email" id="write">Написать</a>
                     </div>
-                    <ul>
-                        <li>
-                            <a href="/vendor/@user.Id">
-                                Главная
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/vendor/products/@user.Id">
-                                Товары
-                            </a>
-                        </li>
-                        @if (user.Tarif == "gold")
-                        {
-                            <li>
-                                <a href="/vendor/tenders/@user.Id">
-                                    Тендеры
-                                </a>
-                            </li>
-                        }
-                        <li>
-                            <a href="/vendor/about/@user.Id">
-                                О Компании
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/vendor/contacts/@user.Id">
-                                Контакты
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                @* Навигационная цепочка *@
-                @Html.Partial("NavigationChain")
-            </div>
-        </header>
-        @* Содержимое *@
-        <section id="content">
-            <div id="content-wrapper">
-                @* Боковое меню *@
-                <div id="content-menu">
-                    @* Пользовательские категории *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            Категории
-                        </div>
-                        <div class="group-content">
-                            <ul>
-                                @foreach(var userCategory in user.GetUserCategories().OrderBy(c => c.Position))
-                                {
-                                    <li>
-                                        <a href="/vendor/category/@userCategory.UserId?catId=@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
+                    @* Логотип *@
+                    <div id="logo-wrapper">
+                        <a href="/vendor/@user.Id">
+                            @if (!String.IsNullOrEmpty(user.LogoUrl))
+                            {
+                                <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" />    
+                            }
+                            else
+                            {
+                                <span style="font-size: 25px; color: black">@Html.Raw(user.Company)</span>
+                            }
+                        </a>
                     </div>
-                    @* О Компании кратко *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            <a href="/vendor/about/@user.Id">
-                                О Компании
-                            </a>
-                        </div>
-                        <div class="group-content">
-                            
-                        </div>
-                    </div>
-                    @* Обратная связь *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            <a href="/vendor/contacts/@user.Id">
-                                Контакты
-                            </a>
-                        </div>
-                        <div class="group-content last">
-                            <div class="contacts-title">
-                                Написать письмо
-                            </div>
-                            <form action="/vendor/feedback/@user.Id" method="POST" id="layout-feedback-form">
-                                <input type="hidden" name="Subject" value="Сообщение с формы обратной связи"/>
-                                <div class="field">
-                                    <div class="editor">
-                                        <input type="text" name="Name" placeholder="Ваше имя"/>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="editor">
-                                        <input type="text" name="Email" placeholder="Ваш email"/>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="editor">
-                                        <textarea name="Content" placeholder="Текст вопроса"></textarea>
-                                    </div>
-                                </div>
-                                <div class="submit-wrapper">
-                                    <input type="submit" class="gradient" value="Отправить"/>
-                                </div>
+                    @* Главное меню *@
+                    <nav id="main-menu" class="gradient">
+                        <div id="search-wrapper">
+                            <form action="/vendor/search/@user.Id" method="GET">
+                                <input type="text" name="term" id="search-field" placeholder="Поиск товаров..."/>
+                                <input type="submit" value=" "/>
                             </form>
                         </div>
-                    </div>
-                </div>   
-                @* Меняющееся содержимое страницы *@ 
-                <div id="content-section">
-                    @RenderBody()
+                        <ul>
+                            <li>
+                                <a href="/vendor/@user.Id">
+                                    Главная
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/vendor/products/@user.Id">
+                                    Товары
+                                </a>
+                            </li>
+                            @if (user.Tarif == "gold")
+                            {
+                                <li>
+                                    <a href="/vendor/tenders/@user.Id">
+                                        Тендеры
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a href="/vendor/about/@user.Id">
+                                    О Компании
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/vendor/contacts/@user.Id">
+                                    Контакты
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    @* Навигационная цепочка *@
+                    @Html.Partial("NavigationChain")
                 </div>
-            </div>
-        </section>
-        @* Подвал *@
-        <footer id="footer">
-            <div id="kartel-button" class="footer-item">Картель.рф</div>
-            <div class="footer-item">Хотите такой же сайт <a href="/account/register">БЕСПЛАТНО?</a></div>
-            <div class="footer-item">Не нашли что искали? <a href="/account/tenders/add-tender">Разместите тендер</a></div>
-        </footer>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#layout-feedback-form").validate({
-                rules: {
-                    Name: {
-                        required: true,
-                        maxlength: 65
-                    },
-                    Email: {
-                        required: true,
-                        maxlength: 120,
-                        email: true
-                    },
-                    Content: {
-                        required: true,
-                        maxlength: 255,
-                        minlength: 10
-                    }
-                }
-            });
-            $(window).resize(function() {
-                $("#footer").css("top", $(window).height() - $("#footer").outerHeight());
-            }).resize();
-        });
-    </script>
-</body>
+            </header>
+            @* Содержимое *@
+            <section id="content">
+                <div id="content-wrapper">
+                    @* Боковое меню *@
+                    <div id="content-menu">
+                        @* Пользовательские категории *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                Категории
+                            </div>
+                            <div class="group-content">
+                                <ul>
+                                    @foreach(var userCategory in user.GetUserCategories().OrderBy(c => c.Position))
+                                    {
+                                        <li>
+                                            <a href="/vendor/category/@userCategory.UserId?catId=@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        @* О Компании кратко *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                <a href="/vendor/about/@user.Id">
+                                    О Компании
+                                </a>
+                            </div>
+                            <div class="group-content">
+                            
+                            </div>
+                        </div>
+                        @* Обратная связь *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                <a href="/vendor/contacts/@user.Id">
+                                    Контакты
+                                </a>
+                            </div>
+                            <div class="group-content last">
+                                <div class="contacts-title">
+                                    Написать письмо
+                                </div>
+                                <form action="/vendor/feedback/@user.Id" method="POST" id="layout-feedback-form">
+                                    <input type="hidden" name="Subject" value="Сообщение с формы обратной связи"/>
+                                    <div class="field">
+                                        <div class="editor">
+                                            <input type="text" name="Name" placeholder="Ваше имя"/>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="editor">
+                                            <input type="text" name="Email" placeholder="Ваш email"/>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="editor">
+                                            <textarea name="Content" placeholder="Текст вопроса"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="submit-wrapper">
+                                        <input type="submit" class="gradient" value="Отправить"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>   
+                    @* Меняющееся содержимое страницы *@ 
+                    <div id="content-section">
+                        @RenderBody()
+                    </div>
+                </div>
+            </section>
+            @* Подвал *@
+            <footer id="footer">
+                <div id="kartel-button" class="footer-item">Картель.рф</div>
+                <div class="footer-item">Хотите такой же сайт <a href="/account/register">БЕСПЛАТНО?</a></div>
+                <div class="footer-item">Не нашли что искали? <a href="/account/tenders/add-tender">Разместите тендер</a></div>
+            </footer>
+        </div>
+
+        <script type="text/javascript">
+            
+        </script>
+    </body>
 </html>
