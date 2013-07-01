@@ -1854,10 +1854,6 @@ body #footer #footer-content a {
   margin-bottom: 10px;
 }
 /* line 159, ../sass/account.sass */
-.account .fields-group .field:first-child {
-  margin-top: 15px;
-}
-/* line 162, ../sass/account.sass */
 .account .fields-group .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1865,53 +1861,57 @@ body #footer #footer-content a {
   width: 293px;
   padding-top: 5px;
 }
-/* line 169, ../sass/account.sass */
+/* line 166, ../sass/account.sass */
 .account .fields-group .field .label .asterix {
   color: red;
 }
-/* line 172, ../sass/account.sass */
+/* line 169, ../sass/account.sass */
 .account .fields-group .field .label a {
   color: black;
 }
-/* line 175, ../sass/account.sass */
+/* line 172, ../sass/account.sass */
 .account .fields-group .field .editor {
   display: inline-block;
   vertical-align: top;
   margin-left: 10px;
 }
-/* line 180, ../sass/account.sass */
+/* line 177, ../sass/account.sass */
 .account .fields-group .field .editor:first-child {
   text-align: center;
 }
-/* line 183, ../sass/account.sass */
+/* line 180, ../sass/account.sass */
 .account .fields-group .field .editor:first-child textarea {
   width: 720px;
   margin-left: 100px;
 }
-/* line 188, ../sass/account.sass */
+/* line 185, ../sass/account.sass */
 .account .fields-group .field .editor input[type='text'], .account .fields-group .field .editor textarea {
   border: 1px solid #cdcdcd;
   padding: 3px;
   width: 390px;
 }
-/* line 193, ../sass/account.sass */
+/* line 190, ../sass/account.sass */
 .account .fields-group .field .editor input[type='text'].small, .account .fields-group .field .editor textarea.small {
   width: 123px;
 }
-/* line 197, ../sass/account.sass */
+/* line 194, ../sass/account.sass */
 .account .fields-group .field .editor textarea {
   min-height: 150px;
 }
-/* line 200, ../sass/account.sass */
+/* line 197, ../sass/account.sass */
 .account .fields-group .field .editor label.error {
   margin-left: 5px;
   color: red;
 }
-/* line 204, ../sass/account.sass */
+/* line 201, ../sass/account.sass */
 .account .fields-group .field .editor .details {
   color: gray;
   font-size: 10px;
   margin-top: 5px;
+}
+/* line 206, ../sass/account.sass */
+.account .fields-group .field:first-child {
+  margin-top: 15px;
 }
 /* line 209, ../sass/account.sass */
 .account .fields-group .offers-table {

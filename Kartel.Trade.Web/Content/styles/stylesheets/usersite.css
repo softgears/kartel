@@ -765,26 +765,28 @@ form label.error {
 #design_editor #editor_left .editor-menu-item {
   height: 20px;
   padding: 10px 0 6px 35px;
+  font-size: 13px;
   display: block;
   border-radius: 3px 0 0 3px;
+  font-family: Arial;
   background-color: #8a929c !important;
   color: white;
 }
-/* line 80, ../sass/design-editor.sass */
+/* line 82, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item.selected-item {
   color: #444444;
   background-color: white !important;
 }
-/* line 84, ../sass/design-editor.sass */
+/* line 86, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item#design_common_link {
   margin-bottom: 6px;
   background: url("/Content/images/account/design-common.png") no-repeat 7px 6px;
 }
-/* line 87, ../sass/design-editor.sass */
+/* line 89, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item#design_premium_link {
   background: url("/Content/images/account/design-premium.png") no-repeat 7px 6px;
 }
-/* line 90, ../sass/design-editor.sass */
+/* line 92, ../sass/design-editor.sass */
 #design_editor #editor_right {
   width: 945px;
   height: 200px;
@@ -792,14 +794,14 @@ form label.error {
   padding-left: 15px;
   background-color: white;
 }
-/* line 97, ../sass/design-editor.sass */
+/* line 99, ../sass/design-editor.sass */
 #design_editor #editor_right .theme-item {
   display: inline-block;
   width: 120px;
   height: 80px;
   margin: 10px;
 }
-/* line 103, ../sass/design-editor.sass */
+/* line 105, ../sass/design-editor.sass */
 #design_editor #editor_right .theme-item img {
   width: 120px;
   height: 80px;
