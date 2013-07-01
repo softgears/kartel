@@ -1440,5 +1440,22 @@ namespace Kartel.Trade.Web.Controllers
         }
 
         #endregion
+
+        #region Auto completes
+
+        /// <summary>
+        /// Возвращает автокомплит стран
+        /// </summary>
+        /// <param name="term">Строка для поиска</param>
+        /// <returns></returns>
+        public ActionResult CountriesAutoComplete(string term)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<ICountriesRepository>();
+            var countries = rep.GetAllCountries().Where(c => c.Name.ToLower().Contains(term.ToLower())).Select(c => c.Name);
+            return Json(countries,JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
     }
 }

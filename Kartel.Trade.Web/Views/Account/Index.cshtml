@@ -155,7 +155,7 @@
                     <span class="asterix">*</span>Страна
                 </div>
                 <div class="editor">
-                    <input type="text" name="Country" value="@current.Country"/>
+                    <input type="text" name="Country" value="@current.Country" id="country-field"/>
                 </div>
             </div>
             <div class="field">
@@ -406,6 +406,11 @@
                     maxlength: 1000
                 }
             }
+        });
+
+        $("#country-field").autocomplete({
+            source: "/Account/CountriesAutoComplete",
+            minLength: 2
         });
     });
 </script>

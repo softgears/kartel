@@ -53,7 +53,7 @@
                 <span class="asterix">*</span> Страна
             </div>
             <div class="editor">
-                <input type="text" name="Country" maxlength="255" placeholder=""/>
+                <input type="text" name="Country" maxlength="255" placeholder="" id="country-field"/>
             </div>
         </div>
         <div class="field">
@@ -204,6 +204,11 @@
                     }
                 }, 'json');
             }
+        });
+
+        $("#country-field").autocomplete({
+            source: "/Account/CountriesAutoComplete",
+            minLength: 2
         });
     });
 </script>
