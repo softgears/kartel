@@ -1302,7 +1302,7 @@ namespace Kartel.Trade.Web.Controllers
             // Переводим на юнисендер
             if (CurrentUser.UniSenderActivated)
             {
-                return Redirect("http://mailing.karteltrade.ru");
+                return View("UniSenderIFrame");
             }
             else
             {

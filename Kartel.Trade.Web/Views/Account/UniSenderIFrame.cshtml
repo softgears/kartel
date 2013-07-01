@@ -1,0 +1,20 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "UniSender";
+    Layout = "AccountLayout.cshtml";
+}
+
+<p style="margin: 15px 5px">
+    <iframe src="http://kartel.backend.msgpanel.com" width="100%" align="middle" height="600" id="unisender">
+        
+    </iframe>
+</p>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(window).resize(function () {
+            var targetHeight = $("#content-section-bg").height()-50;
+            $("#unisender").attr("height", targetHeight);
+        }).resize();
+    });
+</script>
