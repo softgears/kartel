@@ -319,10 +319,5 @@ namespace Kartel.Trade.Web.Controllers
             // Отображаем вид
             return View(product);
         }
-
-        public ActionResult Design()
-        {
-            return View();
-        }
     }
 }

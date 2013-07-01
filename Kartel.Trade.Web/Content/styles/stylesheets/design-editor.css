@@ -1,15 +1,38 @@
-/* line 3, ../sass/design-editor.sass */
+/* line 2, ../sass/design-editor.sass */
+.clear-fix {
+  clear: both;
+}
+
+/* line 5, ../sass/design-editor.sass */
+.fl {
+  float: left;
+}
+
+/* line 8, ../sass/design-editor.sass */
+.fr {
+  float: right;
+}
+
+/* line 11, ../sass/design-editor.sass */
 #design_editor {
-  width: 1160px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto !important;
+  position: fixed;
+  top: 0;
   padding: 17px 10px;
   background-color: #434446;
+  z-index: 100000;
 }
-/* line 9, ../sass/design-editor.sass */
+/* line 20, ../sass/design-editor.sass */
+#design_editor form {
+  width: 1160px;
+  margin: 0 auto;
+}
+/* line 25, ../sass/design-editor.sass */
 #design_editor #design_settings_box {
   width: 100%;
 }
-/* line 12, ../sass/design-editor.sass */
+/* line 28, ../sass/design-editor.sass */
 #design_editor #design_settings_box #design_settings, #design_editor #design_settings_box #your_site {
   font-family: Arial;
   color: white;
@@ -19,7 +42,7 @@
   position: relative;
   top: 6px;
 }
-/* line 21, ../sass/design-editor.sass */
+/* line 37, ../sass/design-editor.sass */
 #design_editor #design_settings_box #save_design {
   width: 126px;
   height: 27px;
@@ -29,7 +52,7 @@
   background: url(../../images/account/save-design.png);
   border: 0;
 }
-/* line 30, ../sass/design-editor.sass */
+/* line 46, ../sass/design-editor.sass */
 #design_editor #design_settings_box #close_editor_button {
   width: 164px;
   height: 27px;
@@ -38,29 +61,29 @@
   background: url(../../images/account/close-editor.png);
   border: 0;
 }
-/* line 39, ../sass/design-editor.sass */
+/* line 55, ../sass/design-editor.sass */
 #design_editor #design_settings_box #your_site span {
   font-weight: normal;
 }
-/* line 42, ../sass/design-editor.sass */
+/* line 58, ../sass/design-editor.sass */
 #design_editor #design_settings_box #your_site a {
   color: white;
   text-decoration: underline;
 }
-/* line 45, ../sass/design-editor.sass */
+/* line 61, ../sass/design-editor.sass */
 #design_editor #design_settings_box #your_site a:hover {
   text-decoration: none;
 }
-/* line 48, ../sass/design-editor.sass */
+/* line 64, ../sass/design-editor.sass */
 #design_editor #editor_left, #design_editor #editor_right {
   margin-top: 17px;
   display: inline-block;
 }
-/* line 52, ../sass/design-editor.sass */
+/* line 68, ../sass/design-editor.sass */
 #design_editor #editor_left {
   width: 200px;
 }
-/* line 55, ../sass/design-editor.sass */
+/* line 71, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item {
   height: 20px;
   padding: 10px 0 6px 35px;
@@ -69,21 +92,21 @@
   background-color: #8a929c !important;
   color: white;
 }
-/* line 64, ../sass/design-editor.sass */
+/* line 80, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item.selected-item {
   color: #444444;
   background-color: white !important;
 }
-/* line 68, ../sass/design-editor.sass */
+/* line 84, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item#design_common_link {
   margin-bottom: 6px;
   background: url("/Content/images/account/design-common.png") no-repeat 7px 6px;
 }
-/* line 71, ../sass/design-editor.sass */
+/* line 87, ../sass/design-editor.sass */
 #design_editor #editor_left .editor-menu-item#design_premium_link {
   background: url("/Content/images/account/design-premium.png") no-repeat 7px 6px;
 }
-/* line 74, ../sass/design-editor.sass */
+/* line 90, ../sass/design-editor.sass */
 #design_editor #editor_right {
   width: 945px;
   height: 200px;
@@ -91,14 +114,14 @@
   padding-left: 15px;
   background-color: white;
 }
-/* line 81, ../sass/design-editor.sass */
+/* line 97, ../sass/design-editor.sass */
 #design_editor #editor_right .theme-item {
   display: inline-block;
   width: 120px;
   height: 80px;
   margin: 10px;
 }
-/* line 87, ../sass/design-editor.sass */
+/* line 103, ../sass/design-editor.sass */
 #design_editor #editor_right .theme-item img {
   width: 120px;
   height: 80px;
