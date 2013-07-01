@@ -2278,12 +2278,12 @@ body #footer #footer-content a {
   background-color: white !important;
 }
 /* line 68, ../sass/design-editor.sass */
-#design_editor #editor_left .editor-menu-item#design_common {
+#design_editor #editor_left .editor-menu-item#design_common_link {
   margin-bottom: 6px;
-  background: url("/Content/images/account/design-usual.png") no-repeat 7px 6px;
+  background: url("/Content/images/account/design-common.png") no-repeat 7px 6px;
 }
 /* line 71, ../sass/design-editor.sass */
-#design_editor #editor_left .editor-menu-item#design_premium {
+#design_editor #editor_left .editor-menu-item#design_premium_link {
   background: url("/Content/images/account/design-premium.png") no-repeat 7px 6px;
 }
 /* line 74, ../sass/design-editor.sass */
