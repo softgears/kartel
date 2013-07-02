@@ -1457,5 +1457,45 @@ namespace Kartel.Trade.Web.Controllers
         }
 
         #endregion
+
+        #region Выбор дизайна
+
+        /// <summary>
+        /// Отображает сайт пользователя с компонентом выбора дизайна
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Design()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            return Redirect(string.Format("/vendor/{0}?selectDesign=1", CurrentUser.Id));
+        }
+
+        /// <summary>
+        /// Обрабатывает сохранение выбранного дизайна пользователя
+        /// </summary>
+        /// <param name="design">Выбранный дизайн</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SaveDesign(string design)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Сохраняем дизайн
+            CurrentUser.Design = design;
+            // TODO: сделать проверку премиальности дизайнов
+            UsersRepository.SubmitChanges();
+
+            // Перенаправляемся на сайт пользователя
+            return RedirectToAction("Index", "UserSite", new {id = CurrentUser.Id});
+        }
+
+        #endregion
     }
 }

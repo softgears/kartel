@@ -16,273 +16,268 @@
     <script src="~/Scripts/Libs/jquery.validate.min.js"></script>
 </head>
 <body>
-    <div id="design_editor">
-        <form action="/account/savedesign" method="POST">
-            <div id="design_settings_box">
-                <div id="design_settings" class="fl">Настройка оформления сайта</div>
-                <input id="save_design" type="submit" value="" class="fl" />
-                <a id="close_editor_button" class="fl"></a>
+    @if (Request["selectDesign"] == "1")
+    {
+        <div id="design_editor">
+            <form action="/account/savedesign" method="POST" id="select-design-form">
+                <input type="hidden" id="selected-design-field" name="design" value="@user.Design"/>
+                <div id="design_settings_box">
+                    <div id="design_settings" class="fl">Настройка оформления сайта</div>
+                    <input id="save_design" type="submit" value="" class="fl" />
+                    <a id="close_editor_button" class="fl"></a>
+                    @if (user.Subdomain != null)
+                    {
+                        <div id="your_site" class="fr">
+                            <span>Ваш сайт: </span>
+                            <a href="#">www.@user.Subdomain<text>.karteltrade.ru</text></a>
+                        </div>    
+                    }
 
-                <div id="your_site" class="fr">
-                    <span>Ваш сайт: </span>
-                    <a href="#">www.kompany.karteltrade.ru</a>
                 </div>
-            </div>
 
-            <div class="clear-fix"></div>
+                <div class="clear-fix"></div>
 
-            <div id="editor_left" class="fl">
-                <a href="#" class="editor-menu-item selected-item" id="design_common_link">Дизайны сайта</a>
-                <a href="#" class="editor-menu-item" id="design_premium_link">Премиум дизайны</a>
-            </div>
-
-            <div id="editor_right" class="fr">
-                <ul id="design_common_list">
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                </ul>
-
-                <ul id="design_premium_list" style="display: none;">
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                    <li class="theme-item">
-                        <a href="#">
-                            <img src="/Content/images/account/dummy.jpg" alt="" /></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="clear-fix"></div>
-        </form>
-    </div>
-
-    <div class="blue" id="after_editor">
-        @* Шапка *@
-        <header id="header">
-            <div id="header-content">
-                @* Контакты *@
-                <div id="phones-wrapper">
-                    <div id="phone">@user.GetMainPhone()</div>
-                    <a href="mailto:@user.Email" id="write">Написать</a>
+                <div id="editor_left" class="fl">
+                    <a href="#" class="editor-menu-item selected-item" id="design_common_link">Дизайны сайта</a>
+                    @if (user.Tarif == "gold")
+                    {
+                        <a href="#" class="editor-menu-item" id="design_premium_link">Премиум дизайны</a>    
+                    }
                 </div>
-                @* Логотип *@
-                <div id="logo-wrapper">
-                    <a href="/vendor/@user.Id">
-                        @if (!String.IsNullOrEmpty(user.LogoUrl))
-                        {
-                            <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" />    
-                        }
-                        else
-                        {
-                            <span style="font-size: 25px; color: black">@Html.Raw(user.Company)</span>
-                        }
-                    </a>
-                </div>
-                @* Главное меню *@
-                <nav id="main-menu" class="gradient">
-                    <div id="search-wrapper">
-                        <form action="/vendor/search/@user.Id" method="GET">
-                            <input type="text" name="term" id="search-field" placeholder="Поиск товаров..." />
-                            <input type="submit" value=" " />
-                        </form>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="/vendor/@user.Id">Главная
-                            </a>
+
+                <div id="editor_right" class="fr">
+                    <ul id="design_common_list">
+                        <li class="theme-item" name="blue">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
                         </li>
-                        <li>
-                            <a href="/vendor/products/@user.Id">Товары
-                            </a>
+                        <li class="theme-item" name="green">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
                         </li>
-                        @if (user.Tarif == "gold")
-                        {
-                            <li>
-                                <a href="/vendor/tenders/@user.Id">Тендеры
-                                </a>
-                            </li>
-                        }
-                        <li>
-                            <a href="/vendor/about/@user.Id">О Компании
-                            </a>
+                        <li class="theme-item" name="red">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
                         </li>
-                        <li>
-                            <a href="/vendor/contacts/@user.Id">Контакты
-                            </a>
+                        <li class="theme-item" name="navy">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                        </li>
+                        <li class="theme-item" name="black">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                        </li>
+                        <li class="theme-item" name="orange">
+                            <a href="#">
+                                <img src="/Content/images/account/dummy.jpg" alt="" /></a>
                         </li>
                     </ul>
-                </nav>
-                @* Навигационная цепочка *@
-                @Html.Partial("NavigationChain")
-            </div>
-        </header>
-        @* Содержимое *@
-        <section id="content">
-            <div id="content-wrapper">
-                @* Боковое меню *@
-                <div id="content-menu">
-                    @* Пользовательские категории *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            Категории
-                        </div>
-                        <div class="group-content">
-                            <ul>
-                                @foreach (var userCategory in user.GetUserCategories().OrderBy(c => c.Position))
-                                {
-                                    <li>
-                                        <a href="/vendor/category/@userCategory.UserId?catId=@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
+                    @if (user.Tarif == "gold")
+                    {
+                        <ul id="design_premium_list" style="display: none;">
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                            <li class="theme-item">
+                                <a href="#">
+                                    <img src="/Content/images/account/dummy.jpg" alt="" /></a>
+                            </li>
+                        </ul>    
+                    }
+                </div>
+                <div class="clear-fix"></div>
+            </form>
+        </div>    
+        <script type='text/javascript'>
+            // Подсвечиваем текущий дизайн
+            var selected = "@(user.Design ?? "blue")";
+            $(".theme-item[name='" + selected + "']").addClass("selected-item");
+        </script>
+    }
+
+    @{
+        // Выбор дизайна
+        var design = Request["forceDesign"];
+        if (String.IsNullOrEmpty(design))
+        {
+            design = user.Design;
+        }
+        if (String.IsNullOrEmpty(design))
+        {
+            design = "blue";
+        }
+    }
+    <div id="after_editor">
+        <div id="design" class="@design">
+            @* Шапка *@
+            <header id="header">
+                <div id="header-content">
+                    @* Контакты *@
+                    <div id="phones-wrapper">
+                        <div id="phone">@user.GetMainPhone()</div>
+                        <a href="mailto:@user.Email" id="write">Написать</a>
                     </div>
-                    @* О Компании кратко *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            <a href="/vendor/about/@user.Id">О Компании
-                            </a>
-                        </div>
-                        <div class="group-content">
-                        </div>
+                    @* Логотип *@
+                    <div id="logo-wrapper">
+                        <a href="/vendor/@user.Id">
+                            @if (!String.IsNullOrEmpty(user.LogoUrl))
+                            {
+                                <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" />    
+                            }
+                            else
+                            {
+                                <span style="font-size: 25px; color: black">@Html.Raw(user.Company)</span>
+                            }
+                        </a>
                     </div>
-                    @* Обратная связь *@
-                    <div class="group">
-                        <div class="group-title gradient">
-                            <a href="/vendor/contacts/@user.Id">Контакты
-                            </a>
-                        </div>
-                        <div class="group-content last">
-                            <div class="contacts-title">
-                                Написать письмо
-                            </div>
-                            <form action="/vendor/feedback/@user.Id" method="POST" id="layout-feedback-form">
-                                <input type="hidden" name="Subject" value="Сообщение с формы обратной связи" />
-                                <div class="field">
-                                    <div class="editor">
-                                        <input type="text" name="Name" placeholder="Ваше имя" />
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="editor">
-                                        <input type="text" name="Email" placeholder="Ваш email" />
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="editor">
-                                        <textarea name="Content" placeholder="Текст вопроса"></textarea>
-                                    </div>
-                                </div>
-                                <div class="submit-wrapper">
-                                    <input type="submit" class="gradient" value="Отправить" />
-                                </div>
+                    @* Главное меню *@
+                    <nav id="main-menu" class="gradient">
+                        <div id="search-wrapper">
+                            <form action="/vendor/search/@user.Id" method="GET">
+                                <input type="text" name="term" id="search-field" placeholder="Поиск товаров..." />
+                                <input type="submit" value=" " />
                             </form>
                         </div>
+                        <ul>
+                            <li>
+                                <a href="/vendor/@user.Id">Главная
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/vendor/products/@user.Id">Товары
+                                </a>
+                            </li>
+                            @if (user.Tarif == "gold")
+                            {
+                                <li>
+                                    <a href="/vendor/tenders/@user.Id">Тендеры
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a href="/vendor/about/@user.Id">О Компании
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/vendor/contacts/@user.Id">Контакты
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    @* Навигационная цепочка *@
+                    @Html.Partial("NavigationChain")
+                </div>
+            </header>
+            @* Содержимое *@
+            <section id="content">
+                <div id="content-wrapper">
+                    @* Боковое меню *@
+                    <div id="content-menu">
+                        @* Пользовательские категории *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                Категории
+                            </div>
+                            <div class="group-content">
+                                <ul>
+                                    @foreach (var userCategory in user.GetUserCategories().OrderBy(c => c.Position))
+                                    {
+                                        <li>
+                                            <a href="/vendor/category/@userCategory.UserId?catId=@userCategory.Id">@userCategory.Title (@userCategory.GetProductsCount())</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        @* О Компании кратко *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                <a href="/vendor/about/@user.Id">О Компании
+                                </a>
+                            </div>
+                            <div class="group-content">
+                            </div>
+                        </div>
+                        @* Обратная связь *@
+                        <div class="group">
+                            <div class="group-title gradient">
+                                <a href="/vendor/contacts/@user.Id">Контакты
+                                </a>
+                            </div>
+                            <div class="group-content last">
+                                <div class="contacts-title">
+                                    Написать письмо
+                                </div>
+                                <form action="/vendor/feedback/@user.Id" method="POST" id="layout-feedback-form">
+                                    <input type="hidden" name="Subject" value="Сообщение с формы обратной связи" />
+                                    <div class="field">
+                                        <div class="editor">
+                                            <input type="text" name="Name" placeholder="Ваше имя" />
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="editor">
+                                            <input type="text" name="Email" placeholder="Ваш email" />
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="editor">
+                                            <textarea name="Content" placeholder="Текст вопроса"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="submit-wrapper">
+                                        <input type="submit" class="gradient" value="Отправить" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @* Меняющееся содержимое страницы *@
+                    <div id="content-section">
+                        @RenderBody()
                     </div>
                 </div>
-                @* Меняющееся содержимое страницы *@
-                <div id="content-section">
-                    @RenderBody()
-                </div>
-            </div>
-        </section>
-        @* Подвал *@
-        <footer id="footer">
-            <div id="kartel-button" class="footer-item">Картель.рф</div>
-            <div class="footer-item">Хотите такой же сайт <a href="/account/register">БЕСПЛАТНО?</a></div>
-            <div class="footer-item">Не нашли что искали? <a href="/account/tenders/add-tender">Разместите тендер</a></div>
-        </footer>
+            </section>
+            @* Подвал *@
+            <footer id="footer">
+                <div id="kartel-button" class="footer-item">Картель.рф</div>
+                <div class="footer-item">Хотите такой же сайт <a href="/account/register">БЕСПЛАТНО?</a></div>
+                <div class="footer-item">Не нашли что искали? <a href="/account/tenders/add-tender">Разместите тендер</a></div>
+            </footer>
+        </div>
     </div>
 
     <script>
@@ -290,7 +285,18 @@
             function () {
                 // TODO: запилить открытие редактора 
                 // (добавить ссылку или кнопку на страницу)
-                
+
+                $('.theme-item').click(function () {
+                    $('.theme-item').removeClass('selected-item');
+                    $(this).addClass("selected-item");
+                    var self = this;
+                    
+                    // Грузим
+                    $("#after_editor").html("").load("/vendor/@user.Id?forceDesign=" + $(this).attr("name") + " #design", function () {
+                        $("#selected-design-field").val($(self).attr("name"));
+                    });
+                });
+
                 $('.editor-menu-item').click(function () {
                     $('.editor-menu-item').toggleClass('selected-item');
                 });
@@ -305,24 +311,51 @@
                     $('#design_premium_list').show();
                 });
 
+                @if (Request["selectDesign"] == "1")
+                {
+                <text>
                 $('#after_editor').css({
-                    'margin-top': '300px'
+                    'margin-top':
+                    '300px'
                 });
-
+                </text>
+                }
                 $('#close_editor_button').click(function () {
                     $('#design_editor').hide();
                     $('#after_editor').css({
                         'margin-top': '0'
                     });
                 });
-                
-                // TODO: запилить сохранение
+
                 $('#save_design').click(function () {
                     $('#design_editor').hide();
                     $('#after_editor').css({
                         'margin-top': '0'
                     });
+                    $("#select-design-form").submit();
                 });
+                
+                $("#layout-feedback-form").validate({
+                    rules: {
+                        Name: {
+                            required: true,
+                            maxlength: 65
+                        },
+                        Email: {
+                            required: true,
+                            maxlength: 120,
+                            email: true
+                        },
+                        Content: {
+                            required: true,
+                            maxlength: 255,
+                            minlength: 10
+                        }
+                    }
+                });
+                $(window).resize(function () {
+                    $("#footer").css("top", $(window).height() - $("#footer").outerHeight());
+                }).resize();
             });
     </script>
 </body>

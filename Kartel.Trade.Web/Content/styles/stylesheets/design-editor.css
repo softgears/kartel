@@ -122,8 +122,13 @@
   width: 120px;
   height: 80px;
   margin: 10px;
+  border: 3px solid transparent;
 }
-/* line 105, ../sass/design-editor.sass */
+/* line 106, ../sass/design-editor.sass */
+#design_editor #editor_right .theme-item.selected-item {
+  border: 3px solid red;
+}
+/* line 109, ../sass/design-editor.sass */
 #design_editor #editor_right .theme-item img {
   width: 120px;
   height: 80px;

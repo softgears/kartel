@@ -46,7 +46,7 @@ namespace Kartel.Trade.Web.Controllers
                 // Пользователь не найден
                 return RedirectToAction("Index", "Main");
             }
-
+            
             return RedirectToAction("Index", new {id = user.Id});
         }
 
@@ -60,6 +60,10 @@ namespace Kartel.Trade.Web.Controllers
         {
             // Инициализируем пользователя
             InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+
             return View();
         }
 
