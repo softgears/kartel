@@ -16,7 +16,7 @@
         </div>
         <div class="banner-preview">
             <div class="banner">
-                <img src="/banner/@Model.ImageUrl" class="banner-image"/>
+                <img src="/files/banner/@Model.ImageUrl" class="banner-image"/>
                 <div id="banner-text" class="banner-text"></div>
             </div>
         </div>
@@ -105,6 +105,9 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#banner-text").attr("class", "").text($("#text-field").val());
+            $("#banner-text").addClass($("#size-field").val()).addClass($("#position-field").val()).addClass($("#color-field").val());
+            
             $(".banner-field").change(function () {
                 updateBannerPreview();
             });
@@ -129,8 +132,6 @@
                     reader.readAsDataURL(file);
                 }
             }
-
-            updateBannerPreview();
         });
     </script>
 </div>
