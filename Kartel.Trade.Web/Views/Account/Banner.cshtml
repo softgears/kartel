@@ -1,0 +1,136 @@
+﻿@model Kartel.Domain.Entities.UserBanner
+
+@{
+    ViewBag.Title = "Редактирование баннера на главную страницу сайта";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    @* Превью баннера *@
+    <div class="fields-group">
+        <div class="fields-title">
+            Превью
+        </div>
+        <div class="banner-preview">
+            <div class="banner">
+                <img src="/banner/@Model.ImageUrl" class="banner-image"/>
+                <div id="banner-text" class="banner-text"></div>
+            </div>
+        </div>
+    </div>
+    @* Редактирование свойств *@
+    <form action="/account/savebanner" id="save-banner-form" method="POST" enctype="multipart/form-data">
+        <div class="fields-group">
+            <div class="fields-title">
+                Свойства баннера
+            </div>
+            <div class="field">
+                <div class="label">&nbsp;</div>
+                <div class="editor">
+                    @Html.CheckBoxFor(b => b.Enabled) Отображать        
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Фоновый рисунок
+                </div>
+                <div class="editor">
+                    <input type="file" name="bg" id="bg-field" class="banner-field" />
+                </div>
+            </div>
+            @*<div class="field">
+                <div class="label">
+                    Высота
+                </div>
+                <div class="editor">
+                    <input type="text" name="Height" id="height-field" class="banner-field" value="@Model.Height"/>
+                </div>
+            </div>*@
+            <div class="field">
+                <div class="label">
+                    Текст
+                </div>
+                <div class="editor">
+                    <input type="text" name="Text" id="text-field" class="banner-field" value="@Model.Text"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Размер текста
+                </div>
+                <div class="editor">
+                    <select name="Size" id="size-field" class="banner-field">
+                        <option value="small" @(Model.Size == "small" ? "selected=selected" : "")>Маленький</option>
+                        <option value="medium" @(Model.Size == "medium" ? "selected=selected" : "")>Средний</option>
+                        <option value="large" @(Model.Size == "large" ? "selected=selected" : "")>Большой</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Положение текста
+                </div>
+                <div class="editor">
+                    <select name="Position" id="position-field" class="banner-field">
+                        <option value="lefttop" @(Model.Position == "lefttop" ? "selected=selected" : "")>Слева сверху</option>
+                        <option value="middletop" @(Model.Position == "middletop" ? "selected=selected" : "")>Поцентру сверху</option>
+                        <option value="righttop" @(Model.Position == "righttop" ? "selected=selected" : "")>Справа сверху</option>
+                        <option value="leftbottom" @(Model.Position == "leftbottom" ? "selected=selected" : "")>Слева снизу</option>
+                        <option value="middlebottom" @(Model.Position == "middlebottom" ? "selected=selected" : "")>Поцентру снизу</option>
+                        <option value="rightbottom" @(Model.Position == "rightbottom" ? "selected=selected" : "")>Справа снизу</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Цвет текста
+                </div>
+                <div class="editor">
+                    <select name="Color" id="color-field" class="banner-field">
+                        <option value="black" @(Model.Color == "black" ? "selected=selected" : "")>Черный</option>
+                        <option value="white" @(Model.Color == "white" ? "selected=selected" : "")>Белый</option>
+                        <option value="red" @(Model.Color == "red" ? "selected=selected" : "")>Красный</option>
+                        <option value="green" @(Model.Color == "green" ? "selected=selected" : "")>Зеленый</option>
+                        <option value="blue" @(Model.Color == "blue" ? "selected=selected" : "")>Синий</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <input type="submit" class="save" value=" " />
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".banner-field").change(function () {
+                updateBannerPreview();
+            });
+            
+            // Обновляет превью баннера
+            function updateBannerPreview() {
+                $("option").each(function(index, item) {
+                    $("#banner-text").removeClass($(item).attr("value"));
+                });
+                $("#banner-text").attr("class", "").text($("#text-field").val());
+                $("#banner-text").addClass($("#size-field").val()).addClass($("#position-field").val()).addClass($("#color-field").val());
+                
+                // Обновляем картинку фоновую
+                var ctrl = $("#bg-field").get(0);
+                if (ctrl.files.length > 0) {
+                    var file = ctrl.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        var dataUri = event.target.result;
+                        $(".banner-image").attr("src", dataUri);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            updateBannerPreview();
+        });
+    </script>
+</div>

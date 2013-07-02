@@ -1498,7 +1498,7 @@ namespace Kartel.Trade.Web.Controllers
 
         #endregion
 
-        #region
+        #region Горячие товары
 
         /// <summary>
         /// Отображает страницу горячих товаров
@@ -1643,6 +1643,86 @@ namespace Kartel.Trade.Web.Controllers
 
             // Отображаем страницу горячих товаров
             return RedirectToAction("HotProducts");
+        }
+
+        #endregion
+
+        #region Баннер пользовательского сайта
+
+        /// <summary>
+        /// Отображает страницу редактирования баннера на сайт
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Banner()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Проверяем что у пользователя есть баннер
+            if (CurrentUser.Banner == null)
+            {
+                CurrentUser.Banner = new UserBanner()
+                    {
+                        User = CurrentUser
+                    };
+                UsersRepository.SubmitChanges();
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Баннер на главную страницу сайта", "", true);
+
+            // Отдаем
+            return View(CurrentUser.Banner);
+        }
+
+        /// <summary>
+        /// Обрабатывает сохранение баннера
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SaveBanner(UserBanner banner)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Проверяем что у пользователя есть баннер
+            if (CurrentUser.Banner == null)
+            {
+                CurrentUser.Banner = new UserBanner()
+                {
+                    User = CurrentUser
+                };
+                UsersRepository.SubmitChanges();
+            }
+
+            // Сохраняем
+            CurrentUser.Banner.Color = banner.Color;
+            CurrentUser.Banner.Size = banner.Size;
+            CurrentUser.Banner.Position = banner.Position;
+            CurrentUser.Banner.Text = banner.Text;
+            CurrentUser.Banner.Height = banner.Height;
+            CurrentUser.Banner.Enabled = banner.Enabled;
+
+            // Сохраняем файл
+            var image = Request.Files["bg"];
+            if (image != null && image.ContentLength > 0 && image.ContentType.Contains("image"))
+            {
+                var filename = String.Format("{0}-{1}{2}", Path.GetFileNameWithoutExtension(image.FileName),
+                                             new Random(System.Environment.TickCount).Next(Int32.MaxValue), Path.GetExtension(image.FileName));
+                FileUtils.SavePostedFile(image,"banner",filename);
+                CurrentUser.Banner.ImageUrl = filename;
+            }
+
+            UsersRepository.SubmitChanges();
+
+            // Возвращаем обратно на страницу редактирования
+            return RedirectToAction("Banner");
         }
 
         #endregion

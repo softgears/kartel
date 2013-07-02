@@ -2571,6 +2571,7 @@
     <Content Include="Views\Account\HotProducts.cshtml" />
     <Content Include="Views\Account\HotProductsLegalBill.cshtml" />
     <Content Include="Views\Account\HotProductsPhysBill.cshtml" />
+    <Content Include="Views\Account\Banner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
