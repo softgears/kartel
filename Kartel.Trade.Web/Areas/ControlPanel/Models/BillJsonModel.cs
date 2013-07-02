@@ -116,8 +116,6 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Models
                 case "hot-products":
                     ActivationTarget = "Оплата показа Горячих товаров";
                     ActivationAmount = String.Format("{0} показов", bill.ActivationAmount);
-                    var prod = Locator.GetService<IProductsRepository>().Load(bill.ActivationTargetId);
-                    ActivationTargetId = String.Format("товар {0}", prod != null ? prod.Title : "");
                     break;
                 case "banners":
                     ActivationTarget = "Создание баннера";

@@ -2568,6 +2568,9 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\UniSenderIFrame.cshtml" />
+    <Content Include="Views\Account\HotProducts.cshtml" />
+    <Content Include="Views\Account\HotProductsLegalBill.cshtml" />
+    <Content Include="Views\Account\HotProductsPhysBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

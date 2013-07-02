@@ -1497,5 +1497,154 @@ namespace Kartel.Trade.Web.Controllers
         }
 
         #endregion
+
+        #region
+
+        /// <summary>
+        /// Отображает страницу горячих товаров
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/hot-products")]
+        public ActionResult HotProducts()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "/account", false);
+            PushNavigationChainItem("Горячие товары", "/account/hot-products", true);
+
+            // Выбираем горячие товары
+            var hotProducts = from product in CurrentUser.Products
+                              select product.HotProducts;
+
+            // Отображаем вид
+            return View(hotProducts.ToList());
+        }
+
+        /// <summary>
+        /// Создает и отображает счет для юридического лица за золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/hot-products/bill-legal")]
+        [HttpPost]
+        public ActionResult HotProductsLegalBill(long shows, string companyName)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            double price = 30.0/1000.0*shows;
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+            {
+                User = CurrentUser,
+                ActivationTarget = "hot-products",
+                ActivationAmount = (int)shows,
+                DateCreated = DateTime.Now,
+                Amount = (decimal) price
+            };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.company = companyName;
+            ViewBag.price = price;
+            ViewBag.shows = shows;
+            return View(bill);
+        }
+
+        /// <summary>
+        /// Создает и отображает счет для физического лица за услугу золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/hot-products/bill-phys")]
+        [HttpPost]
+        public ActionResult HotProductsPhysBill(long shows, string fio, string address)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            double price = 30.0 / 1000.0 * shows;
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+            {
+                User = CurrentUser,
+                ActivationTarget = "hot-products",
+                ActivationAmount = (int)shows,
+                DateCreated = DateTime.Now,
+                Amount = (decimal) price
+            };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.fio = fio;
+            ViewBag.address = address;
+            ViewBag.price = price;
+            ViewBag.shows = shows;
+            return View(bill);
+        }
+
+        /// <summary>
+        /// Отключает горячие товары из блока показа
+        /// </summary>
+        /// <param name="ids">Идентификаторы товара, разделенные запятой</param>
+        /// <returns></returns>
+        public ActionResult HotProductsUnhot(string ids)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IProductsRepository>();
+            var products =
+                ids.Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries).Select(c => Convert.ToInt32(c)).Select(c => rep.Load(c)).Where(p => p != null && p.HotProducts != null && CurrentUser.Products.Any(pr => pr.Id == p.Id)).ToList();
+
+            // Отключаем показ
+            if (products.Count > 0)
+            {
+                products.ForEach(p => p.HotProducts.EnableHotProduct = false);
+            }
+            rep.SubmitChanges();
+
+            return RedirectToAction("HotProducts");
+        }
+
+        /// <summary>
+        /// Делает указанные товары горячими товарами т.е. отображает их в блоке горячих товаров
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public ActionResult HotProductsMakeHot(string ids)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IProductsRepository>();
+            var products =
+                ids.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(c => Convert.ToInt32(c)).Select(c => rep.Load(c)).Where(p => p != null && CurrentUser.Products.Any(pr => pr.Id == p.Id)).ToList();
+
+            // Включаем отображение
+            if (products.Count > 0)
+            {
+                foreach(var product in products)
+                {
+                    if (product.HotProducts == null)
+                    {
+                        product.HotProducts = new HotProduct()
+                            {
+                                Product = product,
+                                Clicks = 0,
+                                Views = 0,
+                                PayedViews = 0,
+                                EnableHotProduct = false
+                            };
+                    }
+                    product.HotProducts.EnableHotProduct = true;
+                }
+                rep.SubmitChanges();
+            }
+
+            // Отображаем страницу горячих товаров
+            return RedirectToAction("HotProducts");
+        }
+
+        #endregion
     }
 }

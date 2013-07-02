@@ -84,6 +84,7 @@
       <Column Name="BannerPeriod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PostCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="UniSenderActivated" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="AvailableHotProductsShows" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
       <Association Name="User_UserPhone" Member="UserPhones" ThisKey="Id" OtherKey="UserId" Type="UserPhone" />
       <Association Name="User_UserOccupationInfo" Member="UserOccupationInfos" ThisKey="Id" OtherKey="UserId" Type="UserOccupationInfo" Cardinality="One" />
       <Association Name="User_UserLegalInfo" Member="UserLegalInfos" ThisKey="Id" OtherKey="UserId" Type="UserLegalInfo" Cardinality="One" />

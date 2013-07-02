@@ -1,0 +1,216 @@
+﻿@using Kartel.Trade.Web.Classes.Ext
+@model System.Collections.Generic.List<Kartel.Domain.Entities.HotProduct>
+
+@{
+    ViewBag.Title = "Горячие товары";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    @* Блок начала покупки новых показов *@
+    <div class="fields-group">
+        <div class="field">
+            <div class="label">
+                Мне нужно
+            </div>
+            <div class="editor">
+                <select id="shows">
+                    <option value="5000">5000</option>
+                    <option value="10000">10000</option>
+                    <option value="25000">25000</option>
+                    <option value="50000">50000</option>
+                    <option value="100000">100000</option>
+                    <option value="250000">250000</option>
+                    <option value="500000">500000</option>
+                    <option value="1000000">1000000</option>
+                </select>
+                показов
+                <span class="round" id="buy-button">Купить</span>
+            </div>
+        </div>
+        <div style="margin: 5px 50px; color: darkgray; margin-top: 15px">
+            Стоимость 1000 показов составляет 30 рублей.
+        </div>
+    </div>
+    @* Выбор способа оплаты *@
+    <div class="fields-group" id="payments-wrapper" style="display: none">
+        <div class="fields-title">
+            Выберите способ оплаты
+        </div>
+        <table width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">1.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Юр. лиц)</span>
+                        <br />
+                        <a href="#" id="legal-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+
+                        <div id="legal-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/hot-products/bill-legal" target="_blank" method="post" id="legal-bill-form">
+                                <input type="hidden" name="shows" class="selected-shows" />
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="companyName" style="width: 100%" type="text" placeholder="Название компании" />
+                                    </div>
+                                </div>
+                                <a href="#" id="legal-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#legal-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">2.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Физ. лиц)</span>
+                        <br />
+                        <a href="#" id="phys-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+
+                        <div id="phys-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/hot-products/bill-phys" target="_blank" method="post" id="phys-bill-form">
+                                <input type="hidden" name="shows" class="selected-shows" />
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="fio" style="width: 100%" type="text" placeholder="ФИО Плательщика" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="address" style="width: 100%" type="text" placeholder="Адрес" />
+                                    </div>
+                                </div>
+                                <a href="#" id="phys-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#phys-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @* Блок статистики по объявлениям *@
+    <div class="fields-group">
+        <div style="float: right; text-align: center; color: darkgray; font-size: 14px; font-weight: bold; margin-right: 20px; margin-top: 5px; line-height: 1.2">
+            Осталось показов:<br />
+            <span class="round" style="font-weight: bold; color: #33a1c2; margin-top: 5px">@ViewContext.CurrentUser().AvailableHotProductsShows</span>
+        </div>
+        <div style="margin: 0px 20px; font-size: 16px;">
+            <div style="margin-bottom: 8px">
+                <span style="font-weight: bold">Активных объявлений</span>: @Model.Count(hp => hp.EnableHotProduct)
+            </div>
+            <div style="margin-bottom: 8px">
+                <span style="font-weight: bold">Всего показов</span>: @Model.Sum(hp => hp.Views)
+            </div>
+            <div style="margin-bottom: 8px">
+                <span style="font-weight: bold">Всего переходов</span>: @Model.Sum(hp => hp.Clicks)
+            </div>
+        </div>
+    </div>
+    @* Блок запущенных горячих товаров *@
+    <div style="margin: 0px 15px" id="hot-table">
+        <div class="action-panel">
+            <span class="select-all top"></span>
+
+            <span class="round unmake-hot">Отключить</span>
+        </div>
+        <table class="products-table">
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    foreach (var hot in Model.Where(h => h.EnableHotProduct))
+                    {
+                    <tr data-id="@hot.Product.Id">
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            @if (!String.IsNullOrEmpty(hot.Product.Img))
+                            {
+                                <img src="/files/prodimage/@hot.Product.Img" width="40" height="40" /> @* Картинка продукта *@    
+                            }
+                            else
+                            {
+                                <img src="http://kub1.ru/images/no_picture.jpg"/>
+                            }
+                        </td>
+                        <td class="name">
+                            <a href="/account/products/edit-product/@hot.Product.Id">@hot.Product.Title</a>
+                            @{
+                                var parentCategories = hot.Product.Category.GetFullCategoriesPath();
+                            }
+                            <div style="color: darkgray; margin-top: 10px;">
+                                @foreach (var cat in parentCategories)
+                                {
+                                    if (parentCategories.Last().Id == cat.Id)
+                                    {
+                                    <a href="/category/@cat.Id" style="font-weight: bold; color: darkgray !important;">@cat.Title</a>
+                                    }
+                                    else
+                                    {
+                                    <a href="/category/@cat.Id" style="font-weight: normal; color: darkgray !important;">@cat.Title</a> <text>></text>
+                                    }
+                                }
+                            </div>
+                        </td>
+                        <td style="white-space: nowrap; font-size: 15px; text-align: left">
+                            <div style="font-size: 15px; margin-bottom: 8px">
+                                <span style="font-weight: bold">Всего показов</span>: @hot.Views
+                            </div>
+                            <div style="font-size: 15px;">
+                                <span style="font-weight: bold">Всего переходов</span>: @hot.Clicks
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">Нет запущенных горячих товаров
+                        </td>
+                    </tr>    
+                }
+
+            </tbody>
+        </table>
+        <div class="action-panel">
+            <span class="select-all bottom"></span>
+
+            <span class="round unmake-hot">Отключить</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#buy-button").click(function () {
+            $("#payments-wrapper").slideDown();
+        });
+        $("#shows").change(function () {
+            $(".selected-shows").val($(this).val());
+        }).change();
+        $("#legal-bill-button").click(function () {
+            $(this).hide();
+            $("#legal-form-wrapper").slideDown();
+        });
+        $("#phys-bill-button").click(function () {
+            $(this).hide();
+            $("#phys-form-wrapper").slideDown();
+        });
+        $(".unmake-hot").click(function () {
+            var ids = "";
+            $("#hot-table").find(":checked").each(function (index, item) {
+                ids += $(item).parent().parent().data("id") + ",";
+            });
+            if (ids.length > 1 && confirm('Вы действительно хотите отключить выбранные товары?')) {
+                window.location.href = '/account/HotProductsUnhot?ids=' + ids;
+            }
+        });
+    });
+</script>

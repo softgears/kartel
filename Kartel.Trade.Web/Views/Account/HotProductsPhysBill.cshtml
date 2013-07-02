@@ -1,0 +1,93 @@
+@using Kartel.Trade.Web.Classes.Ext
+@model Kartel.Domain.Entities.Bill
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <style>
+      body { font-size: 13px; font-family: Arial; }
+    </style>
+
+  </head>
+
+<body>
+<table border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #000000; width: 550px;">
+  <tr>
+    <td style="width: 200px; border-right: 1px solid #000000;" valign="top"><p style="padding: 10px;">
+      <font size="4">Извещение</font>
+      
+    </p></td>
+    <td valign="top"><p style="padding: 5px; height: 70px;">
+    Получатель платежа: Горшенев Антон Валерьевич<br />
+ИНН: 272114784190<br />
+Р\С: 40817810140000493465, ОАО "Промсвязьбанк"<br />
+Корр.сч.: 30101810400000000555<br />
+БИК: 044525555
+    </p>
+    <div style="padding: 5px; ">
+    <p style="border-bottom: 1px solid #000000; height: 18px; margin: 0px; margin-bottom: 10px;;">@ViewBag.fio</p>
+    <p style="border-bottom: 1px solid #000000; height: 18px; margin: 0px;">@ViewBag.address</p>
+    </div><center><font size="1">фамилия имя отчество, адрес</font></center>
+    <div style="padding: 5px; ">
+   <table border="0" width="100%" cellspacing="0" cellpadding="3" style="border: 1px solid #000000;">
+      <tr>
+        <td align="center" style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">Вид платежа</td>
+        <td align="center" style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">Дата</td>
+        <td align="center" style="border-bottom: 1px solid #000000; ">Сумма</td>
+      </tr>
+      <tr>
+        <td align="center" style="border-right: 1px solid #000000; ">Зачисление на счет @ViewContext.CurrentUser().Id - @Model.Id (оплата @ViewBag.shows показов в блоке "Горячие Товары" )<br /></td>
+        <td align="center" style="border-right: 1px solid #000000; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+      </tr>
+    </table><br />
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000;padding :5px; ">Кассир</td>
+    <td style="border-bottom: 1px solid #000000; padding :5px; ">Плательщик:</td>
+  </tr>
+
+  <tr>
+    <td style="width: 200px; border-right: 1px solid #000000;" valign="top"><p style="padding: 10px;">
+      <font size="4">Квитанция</font>
+      
+    </p></td>
+    <td valign="top"><p style="padding: 5px; height: 70px;">
+    Получатель платежа: Горшенев Антон Валерьевич<br />
+ИНН: 272114784190<br />
+Р\С: 40817810140000493465, ОАО "Промсвязьбанк"<br />
+Корр.сч.: 30101810400000000555<br />
+БИК: 044525555
+    </p>
+    <div style="padding: 5px; ">
+    <p style="border-bottom: 1px solid #000000; height: 18px; margin: 0px; margin-bottom: 10px;;">@ViewBag.fio</p>
+    <p style="border-bottom: 1px solid #000000; height: 18px; margin: 0px;">@ViewBag.address</p>
+    </div><center><font size="1">фамилия имя отчество, адрес</font></center>
+    <div style="padding: 5px; ">
+   <table border="0" width="100%" cellspacing="0" cellpadding="3" style="border: 1px solid #000000;">
+      <tr>
+        <td align="center" style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">Вид платежа</td>
+        <td align="center" style="border-bottom: 1px solid #000000; border-right: 1px solid #000000; ">Дата</td>
+        <td align="center" style="border-bottom: 1px solid #000000; ">Сумма</td>
+      </tr>
+      <tr>
+        <td align="center" style="border-right: 1px solid #000000; ">Зачисление на счет @ViewContext.CurrentUser().Id - @Model.Id (оплата @ViewBag.shows показов в блоке "Горячие Товары" )<br /></td>
+        <td align="center" style="border-right: 1px solid #000000; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+      </tr>
+    </table><br />
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-right: 1px solid #000000;padding :5px; ">Кассир</td>
+    <td style="padding :5px; ">Плательщик:</td>
+  </tr>
+</table>
+</body>
+</html>

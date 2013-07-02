@@ -97,12 +97,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                         break;
                     case "hot-products":
                         // Добавляем показов для указанного горячего товара
-                        var hotProduct = Locator.GetService<IProductsRepository>().Load(bill.ActivationTargetId);
-                        if (hotProduct == null)
-                        {
-                            throw new ObjectNotFoundException(String.Format("Товар с идентификатором {0} не найден",bill.ActivationTargetId));
-                        }
-                        hotProduct.HotProducts.PayedViews += bill.ActivationAmount;
+                        bill.User.AvailableHotProductsShows += bill.ActivationAmount;
 
                         // Помечаем счет как активированный
                         bill.Activated = true;

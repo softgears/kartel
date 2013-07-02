@@ -945,6 +945,8 @@ namespace Kartel.Domain.Entities
 		
 		private bool _UniSenderActivated;
 		
+		private int _AvailableHotProductsShows;
+		
 		private EntitySet<UserPhone> _UserPhones;
 		
 		private EntityRef<UserOccupationInfo> _UserOccupationInfos;
@@ -1077,6 +1079,8 @@ namespace Kartel.Domain.Entities
     partial void OnPostCodeChanged();
     partial void OnUniSenderActivatedChanging(bool value);
     partial void OnUniSenderActivatedChanged();
+    partial void OnAvailableHotProductsShowsChanging(int value);
+    partial void OnAvailableHotProductsShowsChanged();
     #endregion
 		
 		public User()
@@ -2208,6 +2212,26 @@ namespace Kartel.Domain.Entities
 					this._UniSenderActivated = value;
 					this.SendPropertyChanged("UniSenderActivated");
 					this.OnUniSenderActivatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvailableHotProductsShows", DbType="int NOT NULL")]
+		public int AvailableHotProductsShows
+		{
+			get
+			{
+				return this._AvailableHotProductsShows;
+			}
+			set
+			{
+				if ((this._AvailableHotProductsShows != value))
+				{
+					this.OnAvailableHotProductsShowsChanging(value);
+					this.SendPropertyChanging();
+					this._AvailableHotProductsShows = value;
+					this.SendPropertyChanged("AvailableHotProductsShows");
+					this.OnAvailableHotProductsShowsChanged();
 				}
 			}
 		}

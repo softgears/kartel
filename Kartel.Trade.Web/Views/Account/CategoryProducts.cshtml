@@ -30,7 +30,14 @@
                             <input type="checkbox"/>
                         </td>
                         <td>
-                            <img src=""/> @* Картинка продукта *@
+                            @if (!String.IsNullOrEmpty(product.Img))
+                            {
+                                <img src="/files/prodimage/@product.Img" width="40" height="40" /> @* Картинка продукта *@    
+                            }
+                            else
+                            {
+                                <img src="http://kub1.ru/images/no_picture.jpg"/>
+                            }
                         </td>
                         <td class="name">
                             <a href="/account/products/edit-product/@product.Id">@product.Title</a>
@@ -72,7 +79,7 @@
                 </div>
                 <div class="editor">
                     <select name="newCategoryId">
-                        @foreach(var cat in ViewContext.CurrentUser().GetUserCategories())
+                        @foreach (var cat in ViewContext.CurrentUser().GetUserCategories())
                         {
                             <option value="@cat.Id">@cat.Title</option>
                         }
@@ -96,6 +103,15 @@
             });
             $("#selected-ids-field").val(selectedIds);
             $("#move-form-wrapper").stop(true,true).slideToggle("slow");
+        });
+        $(".make-hot").click(function () {
+            var ids = "";
+            $(".products-table").find(":checked").each(function (index, item) {
+                ids += $(item).parent().parent().data("id") + ",";
+            });
+            if (ids.length > 1 && confirm('Вы действительно хотите включить выбранные товары в блок горячих товаров?')) {
+                window.location.href = '/account/HotProductsMakeHot?ids=' + ids;
+            }
         });
     });
 </script>

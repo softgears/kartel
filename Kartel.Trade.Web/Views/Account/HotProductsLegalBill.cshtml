@@ -1,0 +1,101 @@
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Ext
+@model Kartel.Domain.Entities.Bill
+@{
+}
+<html>
+<style>
+
+body { font-family: Arial; font-size: 13px; color: #000000; }
+.t { border: 1px solid #000000; border-collapse: collapse; font-size: 13px; width: 100%; }
+.t td, .t th { border: 1px solid #000000; }
+
+</style>
+<body>
+
+<div style="width: 600px; ">
+Горшенев Антон Валерьевич<br />
+Адрес: 680030, Хабаровск, ул. Павловича 26-59
+
+<br /><br />
+<center>Образец заполнения платежного поручения</center>
+
+<table border="0" cellspacing="0" cellpadding="5" class="t">
+	<tr>
+		<td>
+			Получатель Горшенев Антон Валерьевич <br />
+			ИНН 272114784190
+		</td>
+		<td>
+			Сч. №
+		</td>
+		<td width="250">
+			40817810140000493465&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td rowspan='2'>Банк получателя<br /> ОАО "Промсвязьбанк" г.Москва</td>
+		<td>БИК</td>
+		<td style='border-bottom: 0px;'>044525555</td>
+	</tr>
+	<tr>
+		<td>к/сч</td>
+		<td style='border-top: 0px;'>30101810400000000555</td>
+	</tr>
+</table>
+
+<br /><br />
+<u>Условия для расчетов:</u><br />
+1. В назначении платежа обязательно укажите номер счета <br /><br /><br />
+
+<center>
+<span style="font-size: 18px; font-weight: Bold;">
+Счет № @ViewContext.CurrentUser().Id - @Model.Id <br />
+от @DateTime.Now.FormatDate() г.
+</span>
+</center>
+
+<br /><br />
+
+Заказчик: @ViewBag.company <br />
+Платильщик: @ViewBag.company <br /><br />
+
+<table border="0" cellspacing="0" cellpadding="5" class="t" style="border: 0px;" >
+	<tr>
+		<th>№</th>
+		<th>Наименование услуги</th>
+		<th>Ед.</th>
+		<th>К-во</th>
+		<th>Цена</th>
+		<th>Сумма</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Счет № @ViewContext.CurrentUser().Id - @Model.Id. Информационные услуги
+		(оплата @ViewBag.shows показов в блоке "Горячие Товары")
+		</td>
+		<td align="center">руб.</td>
+		<td align="center">услуга</td>
+		<td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+		<td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+	</tr>
+	<tr>
+		<td style="border: 0px;" align="right" colspan='5'><b>Итого:</b></td>
+		<td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+	</tr>
+	<tr>
+		<td style="border: 0px;" align="right" colspan='5'><b>Без налога НДС</b></td>
+		<td align="center"><nobr>-</nobr></td>
+	</tr>
+	<tr>
+		<td style="border: 0px;" align="right" colspan='5'><b>Всего к оплате:</b></td>
+		<td align="center"><nobr>@ViewBag.price.ToString("0.00") руб.</nobr></td>
+	</tr>
+</table>
+
+</div>
+
+<recipient>
+</body>
+</html>

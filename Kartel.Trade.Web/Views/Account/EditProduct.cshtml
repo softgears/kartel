@@ -220,7 +220,7 @@
                 </div>
                 <div class="hot-product-stats">
                     <div class="pay-hot-product">
-                        Доступно показов <span class="round">@Model.GetPayedViewsCount()</span> <span class="round">Купить показы</span>
+                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>
                     </div>
                     <div class="item">
                         Всего показов: @Model.GetTotalViewsCount()
@@ -230,6 +230,7 @@
                     </div>
                 </div>
             </div>
+            @*
             <div class="separator"></div>
             <div class="send-title">
                 <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
@@ -237,7 +238,7 @@
             <div class="separator"></div>
             <div class="send-title">
                 <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
-            </div>
+            </div>*@
         </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />

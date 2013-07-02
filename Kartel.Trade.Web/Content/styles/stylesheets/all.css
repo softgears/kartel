@@ -1094,7 +1094,7 @@ body #footer #footer-content a {
 /* line 383, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgrey;
+  color: darkgray;
   margin-top: 5px;
 }
 /* line 389, ../sass/categories.sass */
@@ -1923,7 +1923,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
-  border: 1px solid darkgrey;
+  border: 1px solid darkgray;
   padding: 5px;
 }
 /* line 222, ../sass/account.sass */
@@ -1938,7 +1938,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
-  border: 1px solid darkgrey;
+  border: 1px solid darkgray;
   padding: 5px;
 }
 /* line 236, ../sass/account.sass */
@@ -2184,4 +2184,22 @@ body #footer #footer-content a {
 .account .categories-selector td select {
   width: 99%;
   height: auto;
+}
+/* line 446, ../sass/account.sass */
+.account .round {
+  background: #fbfbfb;
+  background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #fbfbfb), color-stop(100%, #d8d8da));
+  background: -webkit-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
+  background: -o-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
+  background: -ms-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
+  background: linear-gradient(to bottom, #fbfbfb 1%, #d8d8da 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#d8d8da',GradientType=0 );
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: black;
+  margin: 0px 10px;
+  cursor: pointer;
+  display: inline-block;
 }
