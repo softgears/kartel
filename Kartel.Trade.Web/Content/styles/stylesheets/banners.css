@@ -42,3 +42,26 @@
 #banners-block #banners-swticher .banner-switch.active-switch {
   background: url(/Content/images/layout/banner-switch-active.png);
 }
+
+/* line 41, ../sass/banners.sass */
+#user_site_layout #banners-block {
+  height: 350px;
+  margin: 15px 0;
+  border: 5px solid #efefef;
+}
+/* line 47, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-container .banner {
+  width: 930px;
+  height: 350px;
+}
+/* line 51, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-container .banner img {
+  width: 930px;
+  height: 350px;
+  margin: 0;
+}
+/* line 56, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-swticher {
+  margin-left: -25px;
+  bottom: 0;
+}
