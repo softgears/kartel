@@ -1094,7 +1094,7 @@ body #footer #footer-content a {
 /* line 383, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgray;
+  color: darkgrey;
   margin-top: 5px;
 }
 /* line 389, ../sass/categories.sass */
@@ -1923,7 +1923,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 222, ../sass/account.sass */
@@ -1938,7 +1938,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 236, ../sass/account.sass */
