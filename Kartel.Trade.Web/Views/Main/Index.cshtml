@@ -7,7 +7,11 @@
     ViewBag.Title = "Главная";
     Layout = "../Shared/_Layout.cshtml";
     var catIndex = Locator.GetService<CategoriesIndexManager>();
-    var randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(12);
+    var randomProducts = Locator.GetService<IProductsRepository>().GetHotProductsForView(8);
+    if (randomProducts.Count == 0)
+    {
+        randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(8).ToList();
+    }
 }
 
 <div id="content-categories">

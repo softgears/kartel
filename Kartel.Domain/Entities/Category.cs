@@ -93,5 +93,34 @@ namespace Kartel.Domain.Entities
         {
             return Level ?? 0;
         }
+
+        /// <summary>
+        /// Возвращает саму категорию и список всех дочерних категорий 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Category> GetAllChildCategories()
+        {
+            var resultList = new List<Category>();
+
+            // Рекурсивно строим дерево
+            EnumerateCategories(this,resultList);
+
+            // Отдаем список
+            return resultList;
+        }
+
+        /// <summary>
+        /// Перечисляет категории и возращает список дочерних
+        /// </summary>
+        /// <param name="category">Категория</param>
+        /// <param name="resultList">Куда поместить</param>
+        private void EnumerateCategories(Category category, List<Category> resultList)
+        {
+            resultList.Add(category);
+            foreach (var cat in ChildCategories)
+            {
+                EnumerateCategories(cat,resultList);
+            }
+        }
     }
 }

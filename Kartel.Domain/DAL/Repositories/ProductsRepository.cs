@@ -68,6 +68,48 @@ namespace Kartel.Domain.DAL.Repositories
         }
 
         /// <summary>
+        /// Получает список горячих товаров из указанной категории или из всех категорий. Возвращает определенное количество товаров и уменьшает количество просмотров у пользователя
+        /// </summary>
+        /// <param name="count">Количество товаров</param>
+        /// <param name="category">Категория, если не задана то возращает из всех категорий</param>
+        /// <returns></returns>
+        public IList<Product> GetHotProductsForView(int count, Category category = null)
+        {
+            var resultList = new List<Product>();
+            var allProducts =
+                Search(
+                    r =>
+                    r.HotProducts != null && r.HotProducts.EnableHotProduct &&
+                    r.HotProducts.Product.User.AvailableHotProductsShows > 0);
+
+            // Накладываем фильтр по категориям
+            if (category != null)
+            {
+                var categoriesIds = category.GetAllChildCategories().Select(c => c.Id).ToArray();
+                allProducts = allProducts.Where(p => categoriesIds.Contains(p.Id));
+            }
+
+            // Сортируем случайно и возращаем указанное количество товаров
+            allProducts = allProducts.OrderBy(d => Guid.NewGuid()).Take(count);
+
+            // Добавляем в результирующий список
+            resultList.AddRange(allProducts);
+
+            // Перебираем список и уменьшаем количество показов
+            foreach (var prod in resultList)
+            {
+                prod.HotProducts.Views += 1;
+                prod.User.AvailableHotProductsShows -= 1;
+            }
+
+            // Сохраняем изменения в базу
+            SubmitChanges();
+
+            // Отдаем список
+            return resultList;
+        }
+
+        /// <summary>
         /// Возвращает индекс указанных документов
         /// </summary>
         /// <returns></returns>

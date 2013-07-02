@@ -26,5 +26,13 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// <param name="count">Количество для возврата</param>
         /// <returns></returns>
         IEnumerable<Product> GetRandomProducts(int count = 8);
+
+        /// <summary>
+        /// Получает список горячих товаров из указанной категории или из всех категорий. Возвращает определенное количество товаров и уменьшает количество просмотров у пользователя
+        /// </summary>
+        /// <param name="count">Количество товаров</param>
+        /// <param name="category">Категория, если не задана то возращает из всех категорий</param>
+        /// <returns></returns>
+        IList<Product> GetHotProductsForView(int count, Category category = null);
     }
 }

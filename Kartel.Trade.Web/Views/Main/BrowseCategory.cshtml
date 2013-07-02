@@ -55,7 +55,14 @@
 
     @* Горячие товары *@
     <div id="hot-products">
-        @foreach (var product in Model.GetRandomProducts())
+        @{
+            var hotProducts = Locator.GetService<IProductsRepository>().GetHotProductsForView(4, Model);
+            if (hotProducts.Count == 0)
+            {
+                hotProducts = Model.GetRandomProducts().ToList();
+            }
+        }
+        @foreach (var product in hotProducts)
         {
             @Html.Partial("HotProduct", product)
         }

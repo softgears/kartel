@@ -188,6 +188,16 @@ namespace Kartel.Trade.Web.Controllers
                 PushNavigationChainItem(product.UserCategory.Title, string.Format("/vendor/category/{0}?catId={1}", product.UserId, product.UserCategoryId));
             PushNavigationChainItem(product.Title, string.Format("/product/{0}", product.Id),true);
 
+            // Проверяем пришли ли к нам по горячему товару?
+            if (Request["hot"] == "1")
+            {
+                if (product.HotProducts != null && product.HotProducts.EnableHotProduct)
+                {
+                    product.HotProducts.Clicks += 1;
+                    Locator.GetService<IProductsRepository>().SubmitChanges();
+                }
+            }
+
             // Отображаем вид
             return View(product);
         }

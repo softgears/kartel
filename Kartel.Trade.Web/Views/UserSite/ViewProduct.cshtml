@@ -1,4 +1,6 @@
-﻿@model Kartel.Domain.Entities.Product
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@model Kartel.Domain.Entities.Product
 
 @{
     ViewBag.Title = Model.Title;
@@ -37,7 +39,11 @@
         <div class="panel-content">
             <div class="products">
                 @{
-    var goods = Model.Category.GetRandomProducts().ToList();
+                    var goods = Locator.GetService<IProductsRepository>().GetHotProductsForView(8,Model.Category);
+                    if (goods.Count == 0)
+                    {
+                        goods = Model.Category.GetRandomProducts(8).ToList();
+                    }
                 }
                 @while (goods.Count > 0)
                 {
