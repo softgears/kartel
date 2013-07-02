@@ -1,0 +1,25 @@
+﻿@model List<Kartel.Domain.Entities.Banner>
+
+<div id="banners-block">
+    <div id="banners-container">
+        @if (Model.Count > 0)
+        {
+            <ul id="banners-swticher">
+                @if (Model.Count > 0)
+                {
+                    foreach (var banner in Model)
+                    {
+                    <li class="banner-switch" data-id="@banner.Id"></li>
+                    }
+                }
+            </ul>
+                
+            foreach (var banner in Model)
+            {
+                <div class="banner" data-id="@banner.Id" style="display: none;">
+                    <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
+                </div>
+            }
+        }
+    </div>
+</div>
