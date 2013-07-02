@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Areas.ControlPanel.Classes;
 using Kartel.Trade.Web.Areas.ControlPanel.Models;
+using Kartel.Trade.Web.Classes.Utils;
 
 namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
 {
@@ -59,13 +61,27 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                 // Репозиторий
                 var repository = Locator.GetService<IBannersRepository>();
 
+                // Сохраняем файл с картинкой
+                bool fileSubmitted = false;
+                string submittedFileName = "";
+                var file = Request.Files["file"];
+                if (file != null && file.ContentLength > 0 && file.ContentType.Contains("image"))
+                {
+                    fileSubmitted = true;
+                    var fileName = String.Format("{0}-{1}{2}", Path.GetFileNameWithoutExtension(file.FileName),
+                                                 new Random(System.Environment.TickCount).Next(65535),
+                                                 Path.GetExtension(file.FileName));
+                    FileUtils.SavePostedFile(file, "banner", fileName);
+                    submittedFileName = fileName;
+                }
+
                 if (model.Id <= 0)
                 {
                     // Создаем новую страничку
                     var banner = new Banner()
                     {
                         Title = model.Title,
-                        Img = model.Img,
+                        Img = fileSubmitted ? submittedFileName : model.Img,
                         Href = model.Href,
                         Sort = model.Sort,
                         Html = model.Html,
@@ -89,7 +105,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     }
 
                     banner.Title = model.Title;
-                    banner.Img = model.Img;
+                    banner.Img = fileSubmitted ? submittedFileName : model.Img;
                     banner.Href = model.Href;
                     banner.Sort = model.Sort;
                     banner.Html = model.Html;

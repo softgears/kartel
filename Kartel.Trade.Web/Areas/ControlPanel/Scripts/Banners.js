@@ -166,6 +166,7 @@ Ext.onReady(function () {
                         {
                             xtype: 'hidden',
                             id: 'bannerIdField',
+                            name: 'id',
                             value: page != undefined ? page.data.id : -1
                         },
                         {
@@ -192,7 +193,7 @@ Ext.onReady(function () {
                             name: 'file',
                             fieldLabel: 'Выберите файл для загрузки. Максимальный размер - 2 мегабайта',
                             buttonText: 'Выбрать',
-                            allowBlank: false
+                            allowBlank: true
                         }),
                         {
                             xtype: 'textfield',
@@ -245,7 +246,7 @@ Ext.onReady(function () {
                             }),
                             displayField: 'name',
                             valueField: 'id',
-                            name: 'extra',
+                            hiddenName: 'extra',
                             value: page != undefined ? page.data.extra : 1
                         },
                         {
