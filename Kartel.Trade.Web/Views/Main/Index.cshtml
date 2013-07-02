@@ -15,12 +15,10 @@
         randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(8).ToList();
     }
 
-    var randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(12);
     var banners = Locator.GetService<IBannersRepository>().FindAll()
         .Where(f => string.IsNullOrEmpty(f.Html) & f.Img != null & f.Extra == "1")
         .OrderBy(f => f.Sort)
         .ToList();
-
 }
 
 <div id="content-categories">
