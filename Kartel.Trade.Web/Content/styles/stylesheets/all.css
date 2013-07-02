@@ -1094,7 +1094,7 @@ body #footer #footer-content a {
 /* line 383, ../sass/categories.sass */
 #page-tenders .view-tender .tender-contacts .contacts .country {
   font-size: 11px;
-  color: darkgray;
+  color: darkgrey;
   margin-top: 5px;
 }
 /* line 389, ../sass/categories.sass */
@@ -1923,7 +1923,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table thead tr th {
   font-size: 18px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 222, ../sass/account.sass */
@@ -1938,7 +1938,7 @@ body #footer #footer-content a {
 .account .fields-group .offers-table tbody tr td {
   font-size: 14px;
   text-align: center;
-  border: 1px solid darkgray;
+  border: 1px solid darkgrey;
   padding: 5px;
 }
 /* line 236, ../sass/account.sass */
@@ -2204,6 +2204,51 @@ body #footer #footer-content a {
   display: inline-block;
 }
 
+/* line 2, ../sass/banners.sass */
+#banners-block #banners-container {
+  widht: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+/* line 8, ../sass/banners.sass */
+#banners-block #banners-container .banner {
+  width: 720px;
+  height: 326px;
+  position: absolute;
+  text-align: center;
+}
+/* line 14, ../sass/banners.sass */
+#banners-block #banners-container .banner img {
+  width: 696px;
+  height: 326px;
+  margin: 7px 0 0 0;
+}
+/* line 19, ../sass/banners.sass */
+#banners-block #banners-swticher {
+  background: whitesmoke;
+  border-radius: 8px 8px 0 0;
+  display: inline-block;
+  padding: 9px 10px 7px 10px;
+  opacity: 0.7;
+  position: absolute;
+  margin-left: -25px;
+  bottom: 20px;
+  z-index: 100000;
+}
+/* line 30, ../sass/banners.sass */
+#banners-block #banners-swticher .banner-switch {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  cursor: pointer;
+  background: url(/Content/images/layout/banner-switch.png);
+}
+/* line 37, ../sass/banners.sass */
+#banners-block #banners-swticher .banner-switch.active-switch {
+  background: url(/Content/images/layout/banner-switch-active.png);
+}
+
 /* line 1, ../sass/banner-editor.sass */
 .banner-preview {
   position: relative;
@@ -2215,7 +2260,7 @@ body #footer #footer-content a {
   position: relative;
   height: 350px;
   display: inline-block;
-  border: 1px solid #a9a9a9;
+  border: 1px solid darkgrey;
   overflow: hidden;
 }
 /* line 13, ../sass/banner-editor.sass */

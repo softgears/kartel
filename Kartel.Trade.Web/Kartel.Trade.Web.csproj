@@ -2487,6 +2487,7 @@
     <Content Include="Areas\ControlPanel\Views\Shared\ControlPanelSection.cshtml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <None Include="Scripts\Libs\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Components\banner-rotator.js" />
     <Content Include="Scripts\Libs\jquery-ui-1.10.3.js" />
     <Content Include="Scripts\Libs\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\Libs\jquery-1.9.1.js" />
@@ -2589,7 +2590,7 @@
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\logger\assets\skins\sam\" />
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\yuitest\assets\skins\sam\" />
     <Folder Include="Content\styles\sass\" />
-    <Folder Include="files\" />
+    <Folder Include="files\banner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

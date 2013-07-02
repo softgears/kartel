@@ -1,4 +1,5 @@
-﻿@using Kartel.Domain.Interfaces.Repositories
+﻿@using System.Configuration
+@using Kartel.Domain.Interfaces.Repositories
 @using Kartel.Domain.IoC
 @using Kartel.Trade.Web.Classes.Cache
 @model dynamic
@@ -7,11 +8,19 @@
     ViewBag.Title = "Главная";
     Layout = "../Shared/_Layout.cshtml";
     var catIndex = Locator.GetService<CategoriesIndexManager>();
+
     var randomProducts = Locator.GetService<IProductsRepository>().GetHotProductsForView(8);
     if (randomProducts.Count == 0)
     {
         randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(8).ToList();
     }
+
+    var randomProducts = Locator.GetService<IProductsRepository>().GetRandomProducts(12);
+    var banners = Locator.GetService<IBannersRepository>().FindAll()
+        .Where(f => string.IsNullOrEmpty(f.Html) & f.Img != null & f.Extra == "1")
+        .OrderBy(f => f.Sort)
+        .ToList();
+
 }
 
 <div id="content-categories">
@@ -29,13 +38,26 @@
 <div id="content-section">
     <div id="banners-block">
         <div id="banners-container">
+            @if (banners.Count > 0)
+            {
+                <ul id="banners-swticher">
+                    @if (banners.Count > 0)
+                    {
+                        foreach (var banner in banners)
+                        {
+                            <li class="banner-switch" data-id="@banner.Id"></li>
+                        }
+                    }
+                </ul>
+                
+                foreach (var banner in banners)
+                {
+                <div class="banner" data-id="@banner.Id" style="display: none;">
+                    <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
+                </div>
+                }
+            }
         </div>
-        <ul id="banners-swticher">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
     </div>
     <div class="hr">
     </div>
@@ -80,30 +102,29 @@
     </div>
     <div class="mainblock">
         <div class="row">
-            @foreach(var product in randomProducts.Take(4))
+            @foreach (var product in randomProducts.Take(4))
             {
                 <div class="item">
-                    @Html.Partial("HotProduct",product)
+                    @Html.Partial("HotProduct", product)
                 </div>
             }
         </div>
         <div class="row">
-            @foreach(var product in randomProducts.Skip(4).Take(4))
+            @foreach (var product in randomProducts.Skip(4).Take(4))
             {
                 <div class="item">
-                    @Html.Partial("HotProduct",product)
+                    @Html.Partial("HotProduct", product)
                 </div>
             }
         </div>
-@*        <div class="row">*@
-@*            @foreach(var product in randomProducts.Skip(8).Take(4))*@
-@*            {*@
-@*                <div class="item">*@
-@*                    @Html.Partial("HotProduct",product)*@
-@*                </div>*@
-@*            }*@
+        @*        <div class="row">*@
+        @*            @foreach(var product in randomProducts.Skip(8).Take(4))*@
+        @*            {*@
+        @*                <div class="item">*@
+        @*                    @Html.Partial("HotProduct",product)*@
+        @*                </div>*@
+        @*            }*@
         @*        </div>*@
         @Html.Partial("HotActions")
     </div>
 </div>
-

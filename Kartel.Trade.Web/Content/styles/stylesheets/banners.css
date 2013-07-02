@@ -1,0 +1,44 @@
+/* line 2, ../sass/banners.sass */
+#banners-block #banners-container {
+  widht: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+/* line 8, ../sass/banners.sass */
+#banners-block #banners-container .banner {
+  width: 720px;
+  height: 326px;
+  position: absolute;
+  text-align: center;
+}
+/* line 14, ../sass/banners.sass */
+#banners-block #banners-container .banner img {
+  width: 696px;
+  height: 326px;
+  margin: 7px 0 0 0;
+}
+/* line 19, ../sass/banners.sass */
+#banners-block #banners-swticher {
+  background: whitesmoke;
+  border-radius: 8px 8px 0 0;
+  display: inline-block;
+  padding: 9px 10px 7px 10px;
+  opacity: 0.7;
+  position: absolute;
+  margin-left: -25px;
+  bottom: 20px;
+  z-index: 100000;
+}
+/* line 30, ../sass/banners.sass */
+#banners-block #banners-swticher .banner-switch {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  cursor: pointer;
+  background: url(/Content/images/layout/banner-switch.png);
+}
+/* line 37, ../sass/banners.sass */
+#banners-block #banners-swticher .banner-switch.active-switch {
+  background: url(/Content/images/layout/banner-switch-active.png);
+}
