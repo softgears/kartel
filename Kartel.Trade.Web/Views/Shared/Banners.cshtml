@@ -17,7 +17,18 @@
             foreach (var banner in Model)
             {
                 <div class="banner" data-id="@banner.Id" style="display: none;">
-                    <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
+                    
+                    @if (banner.Href != null)
+                    {
+                        <a href="@banner.Href" target="_blank">
+                            <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
+                        </a>
+                    }
+                    else
+                    {
+                        <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
+                    }
+                    
                 </div>
             }
         }
