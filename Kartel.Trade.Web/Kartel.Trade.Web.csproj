@@ -2294,10 +2294,13 @@
     <Content Include="Content\images\account\bill.png" />
     <Content Include="Content\images\account\bottom-check.png" />
     <Content Include="Content\images\account\close-editor.png" />
+    <Content Include="Content\images\account\design-common.png" />
+    <Content Include="Content\images\account\design-premium.png" />
     <Content Include="Content\images\account\doreg.png" />
     <Content Include="Content\images\account\dummy.jpg" />
     <Content Include="Content\images\account\goldvendor.png" />
     <Content Include="Content\images\account\message.png" />
+    <Content Include="Content\images\account\product-no-img.jpg" />
     <Content Include="Content\images\account\save-design.png" />
     <Content Include="Content\images\account\save.png" />
     <Content Include="Content\images\account\submitdomain.png" />

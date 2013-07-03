@@ -595,7 +595,7 @@ namespace Kartel.Trade.Web.Controllers
             }
 
             // Проверяем что у нас - создание или редактирование
-            UserCategory category = null;
+            UserCategory category;
             if (model.Id <= 0)
             {
                 category = model;
@@ -707,6 +707,88 @@ namespace Kartel.Trade.Web.Controllers
 
             // Отображаем вид
             return View(userCategory.Products.ToList());
+        }
+
+        /// <summary>
+        /// Перемещает категорию вверх на одну позицию
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("account/products/move-category-up/{id}")]
+        public ActionResult MoveCategoryUp(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            var userCategories = CurrentUser.UserCategories.OrderBy(f => f.Position).ToList();
+
+            var userCategory = userCategories.FirstOrDefault(c => c.Id == id);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            var currentCategoryPos = userCategory.Position;
+
+            if (currentCategoryPos != 0)
+            {
+                for (int i = 0; i < userCategories.Count; i++)
+                {
+                    if (userCategories[i] == userCategory)
+                    {
+                        var prevCategory = userCategories[i - 1];
+                        userCategory.Position = prevCategory.Position;
+                        prevCategory.Position = currentCategoryPos;
+                    }
+                }
+
+                UsersRepository.SubmitChanges();
+                return RedirectToAction("Products");
+            }
+
+            return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Перемещает категорию вниз на одну позицию
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("account/products/move-category-down/{id}")]
+        public ActionResult MoveCategoryDown(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            var userCategories = CurrentUser.UserCategories.OrderBy(f => f.Position).ToList();
+
+            var userCategory = userCategories.FirstOrDefault(c => c.Id == id);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            var currentCategoryPos = userCategory.Position;
+
+            if (currentCategoryPos != userCategories.Last().Position)
+            {
+                for (int i = 0; i < userCategories.Count; i++)
+                {
+                    if (userCategories[i] == userCategory)
+                    {
+                        var nextCategory = userCategories[i + 1];
+                        userCategory.Position = nextCategory.Position;
+                        nextCategory.Position = currentCategoryPos;
+                    }
+                }
+
+                UsersRepository.SubmitChanges();
+                return RedirectToAction("Products");
+            }
+
+            return RedirectToAction("Products");
         }
 
         #endregion

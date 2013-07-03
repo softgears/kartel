@@ -16,32 +16,36 @@
         <table class="categories-table">
             <tbody>
                 @{
-                    var counter = 0;
-                    var userCategories = ((BaseController)ViewContext.Controller).CurrentUser.GetUserCategories().ToList();
+                    var userCategories = ( (BaseController) ViewContext.Controller ).CurrentUser.GetUserCategories()
+                        .OrderBy(p => p.Position).ToList();
                 }
-                @foreach (var category in userCategories.OrderBy(p => p.Position))
+                @foreach (var category in userCategories)
                 {
                     <tr>
                         <td>
                             <a href="/account/products/category-products/@category.Id">@category.Title</a> (@category.GetProductsCount())
                         </td>
                         <td>
-                            @if (counter != 0)
+                            @if (category.Position != 0)
                             {
-                                <a href="/account/products/move-category-up/@category.Id"></a>
+                                <a href="/account/products/move-category-up/@category.Id"><span class="icon-move-up"></span></a>
                             }
                         </td>
                         <td>
-                            @if (counter != userCategories.Count - 1)
+                            @if (category.Position != userCategories.Last().Position)
                             {
-                                <a href="/account/products/move-category-down/@category.Id"></a>
+                                <a href="/account/products/move-category-down/@category.Id"><span class="icon-move-down"></span></a>
                             }
                         </td>
                         <td>
-                            <a href="/account/products/edit-category/@category.Id">Редактировать</a>
+                            <a href="/account/products/edit-category/@category.Id">
+                                <span class="icon-edit"></span><span style="text-decoration: underline; position: relative; top: -5px; left: 5px;">Редактировать</span>
+                            </a>
                         </td>
                         <td>
-                            <a href="/account/products/delete-category/@category.Id" onclick="return confirm('Действительно хотите удалить эту категорию?')">Удалить</a>
+                            <a href="/account/products/delete-category/@category.Id" onclick="return confirm('Действительно хотите удалить эту категорию?')" style="position: relative; top : 3px;">
+                                <span class="icon-remove"></span><span style="text-decoration: underline; position: relative; top: -3px; left: 5px;">Удалить</span>
+                            </a>
                         </td>
                     </tr>
                 }
