@@ -26,13 +26,13 @@
                             <a href="/account/products/category-products/@category.Id">@category.Title</a> (@category.GetProductsCount())
                         </td>
                         <td>
-                            @if (category.Position != 0)
+                            @if (category != userCategories.First())
                             {
                                 <a href="/account/products/move-category-up/@category.Id"><span class="icon-move-up"></span></a>
                             }
                         </td>
                         <td>
-                            @if (category.Position != userCategories.Last().Position)
+                            @if (category != userCategories.Last())
                             {
                                 <a href="/account/products/move-category-down/@category.Id"><span class="icon-move-down"></span></a>
                             }
