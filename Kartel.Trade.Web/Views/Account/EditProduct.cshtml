@@ -10,6 +10,19 @@
     var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
     var catManager = Locator.GetService<CategoriesIndexManager>();
     var categoriesPath = (Model.Category != null ? Model.Category.GetFullCategoriesPath() : Enumerable.Empty<Category>()).ToList();
+    var userCategories = currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
+        {
+            Text = n.Title,
+            Value = n.Id.ToString(),
+            Selected = Model.UserCategoryId == n.Id
+        }).ToList();
+
+        userCategories.Add(new SelectListItem
+            {
+                Text = "--",
+                Value = "-1",
+                Selected = true
+            });
 }
 
 <div class="account-content">
@@ -49,12 +62,12 @@
                     <span class="asterix">*</span>Категория на вашем сайте
                 </div>
                 <div class="editor">
-                    @Html.DropDownListFor(m => m.UserCategoryId, currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
-                        {
-                            Text = n.Title,
-                            Value = n.Id.ToString(),
-                            Selected = Model.UserCategoryId == n.Id
-                        }))
+                    @Html.DropDownListFor(m => m.UserCategoryId, userCategories)
+                </div>
+            </div>
+            <div class="field">
+                <div class="editor">
+                    <button id="addCategory">Добавить категорию</button>
                 </div>
             </div>
             <div class="field">
@@ -220,7 +233,7 @@
                 </div>
                 <div class="hot-product-stats">
                     <div class="pay-hot-product">
-                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>
+@*                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>*@
                     </div>
                     <div class="item">
                         Всего показов: @Model.GetTotalViewsCount()
@@ -280,6 +293,10 @@
         $("#category-id-field").change(function () {
             $("#selected-category").load("/account/products/get-category-path", { id: $(this).val() });
         });
+
+        var addCategory = function() {
+            console.log('click');
+        };
     });
     
 </script>
