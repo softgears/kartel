@@ -732,7 +732,7 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem("Добавление товара", "", true);
 
             // Отображаем вид
-            return View("EditProduct", new Product());
+            return View("EditProduct", new Product(){User = CurrentUser});
         }
 
         /// <summary>
