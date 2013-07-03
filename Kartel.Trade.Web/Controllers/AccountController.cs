@@ -13,6 +13,7 @@ using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
+using Kartel.Trade.Web.Areas.ControlPanel.Models;
 using Kartel.Trade.Web.Classes.Utils;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
@@ -617,6 +618,39 @@ namespace Kartel.Trade.Web.Controllers
 
             // Переходим на страницу товара
             return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Обрабатывает категории - создает или сохраняет новую пользовательскую категорию
+        /// </summary>
+        /// <param name="name">Имя категории</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SaveCategoryJson(string name)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                var category = new UserCategory
+                    {
+                        Title = name,
+                        Position = CurrentUser.UserCategories.Count > 0
+                                        ? CurrentUser.UserCategories.Max(c => c.Position) + 1000
+                                        : 1000
+                    };
+                CurrentUser.UserCategories.Add(category);
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на страницу товара
+            return Json(new {success = true},JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
