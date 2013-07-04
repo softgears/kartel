@@ -10,6 +10,7 @@
     var currentUser = ( (BaseController) ViewContext.Controller ).CurrentUser;
     var catManager = Locator.GetService<CategoriesIndexManager>();
     var categoriesPath = ( Model.Category != null ? Model.Category.GetFullCategoriesPath() : Enumerable.Empty<Category>() ).ToList();
+    var images = Model.GetProductImages().ToList();
     var userCategories = currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
         {
             Text = n.Title,
@@ -155,6 +156,23 @@
             <div class="separator"></div>
             <div class="field">
                 <div class="label">
+                    Дополнительные фото
+                </div>
+                <div class="editor">
+                    @if (images.Any())
+                    {
+                        foreach (var image in images)
+                        {
+                            <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto"/>
+                        }
+                    }
+                    <input type="file" name="ProductImage" multiple accept="image" />
+                    <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="label">
                     Цена
                 </div>
                 <div class="editor">
@@ -201,7 +219,7 @@
                     Возможность поставки
                 </div>
                 <div class="editor">
-                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="День" value="@Model.DeliveryPossibilityDay"/>
+                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="Количество" value="@Model.DeliveryPossibilityDay"/>
                     <input type="text" class="small" name="DeliveryPossibilityMeasure" placeholder="Мера" value="@Model.DeliveryPossibilityMeasure"/>
                     <input type="text" class="small" name="DeliveryPossibilityTime" placeholder="Время" value="@Model.DeliveryPossibilityTime"/>
                 </div>
@@ -257,7 +275,7 @@
 
 <div id="add_category_dialog" style="display: none;">
     <label>Имя категории</label>
-    <input type="text" id="category_name" value="Новая категория" required/>
+    <input type="text" id="category_name" value="Новая категория" required />
 </div>
 
 <script type="text/javascript">
@@ -301,23 +319,23 @@
 
         $('#add_category').click(function (e) {
             d.dialog({
-                title : 'Добавление категории',
-                modal : true,
+                title: 'Добавление категории',
+                modal: true,
                 buttons: [
                     {
                         text: 'Добавить категорию',
                         click: function () {
                             var val = $('#category_name').val();
-                            
+
                             if (!val) {
                                 alert('Заполните поле');
                                 return;
                             }
-                            
+
                             var name = {
-                                name :  val
+                                name: val
                             };
-                            
+
                             $.ajax({
                                 url: '/account/SaveCategoryJson',
                                 type: 'POST',
@@ -339,11 +357,11 @@
 </script>
 <script type="text/javascript" src="~/Scripts/Components/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
-tinymce.init({
-    selector: "textarea",
-    width : 940,
-    plugins: "table",
-    menubar:false,
-    toolbar: "undo redo | bold italic underline | table"
- });
+    tinymce.init({
+        selector: "textarea",
+        width: 940,
+        plugins: "table",
+        menubar: false,
+        toolbar: "undo redo | bold italic underline | table"
+    });
 </script>

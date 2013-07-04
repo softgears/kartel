@@ -8,6 +8,14 @@
 // 	 at 20.04.2013 18:44
 // 
 // ============================================================
+
+using System.Collections.Generic;
+using System.Linq;
+using Kartel.Domain.DAL;
+using Kartel.Domain.DAL.Repositories;
+using Kartel.Domain.Interfaces.Repositories;
+using Kartel.Domain.IoC;
+
 namespace Kartel.Domain.Entities
 {
     /// <summary>
@@ -79,6 +87,17 @@ namespace Kartel.Domain.Entities
                 }
             }
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Возвращает дополнительные фотографии товара
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ProductImage> GetProductImages()
+        {
+            var repository = Locator.GetService<IProductImagesRepository>();
+            var images = repository.FindAll().Where(f => f.ProductId == Id);
+            return images;
         }
     }
 }
