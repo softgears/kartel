@@ -2299,6 +2299,7 @@
     <Content Include="Content\images\account\doreg.png" />
     <Content Include="Content\images\account\dummy.jpg" />
     <Content Include="Content\images\account\edit.png" />
+    <Content Include="Content\images\account\email.png" />
     <Content Include="Content\images\account\goldvendor.png" />
     <Content Include="Content\images\account\message.png" />
     <Content Include="Content\images\account\move-down.png" />
@@ -2307,6 +2308,7 @@
     <Content Include="Content\images\account\remove.png" />
     <Content Include="Content\images\account\save-design.png" />
     <Content Include="Content\images\account\save.png" />
+    <Content Include="Content\images\account\sms.png" />
     <Content Include="Content\images\account\submitdomain.png" />
     <Content Include="Content\images\account\top-check.png" />
     <Content Include="Content\images\flags\by.jpg" />

@@ -163,11 +163,21 @@
                     {
                         foreach (var image in images)
                         {
-                            <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto"/>
+                        <div style="border-bottom: 1px solid #c0c0c0; padding: 5px;">
+                            <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto; float: left;"/>
+                            <div style="float: right;">
+                                <label>Удалить</label>
+                                <input type="checkbox" value="@image.Id" name="deletedImage"/>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
                         }
+                        <input type="hidden" name="deletedImages" />
                     }
-                    <input type="file" name="ProductImage" multiple accept="image" />
-                    <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+                    <div style="margin-top: 10px;">
+                        <input type="file" name="images" multiple accept="image" />
+                        <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+                    </div>
                 </div>
             </div>
             <div class="separator"></div>
@@ -243,7 +253,7 @@
             <div class="separator"></div>
             <div class="field">
                 <div class="editor" style="margin-left: 40px">
-                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <b>Горячие товары</b>
+                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <a href="#">Горячие товары</a>
                 </div>
                 <div class="hot-product-stats">
                     <div class="pay-hot-product">
@@ -257,15 +267,16 @@
                     </div>
                 </div>
             </div>
-            @*
             <div class="separator"></div>
-            <div class="send-title">
+            <div class="send-title" style="position: relative;">
                 <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
+                <a href="/account/sending/mail"><span class="icon-email"></span></a>
             </div>
             <div class="separator"></div>
-            <div class="send-title">
+            <div class="send-title" style="position: relative;">
                 <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
-            </div>*@
+                <a href="/account/sending/sms"><span class="icon-sms"></span></a>
+            </div>
         </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />
@@ -363,5 +374,20 @@
         plugins: "table",
         menubar: false,
         toolbar: "undo redo | bold italic underline | table"
+    });
+
+
+    $(document).ready(function () {
+        $('#product-form').submit(function () {
+            var deletedImages = [];
+            
+            $('[name=deletedImage]').each(function () {
+                if ($(this).is(':checked')) {
+                    deletedImages.push($(this).val());
+                }
+            });
+
+            $('[name=deletedImages]').val(deletedImages.toString());
+        });
     });
 </script>

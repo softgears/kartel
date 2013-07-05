@@ -2228,6 +2228,27 @@ body #footer #footer-content a {
   background: url("/Content/images/account/remove.png");
 }
 
+/* line 21, ../sass/account-icons.sass */
+.icon-email {
+  width: 30px;
+  height: 31px;
+  background: url("/Content/images/account/email.png");
+}
+
+/* line 26, ../sass/account-icons.sass */
+.icon-sms {
+  width: 33px;
+  height: 31px;
+  background: url("/Content/images/account/sms.png");
+}
+
+/* line 31, ../sass/account-icons.sass */
+.icon-email, .icon-sms {
+  position: absolute;
+  right: 30px;
+  top: -10px;
+}
+
 /* line 2, ../sass/banners.sass */
 #banners-block #banners-container {
   widht: 100%;

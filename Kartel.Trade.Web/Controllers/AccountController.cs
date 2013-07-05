@@ -901,7 +901,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <returns></returns>
         [HttpPost][ValidateInput(false)]
         [Route("account/products/save-product")]
-        public ActionResult SaveProduct(Product model)
+        public ActionResult SaveProduct(Product model, HttpPostedFileBase[] images, string deletedImages)
         {
             if (!IsAuthentificated)
             {
@@ -974,6 +974,53 @@ namespace Kartel.Trade.Web.Controllers
                 FileUtils.SavePostedFile(productImageFile,"prodimage",fileName);
                 product.Img = fileName;
                 UsersRepository.SubmitChanges();
+            }
+
+            var imagesRepository = Locator.GetService<IProductImagesRepository>();
+
+            if (images.Any())
+            {
+                
+
+                foreach (var image in images)
+                {
+                    if (image != null && image.ContentLength > 0 && image.ContentType.Contains("image"))
+                    {
+                        var name = String.Format("prod-{0}-{1}{2}", product.Id,
+                                             new Random(Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(image.FileName));
+
+                        FileUtils.SavePostedFile(image, "prodimage", name);
+
+                        imagesRepository.Add(new ProductImage
+                            {
+                                Image = name,
+                                Product = product,
+                                ProductId = product.Id
+                            });
+                    }
+                }
+
+                imagesRepository.SubmitChanges();
+            }
+
+            if (!string.IsNullOrEmpty(deletedImages))
+            {
+                int[] imageIds = deletedImages.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+
+                if (imageIds.Any())
+                {
+                    foreach (var imageId in imageIds)
+                    {
+                        var image = imagesRepository.Find(f => f.Id == imageId);
+                        if (image != null)
+                        {
+                            imagesRepository.Delete(image);
+                        }
+                    }
+
+                    imagesRepository.SubmitChanges();
+                }
             }
 
             // Перенаправляемся на список продуктов

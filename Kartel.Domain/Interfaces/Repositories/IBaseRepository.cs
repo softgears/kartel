@@ -49,8 +49,8 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// <summary>
         /// Удаляет сущность из репозитория
         /// </summary>
-        /// <param name="entity">Сущность для удаления</param>
-        void Delete(T entity);
+        /// <param name="image">Сущность для удаления</param>
+        void Delete(T image);
 
         /// <summary>
         /// Сохраняет изменения в указанной сущности в репозитории

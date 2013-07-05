@@ -9,6 +9,8 @@
 // 
 // ============================================================
 
+using System.Configuration;
+using System.IO;
 using Kartel.Domain.Entities;
 using Kartel.Domain.Interfaces.Repositories;
 
@@ -36,6 +38,25 @@ namespace Kartel.Domain.DAL.Repositories
         public override ProductImage Load(long id)
         {
             return Find(b => b.Id == id);
+        }
+
+        public override void Delete(ProductImage image)
+        {
+            DeleteImageFile(image);
+            base.Delete(image);
+        }
+
+        private static void DeleteImageFile(ProductImage image)
+        {
+            var fileName = image.Image;
+            var basePath = ConfigurationManager.AppSettings["FilesStoragePath"];
+            var subfolder = ConfigurationManager.AppSettings["ProductImagesFolderName"];
+            var filePath = basePath + subfolder + fileName;
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
     }
 }
