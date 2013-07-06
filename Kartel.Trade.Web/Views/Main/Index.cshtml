@@ -34,29 +34,8 @@
     </ul>
 </div>
 <div id="content-section">
-    <div id="banners-block">
-        <div id="banners-container">
-            @if (banners.Count > 0)
-            {
-                <ul id="banners-swticher">
-                    @if (banners.Count > 0)
-                    {
-                        foreach (var banner in banners)
-                        {
-                            <li class="banner-switch" data-id="@banner.Id"></li>
-                        }
-                    }
-                </ul>
-                
-                foreach (var banner in banners)
-                {
-                <div class="banner" data-id="@banner.Id" style="display: none;">
-                    <img src="/files/banner/@banner.Img" alt="@banner.Title"/>
-                </div>
-                }
-            }
-        </div>
-    </div>
+    @Html.Partial("Banners", banners)
+
     <div class="hr">
     </div>
     <div class="mainblock">
@@ -115,14 +94,7 @@
                 </div>
             }
         </div>
-        @*        <div class="row">*@
-        @*            @foreach(var product in randomProducts.Skip(8).Take(4))*@
-        @*            {*@
-        @*                <div class="item">*@
-        @*                    @Html.Partial("HotProduct",product)*@
-        @*                </div>*@
-        @*            }*@
-        @*        </div>*@
+
         @Html.Partial("HotActions")
     </div>
 </div>

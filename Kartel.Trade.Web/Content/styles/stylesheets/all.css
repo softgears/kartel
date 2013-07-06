@@ -1987,7 +1987,7 @@ body #footer #footer-content a {
   display: inline-block;
   vertical-align: top;
   width: 149px;
-  height: 28px;
+  height: 27px;
   cursor: pointer;
   background: url(../../images/account/add-product.png) left top no-repeat;
   margin-left: 20px;
@@ -1996,8 +1996,8 @@ body #footer #footer-content a {
 .account #add-category {
   display: inline-block;
   vertical-align: top;
-  width: 183px;
-  height: 28px;
+  width: 193px;
+  height: 27px;
   cursor: pointer;
   background: url(../../images/account/add-category.png) left top no-repeat;
   margin-left: 20px;
@@ -2028,46 +2028,43 @@ body #footer #footer-content a {
 /* line 311, ../sass/account.sass */
 .account .categories-table tbody tr td a, .account .tenders-table tbody tr td a {
   color: black;
-}
-/* line 314, ../sass/account.sass */
-.account .categories-table tbody tr td a:hover, .account .tenders-table tbody tr td a:hover {
   text-decoration: underline;
 }
-/* line 317, ../sass/account.sass */
+/* line 315, ../sass/account.sass */
 .account .categories-table tbody tr td:first-child, .account .tenders-table tbody tr td:first-child {
   border-left: 0;
   text-align: left;
 }
-/* line 321, ../sass/account.sass */
+/* line 319, ../sass/account.sass */
 .account .categories-table tbody tr td:first-child a, .account .tenders-table tbody tr td:first-child a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 325, ../sass/account.sass */
+/* line 323, ../sass/account.sass */
 .account .categories-table tbody tr td:last-child, .account .tenders-table tbody tr td:last-child {
   border-right: 0;
 }
-/* line 328, ../sass/account.sass */
+/* line 326, ../sass/account.sass */
 .account .action-panel {
   background: #f0f0f0;
   padding: 10px;
 }
-/* line 332, ../sass/account.sass */
+/* line 330, ../sass/account.sass */
 .account .action-panel .select-all {
   width: 18px;
   height: 17px;
   cursor: pointer;
   margin-right: 15px;
 }
-/* line 338, ../sass/account.sass */
+/* line 336, ../sass/account.sass */
 .account .action-panel .select-all.top {
   background: url(../../images/account/top-check.png) left top no-repeat;
 }
-/* line 341, ../sass/account.sass */
+/* line 339, ../sass/account.sass */
 .account .action-panel .select-all.bottom {
   background: url(../../images/account/bottom-check.png) left top no-repeat;
 }
-/* line 344, ../sass/account.sass */
+/* line 342, ../sass/account.sass */
 .account .action-panel .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -2084,59 +2081,56 @@ body #footer #footer-content a {
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 360, ../sass/account.sass */
+/* line 358, ../sass/account.sass */
 .account .products-table {
   width: 100%;
 }
-/* line 363, ../sass/account.sass */
+/* line 361, ../sass/account.sass */
 .account .products-table tr {
   border-top: 1px solid #e2e2e2;
   border-bottom: 1px solid #e2e2e2;
 }
-/* line 367, ../sass/account.sass */
+/* line 365, ../sass/account.sass */
 .account .products-table tr:hover {
   background-color: #f0f0f0;
 }
-/* line 370, ../sass/account.sass */
+/* line 368, ../sass/account.sass */
 .account .products-table tr td {
   padding: 15px;
   text-align: center;
   vertical-align: middle;
 }
-/* line 375, ../sass/account.sass */
+/* line 373, ../sass/account.sass */
 .account .products-table tr td a {
   color: black;
-}
-/* line 378, ../sass/account.sass */
-.account .products-table tr td a:hover {
   text-decoration: underline;
 }
-/* line 381, ../sass/account.sass */
+/* line 377, ../sass/account.sass */
 .account .products-table tr td.name {
   text-align: left;
   width: 100%;
 }
-/* line 385, ../sass/account.sass */
+/* line 381, ../sass/account.sass */
 .account .products-table tr td.name a {
   color: #33a1c2 !important;
   font-weight: bold;
 }
-/* line 389, ../sass/account.sass */
+/* line 385, ../sass/account.sass */
 .account .hot-product-stats {
   margin: 15px 40px;
 }
-/* line 392, ../sass/account.sass */
+/* line 388, ../sass/account.sass */
 .account .hot-product-stats .item {
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 15px;
 }
-/* line 397, ../sass/account.sass */
+/* line 393, ../sass/account.sass */
 .account .hot-product-stats .pay-hot-product {
   float: right;
   margin-top: 10px;
 }
-/* line 401, ../sass/account.sass */
+/* line 397, ../sass/account.sass */
 .account .hot-product-stats .pay-hot-product .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -2154,38 +2148,38 @@ body #footer #footer-content a {
   margin: 0px 10px;
   cursor: pointer;
 }
-/* line 418, ../sass/account.sass */
+/* line 414, ../sass/account.sass */
 .account .send-title {
   margin-left: 40px;
 }
-/* line 421, ../sass/account.sass */
+/* line 417, ../sass/account.sass */
 .account .send-title a {
   color: #33a1c2;
   font-size: 13px;
 }
-/* line 425, ../sass/account.sass */
+/* line 421, ../sass/account.sass */
 .account .send-title a:hover {
   text-decoration: underline;
 }
-/* line 429, ../sass/account.sass */
+/* line 425, ../sass/account.sass */
 .account .send-title a b {
   font-weight: bold;
 }
-/* line 435, ../sass/account.sass */
+/* line 428, ../sass/account.sass */
 .account .categories-selector {
   width: 100%;
 }
-/* line 438, ../sass/account.sass */
+/* line 431, ../sass/account.sass */
 .account .categories-selector td {
   width: 25%;
   border: 1px solid #ddddde;
 }
-/* line 442, ../sass/account.sass */
+/* line 435, ../sass/account.sass */
 .account .categories-selector td select {
   width: 99%;
   height: auto;
 }
-/* line 446, ../sass/account.sass */
+/* line 439, ../sass/account.sass */
 .account .round {
   background: #fbfbfb;
   background: -moz-linear-gradient(top, #fbfbfb 1%, #d8d8da 100%);
@@ -2202,6 +2196,57 @@ body #footer #footer-content a {
   margin: 0px 10px;
   cursor: pointer;
   display: inline-block;
+}
+
+/* line 1, ../sass/account-icons.sass */
+.icon-move-up, .icon-move-down {
+  width: 14px;
+  height: 19px;
+}
+
+/* line 5, ../sass/account-icons.sass */
+.icon-move-up {
+  background: url("/Content/images/account/move-up.png");
+}
+
+/* line 8, ../sass/account-icons.sass */
+.icon-move-down {
+  background: url("/Content/images/account/move-down.png");
+}
+
+/* line 11, ../sass/account-icons.sass */
+.icon-edit {
+  width: 23px;
+  height: 24px;
+  background: url("/Content/images/account/edit.png");
+}
+
+/* line 16, ../sass/account-icons.sass */
+.icon-remove {
+  width: 15px;
+  height: 15px;
+  background: url("/Content/images/account/remove.png");
+}
+
+/* line 21, ../sass/account-icons.sass */
+.icon-email {
+  width: 30px;
+  height: 31px;
+  background: url("/Content/images/account/email.png");
+}
+
+/* line 26, ../sass/account-icons.sass */
+.icon-sms {
+  width: 33px;
+  height: 31px;
+  background: url("/Content/images/account/sms.png");
+}
+
+/* line 31, ../sass/account-icons.sass */
+.icon-email, .icon-sms {
+  position: absolute;
+  right: 30px;
+  top: -10px;
 }
 
 /* line 2, ../sass/banners.sass */
@@ -2247,6 +2292,29 @@ body #footer #footer-content a {
 /* line 37, ../sass/banners.sass */
 #banners-block #banners-swticher .banner-switch.active-switch {
   background: url(/Content/images/layout/banner-switch-active.png);
+}
+
+/* line 41, ../sass/banners.sass */
+#user_site_layout #banners-block {
+  height: 350px;
+  margin: 15px 0;
+  border: 5px solid #efefef;
+}
+/* line 47, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-container .banner {
+  width: 930px;
+  height: 350px;
+}
+/* line 51, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-container .banner img {
+  width: 930px;
+  height: 350px;
+  margin: 0;
+}
+/* line 56, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-swticher {
+  margin-left: -25px;
+  bottom: 0;
 }
 
 /* line 1, ../sass/banner-editor.sass */

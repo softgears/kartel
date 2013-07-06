@@ -1,7 +1,13 @@
 ﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
 @{
     Layout = null;
     User user = ViewBag.user;
+    var banners = Locator.GetService<IBannersRepository>().FindAll()
+        .Where(f => string.IsNullOrEmpty(f.Html) & f.Img != null & f.Extra == "1")
+        .OrderBy(f => f.Sort)
+        .ToList();
 }
 
 <!DOCTYPE html>
@@ -14,8 +20,9 @@
     <link href="~/Content/styles/stylesheets/usersite.css" rel="stylesheet" />
     <script src="~/Scripts/Libs/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/Libs/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Components/banner-rotator.js"></script>
 </head>
-<body>
+<body id="user_site_layout">
     @if (Request["selectDesign"] == "1")
     {
         <div id="design_editor">
@@ -204,6 +211,7 @@
             @* Содержимое *@
             <section id="content">
                 <div id="content-wrapper">
+                    @Html.Partial("Banners", banners)
                     @* Боковое меню *@
                     <div id="content-menu">
                         @* Пользовательские категории *@
@@ -290,7 +298,7 @@
                     $('.theme-item').removeClass('selected-item');
                     $(this).addClass("selected-item");
                     var self = this;
-                    
+
                     // Грузим
                     $("#after_editor").html("").load("/vendor/@user.Id?forceDesign=" + $(this).attr("name") + " #design", function () {
                         $("#selected-design-field").val($(self).attr("name"));
@@ -334,7 +342,7 @@
                     });
                     $("#select-design-form").submit();
                 });
-                
+
                 $("#layout-feedback-form").validate({
                     rules: {
                         Name: {

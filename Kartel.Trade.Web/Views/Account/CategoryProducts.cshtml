@@ -10,12 +10,10 @@
     <div style="margin-top: 15px; margin-left: 15px">
         @Html.Partial("NavigationChain")
     </div>
-    
+
     <div class="action-panel">
-        <span class="select-all top">
-            
-        </span>
-        
+        <span class="select-all top"></span>
+
         <span class="round change-category">Сменить категорию</span>
         <span class="round make-hot">Показывать в "Горячих Товарах"</span>
     </div>
@@ -25,45 +23,43 @@
             {
                 foreach (var product in Model)
                 {
-                    <tr data-id="@product.Id">
-                        <td>
-                            <input type="checkbox"/>
-                        </td>
-                        <td>
-                            @if (!String.IsNullOrEmpty(product.Img))
-                            {
-                                <img src="/files/prodimage/@product.Img" width="40" height="40" /> @* Картинка продукта *@    
-                            }
-                            else
-                            {
-                                <img src="http://kub1.ru/images/no_picture.jpg"/>
-                            }
-                        </td>
-                        <td class="name">
-                            <a href="/account/products/edit-product/@product.Id">@product.Title</a>
-                        </td>
-                        <td>
-                            <a href="/account/products/delete-product/@product.Id" onclick=" return confirm('Действительно хотите удалить этот товар?') ">Удалить</a>
-                        </td>
-                    </tr>
+                <tr data-id="@product.Id">
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrEmpty(product.Img))
+                        {
+                            <img src="/files/prodimage/@product.Img" width="40" height="40" /> @* Картинка продукта *@    
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/account/product-no-img.jpg" style="border: 1px solid #c0c0c0;" />
+@*                                <img src="http://kub1.ru/images/no_picture.jpg"/>*@
+                        }
+                    </td>
+                    <td class="name">
+                        <a href="/account/products/edit-product/@product.Id">@product.Title</a>
+                    </td>
+                    <td>
+                        <a href="/account/products/delete-product/@product.Id" onclick=" return confirm('Действительно хотите удалить этот товар?') ">Удалить</a>
+                    </td>
+                </tr>
                 }
             }
             else
             {
                 <tr>
-                    <td colspan="5">
-                        Нет товаров в категории
+                    <td colspan="5">Нет товаров в категории
                     </td>
                 </tr>    
             }
-            
+
         </tbody>
     </table>
     <div class="action-panel">
-        <span class="select-all bottom">
-            
-        </span>
-        
+        <span class="select-all bottom"></span>
+
         <span class="round change-category">Сменить категорию</span>
         <span class="round make-hot">Показывать в "Горячих Товарах"</span>
     </div>
@@ -72,7 +68,7 @@
             Перемещение товаров
         </div>
         <form method="POST" id="move-product-form" action="/account/move-products">
-            <input type="hidden" name="selectedIds" id="selected-ids-field"/>
+            <input type="hidden" name="selectedIds" id="selected-ids-field" />
             <div class="field">
                 <div class="label">
                     Новая категория
@@ -87,9 +83,9 @@
                 </div>
             </div>
             <div style="text-align: center">
-                <input type="submit" class="save" value=" "/>    
+                <input type="submit" class="save" value=" " />
             </div>
-            
+
         </form>
     </div>
 </div>
@@ -102,7 +98,7 @@
                 selectedIds += id + ',';
             });
             $("#selected-ids-field").val(selectedIds);
-            $("#move-form-wrapper").stop(true,true).slideToggle("slow");
+            $("#move-form-wrapper").stop(true, true).slideToggle("slow");
         });
         $(".make-hot").click(function () {
             var ids = "";

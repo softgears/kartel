@@ -110,6 +110,7 @@
     <Compile Include="DAL\Repositories\CategoryMapItemsRepository.cs" />
     <Compile Include="DAL\Repositories\CountriesRepository.cs" />
     <Compile Include="DAL\Repositories\MailNotificationMessagesRepository.cs" />
+    <Compile Include="DAL\Repositories\ProductImagesRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="DAL\Repositories\SettingsRepository.cs" />
     <Compile Include="DAL\Repositories\StaticPagesRepository.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IMailNotificationMessagesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProductImagesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
     <Compile Include="Interfaces\Repositories\ISettingsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IStaticPagesRepository.cs" />

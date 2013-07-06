@@ -7,9 +7,23 @@
 @{
     ViewBag.Title = Model.Id <= 0 ? "Добавление товара" : string.Format("Редактирование товара \"{0}\"", Model.Title);
     Layout = "AccountLayout.cshtml";
-    var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
+    var currentUser = ( (BaseController) ViewContext.Controller ).CurrentUser;
     var catManager = Locator.GetService<CategoriesIndexManager>();
-    var categoriesPath = (Model.Category != null ? Model.Category.GetFullCategoriesPath() : Enumerable.Empty<Category>()).ToList();
+    var categoriesPath = ( Model.Category != null ? Model.Category.GetFullCategoriesPath() : Enumerable.Empty<Category>() ).ToList();
+    var images = Model.GetProductImages().ToList();
+    var userCategories = currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
+        {
+            Text = n.Title,
+            Value = n.Id.ToString(),
+            Selected = Model.UserCategoryId == n.Id
+        }).ToList();
+
+    userCategories.Add(new SelectListItem
+        {
+            Text = "--",
+            Value = "-1",
+            Selected = true
+        });
 }
 
 <div class="account-content">
@@ -49,12 +63,8 @@
                     <span class="asterix">*</span>Категория на вашем сайте
                 </div>
                 <div class="editor">
-                    @Html.DropDownListFor(m => m.UserCategoryId, currentUser.GetUserCategories().OrderBy(c => c.Position).Select(n => new SelectListItem()
-                        {
-                            Text = n.Title,
-                            Value = n.Id.ToString(),
-                            Selected = Model.UserCategoryId == n.Id
-                        }))
+                    @Html.DropDownListFor(m => m.UserCategoryId, userCategories, new { style = "width: 200px;" })
+                    <button id="add_category">Добавить категорию</button>
                 </div>
             </div>
             <div class="field">
@@ -64,7 +74,7 @@
                 <div class="editor">
                     <input type="hidden" name="CategoryId" value="@Model.CategoryId" id="category-id-field"/>
                     <span id="selected-category" style="padding-top: 2px; font-weight: bold; max-width: 550px; line-height: 1.5">
-                        @String.Join(" / ",categoriesPath.Select(c => c.Title))
+                        @String.Join(" / ", categoriesPath.Select(c => c.Title))
                     </span>
                 </div>
             </div>
@@ -75,7 +85,7 @@
                             <select size="10" id="root-categories" level="0">
                                 @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
                                 {
-                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected":"")>@rootCategory.Title</option>
+                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected" : "")>@rootCategory.Title</option>
                                 }
                             </select>
                         </td>
@@ -85,7 +95,7 @@
                                 {
                                     foreach (var childCat in categoriesPath[0].GetChildCategories())
                                     {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected" : "")>@childCat.Title</option>
                                     }
                                 }
                             </select>
@@ -96,7 +106,7 @@
                                 {
                                     foreach (var childCat in categoriesPath[1].GetChildCategories())
                                     {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected" : "")>@childCat.Title</option>
                                     }
                                 }
                             </select>
@@ -107,7 +117,7 @@
                                 {
                                     foreach (var childCat in categoriesPath[2].GetChildCategories())
                                     {
-                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected":"")>@childCat.Title</option>
+                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected" : "")>@childCat.Title</option>
                                     }
                                 }
                             </select>
@@ -138,9 +148,36 @@
                     {
                         <img src="/files/prodimage/@Model.Img" style="height: 75px; width: auto"/>    
                     }
-                    
+
                     <input type="file" name="ProductImage" multiple="false" />
                     <div class="details">Выберите одно изображение товара (JPG или GIF), не более 200 килобайт</div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="field">
+                <div class="label">
+                    Дополнительные фото
+                </div>
+                <div class="editor">
+                    @if (images.Any())
+                    {
+                        foreach (var image in images)
+                        {
+                        <div style="border-bottom: 1px solid #c0c0c0; padding: 5px;">
+                            <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto; float: left;"/>
+                            <div style="float: right;">
+                                <label>Удалить</label>
+                                <input type="checkbox" value="@image.Id" name="deletedImage"/>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        }
+                        <input type="hidden" name="deletedImages" />
+                    }
+                    <div style="margin-top: 10px;">
+                        <input type="file" name="images" multiple accept="image" />
+                        <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+                    </div>
                 </div>
             </div>
             <div class="separator"></div>
@@ -192,7 +229,7 @@
                     Возможность поставки
                 </div>
                 <div class="editor">
-                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="День" value="@Model.DeliveryPossibilityDay"/>
+                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="Количество" value="@Model.DeliveryPossibilityDay"/>
                     <input type="text" class="small" name="DeliveryPossibilityMeasure" placeholder="Мера" value="@Model.DeliveryPossibilityMeasure"/>
                     <input type="text" class="small" name="DeliveryPossibilityTime" placeholder="Время" value="@Model.DeliveryPossibilityTime"/>
                 </div>
@@ -216,11 +253,11 @@
             <div class="separator"></div>
             <div class="field">
                 <div class="editor" style="margin-left: 40px">
-                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <b>Горячие товары</b>
+                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <a href="#">Горячие товары</a>
                 </div>
                 <div class="hot-product-stats">
                     <div class="pay-hot-product">
-                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>
+                        @*                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>*@
                     </div>
                     <div class="item">
                         Всего показов: @Model.GetTotalViewsCount()
@@ -230,21 +267,28 @@
                     </div>
                 </div>
             </div>
-            @*
             <div class="separator"></div>
-            <div class="send-title">
+            <div class="send-title" style="position: relative;">
                 <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
+                <a href="/account/sending/mail"><span class="icon-email"></span></a>
             </div>
             <div class="separator"></div>
-            <div class="send-title">
+            <div class="send-title" style="position: relative;">
                 <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
-            </div>*@
+                <a href="/account/sending/sms"><span class="icon-sms"></span></a>
+            </div>
         </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />
         </div>
     </form>
 </div>
+
+<div id="add_category_dialog" style="display: none;">
+    <label>Имя категории</label>
+    <input type="text" id="category_name" value="Новая категория" required />
+</div>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#product-form").validate({
@@ -261,7 +305,7 @@
                     required: true
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 form.submit(); // выполняем сабмит
             }
         });
@@ -280,6 +324,70 @@
         $("#category-id-field").change(function () {
             $("#selected-category").load("/account/products/get-category-path", { id: $(this).val() });
         });
+
+        // Add category dialog
+        var d = $('#add_category_dialog');
+
+        $('#add_category').click(function (e) {
+            d.dialog({
+                title: 'Добавление категории',
+                modal: true,
+                buttons: [
+                    {
+                        text: 'Добавить категорию',
+                        click: function () {
+                            var val = $('#category_name').val();
+
+                            if (!val) {
+                                alert('Заполните поле');
+                                return;
+                            }
+
+                            var name = {
+                                name: val
+                            };
+
+                            $.ajax({
+                                url: '/account/SaveCategoryJson',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: name,
+                                success: function () {
+                                    location.reload();
+                                },
+                            });
+                        }
+                    }
+                ]
+            });
+            e.stopPropagation();
+            e.preventDefault();
+        });
     });
-    
+
+</script>
+<script type="text/javascript" src="~/Scripts/Components/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        width: 940,
+        plugins: "table",
+        menubar: false,
+        toolbar: "undo redo | bold italic underline | table"
+    });
+
+
+    $(document).ready(function () {
+        $('#product-form').submit(function () {
+            var deletedImages = [];
+            
+            $('[name=deletedImage]').each(function () {
+                if ($(this).is(':checked')) {
+                    deletedImages.push($(this).val());
+                }
+            });
+
+            $('[name=deletedImages]').val(deletedImages.toString());
+        });
+    });
 </script>

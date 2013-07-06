@@ -13,6 +13,7 @@ using Kartel.Domain.Infrastructure.Routing;
 using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
+using Kartel.Trade.Web.Areas.ControlPanel.Models;
 using Kartel.Trade.Web.Classes.Utils;
 using Kartel.Trade.Web.Models;
 using XCaptcha;
@@ -595,7 +596,7 @@ namespace Kartel.Trade.Web.Controllers
             }
 
             // Проверяем что у нас - создание или редактирование
-            UserCategory category = null;
+            UserCategory category;
             if (model.Id <= 0)
             {
                 category = model;
@@ -617,6 +618,39 @@ namespace Kartel.Trade.Web.Controllers
 
             // Переходим на страницу товара
             return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Обрабатывает категории - создает или сохраняет новую пользовательскую категорию
+        /// </summary>
+        /// <param name="name">Имя категории</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SaveCategoryJson(string name)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                var category = new UserCategory
+                    {
+                        Title = name,
+                        Position = CurrentUser.UserCategories.Count > 0
+                                        ? CurrentUser.UserCategories.Max(c => c.Position) + 1000
+                                        : 1000
+                    };
+                CurrentUser.UserCategories.Add(category);
+            }
+
+            // Сохраняем
+            UsersRepository.SubmitChanges();
+
+            // Переходим на страницу товара
+            return Json(new {success = true},JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -709,6 +743,88 @@ namespace Kartel.Trade.Web.Controllers
             return View(userCategory.Products.ToList());
         }
 
+        /// <summary>
+        /// Перемещает категорию вверх на одну позицию
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("account/products/move-category-up/{id}")]
+        public ActionResult MoveCategoryUp(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            var userCategories = CurrentUser.UserCategories.OrderBy(f => f.Position).ToList();
+
+            var userCategory = userCategories.FirstOrDefault(c => c.Id == id);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            var currentCategoryPos = userCategory.Position;
+
+            if (currentCategoryPos != 0)
+            {
+                for (int i = 0; i < userCategories.Count; i++)
+                {
+                    if (userCategories[i] == userCategory)
+                    {
+                        var prevCategory = userCategories[i - 1];
+                        userCategory.Position = prevCategory.Position;
+                        prevCategory.Position = currentCategoryPos;
+                    }
+                }
+
+                UsersRepository.SubmitChanges();
+                return RedirectToAction("Products");
+            }
+
+            return RedirectToAction("Products");
+        }
+
+        /// <summary>
+        /// Перемещает категорию вниз на одну позицию
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("account/products/move-category-down/{id}")]
+        public ActionResult MoveCategoryDown(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+            var userCategories = CurrentUser.UserCategories.OrderBy(f => f.Position).ToList();
+
+            var userCategory = userCategories.FirstOrDefault(c => c.Id == id);
+            if (userCategory == null)
+            {
+                return RedirectToAction("Products");
+            }
+
+            var currentCategoryPos = userCategory.Position;
+
+            if (currentCategoryPos != userCategories.Last().Position)
+            {
+                for (int i = 0; i < userCategories.Count; i++)
+                {
+                    if (userCategories[i] == userCategory)
+                    {
+                        var nextCategory = userCategories[i + 1];
+                        userCategory.Position = nextCategory.Position;
+                        nextCategory.Position = currentCategoryPos;
+                    }
+                }
+
+                UsersRepository.SubmitChanges();
+                return RedirectToAction("Products");
+            }
+
+            return RedirectToAction("Products");
+        }
+
         #endregion
 
         #region Товары
@@ -785,7 +901,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <returns></returns>
         [HttpPost][ValidateInput(false)]
         [Route("account/products/save-product")]
-        public ActionResult SaveProduct(Product model)
+        public ActionResult SaveProduct(Product model, HttpPostedFileBase[] images, string deletedImages)
         {
             if (!IsAuthentificated)
             {
@@ -858,6 +974,53 @@ namespace Kartel.Trade.Web.Controllers
                 FileUtils.SavePostedFile(productImageFile,"prodimage",fileName);
                 product.Img = fileName;
                 UsersRepository.SubmitChanges();
+            }
+
+            var imagesRepository = Locator.GetService<IProductImagesRepository>();
+
+            if (images.Any())
+            {
+                
+
+                foreach (var image in images)
+                {
+                    if (image != null && image.ContentLength > 0 && image.ContentType.Contains("image"))
+                    {
+                        var name = String.Format("prod-{0}-{1}{2}", product.Id,
+                                             new Random(Environment.TickCount).Next(Int32.MaxValue),
+                                             Path.GetExtension(image.FileName));
+
+                        FileUtils.SavePostedFile(image, "prodimage", name);
+
+                        imagesRepository.Add(new ProductImage
+                            {
+                                Image = name,
+                                Product = product,
+                                ProductId = product.Id
+                            });
+                    }
+                }
+
+                imagesRepository.SubmitChanges();
+            }
+
+            if (!string.IsNullOrEmpty(deletedImages))
+            {
+                int[] imageIds = deletedImages.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+
+                if (imageIds.Any())
+                {
+                    foreach (var imageId in imageIds)
+                    {
+                        var image = imagesRepository.Find(f => f.Id == imageId);
+                        if (image != null)
+                        {
+                            imagesRepository.Delete(image);
+                        }
+                    }
+
+                    imagesRepository.SubmitChanges();
+                }
             }
 
             // Перенаправляемся на список продуктов
