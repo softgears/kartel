@@ -19,8 +19,8 @@
             <div id="header-content">
                 <div id="select-name">
                     <form action="/account/domain-save" id="domain-form" method="POST">
-                        Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" value="@(((BaseController) ViewContext.Controller).CurrentUser.Subdomain)" /><span class="name-part">.karteltrade.ru</span>
-                        <input type="submit" id="domain-submit" value=" " />    
+                        Выберите имя: <span class="name-part">www.</span><input type="text" name="domain" id="domain-field" value="@(( (BaseController) ViewContext.Controller ).CurrentUser.Subdomain)" /><span class="name-part">.karteltrade.ru</span>
+                        <input type="submit" id="domain-submit" value=" " />
                     </form>
                 </div>
                 <a id="logo" href="/">
@@ -28,12 +28,43 @@
                 </a>
                 <div id="header-links">
                     <a id="ask" href="/feedback">Задать вопрос</a>
+                    <span id="golden_supplier">
+                        <span></span>
+                        <div id="golden_supplier_popup_wrapper">
+                            <div class="empty-block"></div>
+                            <div id="golden_supplier_popup">
+                                <h2>Премиальный тариф</h2>
+                                <ul>
+                                    <li>Выбор дизайна сайта</li>
+                                    <li>Посещаемость в 28 раз ВЫШЕ</li>
+                                    <li>Доступ к 100% тендеров</li>
+                                    <li>Отсутствие рекламы на сайте</li>
+                                    <li>Отсутствие товаров других продавцов</li>
+                                </ul>
+                                <div style="text-align: center;">
+                                    <a href="/account/gold/" id="plug_now"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
                 </div>
             </div>
         </header>
         @* Содержимое *@
         <section id="content">
+            <div id="left_block">
+                <div id="left_block_bg"></div>
+            </div>
             <div id="content-wrapper">
+                @* Содержимое страницы *@
+                <div id="content-section-bg">
+                    <div id="content-section-inner">
+
+                        <div id="content-section">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
                 @* Боковое меню *@
                 <div id="menu-block">
                     <div class="menu-block">
@@ -108,9 +139,9 @@
                         <ul>
                             @if (ViewContext.CurrentUser().Administrator > 0)
                             {
-                            <li>
-                                <a href="/ControlPanel/">Администрирование</a>
-                            </li>
+                                <li>
+                                    <a href="/ControlPanel/">Администрирование</a>
+                                </li>
                             }
                             <li>
                                 <a href="/account/change-password">Сменить пароль</a>
@@ -121,25 +152,30 @@
                         </ul>
                     </div>
                 </div>
-                @* Содержимое страницы *@
-                <div id="content-section">
-                    @RenderBody()
-                </div>
+            </div>
+            <div id="rigth_block">
+                <div style="width: 100%"></div>
             </div>
             @* Подложка под контент *@
-            <div id="content-section-bg">
-                <div id="content-section-inner">
-                </div>
-            </div>
-            <div style="clear: both"></div>   
-            <script type="text/javascript">
-                $(window).resize(function () {
-                    $("#content-section-inner").height($("#content-section").outerHeight(true)+$("#footer").outerHeight(true)+$("#footer").outerHeight(true)).width($("#content-wrapper").outerWidth(true)-255+((window.innerWidth-$("#content-wrapper").outerWidth(true))/2)).css("min-height",$("#menu-block").height()+$("#footer").outerHeight(true)+30);
-                }).resize();
+
+            <div style="clear: both"></div>
             </script>
         </section>
         @* Подвал *@
         @Html.Partial("Footer")
     </div>
+    <script>
+        $(document).ready(function () {
+            if ($('#product-form').length) {
+                setTimeout(function () {
+                    $('#content-section-inner').height($('#content-wrapper').height() - 10);
+                    $('#left_block_bg').height($('#content-section-inner').height());
+                }, 500);
+            } else {
+                $('#content-section-inner').height($('#content-wrapper').height() - 10);
+                $('#left_block_bg').height($('#content-section-inner').height());
+            }
+        });
+    </script>
 </body>
 </html>

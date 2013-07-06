@@ -31,255 +31,257 @@
         @Html.Partial("NavigationChain")
     </div>
     <form method="post" id="product-form" action="/account/products/save-product" enctype="multipart/form-data">
-        <div class="fields-group">
-            <input type="hidden" name="Id" value="@Model.Id"/>
-            <div class="fields-title">
-                @(Model.Id <= 0 ? "Создание товара" : string.Format("Редактирование товара \"{0}\"", Model.Title))
-            </div>
-            <div class="field">
-                <div class="label">
-                    <span class="asterix">*</span>Название товара
+        <div>
+            <div class="fields-group">
+                <input type="hidden" name="Id" value="@Model.Id"/>
+                <div class="fields-title">
+                    @(Model.Id <= 0 ? "Создание товара" : string.Format("Редактирование товара \"{0}\"", Model.Title))
                 </div>
-                <div class="editor">
-                    <input type="text" name="Title" value="@Model.Title"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    <span class="asterix">*</span>Ключевые слова
-                </div>
-                <div class="editor">
-                    <input type="text" name="Keywords" value="@Model.Keywords"/>
-                    <div class="details">
-                        Введите ключевые слова, характеризующий ваш товар. Например: мобильный телефон, сотовый, iPhone, Samsung
+                <div class="field">
+                    <div class="label">
+                        <span class="asterix">*</span>Название товара
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="Title" value="@Model.Title"/>
                     </div>
                 </div>
-            </div>
-            <div class="separator">
-            </div>
-
-            <div class="field">
-                <div class="label">
-                    <span class="asterix">*</span>Категория на вашем сайте
-                </div>
-                <div class="editor">
-                    @Html.DropDownListFor(m => m.UserCategoryId, userCategories, new { style = "width: 200px;" })
-                    <button id="add_category">Добавить категорию</button>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    <span class="asterix">*</span>Категория в каталоге <a href="/">Картель.рф</a>
-                </div>
-                <div class="editor">
-                    <input type="hidden" name="CategoryId" value="@Model.CategoryId" id="category-id-field"/>
-                    <span id="selected-category" style="padding-top: 2px; font-weight: bold; max-width: 550px; line-height: 1.5">
-                        @String.Join(" / ", categoriesPath.Select(c => c.Title))
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <table class="categories-selector">
-                    <tr>
-                        <td>
-                            <select size="10" id="root-categories" level="0">
-                                @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
-                                {
-                                    <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected" : "")>@rootCategory.Title</option>
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <select size="10" id="level-1-categories" level="1">
-                                @if (categoriesPath.Count > 1)
-                                {
-                                    foreach (var childCat in categoriesPath[0].GetChildCategories())
-                                    {
-                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected" : "")>@childCat.Title</option>
-                                    }
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <select size="10" id="level-2-categories" level="2">
-                                @if (categoriesPath.Count > 2)
-                                {
-                                    foreach (var childCat in categoriesPath[1].GetChildCategories())
-                                    {
-                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected" : "")>@childCat.Title</option>
-                                    }
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <select size="10" id="level-3-categories" level="3">
-                                @if (categoriesPath.Count > 3)
-                                {
-                                    foreach (var childCat in categoriesPath[2].GetChildCategories())
-                                    {
-                                    <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected" : "")>@childCat.Title</option>
-                                    }
-                                }
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="separator">
-            </div>
-            <div class="field">
-                <div class="label" style="margin-left: 115px; text-align: left;">
-                    <span class="asterix">*</span>Описание товара
-                </div>
-            </div>
-            <div class="field">
-                <div class="editor">
-                    <textarea class="ckeditor" name="Description">@Model.Description</textarea>
-                </div>
-            </div>
-            <div class="separator">
-            </div>
-            <div class="field">
-                <div class="label">
-                    <span class="asterix">*</span>Основное фото
-                </div>
-                <div class="editor">
-                    @if (Model.Id > 0 && !String.IsNullOrEmpty(Model.Img))
-                    {
-                        <img src="/files/prodimage/@Model.Img" style="height: 75px; width: auto"/>    
-                    }
-
-                    <input type="file" name="ProductImage" multiple="false" />
-                    <div class="details">Выберите одно изображение товара (JPG или GIF), не более 200 килобайт</div>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="field">
-                <div class="label">
-                    Дополнительные фото
-                </div>
-                <div class="editor">
-                    @if (images.Any())
-                    {
-                        foreach (var image in images)
-                        {
-                        <div style="border-bottom: 1px solid #c0c0c0; padding: 5px;">
-                            <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto; float: left;"/>
-                            <div style="float: right;">
-                                <label>Удалить</label>
-                                <input type="checkbox" value="@image.Id" name="deletedImage"/>
-                            </div>
-                            <div style="clear: both;"></div>
+                <div class="field">
+                    <div class="label">
+                        <span class="asterix">*</span>Ключевые слова
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="Keywords" value="@Model.Keywords"/>
+                        <div class="details">
+                            Введите ключевые слова, характеризующий ваш товар. Например: мобильный телефон, сотовый, iPhone, Samsung
                         </div>
+                    </div>
+                </div>
+                <div class="separator">
+                </div>
+
+                <div class="field">
+                    <div class="label">
+                        <span class="asterix">*</span>Категория на вашем сайте
+                    </div>
+                    <div class="editor">
+                        @Html.DropDownListFor(m => m.UserCategoryId, userCategories, new { style = "width: 200px;" })
+                        <button id="add_category">Добавить категорию</button>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        <span class="asterix">*</span>Категория в каталоге <a href="/">Картель.рф</a>
+                    </div>
+                    <div class="editor">
+                        <input type="hidden" name="CategoryId" value="@Model.CategoryId" id="category-id-field"/>
+                        <span id="selected-category" style="padding-top: 2px; font-weight: bold; max-width: 550px; line-height: 1.5">
+                            @String.Join(" / ", categoriesPath.Select(c => c.Title))
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <table class="categories-selector">
+                        <tr>
+                            <td>
+                                <select size="10" id="root-categories" level="0">
+                                    @foreach (var rootCategory in catManager.RootCategories.OrderBy(c => c.Sort))
+                                    {
+                                        <option value="@rootCategory.Id" @(categoriesPath.Count > 0 && categoriesPath[0].Id == rootCategory.Id ? "selected=selected" : "")>@rootCategory.Title</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select size="10" id="level-1-categories" level="1">
+                                    @if (categoriesPath.Count > 1)
+                                    {
+                                        foreach (var childCat in categoriesPath[0].GetChildCategories())
+                                        {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[1].Id ? "selected=selected" : "")>@childCat.Title</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select size="10" id="level-2-categories" level="2">
+                                    @if (categoriesPath.Count > 2)
+                                    {
+                                        foreach (var childCat in categoriesPath[1].GetChildCategories())
+                                        {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[2].Id ? "selected=selected" : "")>@childCat.Title</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select size="10" id="level-3-categories" level="3">
+                                    @if (categoriesPath.Count > 3)
+                                    {
+                                        foreach (var childCat in categoriesPath[2].GetChildCategories())
+                                        {
+                                        <option value="@childCat.Id" @(childCat.Id == categoriesPath[3].Id ? "selected=selected" : "")>@childCat.Title</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="separator">
+                </div>
+                <div class="field">
+                    <div class="label" style="margin-left: 115px; text-align: left;">
+                        <span class="asterix">*</span>Описание товара
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="editor">
+                        <textarea class="ckeditor" name="Description">@Model.Description</textarea>
+                    </div>
+                </div>
+                <div class="separator">
+                </div>
+                <div class="field">
+                    <div class="label">
+                        <span class="asterix">*</span>Основное фото
+                    </div>
+                    <div class="editor">
+                        @if (Model.Id > 0 && !String.IsNullOrEmpty(Model.Img))
+                        {
+                            <img src="/files/prodimage/@Model.Img" style="height: 75px; width: auto"/>    
                         }
-                        <input type="hidden" name="deletedImages" />
-                    }
-                    <div style="margin-top: 10px;">
-                        <input type="file" name="images" multiple accept="image" />
-                        <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+
+                        <input type="file" name="ProductImage" multiple="false" />
+                        <div class="details">Выберите одно изображение товара (JPG или GIF), не более 200 килобайт</div>
                     </div>
                 </div>
-            </div>
-            <div class="separator"></div>
-            <div class="field">
-                <div class="label">
-                    Цена
-                </div>
-                <div class="editor">
-                    <input type="text" class="small" name="Price" placeholder="Цена" value="@Model.Price"/>
-                    <input type="text" class="small" name="Currency" placeholder="Валюта" value="@Model.Currency"/>
-                    <input type="text" class="small" name="Measure" placeholder="Мера" value="@Model.Measure"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Бренд
-                </div>
-                <div class="editor">
-                    <input type="text" name="Field1" placeholder="Бренд" value="@Model.Field1"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Минимальная партия
-                </div>
-                <div class="editor">
-                    <input type="text" class="small" name="MinimunLotSize" placeholder="Количество" value="@Model.MinimunLotSize"/>
-                    <input type="text" class="small" name="MinimumLotMeasure" placeholder="Мера" value="@Model.MinimumLotMeasure"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Страна производитель
-                </div>
-                <div class="editor">
-                    <input type="text" name="VendorCountry" placeholder="Наименование страны производителя" value="@Model.VendorCountry"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Срок поставки
-                </div>
-                <div class="editor">
-                    <input type="text" name="DeliveryTime" placeholder="" value="@Model.DeliveryTime"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Возможность поставки
-                </div>
-                <div class="editor">
-                    <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="Количество" value="@Model.DeliveryPossibilityDay"/>
-                    <input type="text" class="small" name="DeliveryPossibilityMeasure" placeholder="Мера" value="@Model.DeliveryPossibilityMeasure"/>
-                    <input type="text" class="small" name="DeliveryPossibilityTime" placeholder="Время" value="@Model.DeliveryPossibilityTime"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Артикул товара
-                </div>
-                <div class="editor">
-                    <input type="text" name="ProductCode" placeholder="" value="@Model.ProductCode"/>
-                </div>
-            </div>
-            <div class="field">
-                <div class="label">
-                    Упаковка
-                </div>
-                <div class="editor">
-                    <input type="text" name="ProductBox" placeholder="" value="@Model.ProductBox"/>
-                </div>
-            </div>
-            <div class="separator"></div>
-            <div class="field">
-                <div class="editor" style="margin-left: 40px">
-                    @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <a href="#">Горячие товары</a>
-                </div>
-                <div class="hot-product-stats">
-                    <div class="pay-hot-product">
-                        @*                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>*@
+                <div class="separator"></div>
+                <div class="field">
+                    <div class="label">
+                        Дополнительные фото
                     </div>
-                    <div class="item">
-                        Всего показов: @Model.GetTotalViewsCount()
-                    </div>
-                    <div class="item">
-                        Всего переходов: @Model.GetClicksCount()
+                    <div class="editor">
+                        @if (images.Any())
+                        {
+                            foreach (var image in images)
+                            {
+                            <div style="border-bottom: 1px solid #c0c0c0; padding: 5px;">
+                                <img src="/files/prodimage/@image.Image" style="height: 75px; width: auto; float: left;"/>
+                                <div style="float: right;">
+                                    <label>Удалить</label>
+                                    <input type="checkbox" value="@image.Id" name="deletedImage"/>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            }
+                            <input type="hidden" name="deletedImages" />
+                        }
+                        <div style="margin-top: 10px;">
+                            <input type="file" name="images" multiple accept="image" />
+                            <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
+                        </div>
                     </div>
                 </div>
+                <div class="separator"></div>
+                <div class="field">
+                    <div class="label">
+                        Цена
+                    </div>
+                    <div class="editor">
+                        <input type="text" class="small" name="Price" placeholder="Цена" value="@Model.Price"/>
+                        <input type="text" class="small" name="Currency" placeholder="Валюта" value="@Model.Currency"/>
+                        <input type="text" class="small" name="Measure" placeholder="Мера" value="@Model.Measure"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Бренд
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="Field1" placeholder="Бренд" value="@Model.Field1"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Минимальная партия
+                    </div>
+                    <div class="editor">
+                        <input type="text" class="small" name="MinimunLotSize" placeholder="Количество" value="@Model.MinimunLotSize"/>
+                        <input type="text" class="small" name="MinimumLotMeasure" placeholder="Мера" value="@Model.MinimumLotMeasure"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Страна производитель
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="VendorCountry" placeholder="Наименование страны производителя" value="@Model.VendorCountry"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Срок поставки
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="DeliveryTime" placeholder="" value="@Model.DeliveryTime"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Возможность поставки
+                    </div>
+                    <div class="editor">
+                        <input type="text" class="small" name="DeliveryPossibilityDay" placeholder="Количество" value="@Model.DeliveryPossibilityDay"/>
+                        <input type="text" class="small" name="DeliveryPossibilityMeasure" placeholder="Мера" value="@Model.DeliveryPossibilityMeasure"/>
+                        <input type="text" class="small" name="DeliveryPossibilityTime" placeholder="Время" value="@Model.DeliveryPossibilityTime"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Артикул товара
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="ProductCode" placeholder="" value="@Model.ProductCode"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="label">
+                        Упаковка
+                    </div>
+                    <div class="editor">
+                        <input type="text" name="ProductBox" placeholder="" value="@Model.ProductBox"/>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="field">
+                    <div class="editor" style="margin-left: 40px">
+                        @Html.CheckBoxFor(m => m.HotProducts.EnableHotProduct) Показывать в разделе <a href="#">Горячие товары</a>
+                    </div>
+                    <div class="hot-product-stats">
+                        <div class="pay-hot-product">
+                            @*                        Доступно показов <span class="round">@Model.User.AvailableHotProductsShows</span> <a class="round" target="_blank" href="/account/hot-products">Купить показы</a>*@
+                        </div>
+                        <div class="item">
+                            Всего показов: @Model.GetTotalViewsCount()
+                        </div>
+                        <div class="item">
+                            Всего переходов: @Model.GetClicksCount()
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="send-title" style="position: relative;">
+                    <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
+                    <a href="/account/sending/mail"><span class="icon-email"></span></a>
+                </div>
+                <div class="separator"></div>
+                <div class="send-title" style="position: relative;">
+                    <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
+                    <a href="/account/sending/sms"><span class="icon-sms"></span></a>
+                </div>
             </div>
-            <div class="separator"></div>
-            <div class="send-title" style="position: relative;">
-                <a href="/account/sending/mail">Сделать <b>E-mail</b> рассылку о товаре</a>
-                <a href="/account/sending/mail"><span class="icon-email"></span></a>
+            <div style="text-align: center">
+                <input type="submit" class="save" value=" " />
             </div>
-            <div class="separator"></div>
-            <div class="send-title" style="position: relative;">
-                <a href="/account/sending/sms">Сделать <b>SMS</b> рассылку о товаре</a>
-                <a href="/account/sending/sms"><span class="icon-sms"></span></a>
-            </div>
-        </div>
-        <div style="text-align: center">
-            <input type="submit" class="save" value=" " />
         </div>
     </form>
 </div>
@@ -380,7 +382,7 @@
     $(document).ready(function () {
         $('#product-form').submit(function () {
             var deletedImages = [];
-            
+
             $('[name=deletedImage]').each(function () {
                 if ($(this).is(':checked')) {
                     deletedImages.push($(this).val());
