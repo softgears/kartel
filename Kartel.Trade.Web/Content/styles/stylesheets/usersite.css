@@ -381,7 +381,7 @@ strong {
 }
 /* line 321, ../sass/usersite.sass */
 #header #header-content #navigation-chain {
-  background-color: lightgrey;
+  background-color: #d3d3d3;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 5px 10px;
@@ -1038,7 +1038,7 @@ form label.error {
 }
 /* line 19, ../sass/banners.sass */
 #banners-block #banners-swticher {
-  background: whitesmoke;
+  background: #f5f5f5;
   border-radius: 8px 8px 0 0;
   display: inline-block;
   padding: 9px 10px 7px 10px;
@@ -1082,4 +1082,100 @@ form label.error {
 #user_site_layout #banners-block #banners-swticher {
   margin-left: -25px;
   bottom: 0;
+}
+
+/* line 1, ../sass/banner-editor.sass */
+.banner-preview {
+  position: relative;
+  text-align: center;
+}
+/* line 5, ../sass/banner-editor.sass */
+.banner-preview .banner {
+  width: 930px;
+  position: relative;
+  height: 350px;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  overflow: hidden;
+}
+/* line 13, ../sass/banner-editor.sass */
+.banner-preview .banner img {
+  width: 100%;
+  height: auto;
+  z-index: 10;
+}
+/* line 18, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text {
+  position: absolute;
+  display: inline-block;
+  font-family: Arial;
+  font-weight: bold;
+  color: black;
+  white-space: nowrap;
+}
+/* line 26, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.lefttop {
+  top: 5px;
+  left: 5px;
+}
+/* line 30, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.right-top {
+  top: 5px;
+  right: 5px;
+}
+/* line 34, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.leftbottom {
+  bottom: 5px;
+  left: 5px;
+}
+/* line 38, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.rightbottom {
+  bottom: 5px;
+  right: 5px;
+}
+/* line 42, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.middletop {
+  width: 100%;
+  top: 5px;
+  left: 0px;
+  text-align: center;
+}
+/* line 48, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.middlebottom {
+  width: 100%;
+  bottom: 5px;
+  left: 0px;
+  text-align: center;
+}
+/* line 54, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.small {
+  font-size: 13px;
+}
+/* line 57, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.medium {
+  font-size: 25px;
+}
+/* line 60, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.large {
+  font-size: 37px;
+}
+/* line 63, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.black {
+  color: black;
+}
+/* line 66, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.white {
+  color: white;
+}
+/* line 69, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.red {
+  color: red;
+}
+/* line 72, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.green {
+  color: green;
+}
+/* line 75, ../sass/banner-editor.sass */
+.banner-preview .banner #banner-text.blue {
+  color: blue;
 }

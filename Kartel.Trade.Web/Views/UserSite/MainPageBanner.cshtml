@@ -1,0 +1,13 @@
+﻿@model Kartel.Domain.Entities.User
+@{
+    var banner = Model.Banner;
+}
+@if (banner != null && banner.Enabled)
+{
+<div class="banner-preview" style="margin: 15px 0px">
+    <div class="banner">
+        <img src="/files/banner/@banner.ImageUrl" class="banner-image"/>
+        <div id="banner-text" class="banner-text @banner.Color @banner.Position @banner.Size">@banner.Text</div>
+    </div>
+</div>    
+}

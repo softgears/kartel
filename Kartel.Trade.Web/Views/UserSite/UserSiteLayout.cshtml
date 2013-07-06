@@ -8,6 +8,7 @@
         .Where(f => string.IsNullOrEmpty(f.Html) & f.Img != null & f.Extra == "1")
         .OrderBy(f => f.Sort)
         .ToList();
+    var isMainPage = ViewContext.RouteData.Values["action"].ToString() == "Index";
 }
 
 <!DOCTYPE html>
@@ -211,7 +212,18 @@
             @* Содержимое *@
             <section id="content">
                 <div id="content-wrapper">
-                    @Html.Partial("Banners", banners)
+                    @if (!isMainPage)
+                    {
+                        if (user.Tarif != "gold")
+                        {
+                            @Html.Partial("Banners", banners)    
+                        }   
+                    }
+                    else
+                    {
+                        @Html.Partial("MainPageBanner",user)
+                    }
+                    
                     @* Боковое меню *@
                     <div id="content-menu">
                         @* Пользовательские категории *@

@@ -2668,6 +2668,7 @@
     <Content Include="Views\Account\HotProductsPhysBill.cshtml" />
     <Content Include="Views\Account\Banner.cshtml" />
     <Content Include="Views\Shared\Banners.cshtml" />
+    <Content Include="Views\UserSite\MainPageBanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
