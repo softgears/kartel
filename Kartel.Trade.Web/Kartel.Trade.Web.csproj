@@ -2669,6 +2669,8 @@
     <Content Include="Views\Account\Banner.cshtml" />
     <Content Include="Views\Shared\Banners.cshtml" />
     <Content Include="Views\UserSite\MainPageBanner.cshtml" />
+    <Content Include="Views\Shared\Regions.cshtml" />
+    <Content Include="Views\Shared\Countries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

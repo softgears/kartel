@@ -651,3 +651,13 @@
   right: 30px;
   top: -10px;
 }
+
+/* line 524, ../sass/account.sass */
+#feature_list {
+  margin-top: 18px;
+}
+/* line 527, ../sass/account.sass */
+#feature_list li {
+  margin: 12px 0;
+  font-size: 13px;
+}
