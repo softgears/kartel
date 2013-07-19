@@ -5,14 +5,14 @@
     <ignored path="Kartel.Trade.Web.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/page-main.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374212890004" ignored="false" />
-    <file path="/a.dummy" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349939916" ignored="false" />
-    <file path="/a.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297563542" ignored="false" />
+    <file path="/a.dummy" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374214744982" ignored="false" />
+    <file path="/a.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374214802504" ignored="false" />
     <file path="$PROJECT_DIR$/Areas/ControlPanel/Views/Web.config" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371297493161" ignored="false" />
     <file path="/page-register.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365651776257" ignored="false" />
     <file path="/products.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371349262236" ignored="false" />
     <file path="/categories.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1365573583896" ignored="false" />
     <file path="/all.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374212626255" ignored="false" />
-    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1371348555051" ignored="false" />
+    <file path="/layout.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374217580376" ignored="false" />
     <file path="/account.sass" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1366086541983" ignored="false" />
     <file path="/mainpage.scss" changelist="91385219-d411-4363-9b27-3ebb50b1a82d" time="1374212836956" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,10 +34,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="page-main.sass" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
+      <file leaf-file-name="layout.sass" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="10" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.39703903">
+            <state line="230" column="38" selection-start="4552" selection-end="4552" vertical-scroll-proportion="0.49394348">
               <folding />
             </state>
           </provider>
@@ -56,7 +56,6 @@
         <option value="$PROJECT_DIR$/Content/styles/sass/reset.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-register.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/design-editor.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/banner-editor.sass" />
@@ -65,6 +64,7 @@
         <option value="$PROJECT_DIR$/Content/styles/sass/mainpage.scss" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
       </list>
     </option>
   </component>
@@ -180,7 +180,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.externalTools" />
+    <property name="options.lastSelected" value="preferences.sourceCode.SASS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Content/compass-watcher.bat" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -190,6 +190,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="91385219-d411-4363-9b27-3ebb50b1a82d" name="Default" comment="" />
@@ -311,11 +328,6 @@
         <state line="11" column="6" selection-start="194" selection-end="194" vertical-scroll-proportion="0.17777778" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="42" selection-start="5075" selection-end="5075" vertical-scroll-proportion="0.7286528" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="22" selection-start="1279" selection-end="1280" vertical-scroll-proportion="0.04130809" />
@@ -366,6 +378,13 @@
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-main.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="10" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.39703903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="230" column="38" selection-start="4552" selection-end="4552" vertical-scroll-proportion="0.49394348">
           <folding />
         </state>
       </provider>
