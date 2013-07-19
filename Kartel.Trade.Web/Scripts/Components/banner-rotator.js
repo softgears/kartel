@@ -1,7 +1,6 @@
 $(document).ready(function () {
 	var el = $('.banner');
 	var first = $('.banner').first().show();
-
 	if (first) {
 		var banner = first;
 
@@ -25,7 +24,7 @@ $(document).ready(function () {
 				}
 			});
 		} else {
-			$('#banner-switcher').hide();
+			$('#banners-swticher').hide();
 		}
 	}
 
