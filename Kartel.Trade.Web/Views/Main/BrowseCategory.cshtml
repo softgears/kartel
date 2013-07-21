@@ -13,7 +13,7 @@
 
 @section LeftMenuBlock
 {
-    <div class="menu-block">
+    <div class="menu-block" style="margin-top: 17px;">
         <div class="menu-block-title">
             @Model.Title
         </div>
@@ -67,6 +67,7 @@
             @Html.Partial("HotProduct", product)
         }
         @Html.Partial("HotActions")
+        @Model.
     </div>
 
     @* Верхний навигатор *@
@@ -85,7 +86,7 @@
     @* Пагинатор *@
     @if (totalPages > 1)
     {
-        <div id="paginator">
+        <div id="paginator" style="text-align: left;">
             @for (var i = 0; i < totalPages; i++)
             {
                 if (i == page)

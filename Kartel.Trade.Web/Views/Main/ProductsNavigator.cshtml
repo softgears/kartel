@@ -7,17 +7,23 @@
 
 <div class="products-navigator">
     <select class="product-sort">
-        <option value="price">Цена</option>
+        @*<option value="price">Цена</option>
         <option value="count">Минимальная партия</option>
-        <option value="views">Просмотров</option>
+        <option value="views">Просмотров</option>*@
+        <option value="views">Деятельность компании</option>
+        <option value="views">Импортер</option>
+        <option value="views">Экспортер</option>
+        <option value="views">Производитель</option>
+        <option value="views">Агент</option>
+        <option value="views">Дистрибьютор</option>
     </select>
     @if (page > 0)
     {
-        <span class="prev">Предыдущая страница</span>
+        <span class="prev" style="text-decoration: underline;">Предыдущая</span>
     }
     @if (page < totalPages - 1)
     {
-        <span class="next">Следующая страница</span>
+        <span class="next" style="text-decoration: underline;">Следующая</span>
     }
     <div style="clear: both"></div>
 </div>
