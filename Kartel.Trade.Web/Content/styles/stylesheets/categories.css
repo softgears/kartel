@@ -31,13 +31,13 @@
 }
 /* line 25, ../sass/categories.sass */
 #page-categories .category-1-level {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   clear: both;
 }
 /* line 29, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-title {
   padding: 5px 7px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Arial;
   color: white;
   background: url(../../images/layout/innerbg.png);
@@ -67,7 +67,7 @@
   color: #008ac0;
   font-family: Arial;
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 /* line 60, ../sass/categories.sass */
 #page-categories .category-1-level .category-1-child .category-2-level .category-2-title a:hover {
@@ -77,7 +77,7 @@
 #page-categories .category-1-level .category-1-child .category-2-level li.level-3, #page-categories .category-1-level .category-1-child .category-2-level li.level-4 {
   list-style-type: disc;
   list-style-position: inside;
-  margin: 5px 0px;
+  margin: 7px 0px;
   margin-left: 7px;
 }
 /* line 69, ../sass/categories.sass */
