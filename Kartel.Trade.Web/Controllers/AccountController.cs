@@ -50,7 +50,9 @@ namespace Kartel.Trade.Web.Controllers
             var email = UsersRepository.ExistsUserWithLogin(Email);
             if (email)
             {
-                return Content("\"Пользователь с таким Email уже зарегистрирован\"");
+                return Content("\"Пользователь с таким Email уже зарегистрирован <br>" +
+                               "<span class='email-error'>" +
+                               "<a href='/account/ForgotPassword'>Восстановить пароль</a></span>\"");
             }
             else
             {
@@ -120,6 +122,7 @@ namespace Kartel.Trade.Web.Controllers
             if (exists)
             {
                 ViewBag.message = "На сайте уже зарегистрирован пользователь с таким адресом";
+                TempData["UserExists"] = true;
                 return View("RegistrationResult");
             }
 

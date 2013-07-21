@@ -1613,9 +1613,10 @@ body #footer #footer-content a {
 }
 /* line 23, ../sass/page-register.sass */
 #page-register #registration-info .info .digit {
-  color: #b8b8b8;
+  color: red;
+  font-size: 20px;
 }
-/* line 26, ../sass/page-register.sass */
+/* line 27, ../sass/page-register.sass */
 #page-register #registration-info .free {
   margin-top: 20px;
   color: #02659e;
@@ -1623,18 +1624,18 @@ body #footer #footer-content a {
   font-size: 16px;
   text-align: center;
 }
-/* line 33, ../sass/page-register.sass */
+/* line 34, ../sass/page-register.sass */
 #page-register .required-warning {
   font-size: 16px;
   margin: 20px 0px;
   color: #0170a5;
   font-style: italic;
 }
-/* line 39, ../sass/page-register.sass */
+/* line 40, ../sass/page-register.sass */
 #page-register .field {
   margin-bottom: 3px;
 }
-/* line 42, ../sass/page-register.sass */
+/* line 43, ../sass/page-register.sass */
 #page-register .field .label {
   display: inline-block;
   vertical-align: top;
@@ -1644,54 +1645,58 @@ body #footer #footer-content a {
   padding-top: 10px;
   font-weight: bold;
 }
-/* line 51, ../sass/page-register.sass */
+/* line 52, ../sass/page-register.sass */
 #page-register .field .label.header {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 15px;
   margin-top: 10px;
 }
-/* line 57, ../sass/page-register.sass */
+/* line 58, ../sass/page-register.sass */
 #page-register .field .label .asterix {
   color: #0170a5;
 }
-/* line 60, ../sass/page-register.sass */
+/* line 61, ../sass/page-register.sass */
 #page-register .field .editor {
   display: inline-block;
   vertical-align: top;
 }
-/* line 64, ../sass/page-register.sass */
-#page-register .field .editor input[type='text'], #page-register .field .editor input[type='password'] {
-  background-color: white;
-  padding: 5px;
-  width: 270px;
-  border: 1px solid #cecece;
-  border-radius: 3px;
+/* line 65, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'], #page-register .field .editor input[type='password'], #page-register .field .editor select {
+  background-color: white !important;
+  padding: 5px !important;
+  width: 270px !important;
+  border: 1px solid #cecece !important;
+  border-radius: 3px !important;
 }
-/* line 71, ../sass/page-register.sass */
-#page-register .field .editor input[type='text'].small, #page-register .field .editor input[type='password'].small {
+/* line 72, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'].small, #page-register .field .editor input[type='password'].small, #page-register .field .editor select.small {
   width: 80px !important;
 }
-/* line 74, ../sass/page-register.sass */
-#page-register .field .editor input[type='text'].error, #page-register .field .editor input[type='password'].error {
-  background-color: #ffc7bb;
+/* line 75, ../sass/page-register.sass */
+#page-register .field .editor input[type='text'].error, #page-register .field .editor input[type='password'].error, #page-register .field .editor select.error {
+  background-color: #ffc7bb !important;
 }
-/* line 77, ../sass/page-register.sass */
+/* line 78, ../sass/page-register.sass */
+#page-register .field .editor select {
+  width: 282px !important;
+}
+/* line 81, ../sass/page-register.sass */
 #page-register .field .editor #captcha-image {
   width: 115px;
   height: 37px;
   margin-right: 5px;
 }
-/* line 82, ../sass/page-register.sass */
+/* line 86, ../sass/page-register.sass */
 #page-register .field .editor #captcha-field {
   width: 150px;
 }
-/* line 85, ../sass/page-register.sass */
+/* line 89, ../sass/page-register.sass */
 #page-register .field .editor label.error {
   color: red;
   margin-left: 5px;
 }
-/* line 89, ../sass/page-register.sass */
+/* line 93, ../sass/page-register.sass */
 #page-register #reg-button {
   margin-top: 25px;
   width: 149px;
@@ -1700,6 +1705,13 @@ body #footer #footer-content a {
   background: url(../../images/layout/doreg.png);
   border: 0;
   margin-left: 220px;
+}
+
+/* line 103, ../sass/page-register.sass */
+.email-error {
+  margin-left: 286px;
+  position: absolute;
+  margin-top: -5px;
 }
 
 /* line 3, ../sass/account.sass */

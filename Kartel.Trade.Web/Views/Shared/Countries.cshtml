@@ -1,43 +1,74 @@
-﻿<select name="Country" id="countries" style="width: 399px;">
+﻿@model Kartel.Domain.Entities.User
+
+<select name="Country" id="country-field" style="width: 399px;">
     <option>Россия</option>
-	<option>Австралия</option>
-	<option>Австрия</option>
-	<option>Беларусь</option>
-	<option>Бельгия</option>
-	<option>Болгария</option>
-	<option>Великобритания</option>
-	<option>Дания</option>
-	<option>Индия</option>
-	<option>Иран</option>
-	<option>Ирландия</option>
-	<option>Испания</option>
-	<option>Италия</option>
-	<option>Канада</option>
-	<option>Китай</option>
+    <option>Австралия</option>
+    <option>Австрия</option>
+    <option>Беларусь</option>
+    <option>Бельгия</option>
+    <option>Болгария</option>
+    <option>Великобритания</option>
+    <option>Дания</option>
+    <option>Индия</option>
+    <option>Иран</option>
+    <option>Ирландия</option>
+    <option>Испания</option>
+    <option>Италия</option>
+    <option>Канада</option>
+    <option>Китай</option>
     <option>Латвия</option>
     <option>Литва</option>
-	<option>Люксембург</option>
-	<option>Малайзия</option>
-	<option>Нидерланды</option>
-	<option>Норвегия</option>
-	<option>О.А.Э.</option>
-	<option>Пакистан</option>
-	<option>Польша</option>
-	<option>Португалия</option>
-	<option>Сингапур</option>
-	<option>Словения</option>
-	<option>США</option>
-	<option>Тайвань</option>
-	<option>Тайланд</option>
-	<option>Турция</option>
-	<option>Украина</option>
-	<option>Финляндия</option>
-	<option>Франция</option>
-	<option>Чешская Республика</option>
-	<option>Чили</option>
-	<option>Швейцария</option>
-	<option>Швеция</option>
-	<option>Эстония</option>
-	<option>Южная Корея</option>
-	<option>Япония</option>
+    <option>Люксембург</option>
+    <option>Малайзия</option>
+    <option>Нидерланды</option>
+    <option>Норвегия</option>
+    <option>О.А.Э.</option>
+    <option>Пакистан</option>
+    <option>Польша</option>
+    <option>Португалия</option>
+    <option>Сингапур</option>
+    <option>Словения</option>
+    <option>США</option>
+    <option>Тайвань</option>
+    <option>Тайланд</option>
+    <option>Турция</option>
+    <option>Украина</option>
+    <option>Финляндия</option>
+    <option>Франция</option>
+    <option>Чешская Республика</option>
+    <option>Чили</option>
+    <option>Швейцария</option>
+    <option>Швеция</option>
+    <option>Эстония</option>
+    <option>Южная Корея</option>
+    <option>Япония</option>
 </select>
+
+@if (Model != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('#country-field').val('@Model.Country').trigger('change');
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(document).ready(function() {
+            var country = $('#country-field');
+            country.val('Россия').trigger('change');
+            var code = $('input[name="CountryCode"]');
+            if (country.val() == 'Россия') {
+                code.val(7);
+            }
+            country.change(function() {
+                if (country.val() == 'Россия') {
+                    code.val(7);
+                } else {
+                    code.val('');
+                }
+            });
+        });
+    </script>
+}

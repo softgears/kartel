@@ -155,12 +155,7 @@
                     <span class="asterix">*</span>Страна
                 </div>
                 <div class="editor">
-                    @Html.Partial("Countries")
-                    <script>
-                        $(document).ready(function () {
-                            $('#countries').val('@current.Country').trigger('change');
-                        })
-                    </script>
+                    @Html.Partial("Countries", current)
                 </div>
             </div>
             <div class="field">
@@ -168,35 +163,7 @@
                     Регион
                 </div>
                 <div class="editor">
-                    @Html.Partial("Regions")
-                    <input type="text" id="region" name="Region" value="@current.Region"/>
-                    <input type="hidden" name="Region" value="@current.Region"/>
-                    <script>
-                        $(document).ready(function () {
-                            $('#regions').val('@current.Region').trigger('change');
-                            $('#region').val('@current.Region');
-                            var countries = $('#countries');
-                            
-                            var countryCheck = function() {
-                                var regions = $('#regions');
-                                var region = $('#region');
-                                regions.hide();
-                                region.hide();
-                                if (countries.val() == 'Россия') {
-                                    regions.val('@current.Region').trigger('change');
-                                    regions.show();
-                                } else {
-                                    region.show();
-                                }
-                            };
-                            
-                            countryCheck();
-
-                            countries.change(function() {
-                                countryCheck();
-                            });
-                        })
-                    </script>
+                    @Html.Partial("Regions", current)
                 </div>
             </div>
             <div class="field">
