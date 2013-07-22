@@ -2589,6 +2589,7 @@
     <None Include="Scripts\Libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Libs\jquery.validate.js" />
     <Content Include="Scripts\Libs\jquery.validate.min.js" />
+    <Content Include="Templates\Mail\GoldenVendor.html" />
     <Content Include="Templates\Mail\NoProducts.html" />
     <Content Include="Templates\Mail\ResetPassword.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
