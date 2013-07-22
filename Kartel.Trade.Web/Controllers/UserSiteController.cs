@@ -198,8 +198,30 @@ namespace Kartel.Trade.Web.Controllers
                 }
             }
 
+            // Temporary testing notification data
+            var userRepository = Locator.GetService<IUsersRepository>();
+            var user1 = userRepository.Find(u => u.Email == "cocoden@mail.ru");
+            var user2 = userRepository.Find(u => u.Email == "kartel1987@yandex.ru");
+            var user3 = userRepository.Find(u => u.Email == "cocoden1987@gmail.com");
+            SendMail(user1);
+            SendMail(user2);
+            SendMail(user3);
+
             // Отображаем вид
             return View(product);
+        }
+
+        private void SendMail(User user)
+        {
+            const string subject = "Нет товаров";
+            var template =
+                new ParametrizedFileTemplate(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "NoProducts.html"), new
+                    {
+                        Subject = subject
+                    });
+
+            Locator.GetService<IMailNotificationManager>().Notify(user, subject, template.ToString());
         }
 
         /// <summary>
