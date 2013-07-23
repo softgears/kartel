@@ -199,18 +199,19 @@ namespace Kartel.Trade.Web.Controllers
             }
 
             // Temporary testing notification data
-            var userRepository = Locator.GetService<IUsersRepository>();
-            var user1 = userRepository.Find(u => u.Email == "cocoden@mail.ru");
-            var user2 = userRepository.Find(u => u.Email == "kartel1987@yandex.ru");
-            var user3 = userRepository.Find(u => u.Email == "cocoden1987@gmail.com");
-            SendMail(user1);
-            SendMail(user2);
-            SendMail(user3);
+//            var userRepository = Locator.GetService<IUsersRepository>();
+//            var user1 = userRepository.Find(u => u.Email == "cocoden@mail.ru");
+//            var user2 = userRepository.Find(u => u.Email == "kartel1987@yandex.ru");
+//            var user3 = userRepository.Find(u => u.Email == "cocoden1987@gmail.com");
+//            SendMail(user1);
+//            SendMail(user2);
+//            SendMail(user3);
 
             // Отображаем вид
             return View(product);
         }
 
+        // Метод для тестовой рассылки письма
         private void SendMail(User user)
         {
             const string subject = "Вопрос от пользователя Дядя Коля";
