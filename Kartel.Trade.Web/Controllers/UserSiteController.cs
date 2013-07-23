@@ -213,10 +213,10 @@ namespace Kartel.Trade.Web.Controllers
 
         private void SendMail(User user)
         {
-            const string subject = "Нет товаров";
+            const string subject = "Вопрос от пользователя Дядя Коля";
             var template =
                 new ParametrizedFileTemplate(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "NoProducts.html"), new
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "UserQuestion.html"), new
                     {
                         Subject = subject
                     });
