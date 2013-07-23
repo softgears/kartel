@@ -26,6 +26,7 @@ namespace Kartel.Domain.Infrastructure.Mailing
         /// Период срабатывания таймера
         /// </summary>
         private const long TimerPeriod = 60000;
+//        private const long TimerPeriod = 1000;
 
         /// <summary>
         /// Флаг, указывающий, находится ли очередь в процессе обработки

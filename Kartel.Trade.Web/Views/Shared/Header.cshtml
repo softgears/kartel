@@ -38,7 +38,12 @@
                     </ul>
                 </li>
             </ul>
-            <a id="top-login" href="/account/login">Вход в личный кабинет</a> / <a id="top-register" href="/account/register">Регистрация</a>
+            <a id="top-login" href="/account/login">Вход в личный кабинет</a> 
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <span>/</span> 
+                <a id="top-register" href="/account/register">Регистрация</a>                
+            }
         </div>
         <div id="logo-line">
             <a href="/" id="logo">

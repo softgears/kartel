@@ -21,7 +21,8 @@
 			line-height: 1.5
 
 			.digit
-				color: #b8b8b8
+				color: red
+				font-size: 20px
 
 		.free
 			margin-top: 20px
@@ -61,18 +62,21 @@
 			display: inline-block
 			vertical-align: top
 
-			input[type='text'], input[type='password']
-				background-color: white
-				padding: 5px
-				width: 270px
-				border: 1px solid #cecece
-				border-radius: 3px
+			input[type='text'], input[type='password'], select
+				background-color: white !important
+				padding: 5px !important
+				width: 270px !important
+				border: 1px solid #cecece !important
+				border-radius: 3px !important
 
 				&.small
 					width: 80px !important
 
 				&.error
-					background-color: #ffc7bb
+					background-color: #ffc7bb !important
+
+			select
+				width: 282px !important
 
 			#captcha-image
 				width: 115px
@@ -96,3 +100,7 @@
 		margin-left: 220px
 
 
+.email-error
+	margin-left : 286px
+	position: absolute
+	margin-top: -5px

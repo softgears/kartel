@@ -155,7 +155,7 @@
                     <span class="asterix">*</span>Страна
                 </div>
                 <div class="editor">
-                    <input type="text" name="Country" value="@current.Country" id="country-field"/>
+                    @Html.Partial("Countries", current)
                 </div>
             </div>
             <div class="field">
@@ -163,7 +163,7 @@
                     Регион
                 </div>
                 <div class="editor">
-                    <input type="text" name="Region" value="@current.Region"/>
+                    @Html.Partial("Regions", current)
                 </div>
             </div>
             <div class="field">

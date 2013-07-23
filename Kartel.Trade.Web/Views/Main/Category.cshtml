@@ -12,32 +12,6 @@
     var catRep = Locator.GetService<ICategoriesRepository>();
 }
 
-@section LeftMenuBlock
-{
-    <div class="menu-block">
-        <div class="menu-block-title">
-            Заголовок внутреннего меню в категории
-        </div>
-        <ul>
-            <li>
-                <a href="#">Элемент меню</a>
-            </li>
-            <li>
-                <a href="#">Элемент меню</a>
-            </li>
-            <li>
-                <a href="#">Элемент меню</a>
-            </li>
-            <li>
-                <a href="#">Элемент меню</a>
-            </li>
-            <li>
-                <a href="#">Элемент меню</a>
-            </li>
-        </ul>
-    </div>
-}
-
 <div id="page-categories">
     @* Навигационная цепочка *@
     @Html.Partial("NavigationChain")

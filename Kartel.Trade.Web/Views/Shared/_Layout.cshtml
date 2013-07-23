@@ -12,17 +12,19 @@
     @Html.Partial("Includes")
 </head>
 <body>
-    <div>
-        @Html.Partial("Header")
-        <section id="content">
-            <div id="content-wrapper">
-                @RenderBody() 
-            </div>
-        </section>
+    <div id="container-wrapper">
+        <div id="container">
+            @Html.Partial("Header")
+            <section id="content">
+                <div id="content-wrapper">
+                    @RenderBody()
+                </div>
+            </section>
+        </div>
         @Html.Partial("Footer")
     </div>
     <script type="text/javascript">
-        $("#categories li").each(function(index, item) {
+        $("#categories li").each(function (index, item) {
             var length = parseInt($(item).data("length"));
             if (length > 27) {
                 $(item).addClass("big");

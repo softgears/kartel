@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Linq;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Infrastructure.Mailing.Templates;
 using Kartel.Domain.Infrastructure.Routing;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.Interfaces.Search;
 using Kartel.Domain.IoC;
@@ -36,7 +39,7 @@ namespace Kartel.Trade.Web.Controllers
         public ActionResult Category(long id)
         {
             // Пушим навигационную цепочку
-            PushNavigationChainItem("Главная","/");
+            PushNavigationChainItem("Главная", "/");
 
             // Загружаем указанную категорию
             var rep = Locator.GetService<ICategoriesRepository>();
@@ -46,18 +49,14 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("NotFound");
             }
 
-            PushNavigationChainItem(cat.Title,"",true);
+            PushNavigationChainItem(cat.Title, "", true);
 
             // Отображаем вьху указанной категории
             if (cat.CategoryMaps.Count > 0)
             {
-                return View(cat);    
+                return View(cat);
             }
-            else
-            {
-                return View("StaticCategories", cat);
-            }
-            
+            return View("StaticCategories", cat);
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace Kartel.Trade.Web.Controllers
         {
             // Пушим навигационную цепочку
             PushNavigationChainItem("Главная", "/");
-            PushNavigationChainItem("Тендеры", "/tenders",true);
+            PushNavigationChainItem("Тендеры", "/tenders", true);
 
             return View();
         }
@@ -133,7 +132,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <param name="page">Страница</param>
         /// <returns></returns>
         [Route("tenders/category/{id}")]
-        public ActionResult TendersCategory(long id,int page = 0)
+        public ActionResult TendersCategory(long id, int page = 0)
         {
             // Ищем категорию
             var categoriesRep = Locator.GetService<ICategoriesRepository>();
@@ -169,7 +168,7 @@ namespace Kartel.Trade.Web.Controllers
             if (manager.IsIndexingInProgress)
             {
                 // Индекс перестраивается - подождем
-                PushNavigationChainItem("Поиск не доступен", "/",true);
+                PushNavigationChainItem("Поиск не доступен", "/", true);
                 return View("SearchIndexing");
             }
 
@@ -179,7 +178,7 @@ namespace Kartel.Trade.Web.Controllers
             if (what == "products")
             {
                 var searched = manager.SearchProducts(term);
-                return View("SearchProducts",searched.ToList());
+                return View("SearchProducts", searched.ToList());
             }
             else if (what == "tenders")
             {

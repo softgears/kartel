@@ -163,7 +163,7 @@
                         <a href="/vendor/@user.Id">
                             @if (!String.IsNullOrEmpty(user.LogoUrl))
                             {
-                                <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" />    
+                                <img src="/files/userimage/@user.LogoUrl" alt="@user.Company" /><span style="font-size: 25px; color: black">@Html.Raw(user.Company)</span>
                             }
                             else
                             {
@@ -248,7 +248,8 @@
                                 <a href="/vendor/about/@user.Id">О Компании
                                 </a>
                             </div>
-                            <div class="group-content">
+                            <div class="group-content" style="font-family: Arial; font-size: 13px;">
+                                @user.About
                             </div>
                         </div>
                         @* Обратная связь *@
@@ -376,6 +377,10 @@
                 $(window).resize(function () {
                     $("#footer").css("top", $(window).height() - $("#footer").outerHeight());
                 }).resize();
+
+                var phone = $('#phone');
+                var number = phone.text().replace('(', ' (').replace(')', ') ');
+                phone.text(number);
             });
     </script>
 </body>

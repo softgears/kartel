@@ -1,0 +1,140 @@
+﻿<select name="Region" id="regions" style="width: 399px;">
+    <option>--</option>
+    <option>Адыгея</option>
+    <option>Алтайский край</option>
+    <option>Амурская обл.</option>
+    <option>Архангельская обл.</option>
+    <option>Астраханская обл.</option>
+    <option>Башкортостан</option>
+    <option>Белгородская обл.</option>
+    <option>Брянская обл.</option>
+    <option>Бурятия</option>
+    <option>Владимирская обл.</option>
+    <option>Волгоградская обл.</option>
+    <option>Вологодская обл.</option>
+    <option>Воронежская обл.</option>
+    <option>Дагестан</option>
+    <option>Забайкальский край.</option>
+    <option>Ивановская обл.</option>
+    <option>Иркутская обл.</option>
+    <option>Калининградская обл.</option>
+    <option>Калужская обл.</option>
+    <option>Калмыкия</option>
+    <option>Камчатская обл.</option>
+    <option>Карелия</option>
+    <option>Кемеровская обл.</option>
+    <option>Кировская обл.</option>
+    <option>Коми</option>
+    <option>Костромская обл.</option>
+    <option>Краснодарский край</option>
+    <option>Красноярский край</option>
+    <option>Курганская обл.</option>
+    <option>Курская обл.</option>
+    <option>Ленинградская обл.</option>
+    <option>Липецкая обл.</option>
+    <option>Магаданская обл.</option>
+    <option>Марий Эл</option>
+    <option>Мордовия</option>
+    <option>Московская обл.</option>
+    <option>Мурманская обл.</option>
+    <option>Нижегородская обл.</option>
+    <option>Новгородская обл.</option>
+    <option>Новосибирская обл.</option>
+    <option>Омская обл.</option>
+    <option>Оренбургская обл.</option>
+    <option>Орловская обл.</option>
+    <option>Пензенская обл.</option>
+    <option>Пермская обл.</option>
+    <option>Приморский край</option>
+    <option>Псковская обл.</option>
+    <option>Ростовская обл.</option>
+    <option>Рязанская обл.</option>
+    <option>Самарская обл.</option>
+    <option>Санкт-Петербург</option>
+    <option>Саратовская обл.</option>
+    <option>Сахалинская обл.</option>
+    <option>Саха (Якутия)</option>
+    <option>Свердловская обл.</option>
+    <option>Северная Осетия</option>
+    <option>Смоленская обл.</option>
+    <option>Ставропольский край</option>
+    <option>Тамбовская обл.</option>
+    <option>Татарстан</option>
+    <option>Тверская обл.</option>
+    <option>Томская обл.</option>
+    <option>Тульская обл.</option>
+    <option>Тюменская обл.</option>
+    <option>Удмуртская Респ.</option>
+    <option>Ульяновская обл.</option>
+    <option>Хабаровский край</option>
+    <option>Хакасия</option>
+    <option>Ханты-Мансийский а.о.</option>
+    <option>Челябинская обл.</option>
+    <option>Чувашская Респ.</option>
+    <option>Ямало-Ненецкий а.о.</option>
+    <option>Ярославская обл.</option>
+</select>
+
+@if (Model != null)
+{
+    <input type="text" id="region" name="Region" value="@Model.Region"/>
+    <input type="hidden" name="Region" value="@Model.Region"/>
+
+    <script>
+        $(document).ready(function () {
+            $('#regions').val('@Model.Region').trigger('change');
+            $('#region').val('@Model.Region');
+
+            var countries = $('#country-field');
+
+            var countryCheck = function () {
+                var regions = $('#regions');
+                var region = $('#region');
+                regions.hide();
+                region.hide();
+                if (countries.val() == 'Россия') {
+                    regions.val('@Model.Region').trigger('change');
+                    regions.show();
+                } else {
+                    region.show();
+                }
+            };
+
+            countryCheck();
+
+            countries.change(function () {
+                countryCheck();
+            });
+        });
+    </script>
+}
+else
+{
+    <input type="text" id="region" name="Region" value="--"/>
+    <input type="hidden" name="Region" value="--"/>
+    
+    <script>
+        $(document).ready(function () {
+            var countries = $('#country-field');
+
+            var countryCheck = function () {
+                var regions = $('#regions');
+                var region = $('#region');
+                regions.hide();
+                region.hide();
+                if (countries.val() == 'Россия') {
+                    regions.val('').trigger('change');
+                    regions.show();
+                } else {
+                    region.show();
+                }
+            };
+
+            countryCheck();
+
+            countries.change(function () {
+                countryCheck();
+            });
+        });
+    </script>
+}
