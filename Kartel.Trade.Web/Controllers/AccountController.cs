@@ -999,7 +999,7 @@ namespace Kartel.Trade.Web.Controllers
                             {
                                 Image = name,
                                 Product = product,
-                                ProductId = product.Id
+                                ProductId = product.Id,
                             });
                     }
                 }

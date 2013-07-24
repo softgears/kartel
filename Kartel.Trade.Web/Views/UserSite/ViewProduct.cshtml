@@ -16,10 +16,28 @@
     </div>
     <div class="product-details">
         <div class="item">
-            <b>Бренд:</b> @Model.Field1
+            <b>Цена:</b> @Model.Price @Model.Currency @Model.Measure
         </div>
         <div class="item">
-            <b>Минимальная партия:</b> @Model.Field4
+            <b>Цена:</b> @Model.Price @Model.Currency @Model.Measure
+        </div>
+        <div class="item">
+            <b>Минимальная партия:</b> @Model.MinimunLotSize @Model.MinimumLotMeasure
+        </div>
+        <div class="item">
+            <b>Страна производитель:</b> @Model.VendorCountry
+        </div>
+        <div class="item">
+            <b>Срок поставки:</b> @Model.DeliveryTime
+        </div>
+        <div class="item">
+            <b>Возможность поставки:</b> @Model.DeliveryPossibilityDay @Model.DeliveryPossibilityMeasure @Model.DeliveryPossibilityTime
+        </div>
+        <div class="item">
+            <b>Артикул:</b> @Model.ProductCode
+        </div>
+        <div class="item">
+            <b>Упаковка:</b> @Model.ProductBox
         </div>
         <div class="write">
             <a href="/product-feedback/@Model.Id">
@@ -29,6 +47,18 @@
     <div class="html-info">
         @Html.Raw(Model.Description)
     </div>
+    @{
+        var addPhotos = Model.GetProductImages().ToList();
+        if (addPhotos.Count > 0)
+        {
+            foreach(var photo in addPhotos)
+            {
+                <div style="margin: 10px; text-align: center;">
+                    <img src="/files/prodimage/@photo.Image" style="width: 95%"/>
+                </div>
+            }
+        }
+    }
 </div>
 @if (Model.User.Tarif != "gold")
 {
