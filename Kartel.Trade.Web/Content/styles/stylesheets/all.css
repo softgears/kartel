@@ -625,7 +625,7 @@ body #footer #footer-content a {
 /* line 100, ../sass/page-main.sass */
 .mainblock .row {
   border-bottom: 1px dashed #bbbbbb;
-  padding: 15px 0px 25px 0;
+  padding: 15px 0px 20px 0;
 }
 /* line 104, ../sass/page-main.sass */
 .mainblock .row:first-child {
@@ -641,35 +641,28 @@ body #footer #footer-content a {
   border-right: 1px dashed #bbbbbb;
   display: inline-block;
   vertical-align: top;
-  width: 159px;
-  height: 159px;
 }
 /* line 118, ../sass/page-main.sass */
-.mainblock .row .item .image {
-  height: 70px;
-}
-/* line 121, ../sass/page-main.sass */
-.mainblock .row .item .image img {
-  height: 70px;
-  width: auto;
-}
-/* line 125, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
-/* line 128, ../sass/page-main.sass */
+/* line 121, ../sass/page-main.sass */
+.mainblock .row .item .price {
+  margin-top: 10px;
+}
+/* line 124, ../sass/page-main.sass */
 .mainblock .mainblock-bottom {
   margin: 12px 17px 5px 10px;
 }
-/* line 131, ../sass/page-main.sass */
+/* line 127, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link {
   color: #444444;
 }
-/* line 134, ../sass/page-main.sass */
+/* line 130, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link span {
   color: #006699;
 }
-/* line 137, ../sass/page-main.sass */
+/* line 133, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link:last-child {
   float: right;
 }
