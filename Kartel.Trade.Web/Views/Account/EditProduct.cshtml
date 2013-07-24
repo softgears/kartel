@@ -175,8 +175,11 @@
                             }
                             <input type="hidden" name="deletedImages" />
                         }
+                        <div id="files-previews">
+                            
+                        </div>
                         <div style="margin-top: 10px;">
-                            <input type="file" name="images" multiple accept="image" />
+                            <input type="file" name="images" multiple accept="image" id="images-field"/>
                             <div class="details">Выберите изображения (JPG или GIF), не более 200 килобайт каждое</div>
                         </div>
                     </div>
@@ -390,6 +393,23 @@
             });
 
             $('[name=deletedImages]').val(deletedImages.toString());
+        });
+        $("#images-field").change(function() {
+            var files = $(this).get(0).files;
+            $("#files-previews").html("");
+            for (var i =0; i< files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var dataUri = event.target.result;
+                    var html = "<img src='"+dataUri+"' style='margin: 5px; width: 120px; height: auto;'/>";
+                    $("#files-previews").append(html);
+                };
+                reader.readAsDataURL(file);
+            }
+            setTimeout(function () {
+                updateBg();
+            }, 1000);
         });
     });
 </script>

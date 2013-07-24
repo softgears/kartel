@@ -29,7 +29,7 @@
                 </a>
                 <div id="header-links">
                     <a id="ask" href="/feedback">Задать вопрос</a>
-                    <span id="golden_supplier">
+                    <span id="golden_supplier" style="margin-left: 25px">
                         <span></span>
                         <div id="golden_supplier_popup_wrapper">
                             <div class="empty-block"></div>
@@ -160,13 +160,20 @@
             @* Подложка под контент *@
 
             <div style="clear: both"></div>
-            </script>
+            
         </section>
         @* Подвал *@
         @Html.Partial("Footer")
     </div>
     <script>
         $(document).ready(function () {
+            updateBg();
+            $(window).resize(function() {
+                updateBg();
+            });
+        });
+        
+        function updateBg() {
             if ($('#product-form').length) {
                 setTimeout(function () {
                     $('#content-section-inner').height($('#content-wrapper').height() - 10);
@@ -176,7 +183,7 @@
                 $('#content-section-inner').height($('#content-wrapper').height() - 10);
                 $('#left_block_bg').height($('#content-section-inner').height());
             }
-        });
+        }
     </script>
 </body>
 </html>

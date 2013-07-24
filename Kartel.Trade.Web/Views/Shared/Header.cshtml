@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using Kartel.Trade.Web.Classes.Ext
+@model dynamic
 
 <header id="header">
     <div id="header-content">
@@ -39,7 +40,7 @@
                 </li>
             </ul>
             <a id="top-login" href="/account/login">Вход в личный кабинет</a> 
-            @if (!User.Identity.IsAuthenticated)
+            @if (!ViewContext.IsAuthentificated())
             {
                 <span>/</span> 
                 <a id="top-register" href="/account/register">Регистрация</a>                
