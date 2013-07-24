@@ -127,32 +127,33 @@
 }
 /* line 110, ../sass/page-main.sass */
 .mainblock .row .item {
-  padding: 5px;
   border-right: 1px dashed #bbbbbb;
   display: inline-block;
   vertical-align: top;
+  width: 166px;
+  padding-bottom: 15px;
 }
-/* line 118, ../sass/page-main.sass */
+/* line 117, ../sass/page-main.sass */
 .mainblock .row .item:last-child {
   border-right: 0;
 }
-/* line 121, ../sass/page-main.sass */
+/* line 120, ../sass/page-main.sass */
 .mainblock .row .item .price {
   margin-top: 10px;
 }
-/* line 124, ../sass/page-main.sass */
+/* line 123, ../sass/page-main.sass */
 .mainblock .mainblock-bottom {
   margin: 12px 17px 5px 10px;
 }
-/* line 127, ../sass/page-main.sass */
+/* line 126, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link {
   color: #444444;
 }
-/* line 130, ../sass/page-main.sass */
+/* line 129, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link span {
   color: #006699;
 }
-/* line 133, ../sass/page-main.sass */
+/* line 132, ../sass/page-main.sass */
 .mainblock .mainblock-bottom .extra-link:last-child {
   float: right;
 }
