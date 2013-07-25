@@ -2341,8 +2341,13 @@
     <Content Include="Content\images\main\participate-tender.png" />
     <Content Include="Content\images\main\placegoods.png" />
     <Content Include="Content\images\main\placetenders.png" />
+    <Content Include="Content\images\usersite\blue-bullet.png" />
+    <Content Include="Content\images\usersite\green-bullet.png" />
     <Content Include="Content\images\usersite\mail.png" />
+    <Content Include="Content\images\usersite\navy-bullet.png" />
+    <Content Include="Content\images\usersite\orange-bullet.png" />
     <Content Include="Content\images\usersite\phone.png" />
+    <Content Include="Content\images\usersite\red-bullet.png" />
     <Content Include="Content\images\usersite\search-icon.png" />
     <Content Include="Content\styles\stylesheets\all.css" />
     <Content Include="Content\styles\stylesheets\usersite.css" />

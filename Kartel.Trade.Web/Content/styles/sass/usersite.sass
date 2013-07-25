@@ -2,6 +2,8 @@
 
 $maincolor: #006699
 $maincolor2: #000f2c
+$border1: #00002f
+$border2: #385475
 
 strong
 	font-weight: bold
@@ -38,9 +40,19 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/blue-bullet.png)
+
 						a
 							&:hover
 								color: $maincolor
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 .red
 	font-family: Arial
@@ -48,6 +60,8 @@ strong
 
 	$maincolor: #cf0000
 	$maincolor2: #9f0000
+	$border1: #980000
+	$border2: #cc3838
 
 	.gradient
 		background: #006699
@@ -77,9 +91,18 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/red-bullet.png)
 						a
 							&:hover
 								color: $maincolor
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 .green
 	font-family: Arial
@@ -87,6 +110,8 @@ strong
 
 	$maincolor: #00a100
 	$maincolor2: #006000
+	$border1: #245024
+	$border2: #389138
 
 	.gradient
 		background: #006699
@@ -116,9 +141,18 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/green-bullet.png)
 						a
 							&:hover
 								color: $maincolor
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 .navy
 	font-family: Arial
@@ -126,6 +160,8 @@ strong
 
 	$maincolor: #00a1cf
 	$maincolor2: #005a9e
+	$border1: #005f92
+	$border2: #38acd5
 
 	.gradient
 		background: #006699
@@ -135,6 +171,14 @@ strong
 		background: -o-linear-gradient(top,  $maincolor 0%,$maincolor2 100%)
 		background: -ms-linear-gradient(top,  $maincolor 0%,$maincolor2 100%)
 		background: linear-gradient(to bottom,  $maincolor 0%,$maincolor2 100%)
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 
 	a
@@ -155,6 +199,7 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/navy-bullet.png)
 						a
 							&:hover
 								color: $maincolor
@@ -165,6 +210,8 @@ strong
 
 	$maincolor: #737373
 	$maincolor2: #282828
+	$border1: #3f3f3f
+	$border2: #737373
 
 	.gradient
 		background: #006699
@@ -194,9 +241,18 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/blue-bullet.png)
 						a
 							&:hover
 								color: $maincolor
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 .orange
 	font-family: Arial
@@ -204,6 +260,8 @@ strong
 
 	$maincolor: #d07500
 	$maincolor2: #a33100
+	$border1: #882800
+	$border2: #c66e38
 
 	.gradient
 		background: #006699
@@ -233,9 +291,18 @@ strong
 			.group-content
 				ul
 					li
+						list-style-image: url(../../images/usersite/orange-bullet.png)
 						a
 							&:hover
 								color: $maincolor
+
+	#main-menu
+		ul
+			li
+				border-right: 1px solid $border1
+
+				a
+					border-right: 1px solid $border2
 
 #header
 
@@ -307,15 +374,13 @@ strong
 				li
 					display: inline-block
 					vertical-align: top
-					border-right: 1px solid #384c69
 
 					a
-						border-right: 1px solid #000024
 						text-transform: uppercase
 						color:  white
 						font-size: 12px
 						font-weight: bold
-						padding: 25px 16px
+						padding: 25px 20px
 						display: block
 
 		#navigation-chain
@@ -422,6 +487,7 @@ strong
 				border-left: 1px solid #bbbbbb
 				margin: 0px 3px
 				padding: 5px 10px
+				background-color: #f8f8f8
 
 				.contacts-title
 					text-align: center
@@ -436,7 +502,6 @@ strong
 						padding-bottom: 4px
 						border-bottom: 1px dashed #bbbbbb
 						margin: 4px 0px
-						list-style-image: url(../../images/layout/bullet.png)
 
 						a
 							font-size: 12px

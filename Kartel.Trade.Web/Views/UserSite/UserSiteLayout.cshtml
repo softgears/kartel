@@ -382,6 +382,17 @@
                 var number = phone.text().replace('(', ' (').replace(')', ') ');
                 phone.text(number);
             });
+        // Выравнивание высоты
+        $(document).ready(function () {
+            var needHeight = $("#content-section").outerHeight();
+            var leftHeight = $("#content-menu").outerHeight();
+            if (needHeight < leftHeight) {
+                return;
+            }
+            var delta = needHeight - leftHeight;
+            var lastHeight = $("#content-menu .group").last().find(".group-content").height();
+            $("#content-menu .group").last().find(".group-content").height(lastHeight + delta + 10);
+        });
     </script>
 </body>
 </html>
