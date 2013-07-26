@@ -70,5 +70,17 @@ namespace Kartel.Domain.DAL.Repositories
             var categories = FindAll().ToList();
             return mapItems.Select(mapItem => categories.FirstOrDefault(f => f.Id == mapItem.CategoryId)).ToList();
         }
+
+        /// <summary>
+        /// Возвращает количество товаров в категории и во всех вложенных категориях
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        public int GetProductsCount(int id)
+        {
+            var cat = Load(id);
+            var allCat = cat.GetAllChildCategories();
+            return allCat.Sum(c => c.Products.Count);
+        }
     }
 }

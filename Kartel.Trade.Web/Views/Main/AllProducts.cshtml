@@ -4,7 +4,7 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "Тендеры";
+    ViewBag.Title = "Категории товаров";
     Layout = "../Shared/_Layout.cshtml";
     var catManager = Locator.GetService<CategoriesIndexManager>();
 }
@@ -15,7 +15,7 @@
 <div id="page-tenders">
     <div style="display: inline-block; vertical-align: top; width: 700px;">
         <div class="tenders-title">
-            Категории тендеров
+            Категории товаров
         </div>
         <div class="tenders-category">
             <div class="category-title">
@@ -26,7 +26,10 @@
                 {
                     <div class="tender-category-1-level">
                         <div class="category-1-title">
-                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                            <a href="/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            <div class="sub-cat">
+                                @String.Join(",",catManager.GetMapNames(category.Id,3))
+                            </div>
                         </div>
                     </div>
                 }
@@ -41,7 +44,10 @@
                 {
                     <div class="tender-category-1-level">
                         <div class="category-1-title">
-                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                            <a href="/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            <div class="sub-cat">
+                                @String.Join(",",catManager.GetMapNames(category.Id,3))
+                            </div>
                         </div>
                     </div>
                 }
@@ -56,7 +62,10 @@
                 {
                     <div class="tender-category-1-level">
                         <div class="category-1-title">
-                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                            <a href="/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            <div class="sub-cat">
+                                @String.Join(",",catManager.GetMapNames(category.Id,3))
+                            </div>
                         </div>
                     </div>
                 }
@@ -71,7 +80,10 @@
                 {
                     <div class="tender-category-1-level">
                         <div class="category-1-title">
-                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                            <a href="/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            <div class="sub-cat">
+                                @String.Join(",",catManager.GetMapNames(category.Id,3))
+                            </div>
                         </div>
                     </div>
                 }
@@ -86,7 +98,10 @@
                 {
                     <div class="tender-category-1-level">
                         <div class="category-1-title">
-                            <a href="/tenders/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetTendersCount(category))</span>
+                            <a href="/category/@category.Id">@category.Title</a> <span class="products-count">(@catManager.GetProductsCount(category))</span>
+                            <div class="sub-cat">
+                                @String.Join(",",catManager.GetMapNames(category.Id,3))
+                            </div>
                         </div>
                     </div>
                 }
@@ -101,7 +116,7 @@
             @foreach (var lastTender in Locator.GetService<ITendersRepository>().FindAll().OrderByDescending(d => d.DateCreated).Take(7))
             {
                 <li>
-                    <a href="/tenders/tender/@lastTender.Id">@lastTender.Title</a>
+                    <a href="/category/@lastTender.Id">@lastTender.Title</a>
                 </li>
             }
         </ul>

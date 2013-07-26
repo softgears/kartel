@@ -206,5 +206,19 @@ namespace Kartel.Trade.Web.Controllers
 
             return View(page);
         }
+
+        /// <summary>
+        /// Отображает страницу всех товаров
+        /// </summary>
+        /// <returns></returns>
+        [Route("products")]
+        public ActionResult AllProducts()
+        {
+            // Пушим навигационную цепочку
+            PushNavigationChainItem("Главная", "/");
+            PushNavigationChainItem("Товары", "/products", true);
+
+            return View();
+        }
     }
 }

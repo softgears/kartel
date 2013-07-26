@@ -38,5 +38,12 @@ namespace Kartel.Domain.Interfaces.Repositories
         /// <param name="map">Карта</param>
         /// <returns></returns>
         IEnumerable<Category> GetCateroriesOfMap(CategoryMap map);
+
+        /// <summary>
+        /// Возвращает количество товаров в категории и во всех вложенных категориях
+        /// </summary>
+        /// <param name="id">Идентификатор категории</param>
+        /// <returns></returns>
+        int GetProductsCount(int id);
     }
 }

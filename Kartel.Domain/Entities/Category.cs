@@ -117,9 +117,27 @@ namespace Kartel.Domain.Entities
         private void EnumerateCategories(Category category, List<Category> resultList)
         {
             resultList.Add(category);
-            foreach (var cat in ChildCategories)
+            foreach (var cat in category.ChildCategories)
             {
                 EnumerateCategories(cat,resultList);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает первые три имена карт категорий
+        /// </summary>
+        /// <param name="count">Количество</param>
+        /// <returns></returns>
+        public string[] GetMapNames(int count)
+        {
+            if (CategoryMapItems.Count > 0)
+            {
+                return
+                    CategoryMapItems.OrderBy(d => d.SortOrder).Select(c => c.CategoryMap.DisplayName).Take(3).ToArray();
+            }
+            else
+            {
+                return ChildCategories.Take(count).Select(c => c.Title).ToArray();
             }
         }
     }

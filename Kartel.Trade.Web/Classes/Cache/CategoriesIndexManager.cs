@@ -37,7 +37,7 @@ namespace Kartel.Trade.Web.Classes.Cache
         /// Кеш количества тендеров в категории
         /// </summary>
         public IDictionary<int, int> CategoriesTendersCountCache { get; private set; }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="T:System.Object"/> class.
         /// </summary>
@@ -47,6 +47,12 @@ namespace Kartel.Trade.Web.Classes.Cache
             RootCategories = categoriesManager.GetRootCategories().ToList();
             CategoriesProductsCountCache = new ConcurrentDictionary<int, int>();
             CategoriesTendersCountCache = new ConcurrentDictionary<int, int>();
+
+            // Делаем предзагрузку всех категорий
+            foreach (var category in categoriesManager.FindAll().Select(c => c.Id))
+            {
+                CategoriesProductsCountCache[category] = categoriesManager.GetProductsCount(category);
+            }
         }
 
         /// <summary>
@@ -81,7 +87,7 @@ namespace Kartel.Trade.Web.Classes.Cache
             }
 
             // Похоже что нет - кешируем
-            var count = category.Products.Count;
+            var count = Locator.GetService<ICategoriesRepository>().GetProductsCount(category.Id);
             CategoriesProductsCountCache[category.Id] = count;
             return count;
         }
@@ -103,6 +109,26 @@ namespace Kartel.Trade.Web.Classes.Cache
             var count = Locator.GetService<ICategoriesRepository>().Load(category.Id).Tenders.Count;
             CategoriesTendersCountCache[category.Id] = count;
             return count;
+        }
+
+        /// <summary>
+        /// Возвращает имена для дочернего списка категорий
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public string[] GetMapNames(int id, int count)
+        {
+            var cat = Locator.GetService<ICategoriesRepository>().Load(id);
+            if (cat.CategoryMapItems.Count > 0)
+            {
+                return
+                    cat.CategoryMapItems.OrderBy(d => d.SortOrder).Select(c => c.CategoryMap.DisplayName).Take(3).ToArray();
+            }
+            else
+            {
+                return cat.ChildCategories.Take(count).Select(c => c.Title).ToArray();
+            }
         }
     }
 }
