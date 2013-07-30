@@ -135,6 +135,7 @@
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesMapController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManagePagesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageSettingsController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\ManageUsersController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\RootController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Areas\ControlPanel\Models\ControlPanelSectionModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\ExtJSTreeNodeModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\StaticPageJsonModel.cs" />
+    <Compile Include="Areas\ControlPanel\Models\UserJsonModel.cs" />
     <Compile Include="Classes\Cache\CategoriesIndexManager.cs" />
     <Compile Include="Classes\Ext\DateTimeExtensions.cs" />
     <Compile Include="Classes\Ext\DateUtils.cs" />
@@ -2287,6 +2289,7 @@
     <Content Include="Areas\ControlPanel\Scripts\Pages.js" />
     <Content Include="Areas\ControlPanel\Scripts\Root.js" />
     <Content Include="Areas\ControlPanel\Scripts\Settings.js" />
+    <Content Include="Areas\ControlPanel\Scripts\Users.js" />
     <Content Include="Content\images\account\add-category.png" />
     <Content Include="Content\images\account\add-product.png" />
     <Content Include="Content\images\account\add-tender-inner.png" />
