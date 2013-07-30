@@ -182,5 +182,91 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
             }
         }
 
+        /// <summary>
+        /// Возвращает на клиент все тендеры пользователя
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpPost][AccessAuthorize]
+        public ActionResult GetTenders(int userId)
+        {
+            try
+            {
+                // Репозиторий
+                var repository = Locator.GetService<IUsersRepository>();
+
+                var user = repository.Load(userId);
+
+                return JsonSuccess(user.Tenders.Select(p => new TenderJsonModel(p)));
+            }
+            catch (Exception e)
+            {
+                return JsonErrors(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Удаляет указанный тендер
+        /// </summary>
+        /// <param name="id">Товар</param>
+        /// <returns></returns>
+        [HttpPost][AccessAuthorize]
+        public ActionResult DeleteTender(int id)
+        {
+            try
+            {
+                // Репозиторий
+                var repository = Locator.GetService<ITendersRepository>();
+
+                var prod = repository.Load(id);
+                repository.Delete(prod);
+                repository.SubmitChanges();
+
+                return JsonSuccess();
+            }
+            catch (Exception e)
+            {
+                return JsonErrors(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Создает или сохраняет тендер
+        /// </summary>
+        /// <param name="model">Товар</param>
+        /// <returns></returns>
+        [HttpPost]
+        [AccessAuthorize]
+        public ActionResult SaveTender(TenderJsonModel model)
+        {
+            var rep = Locator.GetService<ITendersRepository>();
+            try
+            {
+                if (model.Id <= 0)
+                {
+                    var newTender = new Tender()
+                    {
+                        DateCreated = DateTime.Now
+                    };
+                    model.UpdateTender(newTender);
+                    rep.Add(newTender);
+                    rep.SubmitChanges();
+                }
+                else
+                {
+                    var tender = rep.Load(model.Id);
+                    model.UpdateTender(tender);
+                    rep.SubmitChanges();
+                }
+
+                return JsonSuccess();
+            }
+            catch (Exception e)
+            {
+                return JsonErrors(e.Message);
+            }
+        }
+
+        
     }
 }

@@ -1002,4 +1002,320 @@ Ext.onReady(function () {
         });
         wnd.show();
     }
+
+    function showTendersDialog(user) {
+        var wnd = new Ext.Window({
+            title: "Тендеры пользователя " + user.data.login,
+            resizable: true,
+            width: 550,
+            height: 700,
+            modal: true,
+            autoScroll: true,
+            layout: 'fit',
+            items: [
+                {
+                    xtype: 'grid',
+                    frame: true,
+                    store: new Ext.data.JsonStore({
+                        root: 'data',
+                        idProperty: 'id',
+                        fields: [
+                            'id',
+                            'userId',
+                            'categoryId',
+                            'categoryName',
+                            'title',
+                            'description',
+                            'minprice',
+                            'maxprice',
+                            'currency',
+                            'size',
+                            'measure',
+                            'dateStart',
+                            'dateEnd',
+                            'period',
+                            'image',
+                            'keywords'
+                        ]
+                    }),
+                    height: 400,
+                    autoExpandColumn: 'tenderTitleColumn',
+                    id: 'userTendersGrid',
+                    selModel: new Ext.grid.RowSelectionModel({
+
+                    }),
+                    colModel: new Ext.grid.ColumnModel({
+                        columns: [
+                            {
+                                header: 'ИД',
+                                dataIndex: 'id',
+                                sortable: true,
+                                width: 50,
+                                align: 'left',
+                                id: 'tenderIdColumn'
+                            },
+                            {
+                                header: 'Название',
+                                dataIndex: 'title',
+                                sortable: true,
+                                width: 150,
+                                align: 'left',
+                                id: 'tenderTitleColumn'
+                            },
+                            {
+                                header: 'Категория',
+                                dataIndex: 'categoryName',
+                                sortable: true,
+                                width: 100,
+                                align: 'left',
+                                id: 'tenderCategoryColumn'
+                            }
+                        ]
+                    }),
+                    tbar: [
+                        {
+                            text: 'Добавить тендер',
+                            handler: function () {
+                                showTenderDialog(user.data.id);
+                            }
+                        },
+                        {
+                            text: 'Редактировать тендер',
+                            handler: function () {
+                                var selected = Ext.getCmp('userTendersGrid').getSelectionModel().getSelected();
+                                if (selected != null) {
+                                    showTenderDialog(user.data.id,selected);
+                                }
+                            }
+                        },
+                        {
+                            text: 'Удалить тендер',
+                            handler: function () {
+                                var selectedRecord = Ext.getCmp('userTendersGrid').getSelectionModel().getSelected();
+                                if (selectedRecord == null) {
+                                    return;
+                                }
+                                Ext.Msg.show({
+                                    title: 'Удаление тендера',
+                                    msg: 'Вы действительно хотите удалить выбранный тендер?',
+                                    buttons: Ext.Msg.YESNO,
+                                    icon: Ext.Msg.QUESTION,
+                                    fn: function (txt) {
+                                        if (txt == "yes") {
+                                            var id = selectedRecord.data.id;
+                                            global.Ajax({
+                                                url: '/ControlPanel/ManageUsers/DeleteTender',
+                                                params: {
+                                                    id: id
+                                                },
+                                                maskEl: Ext.getCmp('userTendersGrid'),
+                                                maskMsg: 'Идет удаление тендера',
+                                                success: function (data) {
+                                                    reloadTenders(user.data.id);
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        },
+                    ],
+                    listeners: {
+                        rowdblclick: function (number, e) {
+                            var selected = Ext.getCmp('userTendersGrid').getSelectionModel().getSelected();
+                            if (selected != null) {
+                                showTenderDialog(user.data.id, selected);
+                            }
+                        }
+                    }
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Закрыть',
+                    handler: function () {
+                        wnd.close();
+                    }
+                }
+            ],
+            listeners: {
+                show: function() {
+                    reloadTenders(user.data.id);
+                }
+            }
+        });
+        wnd.show();
+    }
+    
+    function reloadTenders(userId) {
+        global.Ajax({
+            url: '/ControlPanel/ManageUsers/GetTenders',
+            maskEl: Ext.getCmp('userTendersGrid'),
+            params: {
+                userId: userId
+            },
+            maskMsg: 'Идет загрузка списка тендеров',
+            success: function (data) {
+                Ext.getCmp('userTendersGrid').getStore().loadData(data);
+            }
+        });
+    }
+    
+    function showTenderDialog(userId,tender) {
+        var wnd = new Ext.Window({
+            title: tender != null ? "Редактирование тендера "+tender.data.title:"Создание тендера",
+            resizable: true,
+            width: 550,
+            height: 700,
+            modal: true,
+            autoScroll: true,
+            items: [
+                {
+                    xtype: 'form',
+                    bodyStyle: 'padding: 5px',
+                    id: 'tenderForm',
+                    labelAlign: 'top',
+                    items: [
+                        {
+                            xtype: 'hidden',
+                            name: 'id',
+                            value: tender != null ? tender.data.id : -1
+                        },
+                        {
+                            xtype: 'hidden',
+                            name: 'userId',
+                            value: tender != null ? tender.data.userId : userId
+                        },
+                        {
+                            xtype: 'fieldset',
+                            defaultType: 'textfield',
+                            title: 'Характеристики',
+                            anchor: '100%',
+                            items: [
+                                {
+                                    fieldLabel: 'Наименование',
+                                    name: 'title',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.title : ""
+                                },
+                                {
+                                    fieldLabel: 'Ключевые слова',
+                                    name: 'keywords',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.keywords : ""
+                                },
+                                {
+                                    xtype: 'textarea',
+                                    fieldLabel: 'Описание',
+                                    name: 'description',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.description : ""
+                                },
+                                {
+                                    xtype         : 'combo',
+                                    valueField    : 'id',
+                                    displayField  : 'title',
+                                    width         : 250,
+                                    mode          : 'local',
+                                    triggerAction : 'all',
+                                    editable      : false,
+                                    lazyInit: false,
+                                    anchor: "100%",
+                                    fieldLabel: 'Категория',
+                                    hiddenName: 'categoryId',
+                                    store         : allCategoriesStore,
+                                    value: tender != null ? tender.data.id : 1
+                                },
+                                {
+                                    fieldLabel: 'Цена от',
+                                    name: 'minprice',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.minprice : 0
+                                },
+                                {
+                                    fieldLabel: 'Цена до',
+                                    name: 'maxprice',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.maxprice : 0
+                                },
+                                {
+                                    fieldLabel: 'Валюта',
+                                    name: 'currency',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.currency : "RUB"
+                                },
+                                {
+                                    fieldLabel: 'Объем',
+                                    name: 'size',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.size : ""
+                                },
+                                {
+                                    fieldLabel: 'Мера',
+                                    name: 'measure',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.measure : ""
+                                },
+                                {
+                                    xtype: 'datefield',
+                                    fieldLabel: 'Дата начала',
+                                    name: 'dateStart',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.dateStart : null
+                                },
+                                {
+                                    xtype: 'datefield',
+                                    fieldLabel: 'Дата конца',
+                                    name: 'dateEnd',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: tender != null ? tender.data.dateEnd : null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Сохранить',
+                    handler: function () {
+                        // Валидируем
+                        if (!Ext.getCmp('tenderForm').getForm().isValid()) {
+                            Ext.Msg.alert('Ошибка', 'Пожалуйста, правильно заполните все поля формы');
+                            return;
+                        }
+
+                        Ext.getCmp('tenderForm').getForm().submit({
+                            url: '/ControlPanel/ManageUsers/SaveTender',
+                            success: function () {
+                                wnd.close();
+                                reloadTenders(userId);
+                            },
+                            failure: function () {
+                                wnd.close();
+                                reloadTenders(userId);
+                            }
+                        });
+                    }
+                },
+                {
+                    text: 'Закрыть',
+                    handler: function () {
+                        wnd.close();
+                    }
+                }
+            ]
+        });
+        wnd.show();
+    }
 });

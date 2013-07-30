@@ -147,6 +147,7 @@
     <Compile Include="Areas\ControlPanel\Models\ExtJSTreeNodeModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\ProductJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\StaticPageJsonModel.cs" />
+    <Compile Include="Areas\ControlPanel\Models\TenderJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\UserJsonModel.cs" />
     <Compile Include="Classes\Cache\CategoriesIndexManager.cs" />
     <Compile Include="Classes\Ext\DateTimeExtensions.cs" />
