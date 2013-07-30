@@ -3,6 +3,20 @@
 */
 var container = Ext.getCmp(sectionId);
 Ext.onReady(function () {
+    var allCategoriesStore = new Ext.data.Store({
+        url: '/ControlPanel/ManageCategories/GetAllCategories',
+        root: 'data',
+        idProperty: 'id',
+        autoLoad: 'true',
+        sortInfo: { field: 'id', direction: "ASC" },
+        reader: new Ext.data.JsonReader({
+            root: 'data',
+            fields: ['id', 'title']
+        }),
+        listeners: {
+                                                        
+        }
+    });
     var store = new Ext.data.JsonStore({
         root: 'data',
         idProperty: 'name',
@@ -45,7 +59,15 @@ Ext.onReady(function () {
             'tariff',
             'tariffExpiration',
             'regDate'
-        ]
+        ],
+        listeners: {
+            beforeload: function () {
+                Ext.getCmp("usersGrid").el.mask("Идет загрузка","x-mask-loading");
+            },
+            load: function () {
+                Ext.getCmp("usersGrid").el.unmask();
+            }
+        }
     });
     var usersGrid = {
         xtype: 'grid',
@@ -517,6 +539,455 @@ Ext.onReady(function () {
                                 var lastOptions = store.lastOptions;
                                 store.reload(lastOptions);
                                 wnd.close();
+                            }
+                        });
+                    }
+                },
+                {
+                    text: 'Закрыть',
+                    handler: function () {
+                        wnd.close();
+                    }
+                }
+            ]
+        });
+        wnd.show();
+    }
+    
+    function showProductsDialog(user) {
+        var wnd = new Ext.Window({
+            title: "Товары пользователя " + user.data.login,
+            resizable: true,
+            width: 550,
+            height: 700,
+            modal: true,
+            autoScroll: true,
+            layout: 'fit',
+            items: [
+                {
+                    xtype: 'grid',
+                    frame: true,
+                    store: new Ext.data.JsonStore({
+                        root: 'data',
+                        idProperty: 'id',
+                        fields: [
+                            'id',
+                            'title',
+                            'keywords',
+                            'description',
+                            'img',
+                            'date',
+                            'field1',
+                            'field2',
+                            'field3',
+                            'field4',
+                            'field5',
+                            'field6',
+                            'field7',
+                            'field8',
+                            'field9',
+                            'price',
+                            'currency',
+                            'measure',
+                            'minimumLotSize',
+                            'minimumLotMeasure',
+                            'vendorCountry',
+                            'deliveryTime',
+                            'deliveryPossibilityDay',
+                            'deliveryPossibilityMeasure',
+                            'deliveryPossibilityTime',
+                            'productCode',
+                            'productBox',
+                            'userCategoryId',
+                            'categoryId',
+                            'userId',
+                            'categoryName',
+                            'userCategoryName'
+                        ]
+                    }),
+                    height: 400,
+                    autoExpandColumn: 'productTitleColumn',
+                    id: 'userProductsGrid',
+                    selModel: new Ext.grid.RowSelectionModel({
+
+                    }),
+                    colModel: new Ext.grid.ColumnModel({
+                        columns: [
+                            {
+                                header: 'ИД',
+                                dataIndex: 'id',
+                                sortable: true,
+                                width: 50,
+                                align: 'left',
+                                id: 'productIdColumn'
+                            },
+                            {
+                                header: 'Название',
+                                dataIndex: 'title',
+                                sortable: true,
+                                width: 150,
+                                align: 'left',
+                                id: 'productTitleColumn'
+                            },
+                            {
+                                header: 'Категория',
+                                dataIndex: 'categoryName',
+                                sortable: true,
+                                width: 100,
+                                align: 'left',
+                                id: 'productCategoryColumn'
+                            },
+                            {
+                                header: 'Пользовательская категоря',
+                                dataIndex: 'userCategoryName',
+                                sortable: true,
+                                width: 100,
+                                align: 'left',
+                                id: 'productUserCategoryColumn'
+                            }
+                        ]
+                    }),
+                    tbar: [
+                        {
+                            text: 'Добавить товар',
+                            handler: function () {
+                                showProductDialog(user.data.id);
+                            }
+                        },
+                        {
+                            text: 'Редактировать товар',
+                            handler: function () {
+                                var selected = Ext.getCmp('userProductsGrid').getSelectionModel().getSelected();
+                                if (selected != null) {
+                                    showProductDialog(user.data.id,selected);
+                                }
+                            }
+                        },
+                        {
+                            text: 'Удалить товар',
+                            handler: function () {
+                                var selectedRecord = Ext.getCmp('userProductsGrid').getSelectionModel().getSelected();
+                                if (selectedRecord == null) {
+                                    return;
+                                }
+                                Ext.Msg.show({
+                                    title: 'Удаление товара',
+                                    msg: 'Вы действительно хотите удалить выбранный товар?',
+                                    buttons: Ext.Msg.YESNO,
+                                    icon: Ext.Msg.QUESTION,
+                                    fn: function (txt) {
+                                        if (txt == "yes") {
+                                            var id = selectedRecord.data.id;
+                                            global.Ajax({
+                                                url: '/ControlPanel/ManageUsers/DeleteProduct',
+                                                params: {
+                                                    id: id
+                                                },
+                                                maskEl: Ext.getCmp('usersProductsGrid'),
+                                                maskMsg: 'Идет удаление товара',
+                                                success: function (data) {
+                                                    reloadProducts(user.data.id);
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        },
+                    ],
+                    listeners: {
+                        rowdblclick: function (number, e) {
+                            var selected = Ext.getCmp('userProductsGrid').getSelectionModel().getSelected();
+                            if (selected != null) {
+                                showProductDialog(user.data.id, selected);
+                            }
+                        }
+                    }
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Закрыть',
+                    handler: function () {
+                        wnd.close();
+                    }
+                }
+            ],
+            listeners: {
+                show: function() {
+                    reloadProducts(user.data.id);
+                }
+            }
+        });
+        wnd.show();
+    }
+    
+    function reloadProducts(userId) {
+        global.Ajax({
+            url: '/ControlPanel/ManageUsers/GetProducts',
+            maskEl: Ext.getCmp('userProductsGrid'),
+            params: {
+                userId: userId
+            },
+            maskMsg: 'Идет загрузка списка товаров',
+            success: function (data) {
+                Ext.getCmp('userProductsGrid').getStore().loadData(data);
+            }
+        });
+    }
+    
+    function showProductDialog(userId,product) {
+        var wnd = new Ext.Window({
+            title: product != null ? "Редактирование товара "+product.data.title:"Создание товара",
+            resizable: true,
+            width: 550,
+            height: 700,
+            modal: true,
+            autoScroll: true,
+            items: [
+                {
+                    xtype: 'form',
+                    bodyStyle: 'padding: 5px',
+                    id: 'productForm',
+                    labelAlign: 'top',
+                    items: [
+                        {
+                            xtype: 'hidden',
+                            name: 'id',
+                            value: product != null ? product.data.id : -1
+                        },
+                        {
+                            xtype: 'hidden',
+                            name: 'userId',
+                            value: product != null ? product.data.userId : userId
+                        },
+                        {
+                            xtype: 'hidden',
+                            name: 'userCategoryId',
+                            value: product != null ? product.data.userCategoryId : -1
+                        },
+                        {
+                            xtype: 'fieldset',
+                            defaultType: 'textfield',
+                            title: 'Характеристики',
+                            anchor: '100%',
+                            items: [
+                                {
+                                    fieldLabel: 'Наименование',
+                                    name: 'title',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.title : ""
+                                },
+                                {
+                                    fieldLabel: 'Ключевые слова',
+                                    name: 'keywords',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.keywords : ""
+                                },
+                                {
+                                    xtype: 'textarea',
+                                    fieldLabel: 'Описание',
+                                    name: 'description',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.description : ""
+                                },
+                                {
+                                    xtype         : 'combo',
+                                    valueField    : 'id',
+                                    displayField  : 'title',
+                                    width         : 250,
+                                    mode          : 'local',
+                                    triggerAction : 'all',
+                                    editable      : false,
+                                    lazyInit: false,
+                                    anchor: "100%",
+                                    fieldLabel: 'Категория',
+                                    hiddenName: 'categoryId',
+                                    store         : allCategoriesStore,
+                                    value: product != null ? product.data.id : 1
+                                },
+                                {
+                                    fieldLabel: 'Цена',
+                                    name: 'price',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.price : ""
+                                },
+                                {
+                                    fieldLabel: 'Валюта',
+                                    name: 'currency',
+                                    allowBlank: false,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.currency : "RUB"
+                                },
+                                {
+                                    fieldLabel: 'Мера',
+                                    name: 'measure',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.currency : "шт"
+                                },
+                                {
+                                    fieldLabel: 'Минимальная партия',
+                                    name: 'minimumLotSize',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.minimumLotSize : ""
+                                },
+                                {
+                                    fieldLabel: 'Размер минимальной партия',
+                                    name: 'minimumLotMeasure',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.minimumLotMeasure : ""
+                                },
+                                {
+                                    fieldLabel: 'Страна производитель',
+                                    name: 'vendorCountry',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.vendorCountry : ""
+                                },
+                                {
+                                    fieldLabel: 'Срок поставки',
+                                    name: 'deliveryTime',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.deliveryTime : ""
+                                },
+                                {
+                                    fieldLabel: 'Возможность поставки - за день',
+                                    name: 'deliveryPossibilityDay',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.deliveryPossibilityDay : ""
+                                },
+                                {
+                                    fieldLabel: 'Возможность поставки - мера',
+                                    name: 'deliveryPossibilityMeasure',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.deliveryPossibilityMeasure : ""
+                                },
+                                {
+                                    fieldLabel: 'Возможность поставки - время',
+                                    name: 'deliveryPossibilityTime',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.deliveryPossibilityTime : ""
+                                },
+                                {
+                                    fieldLabel: 'Артикул товара',
+                                    name: 'productCode',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.productCode : ""
+                                },
+                                {
+                                    fieldLabel: 'Упаковка',
+                                    name: 'productBox',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.productBox : ""
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'fieldset',
+                            defaultType: 'textfield',
+                            title: 'Старые параметры',
+                            anchor: '100%',
+                            items: [
+                                {
+                                    fieldLabel: 'Свойство 1',
+                                    name: 'field1',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field1 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 2',
+                                    name: 'field2',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field2 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 3',
+                                    name: 'field3',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field3 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 4',
+                                    name: 'field4',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field4 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 5',
+                                    name: 'field5',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field5 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 6',
+                                    name: 'field6',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field6 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 7',
+                                    name: 'field7',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field7 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 8',
+                                    name: 'field2',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field8 : ""
+                                },
+                                {
+                                    fieldLabel: 'Свойство 9',
+                                    name: 'field9',
+                                    allowBlank: true,
+                                    anchor: '100%',
+                                    value: product != null ? product.data.field9 : ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Сохранить',
+                    handler: function () {
+                        // Валидируем
+                        if (!Ext.getCmp('productForm').getForm().isValid()) {
+                            Ext.Msg.alert('Ошибка', 'Пожалуйста, правильно заполните все поля формы');
+                            return;
+                        }
+
+                        Ext.getCmp('productForm').getForm().submit({
+                            url: '/ControlPanel/ManageUsers/SaveProduct',
+                            success: function () {
+                                wnd.close();
+                                reloadProducts(userId);
+                            },
+                            failure: function () {
+                                wnd.close();
+                                reloadProducts(userId);
                             }
                         });
                     }

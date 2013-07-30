@@ -266,5 +266,31 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                 return JsonErrors(e);
             }
         }
+
+        /// <summary>
+        /// Возвращает на клиент списко всех категорий
+        /// </summary>
+        /// <returns></returns>
+        [AccessAuthorize()]
+        public ActionResult GetAllCategories()
+        {
+            try
+            {
+                // Получаем репозиторий
+                var repository = Locator.GetService<ICategoriesRepository>();
+
+                var cats = repository.FindAll().Select(c => new
+                    {
+                        id = c.Id,
+                        title = c.Title
+                    });
+
+                return JsonSuccess(cats);
+            }
+            catch (Exception e)
+            {
+                return JsonErrors(e);
+            }
+        }
     }
 }
