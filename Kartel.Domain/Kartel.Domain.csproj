@@ -115,6 +115,7 @@
     <Compile Include="DAL\Repositories\SettingsRepository.cs" />
     <Compile Include="DAL\Repositories\StaticPagesRepository.cs" />
     <Compile Include="DAL\Repositories\TendersRepository.cs" />
+    <Compile Include="DAL\Repositories\UserBannerTemplatesRepository.cs" />
     <Compile Include="DAL\Repositories\UsersRepository.cs" />
     <Compile Include="Entities\CategoryMap.cs" />
     <Compile Include="Entities\Category.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Interfaces\Repositories\ISettingsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IStaticPagesRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITendersRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUserBannerTemplatesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsersRepository.cs" />
     <Compile Include="Interfaces\Search\IIndexableRepository.cs" />
     <Compile Include="Interfaces\Search\ISearchManager.cs" />

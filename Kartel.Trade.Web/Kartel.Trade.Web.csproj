@@ -130,6 +130,7 @@
     <Compile Include="Areas\ControlPanel\Classes\JsonNetResult.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\BaseRootController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageBannersController.cs" />
+    <Compile Include="Areas\ControlPanel\Controllers\ManageBannerTemplatesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageBillsController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\Controllers\ManageCategoriesMapController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Areas\ControlPanel\Controllers\RootController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Areas\ControlPanel\Models\BannerJsonModel.cs" />
+    <Compile Include="Areas\ControlPanel\Models\BannerTemplateJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\BillJsonModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryItemModel.cs" />
     <Compile Include="Areas\ControlPanel\Models\CategoryMapJsonModel.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\ControlPanel\Scripts\Banners.js" />
+    <Content Include="Areas\ControlPanel\Scripts\BannerTemplates.js" />
     <Content Include="Areas\ControlPanel\Scripts\Bills.js" />
     <Content Include="Areas\ControlPanel\Scripts\Categories.js" />
     <Content Include="Areas\ControlPanel\Scripts\CategoriesMap.js" />

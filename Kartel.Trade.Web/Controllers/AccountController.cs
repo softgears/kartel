@@ -1659,7 +1659,7 @@ namespace Kartel.Trade.Web.Controllers
             UsersRepository.SubmitChanges();
 
             // Перенаправляемся на сайт пользователя
-            return RedirectToAction("Index", "UserSite", new {id = CurrentUser.Id});
+            return RedirectToAction("Index");
         }
 
         #endregion

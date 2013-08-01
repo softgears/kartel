@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Kartel.Domain.Entities;
+using Kartel.Domain.Infrastructure.Mailing.Templates;
+using Kartel.Domain.Interfaces.Infrastructure;
 using Kartel.Domain.Interfaces.Repositories;
 using Kartel.Domain.IoC;
 using Kartel.Trade.Web.Areas.ControlPanel.Classes;
@@ -267,6 +270,45 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
             }
         }
 
+        /// <summary>
+        /// Отправляет сообщение указанной компании
+        /// </summary>
+        /// <param name="id">Идентификатор компании</param>
+        /// <param name="type">Тип сообщения</param>
+        /// <returns></returns>
+        [AccessAuthorize()][HttpPost]
+        public ActionResult SendMessage(long id, string type)
+        {
+            try
+            {
+                var rep = Locator.GetService<IUsersRepository>();
+                var user = rep.Load(id);
+
+                string template = "";
+                switch (type)
+                {
+                    case "gold":
+                        template = "GoldenVendor.html";
+                        break;
+                    case "renew":
+                        template = "RenewalRater.html";
+                        break;
+                }
+
+                // Формируем путь
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", template);
+
+                var temp = new ParametrizedFileTemplate(path, user).ToString();
+
+                Locator.GetService<IMailNotificationManager>().Notify(user,"Сообщение с сайта Картель.рф",temp);
+
+                return JsonSuccess();
+            }
+            catch (Exception e)
+            {
+                return JsonErrors(e.Message);
+            }
+        }
         
     }
 }

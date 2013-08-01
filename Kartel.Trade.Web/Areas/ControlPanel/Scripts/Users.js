@@ -175,6 +175,33 @@ Ext.onReady(function () {
                     }
                 }
             },
+            '-',
+            {
+                text: 'Отправить письмо',
+                menu: {
+                    xtype: 'menu',
+                    items: [
+                        {
+                            text: 'Предложить Золотой поставщик',
+                            handler: function () {
+                                var selected = Ext.getCmp('usersGrid').getSelectionModel().getSelected();
+                                if (selected != null) {
+                                    sendMessage(selected,"gold");
+                                }
+                            }
+                        },
+                        {
+                            text: 'Продлить Золотой поставщик',
+                            handler: function () {
+                                var selected = Ext.getCmp('usersGrid').getSelectionModel().getSelected();
+                                if (selected != null) {
+                                    sendMessage(selected, "renew");
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
         ],
         bbar: new Ext.PagingToolbar({
             pageSize: 100,
@@ -1317,5 +1344,20 @@ Ext.onReady(function () {
             ]
         });
         wnd.show();
+    }
+    
+    function sendMessage(user,type) {
+        global.Ajax({
+            url: '/ControlPanel/ManageUsers/SendMessage',
+            maskEl: Ext.getCmp('usersGrid'),
+            params: {
+                id: user.data.id,
+                type: type
+            },
+            maskMsg: 'Идет отправка',
+            success: function (data) {
+                Ext.Msg.alert("Сообщение отправлено","Сообщение для компании было успешно отправлено");
+            }
+        });
     }
 });
