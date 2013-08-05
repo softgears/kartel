@@ -1,0 +1,31 @@
+﻿@model IList<Kartel.Domain.Entities.UserBanner>
+
+@{
+    ViewBag.Title = "Баннеры пользователя";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <div class="fields-group">
+        <a href="/account/banners/add" id="add-banner" class="round">Добавить баннер</a>
+        <table class="tenders-table">
+            <tbody>
+                @foreach (var userBanner in Model.OrderBy(t => t.BannerPosition))
+                {
+                    <tr>
+                        <td width="100%">
+                            <img src="/files/@userBanner.ImageUrl" style="float: left; margin-right: 10px; width: 40px; height: 40px;"/>
+                            <a href="/account/banners/edit/@userBanner.Id">@(!String.IsNullOrEmpty(userBanner.Text) ? userBanner.Text : "Баннер")</a>
+                        </td>
+                        <td>
+                            <a href="/account/banners/delete/@userBanner.Id" onclick="return confirm('Действительно хотите удалить этот баннер?')">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

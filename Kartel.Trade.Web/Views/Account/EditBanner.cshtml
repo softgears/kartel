@@ -1,8 +1,13 @@
-﻿@model Kartel.Domain.Entities.UserBanner
+﻿@using Kartel.Domain.Interfaces.Repositories
+@using Kartel.Domain.IoC
+@using Kartel.Trade.Web.Classes.Ext
+@model Kartel.Domain.Entities.UserBanner
 
 @{
     ViewBag.Title = "Редактирование баннера на главную страницу сайта";
     Layout = "AccountLayout.cshtml";
+    var templatesRep = Locator.GetService<IUserBannerTemplatesRepository>();
+    var allTemplates = templatesRep.FindAll().GroupBy(g => g.Category).OrderBy(g => g.Key);
 }
 
 <div class="account-content">
@@ -16,13 +21,15 @@
         </div>
         <div class="banner-preview">
             <div class="banner">
-                <img src="/files/banner/@Model.ImageUrl" class="banner-image"/>
+                <img src="/files/@Model.ImageUrl" class="banner-image"/>
                 <div id="banner-text" class="banner-text"></div>
             </div>
         </div>
     </div>
     @* Редактирование свойств *@
     <form action="/account/savebanner" id="save-banner-form" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="ImageUrl" id="image-url-field" value="@Model.ImageUrl"/>
+        <input type="hidden" name="Id" value="@Model.Id"/>
         <div class="fields-group">
             <div class="fields-title">
                 Свойства баннера
@@ -98,6 +105,62 @@
                     </select>
                 </div>
             </div>
+            <div class="field">
+                <div class="label">
+                    Ссылка
+                </div>
+                <div class="editor">
+                    <select name="Href" id="href-field" class="banner-field">
+                        @foreach(var pair in ViewContext.CurrentUser().GetBannerHrefs())
+                        {
+                            <option value="@pair.Key" @(pair.Key == Model.Href ? "selected=selected":"")>@pair.Value</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Порядок
+                </div>
+                <div class="editor">
+                    <select name="BannerPosition" id="bposition-field" class="banner-field">
+                        @for (var i = 1; i < 20; i++ )
+                        {
+                            <option value="@i" @(i == Model.BannerPosition ? "selected=selected":"")>@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        @* Стандартные шаблоны *@
+        <div class="fields-group">
+            <div class="fields-title">
+                Шаблоны фона
+            </div>
+            <div id="banner-templates">
+                <div id="templates-categories-wrapper">
+                    <select id="templates-categories" size="10">
+                        @foreach (var groupName in allTemplates)
+                        {
+                            <option value="@groupName.Key">@groupName.Key</option>
+                        }
+                    </select>
+                </div>
+                <div id="templates-preview">
+                    @foreach(var group in allTemplates)
+                    {
+                        <div class="template-group" style="display: none" group="@group.Key">
+                            @foreach(var template in group)
+                            {
+                                <div class="template" filename="bannertemplates/@template.Filename">
+                                    <img src="/files/bannertemplates/@template.Filename"/>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <div style="clear: both"></div>
         </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />
@@ -110,6 +173,17 @@
             
             $(".banner-field").change(function () {
                 updateBannerPreview();
+            });
+
+            $("#templates-categories").change(function() {
+                $(".template-group").hide();
+                $("[group='"+$(this).val()+"']").show();
+            }).change();
+            $(".template").click(function() {
+                $(".template").removeClass("active");
+                $(this).addClass("active");
+                $(".banner-image").attr("src", "/files/"+$(this).attr("filename"));
+                $("#image-url-field").val($(this).attr("filename"));
             });
             
             // Обновляет превью баннера

@@ -143,5 +143,33 @@ namespace Kartel.Domain.Entities
         {
             return UserPhones.FirstOrDefault(up => up.Type == (short) CustomPhoneType.MainCell) ?? new UserPhone();
         }
+
+        public IEnumerable<UserBanner> GetBanners()
+        {
+            return UserBanners.Where(b => b.Enabled).OrderBy(b => b.BannerPosition);
+        }
+
+        /// <summary>
+        /// Формирует список возможных ссылок для баннера пользователя
+        /// </summary>
+        /// <returns></returns>
+        public IDictionary<string,string> GetBannerHrefs()
+        {
+            var res = new Dictionary<string, string>();
+            // Основные страницы
+            res["/vendor/" + Id] = "Главная";
+            res["/products/" + Id] = "Товары";
+            res["/vendor/about/" + Id] = "О компании";
+            res["/vendor/contacts/" + Id] = "Контакты";
+            foreach(var userCat in UserCategories)
+            {
+                res["/vendor/category/" + userCat.Id] = userCat.Title;
+            }
+            foreach (var product in Products)
+            {
+                res["/product/" + product.Id] = product.Title;
+            }
+            return res;
+        }
     }
 }

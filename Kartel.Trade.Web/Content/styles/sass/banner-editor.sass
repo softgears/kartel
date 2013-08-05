@@ -2,76 +2,114 @@
 	position: relative
 	text-align: center
 
-	.banner
-		width: 930px
-		position: relative
-		height: 350px
+.banner
+	width: 930px
+	position: relative
+	height: 350px
+	display: inline-block
+	border: 1px solid #a9a9a9
+	overflow: hidden
+
+	img
+		width: 100%
+		height: auto
+		z-index: 10
+
+	#banner-text
+		position: absolute
 		display: inline-block
-		border: 1px solid #a9a9a9
-		overflow: hidden
+		font-family: Arial
+		font-weight: bold
+		color: black
+		white-space: nowrap
 
-		img
+		&.lefttop
+			top: 5px
+			left: 5px
+
+		&.right-top
+			top: 5px
+			right: 5px
+
+		&.leftbottom
+			bottom: 5px
+			left: 5px
+
+		&.rightbottom
+			bottom: 5px
+			right: 5px
+
+		&.middletop
 			width: 100%
-			height: auto
-			z-index: 10
+			top: 5px
+			left: 0px
+			text-align: center
 
-		#banner-text
-			position: absolute
-			display: inline-block
-			font-family: Arial
-			font-weight: bold
+		&.middlebottom
+			width: 100%
+			bottom: 5px
+			left: 0px
+			text-align: center
+
+		&.small
+			font-size: 13px
+
+		&.medium
+			font-size: 25px
+
+		&.large
+			font-size: 37px
+
+		&.black
 			color: black
-			white-space: nowrap
 
-			&.lefttop
-				top: 5px
-				left: 5px
+		&.white
+			color: white
 
-			&.right-top
-				top: 5px
-				right: 5px
+		&.red
+			color: red
 
-			&.leftbottom
-				bottom: 5px
-				left: 5px
+		&.green
+			color: green
 
-			&.rightbottom
-				bottom: 5px
-				right: 5px
+		&.blue
+			color: blue
 
-			&.middletop
-				width: 100%
-				top: 5px
-				left: 0px
-				text-align: center
+#banner-templates
+	margin: 0px 30px
 
-			&.middlebottom
-				width: 100%
-				bottom: 5px
-				left: 0px
-				text-align: center
+	#templates-categories-wrapper
+		float: left
+		margin-right: 10px
 
-			&.small
-				font-size: 13px
+		select
+			width: 150px
+			height: 250px
 
-			&.medium
-				font-size: 25px
+	#templates-preview
+		height: 250px
+		overflow-y: scroll
+		border: 1px solid gray
+		border-radius: 5px
+		background-color: white
 
-			&.large
-				font-size: 37px
+		.template-group
+			margin: 5px
+			text-align: center
 
-			&.black
-				color: black
+			.template
+				display: inline-block
+				vertical-align: top
+				width:  150px
+				height: 90px
+				cursor: pointer
+				border: 2px dotted gray
+				overflow: hidden
+				margin: 5px
 
-			&.white
-				color: white
+				img
+					width: 150px
+					height: auto
 
-			&.red
-				color: red
 
-			&.green
-				color: green
-
-			&.blue
-				color: blue
 

@@ -2683,12 +2683,13 @@
     <Content Include="Views\Account\HotProducts.cshtml" />
     <Content Include="Views\Account\HotProductsLegalBill.cshtml" />
     <Content Include="Views\Account\HotProductsPhysBill.cshtml" />
-    <Content Include="Views\Account\Banner.cshtml" />
+    <Content Include="Views\Account\EditBanner.cshtml" />
     <Content Include="Views\Shared\Banners.cshtml" />
     <Content Include="Views\UserSite\MainPageBanner.cshtml" />
     <Content Include="Views\Shared\Regions.cshtml" />
     <Content Include="Views\Shared\Countries.cshtml" />
     <Content Include="Views\Main\AllProducts.cshtml" />
+    <Content Include="Views\Account\Banners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

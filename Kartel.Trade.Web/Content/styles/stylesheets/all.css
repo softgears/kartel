@@ -2408,14 +2408,17 @@ body #footer #footer-content a {
   height: 326px;
   position: absolute;
   text-align: center;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
 }
-/* line 14, ../sass/banners.sass */
+/* line 17, ../sass/banners.sass */
 #banners-block #banners-container .banner img {
   width: 696px;
   height: 326px;
   margin: 7px 0 0 0;
 }
-/* line 19, ../sass/banners.sass */
+/* line 22, ../sass/banners.sass */
 #banners-block #banners-swticher {
   background: #f5f5f5;
   border-radius: 8px 8px 0 0;
@@ -2427,7 +2430,7 @@ body #footer #footer-content a {
   bottom: 20px;
   z-index: 100000;
 }
-/* line 30, ../sass/banners.sass */
+/* line 33, ../sass/banners.sass */
 #banners-block #banners-swticher .banner-switch {
   width: 10px;
   height: 10px;
@@ -2435,29 +2438,36 @@ body #footer #footer-content a {
   cursor: pointer;
   background: url(/Content/images/layout/banner-switch.png);
 }
-/* line 37, ../sass/banners.sass */
+/* line 40, ../sass/banners.sass */
 #banners-block #banners-swticher .banner-switch.active-switch {
   background: url(/Content/images/layout/banner-switch-active.png);
 }
 
-/* line 41, ../sass/banners.sass */
+/* line 44, ../sass/banners.sass */
 #user_site_layout #banners-block {
   height: 350px;
   margin: 15px 0;
   border: 5px solid #efefef;
 }
-/* line 47, ../sass/banners.sass */
+/* line 49, ../sass/banners.sass */
+#user_site_layout #banners-block #banners-container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+/* line 56, ../sass/banners.sass */
 #user_site_layout #banners-block #banners-container .banner {
   width: 930px;
-  height: 350px;
+  height: auto;
+  overflow: hidden;
 }
-/* line 51, ../sass/banners.sass */
+/* line 61, ../sass/banners.sass */
 #user_site_layout #banners-block #banners-container .banner img {
   width: 930px;
   height: 350px;
   margin: 0;
 }
-/* line 56, ../sass/banners.sass */
+/* line 66, ../sass/banners.sass */
 #user_site_layout #banners-block #banners-swticher {
   margin-left: -25px;
   bottom: 0;
@@ -2468,8 +2478,9 @@ body #footer #footer-content a {
   position: relative;
   text-align: center;
 }
+
 /* line 5, ../sass/banner-editor.sass */
-.banner-preview .banner {
+.banner {
   width: 930px;
   position: relative;
   height: 350px;
@@ -2478,13 +2489,13 @@ body #footer #footer-content a {
   overflow: hidden;
 }
 /* line 13, ../sass/banner-editor.sass */
-.banner-preview .banner img {
+.banner img {
   width: 100%;
   height: auto;
   z-index: 10;
 }
 /* line 18, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text {
+.banner #banner-text {
   position: absolute;
   display: inline-block;
   font-family: Arial;
@@ -2493,68 +2504,112 @@ body #footer #footer-content a {
   white-space: nowrap;
 }
 /* line 26, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.lefttop {
+.banner #banner-text.lefttop {
   top: 5px;
   left: 5px;
 }
 /* line 30, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.right-top {
+.banner #banner-text.right-top {
   top: 5px;
   right: 5px;
 }
 /* line 34, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.leftbottom {
+.banner #banner-text.leftbottom {
   bottom: 5px;
   left: 5px;
 }
 /* line 38, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.rightbottom {
+.banner #banner-text.rightbottom {
   bottom: 5px;
   right: 5px;
 }
 /* line 42, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.middletop {
+.banner #banner-text.middletop {
   width: 100%;
   top: 5px;
   left: 0px;
   text-align: center;
 }
 /* line 48, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.middlebottom {
+.banner #banner-text.middlebottom {
   width: 100%;
   bottom: 5px;
   left: 0px;
   text-align: center;
 }
 /* line 54, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.small {
+.banner #banner-text.small {
   font-size: 13px;
 }
 /* line 57, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.medium {
+.banner #banner-text.medium {
   font-size: 25px;
 }
 /* line 60, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.large {
+.banner #banner-text.large {
   font-size: 37px;
 }
 /* line 63, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.black {
+.banner #banner-text.black {
   color: black;
 }
 /* line 66, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.white {
+.banner #banner-text.white {
   color: white;
 }
 /* line 69, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.red {
+.banner #banner-text.red {
   color: red;
 }
 /* line 72, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.green {
+.banner #banner-text.green {
   color: green;
 }
 /* line 75, ../sass/banner-editor.sass */
-.banner-preview .banner #banner-text.blue {
+.banner #banner-text.blue {
   color: blue;
+}
+
+/* line 78, ../sass/banner-editor.sass */
+#banner-templates {
+  margin: 0px 30px;
+}
+/* line 81, ../sass/banner-editor.sass */
+#banner-templates #templates-categories-wrapper {
+  float: left;
+  margin-right: 10px;
+}
+/* line 85, ../sass/banner-editor.sass */
+#banner-templates #templates-categories-wrapper select {
+  width: 150px;
+  height: 250px;
+}
+/* line 89, ../sass/banner-editor.sass */
+#banner-templates #templates-preview {
+  height: 250px;
+  overflow-y: scroll;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: white;
+}
+/* line 96, ../sass/banner-editor.sass */
+#banner-templates #templates-preview .template-group {
+  margin: 5px;
+  text-align: center;
+}
+/* line 100, ../sass/banner-editor.sass */
+#banner-templates #templates-preview .template-group .template {
+  display: inline-block;
+  vertical-align: top;
+  width: 150px;
+  height: 90px;
+  cursor: pointer;
+  border: 2px dotted gray;
+  overflow: hidden;
+  margin: 5px;
+}
+/* line 110, ../sass/banner-editor.sass */
+#banner-templates #templates-preview .template-group .template img {
+  width: 150px;
+  height: auto;
 }

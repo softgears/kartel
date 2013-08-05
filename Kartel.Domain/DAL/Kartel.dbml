@@ -93,7 +93,7 @@
       <Association Name="User_Tender" Member="Tenders" ThisKey="Id" OtherKey="UserId" Type="Tender" />
       <Association Name="User_TenderOffer" Member="TenderOffers" ThisKey="Id" OtherKey="UserId" Type="TenderOffer" />
       <Association Name="User_Bill" Member="Bills" ThisKey="Id" OtherKey="AuthorId" Type="Bill" />
-      <Association Name="User_UserBanner" Member="Banner" ThisKey="Id" OtherKey="UserId" Type="UserBanner" Cardinality="One" />
+      <Association Name="User_UserBanner" Member="UserBanners" ThisKey="Id" OtherKey="UserId" Type="UserBanner" />
     </Type>
   </Table>
   <Table Name="dbo.UserLegalInfo" Member="UserLegalInfos">
@@ -315,6 +315,13 @@
       <Column Name="DisplayName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.UserBannerTemplates" Member="UserBannerTemplates">
+    <Type Name="UserBannerTemplate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.UserBanners" Member="UserBanners">
     <Type Name="UserBanner">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -326,14 +333,11 @@
       <Column Name="Color" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Enabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Height" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BannerPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Task" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="CustomBanner" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Href" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="User_UserBanner" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.UserBannerTemplates" Member="UserBannerTemplates">
-    <Type Name="UserBannerTemplate">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Filename" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Category" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

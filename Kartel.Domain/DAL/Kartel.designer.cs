@@ -82,12 +82,12 @@ namespace Kartel.Domain.DAL
     partial void InsertSetting(Kartel.Domain.Entities.Setting instance);
     partial void UpdateSetting(Kartel.Domain.Entities.Setting instance);
     partial void DeleteSetting(Kartel.Domain.Entities.Setting instance);
-    partial void InsertUserBanner(Kartel.Domain.Entities.UserBanner instance);
-    partial void UpdateUserBanner(Kartel.Domain.Entities.UserBanner instance);
-    partial void DeleteUserBanner(Kartel.Domain.Entities.UserBanner instance);
     partial void InsertUserBannerTemplate(Kartel.Domain.Entities.UserBannerTemplate instance);
     partial void UpdateUserBannerTemplate(Kartel.Domain.Entities.UserBannerTemplate instance);
     partial void DeleteUserBannerTemplate(Kartel.Domain.Entities.UserBannerTemplate instance);
+    partial void InsertUserBanner(Kartel.Domain.Entities.UserBanner instance);
+    partial void UpdateUserBanner(Kartel.Domain.Entities.UserBanner instance);
+    partial void DeleteUserBanner(Kartel.Domain.Entities.UserBanner instance);
     #endregion
 		
 		public KartelDataContext(string connection) : 
@@ -258,19 +258,19 @@ namespace Kartel.Domain.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Kartel.Domain.Entities.UserBanner> UserBanners
-		{
-			get
-			{
-				return this.GetTable<Kartel.Domain.Entities.UserBanner>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Kartel.Domain.Entities.UserBannerTemplate> UserBannerTemplates
 		{
 			get
 			{
 				return this.GetTable<Kartel.Domain.Entities.UserBannerTemplate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kartel.Domain.Entities.UserBanner> UserBanners
+		{
+			get
+			{
+				return this.GetTable<Kartel.Domain.Entities.UserBanner>();
 			}
 		}
 	}
@@ -985,7 +985,7 @@ namespace Kartel.Domain.Entities
 		
 		private EntitySet<Bill> _Bills;
 		
-		private EntityRef<UserBanner> _Banner;
+		private EntitySet<UserBanner> _UserBanners;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1117,7 +1117,7 @@ namespace Kartel.Domain.Entities
 			this._Tenders = new EntitySet<Tender>(new Action<Tender>(this.attach_Tenders), new Action<Tender>(this.detach_Tenders));
 			this._TenderOffers = new EntitySet<TenderOffer>(new Action<TenderOffer>(this.attach_TenderOffers), new Action<TenderOffer>(this.detach_TenderOffers));
 			this._Bills = new EntitySet<Bill>(new Action<Bill>(this.attach_Bills), new Action<Bill>(this.detach_Bills));
-			this._Banner = default(EntityRef<UserBanner>);
+			this._UserBanners = new EntitySet<UserBanner>(new Action<UserBanner>(this.attach_UserBanners), new Action<UserBanner>(this.detach_UserBanners));
 			OnCreated();
 		}
 		
@@ -2397,32 +2397,16 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UserBanner", Storage="_Banner", ThisKey="Id", OtherKey="UserId", IsUnique=true, IsForeignKey=false)]
-		public UserBanner Banner
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UserBanner", Storage="_UserBanners", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<UserBanner> UserBanners
 		{
 			get
 			{
-				return this._Banner.Entity;
+				return this._UserBanners;
 			}
 			set
 			{
-				UserBanner previousValue = this._Banner.Entity;
-				if (((previousValue != value) 
-							|| (this._Banner.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Banner.Entity = null;
-						previousValue.User = null;
-					}
-					this._Banner.Entity = value;
-					if ((value != null))
-					{
-						value.User = this;
-					}
-					this.SendPropertyChanged("Banner");
-				}
+				this._UserBanners.Assign(value);
 			}
 		}
 		
@@ -2513,6 +2497,18 @@ namespace Kartel.Domain.Entities
 		}
 		
 		private void detach_Bills(Bill entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_UserBanners(UserBanner entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_UserBanners(UserBanner entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -7221,6 +7217,116 @@ namespace Kartel.Domain.Entities
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserBannerTemplates")]
+	public partial class UserBannerTemplate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Filename;
+		
+		private string _Category;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnFilenameChanging(string value);
+    partial void OnFilenameChanged();
+    partial void OnCategoryChanging(string value);
+    partial void OnCategoryChanged();
+    #endregion
+		
+		public UserBannerTemplate()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filename", DbType="NVarChar(MAX)")]
+		public string Filename
+		{
+			get
+			{
+				return this._Filename;
+			}
+			set
+			{
+				if ((this._Filename != value))
+				{
+					this.OnFilenameChanging(value);
+					this.SendPropertyChanging();
+					this._Filename = value;
+					this.SendPropertyChanged("Filename");
+					this.OnFilenameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(255)")]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserBanners")]
 	public partial class UserBanner : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -7244,6 +7350,14 @@ namespace Kartel.Domain.Entities
 		private bool _Enabled;
 		
 		private System.Nullable<int> _Height;
+		
+		private int _BannerPosition;
+		
+		private string _Task;
+		
+		private bool _CustomBanner;
+		
+		private string _Href;
 		
 		private EntityRef<User> _User;
 		
@@ -7269,6 +7383,14 @@ namespace Kartel.Domain.Entities
     partial void OnEnabledChanged();
     partial void OnHeightChanging(System.Nullable<int> value);
     partial void OnHeightChanged();
+    partial void OnBannerPositionChanging(int value);
+    partial void OnBannerPositionChanged();
+    partial void OnTaskChanging(string value);
+    partial void OnTaskChanged();
+    partial void OnCustomBannerChanging(bool value);
+    partial void OnCustomBannerChanged();
+    partial void OnHrefChanging(string value);
+    partial void OnHrefChanged();
     #endregion
 		
 		public UserBanner()
@@ -7461,6 +7583,86 @@ namespace Kartel.Domain.Entities
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BannerPosition", DbType="Int NOT NULL")]
+		public int BannerPosition
+		{
+			get
+			{
+				return this._BannerPosition;
+			}
+			set
+			{
+				if ((this._BannerPosition != value))
+				{
+					this.OnBannerPositionChanging(value);
+					this.SendPropertyChanging();
+					this._BannerPosition = value;
+					this.SendPropertyChanged("BannerPosition");
+					this.OnBannerPositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Task", DbType="NVarChar(4000)")]
+		public string Task
+		{
+			get
+			{
+				return this._Task;
+			}
+			set
+			{
+				if ((this._Task != value))
+				{
+					this.OnTaskChanging(value);
+					this.SendPropertyChanging();
+					this._Task = value;
+					this.SendPropertyChanged("Task");
+					this.OnTaskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomBanner", DbType="Bit NOT NULL")]
+		public bool CustomBanner
+		{
+			get
+			{
+				return this._CustomBanner;
+			}
+			set
+			{
+				if ((this._CustomBanner != value))
+				{
+					this.OnCustomBannerChanging(value);
+					this.SendPropertyChanging();
+					this._CustomBanner = value;
+					this.SendPropertyChanged("CustomBanner");
+					this.OnCustomBannerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Href", DbType="NVarChar(MAX)")]
+		public string Href
+		{
+			get
+			{
+				return this._Href;
+			}
+			set
+			{
+				if ((this._Href != value))
+				{
+					this.OnHrefChanging(value);
+					this.SendPropertyChanging();
+					this._Href = value;
+					this.SendPropertyChanged("Href");
+					this.OnHrefChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UserBanner", Storage="_User", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public User User
 		{
@@ -7478,12 +7680,12 @@ namespace Kartel.Domain.Entities
 					if ((previousValue != null))
 					{
 						this._User.Entity = null;
-						previousValue.Banner = null;
+						previousValue.UserBanners.Remove(this);
 					}
 					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.Banner = this;
+						value.UserBanners.Add(this);
 						this._UserId = value.Id;
 					}
 					else
@@ -7491,116 +7693,6 @@ namespace Kartel.Domain.Entities
 						this._UserId = default(int);
 					}
 					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserBannerTemplates")]
-	public partial class UserBannerTemplate : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Filename;
-		
-		private string _Category;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnFilenameChanging(string value);
-    partial void OnFilenameChanged();
-    partial void OnCategoryChanging(string value);
-    partial void OnCategoryChanged();
-    #endregion
-		
-		public UserBannerTemplate()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filename", DbType="NVarChar(MAX)")]
-		public string Filename
-		{
-			get
-			{
-				return this._Filename;
-			}
-			set
-			{
-				if ((this._Filename != value))
-				{
-					this.OnFilenameChanging(value);
-					this.SendPropertyChanging();
-					this._Filename = value;
-					this.SendPropertyChanged("Filename");
-					this.OnFilenameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(255)")]
-		public string Category
-		{
-			get
-			{
-				return this._Category;
-			}
-			set
-			{
-				if ((this._Category != value))
-				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
 				}
 			}
 		}

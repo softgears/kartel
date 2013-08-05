@@ -1,13 +1,27 @@
 ﻿@model Kartel.Domain.Entities.User
 @{
-    var banner = Model.Banner;
+    var banners = Model.GetBanners().ToList();
 }
-@if (banner != null && banner.Enabled)
-{
-<div class="banner-preview" style="margin: 15px 0px">
-    <div class="banner">
-        <img src="/files/banner/@banner.ImageUrl" class="banner-image"/>
-        <div id="banner-text" class="banner-text @banner.Color @banner.Position @banner.Size">@banner.Text</div>
+<div id="banners-block">
+    <div id="banners-container">
+        @if (banners.Count > 0)
+        {
+            <ul id="banners-swticher">
+                @if (banners.Count > 0)
+                {
+                    foreach (var banner in banners)
+                    {
+                    <li class="banner-switch" data-id="@banner.Id"></li>
+                    }
+                }
+            </ul>
+            foreach (var banner in banners)
+            {
+                <div class="banner" onclick="window.location.href='@banner.Href'">
+                    <img src="/files/@banner.ImageUrl" class="banner-image"/>
+                    <div id="banner-text" class="banner-text @banner.Color @banner.Position @banner.Size">@banner.Text</div>
+                </div>  
+            }
+        }
     </div>
-</div>    
-}
+</div>

@@ -1819,30 +1819,49 @@ namespace Kartel.Trade.Web.Controllers
         /// Отображает страницу редактирования баннера на сайт
         /// </summary>
         /// <returns></returns>
-        public ActionResult Banner()
+        public ActionResult Banners()
         {
             if (!IsAuthentificated)
             {
                 return RedirectToAction("Register");
             }
 
-            // Проверяем что у пользователя есть баннер
-            if (CurrentUser.Banner == null)
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Баннеры на главную страницу сайта", "", true);
+
+            // Отдаем
+            return View(CurrentUser.UserBanners.ToList());
+        }
+
+        /// <summary>
+        /// Отображает страницу редактирования баннера
+        /// </summary>
+        /// <param name="id">Идентификатор баннера</param>
+        /// <returns></returns>
+        [Route("account/banners/edit/{id}")]
+        public ActionResult EditBanner(long id)
+        {
+            if (!IsAuthentificated)
             {
-                CurrentUser.Banner = new UserBanner()
-                    {
-                        User = CurrentUser
-                    };
-                UsersRepository.SubmitChanges();
+                return RedirectToAction("Register");
+            }
+
+            var banner = CurrentUser.UserBanners.FirstOrDefault(b => b.Id == id);
+            if (banner == null)
+            {
+                return RedirectToAction("Banners");
             }
 
             // Навигационная цепочка
             PushNavigationChainItem("Главная страница", "/");
             PushNavigationChainItem("Личный кабинет", "", false);
-            PushNavigationChainItem("Баннер на главную страницу сайта", "", true);
+            PushNavigationChainItem("Баннеры на главную страницу сайта", "/account/banners" );
+            PushNavigationChainItem("Редактирование баннера", "", true);
 
             // Отдаем
-            return View(CurrentUser.Banner);
+            return View(banner);
         }
 
         /// <summary>
@@ -1857,23 +1876,33 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("Register");
             }
 
-            // Проверяем что у пользователя есть баннер
-            if (CurrentUser.Banner == null)
-            {
-                CurrentUser.Banner = new UserBanner()
-                {
-                    User = CurrentUser
-                };
-                UsersRepository.SubmitChanges();
-            }
+            UserBanner ban = null;
 
-            // Сохраняем
-            CurrentUser.Banner.Color = banner.Color;
-            CurrentUser.Banner.Size = banner.Size;
-            CurrentUser.Banner.Position = banner.Position;
-            CurrentUser.Banner.Text = banner.Text;
-            CurrentUser.Banner.Height = banner.Height;
-            CurrentUser.Banner.Enabled = banner.Enabled;
+            if (banner.Id <= 0)
+            {
+                banner.User = CurrentUser;
+                CurrentUser.UserBanners.Add(banner);
+                ban = banner;
+            }
+            else
+            {
+                ban = CurrentUser.UserBanners.FirstOrDefault(b => b.Id == banner.Id);
+                if (ban == null)
+                {
+                    return RedirectToAction("Banners");
+                }
+                ban.Color = banner.Color;
+                ban.Size = banner.Size;
+                ban.ImageUrl = banner.ImageUrl;
+                ban.BannerPosition = banner.BannerPosition;
+                ban.CustomBanner = banner.CustomBanner;
+                ban.Task = banner.Task;
+                ban.Position = banner.Position;
+                ban.Href = banner.Href;
+                ban.Text = banner.Text;
+                ban.Height = banner.Height;
+                ban.Enabled = banner.Enabled;
+            }
 
             // Сохраняем файл
             var image = Request.Files["bg"];
@@ -1882,13 +1911,60 @@ namespace Kartel.Trade.Web.Controllers
                 var filename = String.Format("{0}-{1}{2}", Path.GetFileNameWithoutExtension(image.FileName),
                                              new Random(System.Environment.TickCount).Next(Int32.MaxValue), Path.GetExtension(image.FileName));
                 FileUtils.SavePostedFile(image,"banner",filename);
-                CurrentUser.Banner.ImageUrl = filename;
+                ban.ImageUrl = String.Format("banner/{0}", filename);
             }
 
             UsersRepository.SubmitChanges();
 
             // Возвращаем обратно на страницу редактирования
-            return RedirectToAction("Banner");
+            return RedirectToAction("Banners");
+        }
+
+        /// <summary>
+        /// Отображает форму добавления нового баннера
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/banners/add")]
+        public ActionResult AddBanner()
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Баннеры на главную страницу сайта", "/account/banners");
+            PushNavigationChainItem("Создание баннера", "", true);
+
+            // Отдаем
+            return View("EditBanner",new UserBanner());
+        }
+
+        /// <summary>
+        /// Обрабатывает удаление баннера
+        /// </summary>
+        /// <param name="id">Идентификатор баннера</param>
+        /// <returns></returns>
+        [Route("account/banners/delete/{id}")]
+        public ActionResult DeleteBanner(long id)
+        {
+            if (!IsAuthentificated)
+            {
+                return RedirectToAction("Register");
+            }
+
+            var banner = CurrentUser.UserBanners.FirstOrDefault(b => b.Id == id);
+            if (banner == null)
+            {
+                return RedirectToAction("Banners");
+            }
+
+            CurrentUser.UserBanners.Remove(banner);
+            UsersRepository.SubmitChanges();
+
+            return RedirectToAction("Banners");
         }
 
         #endregion
