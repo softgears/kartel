@@ -257,17 +257,32 @@
 
 	.tenders-banner
 		width: 100%
-		height: 230px
+		height: 350px
 		border: 1px solid #bbbbbb
 		border-radius: 5px
 		margin-bottom: 15px
 		background-color: white
+		overflow: hidden
+
+		#banners-block
+			background: none
+
+			#banner-container
+				width: 100%
+				height: auto
+
+				.banner
+					width: 100%
 
 	.tenders-filter
 		display: inline-block
 		vertical-align: top
 		width: 260px
 		margin-left: 15px
+		border: 1px solid gray
+		border-radius: 5px
+		margin-top: 5px
+
 
 		.title
 			font-size: 15px
@@ -275,7 +290,28 @@
 			padding: 7px
 			background: url(../../images/layout/innerbg.png)
 			margin: 5px 0px
+			margin-top: 0px
 			border-radius: 5px
+			font-weight: bold
+
+		.countries
+			margin: 0px 10px
+
+			li
+				margin: 10px 0px
+
+				img
+					margin-right: 10px
+
+				a
+					color: #505050
+					font-weight: bold
+
+				.region-select
+					margin-top: 5px
+
+					select
+						margin-left: 10px
 
 	.tenders-center
 		display: inline-block

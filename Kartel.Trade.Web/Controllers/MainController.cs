@@ -65,9 +65,10 @@ namespace Kartel.Trade.Web.Controllers
         /// <param name="id">Идентификатор категории</param>
         /// <param name="region">Страна для отображения</param>
         /// <param name="page">Страница для отображения</param>
+        /// <param name="occupation">Вид деятельности</param>
         /// <returns></returns>
         [Route("browse-category/{id}")]
-        public ActionResult BrowseCategory(long id, string region, int page = 0)
+        public ActionResult BrowseCategory(long id, string region, int page = 0, string occupation = "")
         {
             // Пушим навигационную цепочку
             PushNavigationChainItem("Главная", "/");
@@ -80,8 +81,10 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("NotFound");
             }
 
+            IEnumerable<Product> products = cat.GetProducts();
+
             // Отображает товары c учётом страны
-            if (region != null)
+            if (!String.IsNullOrEmpty(region))
             {
                 var countryRep = Locator.GetService<ICountriesRepository>();
                 var country = countryRep.GetAllCountries().FirstOrDefault(c => c.Code == region);
@@ -89,16 +92,50 @@ namespace Kartel.Trade.Web.Controllers
                 if (country != null)
                 {
                     // Создаём временную коллекцию для отфильтрованных товаров
-                    var tempProducts = new EntitySet<Product>();
-                    foreach (var prod in cat.Products)
-                    {
-                        if (prod.User.Country == country.Name)
-                        {
-                            tempProducts.Add(prod);
-                        }
-                    }
-                    ViewBag.CurrentRegion = country.Code;
-                    cat.Products = tempProducts;
+                    products = products.Where(p => p.User.Country.ToLower() == country.Name.ToLower());
+                }
+            }
+
+            // Фильтр по аккупации
+            if (!String.IsNullOrEmpty(occupation) && occupation != "views")
+            {
+                switch(occupation)
+                {
+                    case "importer":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.Importer);
+                        break;
+                    case "exporter":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.Exporter);
+                        break;
+                    case "developer":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.Developer);
+                        break;
+                    case "agent":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.Agent);
+                        break;
+                    case "distributor":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.Distributor);
+                        break;
+                    case "odm":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.ODM);
+                        break;
+                    case "oem":
+                        products =
+                            products.Where(
+                                p => p.User.UserOccupationInfos != null && p.User.UserOccupationInfos.OEM);
+                        break;
                 }
             }
 
@@ -107,6 +144,8 @@ namespace Kartel.Trade.Web.Controllers
             // Отображает вьюху категории с товарами
             ViewBag.page = page;
             ViewBag.totalPages = MathHelper.PagesCount(cat.Products.Count, 9);
+            ViewBag.occupation = occupation;
+            ViewBag.products = products.Skip(page * 9).Take(9).AsEnumerable();
 
             return View(cat);
         }
@@ -132,7 +171,7 @@ namespace Kartel.Trade.Web.Controllers
         /// <param name="page">Страница</param>
         /// <returns></returns>
         [Route("tenders/category/{id}")]
-        public ActionResult TendersCategory(long id, int page = 0)
+        public ActionResult TendersCategory(long id, string region = null, string subregion = "", int page = 0)
         {
             // Ищем категорию
             var categoriesRep = Locator.GetService<ICategoriesRepository>();
@@ -142,6 +181,27 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("Tenders");
             }
 
+            IEnumerable<Tender> tenders = category.GetTenders(true);
+
+            // Отображает товары c учётом страны
+            if (!String.IsNullOrEmpty(region))
+            {
+                var countryRep = Locator.GetService<ICountriesRepository>();
+                var country = countryRep.GetAllCountries().FirstOrDefault(c => c.Code == region);
+
+                if (country != null)
+                {
+                    // Создаём временную коллекцию для отфильтрованных товаров
+                    tenders = tenders.Where(p => p.User.Country.ToLower() == country.Name.ToLower());
+                }
+            }
+
+            // Фильтр по аккупации
+            if (!String.IsNullOrEmpty(subregion) && subregion != "")
+            {
+                tenders = tenders.Where(p => p.User.Region.ToLower() == subregion);
+            }
+
             // Нав цепочка
             PushNavigationChainItem("Главная", "/");
             PushNavigationChainItem("Тендеры", "/tenders", false);
@@ -149,6 +209,10 @@ namespace Kartel.Trade.Web.Controllers
 
             // Вид
             ViewBag.page = page;
+            ViewBag.CurrentRegion = region;
+            ViewBag.subregion = subregion;
+            ViewBag.tenders = tenders.Skip(20 * page).Take(20);
+
             return View(category);
         }
 

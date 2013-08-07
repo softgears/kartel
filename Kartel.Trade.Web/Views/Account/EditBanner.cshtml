@@ -10,7 +10,7 @@
     var allTemplates = templatesRep.FindAll().GroupBy(g => g.Category).OrderBy(g => g.Key);
 }
 
-<div class="account-content">
+<div class="account-content" style="height: 1875px">
     <div style="margin-top: 15px; margin-left: 15px">
         @Html.Partial("NavigationChain")
     </div>
@@ -111,9 +111,9 @@
                 </div>
                 <div class="editor">
                     <select name="Href" id="href-field" class="banner-field">
-                        @foreach(var pair in ViewContext.CurrentUser().GetBannerHrefs())
+                        @foreach (var pair in ViewContext.CurrentUser().GetBannerHrefs())
                         {
-                            <option value="@pair.Key" @(pair.Key == Model.Href ? "selected=selected":"")>@pair.Value</option>
+                            <option value="@pair.Key" @(pair.Key == Model.Href ? "selected=selected" : "")>@pair.Value</option>
                         }
                     </select>
                 </div>
@@ -124,9 +124,9 @@
                 </div>
                 <div class="editor">
                     <select name="BannerPosition" id="bposition-field" class="banner-field">
-                        @for (var i = 1; i < 20; i++ )
+                        @for (var i = 1; i < 20; i++)
                         {
-                            <option value="@i" @(i == Model.BannerPosition ? "selected=selected":"")>@i</option>
+                            <option value="@i" @(i == Model.BannerPosition ? "selected=selected" : "")>@i</option>
                         }
                     </select>
                 </div>
@@ -147,10 +147,10 @@
                     </select>
                 </div>
                 <div id="templates-preview">
-                    @foreach(var group in allTemplates)
+                    @foreach (var group in allTemplates)
                     {
                         <div class="template-group" style="display: none" group="@group.Key">
-                            @foreach(var template in group)
+                            @foreach (var template in group)
                             {
                                 <div class="template" filename="bannertemplates/@template.Filename">
                                     <img src="/files/bannertemplates/@template.Filename"/>
@@ -162,38 +162,116 @@
             </div>
             <div style="clear: both"></div>
         </div>
+        @* Заказ баннера*@
+        <div class="fields-group">
+            <div class="fields-title">
+                Заказать баннер
+            </div>
+            <div class="field">
+                <div class="label">&nbsp;</div>
+                <div class="editor">
+                    @Html.CheckBoxFor(b => b.CustomBanner, new { id = "custom-banner-field" }) Я хочу заказать баннер  (3000 рублей)
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Техническое задание
+                </div>
+                <div class="editor">
+                    <textarea name="Task" id="task-field" placeholder="Введите максимально подробно, что именно вы хотите видеть на баннере">@Model.Task</textarea>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
         <div style="text-align: center">
             <input type="submit" class="save" value=" " />
         </div>
     </form>
+    @* Выбор способа оплаты *@
+    <div class="fields-group" id="payments-wrapper">
+        <div class="fields-title">
+            Выберите способ оплаты за создание баннера
+        </div>
+        <table width="100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">1.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Юр. лиц)</span>
+                        <br />
+                        <a href="#" id="legal-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+
+                        <div id="legal-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/banners/bill-legal" target="_blank" method="post" id="legal-bill-form">
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="companyName" style="width: 100%" type="text" placeholder="Название компании" />
+                                    </div>
+                                </div>
+                                <a href="#" id="legal-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#legal-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                    <td style="text-align: center">
+                        <span style="color: #33A1C2">2.</span> <span style="font-weight: bold">Безналичный перевод</span> (<span style="color: darkgray">Для Физ. лиц)</span>
+                        <br />
+                        <a href="#" id="phys-bill-button" style="margin-top: 10px; display: inline-block;">
+                            <img src="~/Content/images/account/bill.png" />
+                        </a>
+
+                        <div id="phys-form-wrapper" style="display: none; margin-top: 15px;">
+                            <form action="/account/banners/bill-phys" target="_blank" method="post" id="phys-bill-form">
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="fio" style="width: 100%" type="text" placeholder="ФИО Плательщика" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="editor">
+                                        <input name="address" style="width: 100%" type="text" placeholder="Адрес" />
+                                    </div>
+                                </div>
+                                <a href="#" id="phys-bill-submit" style="margin-top: 10px; display: inline-block;" onclick="$('#phys-bill-form').submit();">
+                                    <img src="~/Content/images/account/bill.png" />
+                                </a>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#banner-text").attr("class", "").text($("#text-field").val());
             $("#banner-text").addClass($("#size-field").val()).addClass($("#position-field").val()).addClass($("#color-field").val());
-            
+
             $(".banner-field").change(function () {
                 updateBannerPreview();
             });
 
-            $("#templates-categories").change(function() {
+            $("#templates-categories").change(function () {
                 $(".template-group").hide();
-                $("[group='"+$(this).val()+"']").show();
+                $("[group='" + $(this).val() + "']").show();
             }).change();
-            $(".template").click(function() {
+            $(".template").click(function () {
                 $(".template").removeClass("active");
                 $(this).addClass("active");
-                $(".banner-image").attr("src", "/files/"+$(this).attr("filename"));
+                $(".banner-image").attr("src", "/files/" + $(this).attr("filename"));
                 $("#image-url-field").val($(this).attr("filename"));
             });
-            
+
             // Обновляет превью баннера
             function updateBannerPreview() {
-                $("option").each(function(index, item) {
+                $("option").each(function (index, item) {
                     $("#banner-text").removeClass($(item).attr("value"));
                 });
                 $("#banner-text").attr("class", "").text($("#text-field").val());
                 $("#banner-text").addClass($("#size-field").val()).addClass($("#position-field").val()).addClass($("#color-field").val());
-                
+
                 // Обновляем картинку фоновую
                 var ctrl = $("#bg-field").get(0);
                 if (ctrl.files.length > 0) {
@@ -206,6 +284,35 @@
                     reader.readAsDataURL(file);
                 }
             }
+
+            $("#custom-banner-field").change(function() {
+                var val = $(this).prop("checked");
+                if (val) {
+                    $("#payments-wrapper").slideDown("slow",function () {
+                        updateBg();
+                    });
+                } else {
+                    $("#payments-wrapper").slideUp("slow", function () {
+                        updateBg();
+                    });
+                }
+                
+            }).change();
+            
+            $("#legal-bill-button").click(function () {
+                $(this).hide();
+                $("#legal-form-wrapper").slideDown(function() {
+                    updateBg();
+                });
+                return false;
+            });
+            $("#phys-bill-button").click(function () {
+                $(this).hide();
+                $("#phys-form-wrapper").slideDown(function () {
+                    updateBg();
+                });
+                return false;
+            });
         });
     </script>
 </div>

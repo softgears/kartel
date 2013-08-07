@@ -1967,6 +1967,65 @@ namespace Kartel.Trade.Web.Controllers
             return RedirectToAction("Banners");
         }
 
+        /// <summary>
+        /// Создает и отображает счет для юридического лица за золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/banners/bill-legal")]
+        [HttpPost]
+        public ActionResult BannerLegalBill(string companyName)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            double price = 3000.0;
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+            {
+                User = CurrentUser,
+                ActivationTarget = "banners",
+                ActivationAmount = 1,
+                DateCreated = DateTime.Now,
+                Amount = (decimal)price
+            };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.company = companyName;
+            ViewBag.price = price;
+            return View(bill);
+        }
+
+        /// <summary>
+        /// Создает и отображает счет для физического лица за услугу золотого поставщика
+        /// </summary>
+        /// <returns></returns>
+        [Route("account/banners/bill-phys")]
+        [HttpPost]
+        public ActionResult BannerPhysBill(string fio, string address)
+        {
+            // Репозиторий
+            var rep = Locator.GetService<IBillsRepository>();
+            double price = 3000.0;
+
+            // Создаем и отображаем счет
+            var bill = new Bill()
+            {
+                User = CurrentUser,
+                ActivationTarget = "banners",
+                ActivationAmount = 1,
+                DateCreated = DateTime.Now,
+                Amount = (decimal)price
+            };
+            rep.Add(bill);
+            rep.SubmitChanges();
+
+            ViewBag.fio = fio;
+            ViewBag.address = address;
+            ViewBag.price = price;
+            return View(bill);
+        }
+
         #endregion
     }
 }
