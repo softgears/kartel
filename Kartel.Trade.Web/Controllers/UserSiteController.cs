@@ -385,6 +385,7 @@ namespace Kartel.Trade.Web.Controllers
                         Name = Name,
                         IP = Request.UserHostAddress,
                         FIO = product.User.FIO,
+                        Phone = IsAuthentificated ? CurrentUser.GetMainPhone() : "",
                         CompanyName = product.User.Company,
                         TEmail = product.User.Email,
                         ProductName = product.Title,
