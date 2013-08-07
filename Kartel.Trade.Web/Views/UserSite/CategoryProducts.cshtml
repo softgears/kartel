@@ -1,12 +1,16 @@
-﻿@using Kartel.Trade.Web.Classes.Utils
+﻿@using Kartel.Domain.Entities
+@using Kartel.Trade.Web.Classes.Utils
 @model Kartel.Domain.Entities.UserCategory
 
 @{
-    ViewBag.Title = Model.Title;
     Layout = "UserSiteLayout.cshtml";
     int page = ViewBag.page;
+    User user = ViewBag.user;
     int totalPages = MathHelper.PagesCount(Model.GetProductsCount(), 9);
     var anyProduct = Model.GetProducts().FirstOrDefault();
+    ViewBag.Title = String.Format("{0}, {1}, {2}",Model.Title,user.Company,user.City);
+    ViewBag.metaKeywords = String.Format("товары, услуги, предлогаем, продаем {0}",user.Company);
+    ViewBag.metaDescription = "Товары и услуги компании " + user.Company;
 }
 
 <div class="panel">

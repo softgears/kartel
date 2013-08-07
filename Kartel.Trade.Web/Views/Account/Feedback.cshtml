@@ -1,0 +1,84 @@
+﻿@using Kartel.Trade.Web.Classes.Ext
+@model dynamic
+
+@{
+    ViewBag.Title = "Обратная связь";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+
+    <form action="/account/feedback" method="POST" id="feedback-form">
+
+        <div class="fields-group">
+            <div class="field">
+                <div class="label">
+                    <span class="asterix">*</span>Ваше имя
+                </div>
+                <div class="editor">
+                    <input type="text" name="Name" value="@ViewContext.CurrentUser().FIO" placeholder="Введите ваше имя"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Ваш Email
+                </div>
+                <div class="editor">
+                    <input type="text" name="Email" value="@ViewContext.CurrentUser().Email" placeholder="Введите ваш телефон"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Ваш телефон
+                </div>
+                <div class="editor">
+                    <input type="text" name="Phone" value="@ViewContext.CurrentUser().Phone" placeholder="Введите ваш телефон"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    Сообщение
+                </div>
+                <div class="editor">
+                    <textarea name="Content" placeholder="Введите ваше сообщение"></textarea>
+                </div>
+            </div> 
+            <div class="field">
+                <div class="label">
+                    
+                </div>
+                <div class="editor">
+                    <input type="submit" class="round" value="Отправить" style="margin-top: 15px"/>     
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    $("#feedback-form").validate({
+        rules: {
+            Name: {
+                required: true,
+                maxlength: 100,
+            },
+            Email: {
+                required: true,
+                email: true,
+                maxlength: 100,
+            },
+            Phone: {
+                required: true,
+                maxlength: 20,
+            },
+            Content: {
+                required: true,
+                maxlength: 655
+            }
+        }
+    });
+</script>

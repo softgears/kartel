@@ -2027,5 +2027,50 @@ namespace Kartel.Trade.Web.Controllers
         }
 
         #endregion
+
+        #region Обратная связь
+
+        /// <summary>
+        /// Отображает страницу с формой обратной связи
+        /// </summary>
+        /// <returns></returns>
+        [Route("feedback")]
+        public ActionResult Feedback()
+        {
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Связаться с администратором", "/feedback");
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Feedback(string Name, string Phone,string Email, string Content, string Subject)
+        {
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная страница", "/");
+            PushNavigationChainItem("Личный кабинет", "", false);
+            PushNavigationChainItem("Связаться с администратором", "/feedback");
+
+            // Формируем шаблон
+            var template =
+                new ParametrizedFileTemplate(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "AdminFeedback.html"), new
+                    {
+                        Subject = Subject,
+                        Email = Email,
+                        Content = Content,
+                        Name = Name,
+                        Phone = Phone,
+                        IP = Request.UserHostAddress
+                    });
+
+            Locator.GetService<IMailNotificationManager>().Notify("gorshenev_anton@mail.ru", "Картель.рф: сообщение от пользователя " + CurrentUser.FIO, template.ToString());
+
+            return View("FeedbackSuccess");
+        }
+
+        #endregion
     }
 }

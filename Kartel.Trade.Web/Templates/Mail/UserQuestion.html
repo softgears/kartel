@@ -14,8 +14,8 @@
                                     </span>
                                 </td>
                                 <td width="50%" align="right" style="padding: 20px 0;">
-                                    <a href="#" style="color: #0080FF;"><span style="font-family: Arial; font-size: 13px; color: #0080FF;">Личный кабинет</span></a> <span>|</span>
-                                    <a href="#" style="color: #0080FF;"><span style="font-family: Arial; font-size: 13px; color: #0080FF;">Помощь</span></a>
+                                    <a href="http://karteltrade.ru/account/" style="color: #0080FF;"><span style="font-family: Arial; font-size: 13px; color: #0080FF;">Личный кабинет</span></a> <span>|</span>
+                                    <a href="http://karteltrade.ru/help" style="color: #0080FF;"><span style="font-family: Arial; font-size: 13px; color: #0080FF;">Помощь</span></a>
                                 </td>
                             </tr>
                         </table>
@@ -24,7 +24,7 @@
                 <tr>
                     <td style="padding: 25px 13px; width: 100%; background-color: #000000;">
                         <span style="font-family: Arial; font-size: 16px; color: #ffffff;">Сообщение для компании: 
-                            <span><strong>"Рога и Копыта Inc."</strong></span></span>
+                            <span><strong>"${CompanyName}"</strong></span></span>
                     </td>
                 </tr>
                 <tr>
@@ -37,9 +37,9 @@
                         <table width="100%" cellspacing="0" cellpadding="0" border="0">
                             <tr>
                                 <td style="padding: 15px 0 15px 15px;">
-                                    <img src="" style="width: 100px; height: 100px; border: 1px solid #800000;" /></td>
+                                    <img src="${ProductImage}" style="width: 100px; height: 100px; border: 1px solid #800000;" /></td>
                                 <td style="padding: 15px; vertical-align: top;"><span style="font-family: Arial; font-size: 20px;">
-                                    <strong>Автомобиль японского производства Infinity FX35, объем 3.5 литра</strong>
+                                    <strong>${ProductName}</strong>
                                 </span></td>
                             </tr>
                         </table>
@@ -50,7 +50,7 @@
                         <span style="font-family: Arial; font-size: 16px; color: #800000; font-weight: bold;">Текст вопроса:</span>
                         <br />
                         <br />
-                        <span style="font-family: Arial; font-size: 13px;">Автомобиль японского производства Infinity FX35, объем 3.5 литра, Автомобиль японского производства Infinity FX35, объем 3.5 литра</span>
+                        <span style="font-family: Arial; font-size: 13px;">${Content}</span>
                         <br />
                         <br />
                         <table cellpadding="0" cellspacing="0">
@@ -62,42 +62,43 @@
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">E-mail:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">tsasfd@mail.ru</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${Email}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">ФИО:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">Иванов</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${Name}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">Название компании:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">ООО Солнышко</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${ACompanyName}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">Страна:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">Россия</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${ACompanyCountry}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">Город:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">Владимир</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${ACompanyCity}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="font-family: Arial; font-size: 13px; font-weight: bold;">Телефон:</span>
-                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">+7(555)3435678</span>
+                                    <span style="font-family: Arial; font-size: 13px; font-weight: normal;">${Phone}</span>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+                <!--
                 <tr>
                     <td style="padding: 7px 13px; height: 30px; background-color: #C0C0C0">
                         <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -145,7 +146,10 @@
                     <!--<td style="padding: 10px; border-top: 1px dashed #C0C0C0;">
                             <span style="font-family: Arial; font-size: 13px;">Нет новых тендеров</span>
                         </td>-->
-                </tr>
+                <!--</tr>-->
+                <td style="padding: 10px; border-top: 1px dashed #C0C0C0;">
+                    <span style="font-family: Arial; font-size: 13px;">Нет новых тендеров</span>
+                </td>
                 <tr>
                     <td style="height: 50px; background-color: #000000">
                         <img src="http://images2.wikia.nocookie.net/__cb20100822143346/runescape/images/2/21/1x1-pixel.png" width="100%" height="100%" />
@@ -180,7 +184,7 @@
                         <span style="font-family: Arial; font-size: 13px;">Чем больше товаров Вы добавляете, тем больше вероятность, что именно Ваше предложение заинтересует посетителей</span>
                         <br />
                         <span style="font-family: Arial; font-size: 13px; color: #800000;">
-                            <a href="#" style="color: #800000; font-weight: bold;">Добавьте новые товары сейчас</a>
+                            <a href="http://karteltrade.ru/account/add-product" style="color: #800000; font-weight: bold;">Добавьте новые товары сейчас</a>
                         </span>
                     </td>
                 </tr>
@@ -188,28 +192,28 @@
                     <td style="padding: 13px 20px;">
                         <span style="font-family: Arial; font-size: 13px;">
                             <span style="color: #808080;">СЕРВИСЫ:</span>
-                            <span style="padding: 0 5px;"><a href="#" style="color: #800000">Мой картель</a></span> |
-                            <span style="padding: 0 5px;"><a href="#" style="color: #800000">Товары</a></span> |
-                            <span style="padding: 0 5px;"><a href="#" style="color: #800000">Тендеры</a></span> |
-                            <span style="padding: 0 5px;"><a href="#" style="color: #800000">Премиум услуги</a></span> |
-                            <span style="padding: 0 5px;"><a href="#" style="color: #800000">Помощь</a></span>
+                            <span style="padding: 0 5px;"><a href="http://karteltrade.ru/account" style="color: #800000">Мой картель</a></span> |
+                            <span style="padding: 0 5px;"><a href="http://karteltrade.ru/products" style="color: #800000">Товары</a></span> |
+                            <span style="padding: 0 5px;"><a href="http://karteltrade.ru/tenders" style="color: #800000">Тендеры</a></span> |
+                            <span style="padding: 0 5px;"><a href="http://karteltrade.ru/premium" style="color: #800000">Премиум услуги</a></span> |
+                            <span style="padding: 0 5px;"><a href="http://karteltrade.ru/help" style="color: #800000">Помощь</a></span>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 20px; border-top: 1px solid #696A6A; border-bottom: 1px solid #696A6A;">
-                        <span style="font-family: Arial; font-size: 13px;">Забыли свой пароль? </span>
-                        <span style="font-family: Arial; font-size: 13px;"><a href="#" style="color: #800000">Восстановите сейчас</a></span>
+                        <span href="" style="font-family: Arial; font-size: 13px;">Забыли свой пароль? </span>
+                        <a style="font-family: Arial; font-size: 13px;"><a href="http://karteltrade.ru/account/forgot" style="color: #800000">Восстановите сейчас</a></a>
                         <br />
                         <br />
-                        <span style="font-family: Arial; font-size: 13px;">Вы получили данное письмо, так как Ваше e-mail (gorshenev_anton@mail.ru) был указан в качестве контактного при регистрации на сайте 
-                            <a href="#" style="color: #800000">KartelTrade.ru</a></span>
+                        <span style="font-family: Arial; font-size: 13px;">Вы получили данное письмо, так как Ваше e-mail (${TEmail}) был указан в качестве контактного при регистрации на сайте 
+                            <a href="http://karteltrade.ru" style="color: #800000">KartelTrade.ru</a></span>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 20px;">
                         <span style="font-family: Arial; font-size: 13px;">Есть вопросы? Задайте их нам<br />
-                            <a href="#" style="color: #800000">gorshenev_anton@mail.ru</a></span>
+                            <a href="mailto:gorshenev_anton@mail.ru" style="color: #800000">gorshenev_anton@mail.ru</a></span>
                     </td>
                 </tr>
             </table>

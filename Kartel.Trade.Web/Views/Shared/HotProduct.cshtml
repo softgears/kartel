@@ -7,7 +7,7 @@
     </div>
     <div class="image">
         <a href="/product/@Model.Id">
-            @if (String.IsNullOrEmpty(Model.Img))
+            @if (!String.IsNullOrEmpty(Model.Img))
             {
                 <img src="/files/prodimage/@Model.Img"/>
             }

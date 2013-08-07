@@ -2,9 +2,11 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "Контактная информация";
     Layout = "UserSiteLayout.cshtml";
     User user = ViewBag.user;
+    ViewBag.Title = String.Format("Адрес, телефон, факс, скайп, контакты компании {0}", user.Company);
+    ViewBag.metaKeywords = String.Format("Адрес, телефон, сайт, время работы, {0}", user.Company);
+    ViewBag.metaDescription = "Информация о компании " + user.Company;
 }
 
 <div class="contacts-info">

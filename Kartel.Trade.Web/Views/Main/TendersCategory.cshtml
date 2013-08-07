@@ -10,13 +10,16 @@
     int page = ViewBag.page;
     var totalPages = MathHelper.PagesCount(Model.GetTenders().Count(), 20);
     var countries = Locator.GetService<ICountriesRepository>().GetAllCountries();
-    var currentRegion = ViewBag.CurrentRegion;
-    var subregion = ViewBag.subregion;
+    string currentRegion = ViewBag.CurrentRegion;
+    var currentCountry = countries.FirstOrDefault(c => c.Code == currentRegion);
+    string subregion = ViewBag.subregion;
     IEnumerable<Tender> tenders = ViewBag.tenders;
     var banners = Locator.GetService<IBannersRepository>().FindAll()
         .Where(f => string.IsNullOrEmpty(f.Html) & f.Img != null & f.Extra == "5")
         .OrderBy(f => f.Sort)
         .ToList();
+    ViewBag.metaKeywords = Model.GetMetaString(currentCountry, page, totalPages , subregion);
+    ViewBag.metaDescription = Model.GetMetaString(currentCountry, page, totalPages, subregion);
 }
 
 @* Хлебная крошка *@

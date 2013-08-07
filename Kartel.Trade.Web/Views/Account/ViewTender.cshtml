@@ -4,9 +4,11 @@
 @model Kartel.Domain.Entities.Tender
 
 @{
-    ViewBag.Title = Model.Title;
     Layout = "../Shared/_Layout.cshtml";
     var currentUser = ((BaseController)ViewContext.Controller).CurrentUser;
+    ViewBag.Title = String.Format("{0}, {1} - Тендер", Model.Title, Model.User.City);
+    ViewBag.metaKeywords = Model.Keywords;
+    ViewBag.metaDescription = String.Format("{0}, тендеры, закупки, {1}", Model.Title, Model.User.City);
 }
 
 @* Навигационная цепочка *@

@@ -1,0 +1,15 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Вопрос отправлен";
+    Layout = "AccountLayout.cshtml";
+}
+
+<div class="account-content">
+    <div style="margin-top: 15px; margin-left: 15px">
+        @Html.Partial("NavigationChain")
+    </div>
+    <p style="margin: 15px">
+        Ваше письмо было успешно отправлено. Администратор свяжется с вами в ближайшее время.
+    </p>
+</div>

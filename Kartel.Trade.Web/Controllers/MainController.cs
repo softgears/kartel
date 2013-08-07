@@ -145,6 +145,7 @@ namespace Kartel.Trade.Web.Controllers
             ViewBag.page = page;
             ViewBag.totalPages = MathHelper.PagesCount(cat.Products.Count, 9);
             ViewBag.occupation = occupation;
+            ViewBag.CurrentRegion = region;
             ViewBag.products = products.Skip(page * 9).Take(9).AsEnumerable();
 
             return View(cat);
@@ -283,6 +284,39 @@ namespace Kartel.Trade.Web.Controllers
             PushNavigationChainItem("Товары", "/products", true);
 
             return View();
+        }
+
+        /// <summary>
+        /// Обрабатывает редирект со старой ссылки
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("catalog/prod/{id}.html")]
+        public ActionResult OldProductHandler(int id)
+        {
+            return Redirect("/product/" + id);
+        }
+
+        /// <summary>
+        /// Обрабатывает редирект со старой ссылки
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("user/{id}/main.html")]
+        public ActionResult OldUserHandler(int id)
+        {
+            return Redirect("/vendor/" + id);
+        }
+
+        /// <summary>
+        /// Обрабатывает редирект старой ссылки
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("catalog/category/{id}.html")]
+        public ActionResult OldCatalogHandler(int id)
+        {
+            return Redirect("/browse-category/" + id);
         }
     }
 }

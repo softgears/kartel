@@ -2,9 +2,11 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "Наши предложения";
     Layout = "UserSiteLayout.cshtml";
     User user = ViewBag.user;
+    ViewBag.Title = String.Format("{0}, {1}", user.Company, user.City);
+    ViewBag.metaKeywords = String.Format("Информация о компании, контакты, товары, услуги и адрес, {0}", user.Company);
+    ViewBag.metaDescription = "Контактные данные, товары, услуги, компании компании " + user.Company;
     var goods = user.GetRandomProducts(12);
 }
 

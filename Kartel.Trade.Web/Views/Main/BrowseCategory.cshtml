@@ -9,9 +9,12 @@
     int page = ViewBag.page;
     int totalPages = ViewBag.totalPages;
     var countries = Locator.GetService<ICountriesRepository>().GetAllCountries();
-    var currentRegion = ViewBag.CurrentRegion;
-    var ocFilter = ViewBag.occupation;
+    string currentRegion = ViewBag.CurrentRegion;
+    var currentCountry = countries.FirstOrDefault(c => c.Code == currentRegion);
+    string ocFilter = ViewBag.occupation;
     IEnumerable<Product> products = ViewBag.products;
+    ViewBag.metaKeywords = Model.GetMetaString(currentCountry, page, totalPages);
+    ViewBag.metaDescription = Model.GetMetaString(currentCountry,page,totalPages);
 }
 
 @section LeftMenuBlock

@@ -1,9 +1,11 @@
-﻿@using Kartel.Trade.Web.Classes.Ext
+﻿@using Kartel.Domain.Entities
+@using Kartel.Trade.Web.Classes.Ext
 @model Kartel.Domain.Entities.Product
 
 @{
     ViewBag.Title = "Задать вопрос по товару "+Model.Title;
     Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
 }
 
 <div class="panel">
@@ -20,7 +22,9 @@
         <div style="margin: 15px 0px; font-size: 12px">
             Здесь Вы можете задать вопрос поставщику данного товара. Для этого, пожалуйста, заполните все поля формы.
         </div>
-        <form action="/vendor/feedback/@Model.User.Id" method="POST" id="feedback-form">
+        <form action="/UserSite/ProcessProductFeedback/@Model.User.Id" method="POST" id="feedback-form">
+            <input type="hidden" name="id" value="@user.Id"/>
+            <input type="hidden" name="productId" value="@Model.Id"/>
             <div class="field">
                 <div class="label">
                     Тема сообщения

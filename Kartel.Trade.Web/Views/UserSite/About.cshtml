@@ -2,9 +2,11 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "О Компании";
-    Layout = "UserSiteLayout.cshtml";
     User user = ViewBag.user;
+    ViewBag.Title = "Информация о компании "+user.Company;
+    Layout = "UserSiteLayout.cshtml";
+    ViewBag.metaKeywords = "Описание компании, виды деятельности, предложения компании "+user.Company;
+    ViewBag.metaDescription = "Информация о компании "+user.Company;
 }
 
 <div class="product-info">

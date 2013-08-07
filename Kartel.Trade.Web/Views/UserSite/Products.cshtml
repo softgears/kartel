@@ -2,9 +2,11 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "Все наши предложения";
     Layout = "UserSiteLayout.cshtml";
     User user = ViewBag.user;
+    ViewBag.Title = String.Format("Все товары и услуги компании {0}", user.Company);
+    ViewBag.metaKeywords = String.Format("Товары, услуги, компании {0}", user.Company);
+    ViewBag.metaDescription = "Все предложения компании " + user.Company;
     var goods = user.GetProducts().OrderBy(p => p.Title).ToList();
 }
 

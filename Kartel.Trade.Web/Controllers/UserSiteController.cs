@@ -356,5 +356,53 @@ namespace Kartel.Trade.Web.Controllers
             // Отображаем вид
             return View(product);
         }
+
+        /// <summary>
+        /// Обрабатывает форму обратной связи для задания вопроса по товару
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ProcessProductFeedback(long id, long productId, string Email, string Subject, string Content, string Name)
+        {
+            // Инициализируем пользотваеля
+            InitializeUser(id);
+
+            // Навигационная цепочка
+            PushNavigationChainItem("Главная", string.Format("/vendor/{0}", id));
+            PushNavigationChainItem("Отправка сообщения", string.Format("/vendor/feedback", id), true);
+
+            var product = Locator.GetService<IProductsRepository>().Load(productId);
+
+            // Формируем шаблон
+            var template =
+                new ParametrizedFileTemplate(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates", "Mail", "UserQuestion.html"), new
+                    {
+                        Subject = Subject,
+                        Email = Email,
+                        Content = Content,
+                        Name = Name,
+                        IP = Request.UserHostAddress,
+                        FIO = product.User.FIO,
+                        CompanyName = product.User.Company,
+                        TEmail = product.User.Email,
+                        ProductName = product.Title,
+                        ProductImage = "http://karteltrade.ru/files/prodimage/"+product.Img,
+                        ACompanyName = IsAuthentificated ? CurrentUser.Company : "",
+                        ACompanyCountry = IsAuthentificated ? CurrentUser.Country : "",
+                        ACompanyCity = IsAuthentificated ? CurrentUser.City : "",
+                    });
+
+            var user = UsersRepository.Load(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", new { id = id });
+            }
+
+            Locator.GetService<IMailNotificationManager>().Notify(user, "Картель.рф: " + Subject, template.ToString());
+
+            return View("Feedback");
+        }
     }
 }

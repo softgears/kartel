@@ -1,10 +1,14 @@
-﻿@using Kartel.Domain.Interfaces.Repositories
+﻿@using Kartel.Domain.Entities
+@using Kartel.Domain.Interfaces.Repositories
 @using Kartel.Domain.IoC
 @model Kartel.Domain.Entities.Product
 
 @{
-    ViewBag.Title = Model.Title;
     Layout = "UserSiteLayout.cshtml";
+    User user = ViewBag.user;
+    ViewBag.Title = String.Format("{0}, {1}", user.Company, user.City);
+    ViewBag.metaKeywords = Model.Keywords;
+    ViewBag.metaDescription = String.Format("{0}, {1}, {2}",Model.Title,user.Company,user.City);
 }
 
 <div class="product-info">
