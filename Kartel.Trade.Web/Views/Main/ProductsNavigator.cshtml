@@ -7,17 +7,35 @@
 
 <div class="products-navigator">
     <select class="product-sort">
-        @*<option value="price">Цена</option>
-        <option value="count">Минимальная партия</option>
-        <option value="views">Просмотров</option>*@
         <option value="views">Деятельность компании</option>
-        <option value="importer">Импортер</option>
-        <option value="exporter">Экспортер</option>
-        <option value="developer">Производитель</option>
-        <option value="agent">Агент</option>
-        <option value="distributor">Дистрибьютор</option>
-        <option value="oem">OEM</option>
-        <option value="ODM">ODM</option>
+        @if (ViewBag.hasImporter)
+        {
+        <option value="importer">Импортер</option>    
+        }
+        @if (ViewBag.hasExporter)
+        {
+        <option value="exporter">Экспортер</option>    
+        }
+        @if (ViewBag.hasDeveloper)
+        {
+        <option value="developer">Производитель</option>    
+        }
+        @if (ViewBag.hasAgent)
+        {
+        <option value="agent">Агент</option>    
+        }
+        @if (ViewBag.hasDistributor)
+        {
+        <option value="distributor">Дистрибьютор</option>    
+        }
+        @if (ViewBag.hasOem)
+        {
+        <option value="oem">OEM</option>    
+        }
+        @if (ViewBag.hasOdm)
+        {
+        <option value="ODM">ODM</option>    
+        }
     </select>
     @if (page > 0)
     {
@@ -29,3 +47,35 @@
     }
     <div style="clear: both"></div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".products-navigator .next").click(function() {
+            var region = $("#current-region").val();
+            var page = parseInt($("#current-page").val());
+            var occupation = $("#current-occupation").val();
+            var id = $("#current-id").val();
+            var url = "/browse-category/" + id + "?page=" + (page + 1);
+            if (region != "") {
+                url += "&region=" + region;
+            }
+            if (occupation != "") {
+                url += "&occupation=" + occupation;
+            }
+            window.location.href = url;
+        });
+        $(".products-navigator .prev").click(function() {
+            var region = $("#current-region").val();
+            var page = parseInt($("#current-page").val());
+            var occupation = $("#current-occupation").val();
+            var id = $("#current-id").val();
+            var url = "/browse-category/" + id + "?page=" + (page - 1);
+            if (region != "") {
+                url += "&region=" + region;
+            }
+            if (occupation != "") {
+                url += "&occupation=" + occupation;
+            }
+            window.location.href = url;
+        });
+    });
+</script>

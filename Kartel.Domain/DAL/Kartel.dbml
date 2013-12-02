@@ -119,6 +119,7 @@
       <Column Name="TendersCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Sort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ViewMode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(Max)" CanBeNull="false" />
       <Association Name="Category_Category" Member="ChildCategories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
       <Association Name="Category_Product" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Product" />
       <Association Name="Category_Tender" Member="Tenders" ThisKey="Id" OtherKey="CategoryId" Type="Tender" />

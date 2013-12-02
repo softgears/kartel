@@ -352,7 +352,7 @@ body #content #content-wrapper #left-menu-block .menu-block .menu-block-title {
 }
 /* line 308, ../sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block ul li {
-  list-style-position: inside;
+  list-style-position: outside;
   list-style-image: url(../../images/layout/bullet.png);
   border-bottom: 1px dashed white;
   margin: 5px 0px;

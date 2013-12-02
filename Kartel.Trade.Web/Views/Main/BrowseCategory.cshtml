@@ -76,6 +76,10 @@
     </div>
 
     @* Верхний навигатор *@
+    <input type="hidden" id="current-page" value="@page"/>
+    <input type="hidden" id="current-id" value="@Model.Id"/>
+    <input type="hidden" id="current-region" value="@currentRegion"/>
+    <input type="hidden" id="current-occupation" value="@ocFilter"/>
     @Html.Partial("ProductsNavigator")
 
     <div id="products">
@@ -139,6 +143,15 @@
                 <img src="~/Content/images/layout/addproduct.png" />
             </div>
             <div class="action-text">Зарегистрируйтесь сейчас! Бесплатно</div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 15px">
+        <div style="font-size: 16px; font-weight: bold">
+            @Model.Title
+        </div>
+        <div style="margin-top: 10px">
+            @Model.Description
         </div>
     </div>
 </div>

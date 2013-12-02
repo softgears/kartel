@@ -35,7 +35,25 @@
       <file leaf-file-name="categories.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="27" selection-start="2528" selection-end="2528" vertical-scroll-proportion="0.64468867" vertical-offset="2073" max-vertical-offset="12019">
+            <state line="181" column="29" selection-start="2976" selection-end="2976" vertical-scroll-proportion="0.43711844" vertical-offset="2719" max-vertical-offset="12019">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.sass" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="311" column="43" selection-start="6342" selection-end="6342" vertical-scroll-proportion="0.0" vertical-offset="4702" max-vertical-offset="6630">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.sass" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="28" selection-start="1234" selection-end="1234" vertical-scroll-proportion="-14.882353" vertical-offset="431" max-vertical-offset="2346">
               <folding />
             </state>
           </provider>
@@ -53,7 +71,7 @@
       <file leaf-file-name="banner-editor.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/banner-editor.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="248" selection-end="248" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="2091">
+            <state line="16" column="24" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2091">
               <folding />
             </state>
           </provider>
@@ -62,7 +80,7 @@
       <file leaf-file-name="page-register.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-register.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="188" selection-end="188" vertical-scroll-proportion="17.117647" vertical-offset="1043" max-vertical-offset="1887">
+            <state line="10" column="19" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="1043" max-vertical-offset="1887">
               <folding />
             </state>
           </provider>
@@ -79,8 +97,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/Content/styles/sass/reset.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
-        <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-main.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/design-editor.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/all.sass" />
@@ -89,6 +105,8 @@
         <option value="$PROJECT_DIR$/Content/styles/sass/banners.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/banner-editor.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/page-register.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/layout.sass" />
+        <option value="$PROJECT_DIR$/Content/styles/sass/products.sass" />
         <option value="$PROJECT_DIR$/Content/styles/sass/categories.sass" />
       </list>
     </option>
@@ -208,8 +226,8 @@
     <property name="options.lastSelected" value="preferences.sourceCode.SASS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Проекты Траст медии/Beepas/Beepas.Web" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -228,7 +246,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22552083" sideWeight="0.6709129" order="0" side_tool="false" content_ui="combo" />
@@ -283,16 +301,6 @@
         <state line="47" column="26" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="42" selection-start="5075" selection-end="5075" vertical-scroll-proportion="0.7286528" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="22" selection-start="1279" selection-end="1280" vertical-scroll-proportion="0.04130809" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/all.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="22" selection-start="192" selection-end="192" vertical-scroll-proportion="0.14601228" vertical-offset="0" max-vertical-offset="0" />
@@ -329,21 +337,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/banner-editor.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="248" selection-end="248" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="2091">
+        <state line="16" column="24" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2091">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/page-register.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="188" selection-end="188" vertical-scroll-proportion="17.117647" vertical-offset="1043" max-vertical-offset="1887">
+        <state line="10" column="19" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="1043" max-vertical-offset="1887">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/layout.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="311" column="43" selection-start="6342" selection-end="6342" vertical-scroll-proportion="0.0" vertical-offset="4702" max-vertical-offset="6630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/styles/sass/products.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="28" selection-start="1234" selection-end="1234" vertical-scroll-proportion="-14.882353" vertical-offset="431" max-vertical-offset="2346">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/styles/sass/categories.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="27" selection-start="2528" selection-end="2528" vertical-scroll-proportion="0.64468867" vertical-offset="2073" max-vertical-offset="12019">
+        <state line="181" column="29" selection-start="2976" selection-end="2976" vertical-scroll-proportion="0.43711844" vertical-offset="2719" max-vertical-offset="12019">
           <folding />
         </state>
       </provider>

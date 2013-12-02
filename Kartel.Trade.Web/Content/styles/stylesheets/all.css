@@ -419,7 +419,7 @@ body #content #content-wrapper #left-menu-block .menu-block .menu-block-title {
 }
 /* line 308, ../sass/layout.sass */
 body #content #content-wrapper #left-menu-block .menu-block ul li {
-  list-style-position: inside;
+  list-style-position: outside;
   list-style-image: url(../../images/layout/bullet.png);
   border-bottom: 1px dashed white;
   margin: 5px 0px;
@@ -875,26 +875,26 @@ body #footer #footer-content a {
 }
 /* line 169, ../sass/categories.sass */
 #page-tenders .customers-info .title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #00659d;
   margin-bottom: 10px;
 }
 /* line 175, ../sass/categories.sass */
 #page-tenders .customers-info ul {
-  margin-left: 15px;
+  margin-left: 16px;
 }
 /* line 178, ../sass/categories.sass */
 #page-tenders .customers-info ul li {
   list-style-type: disc;
   list-style-position: outside;
   margin: 2px 0px;
-  font-size: 11px;
+  font-size: 12px;
 }
 /* line 184, ../sass/categories.sass */
 #page-tenders .customers-info ul li a {
   color: inherit;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 /* line 189, ../sass/categories.sass */
@@ -940,7 +940,7 @@ body #footer #footer-content a {
   width: 48%;
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-right: 10px;
 }
 /* line 231, ../sass/categories.sass */
@@ -1514,7 +1514,7 @@ body #footer #footer-content a {
 .products-navigator .next {
   padding-right: 32px;
   position: relative;
-  top: 8px;
+  top: 4px;
   cursor: pointer;
   background: url(../../images/layout/pnext.png) right center no-repeat;
 }
@@ -1575,7 +1575,7 @@ body #footer #footer-content a {
   color: #999999;
   margin-top: 30px;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 13px;
 }
 /* line 82, ../sass/products.sass */
 .hot-product .price .price-holder {

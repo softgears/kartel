@@ -133,6 +133,14 @@ Ext.onReady(function () {
                                     id: 'categoryDisplayNameField',
                                     value: category != undefined ? category.displayName : "",
                                     anchor: '100%'
+                                },
+                                {
+                                    xtype: 'textarea',
+                                    fieldLabel: 'Описание',
+                                    allowBlank: false,
+                                    id: 'categoryDescriptionField',
+                                    value: category != undefined ? category.description : "",
+                                    anchor: '100%'
                                 }
                             ]
                         }
@@ -155,6 +163,7 @@ Ext.onReady(function () {
                             id: Ext.getCmp('categoryIdField').getValue(),
                             parentId: parentId,
                             displayName: Ext.getCmp('categoryDisplayNameField').getValue(),
+                            description: Ext.getCmp('categoryDescriptionField').getValue(),
                         };
 
                         // Отправляем данные

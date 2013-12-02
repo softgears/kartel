@@ -129,7 +129,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                     Leaf = false,
                     Category =
                         {
-                            Description = "",
+                            Description = c.Description,
                             DisplayName = c.Title,
                             SystemName = "",
                             Id = c.Id.ToString(),
@@ -184,6 +184,7 @@ namespace Kartel.Trade.Web.Areas.ControlPanel.Controllers
                 {
                     var category = repository.Load(id);
                     category.Title = displayName;
+                    category.Description = description;
                     repository.SubmitChanges();
                     return JsonSuccess(new { id = category.Id });
                 }

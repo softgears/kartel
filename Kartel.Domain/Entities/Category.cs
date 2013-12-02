@@ -145,5 +145,10 @@ namespace Kartel.Domain.Entities
                 return ChildCategories.Take(count).Select(c => c.Title).ToArray();
             }
         }
+
+        public string GetMetaString(Country currentCountry, int page, int totalPages)
+        {
+            return String.Empty;
+        }
     }
 }

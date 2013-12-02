@@ -205,26 +205,26 @@
 }
 /* line 169, ../sass/categories.sass */
 #page-tenders .customers-info .title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #00659d;
   margin-bottom: 10px;
 }
 /* line 175, ../sass/categories.sass */
 #page-tenders .customers-info ul {
-  margin-left: 15px;
+  margin-left: 16px;
 }
 /* line 178, ../sass/categories.sass */
 #page-tenders .customers-info ul li {
   list-style-type: disc;
   list-style-position: outside;
   margin: 2px 0px;
-  font-size: 11px;
+  font-size: 12px;
 }
 /* line 184, ../sass/categories.sass */
 #page-tenders .customers-info ul li a {
   color: inherit;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 /* line 189, ../sass/categories.sass */
@@ -270,7 +270,7 @@
   width: 48%;
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-right: 10px;
 }
 /* line 231, ../sass/categories.sass */

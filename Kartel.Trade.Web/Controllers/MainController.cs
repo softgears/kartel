@@ -139,14 +139,67 @@ namespace Kartel.Trade.Web.Controllers
                 }
             }
 
-            PushNavigationChainItem(cat.Title, "", true);
+            var parent = cat;
+            var parents = new List<Category>();
+            do
+            {
+                parents.Insert(0,parent);
+                parent = parent.ParentCategory;
+            } while (parent != null);
+            foreach (var pc in parents)
+            {
+                PushNavigationChainItem(pc.Title,"/browse-category/"+pc.Id);
+            }
 
             // Отображает вьюху категории с товарами
+            products = products.ToList();
             ViewBag.page = page;
-            ViewBag.totalPages = MathHelper.PagesCount(cat.Products.Count, 9);
+            ViewBag.totalPages = MathHelper.PagesCount((products as IList<Product>).Count, 30);
             ViewBag.occupation = occupation;
             ViewBag.CurrentRegion = region;
-            ViewBag.products = products.Skip(page * 9).Take(9).AsEnumerable();
+            ViewBag.products = products.Skip(page * 30).Take(30);
+
+            ViewBag.hasImporter = false;
+            ViewBag.hasExporter = false;
+            ViewBag.hasDeveloper = false;
+            ViewBag.hasAgent = false;
+            ViewBag.hasOem = false;
+            ViewBag.hasOdm = false;
+            ViewBag.hasDistributor = false;
+            foreach (var product in products)
+            {
+                if (product.User.UserOccupationInfos != null)
+                {
+                    if (product.User.UserOccupationInfos.Importer)
+                    {
+                        ViewBag.hasImporter = true;
+                    }
+                    if (product.User.UserOccupationInfos.Exporter)
+                    {
+                        ViewBag.hasExporter = true;
+                    }
+                    if (product.User.UserOccupationInfos.Developer)
+                    {
+                        ViewBag.hasDeveloper = true;
+                    }
+                    if (product.User.UserOccupationInfos.Agent)
+                    {
+                        ViewBag.hasAgent = true;
+                    }
+                    if (product.User.UserOccupationInfos.OEM)
+                    {
+                        ViewBag.hasOem = true;
+                    }
+                    if (product.User.UserOccupationInfos.ODM)
+                    {
+                        ViewBag.hasOdm = true;
+                    }
+                    if (product.User.UserOccupationInfos.Distributor)
+                    {
+                        ViewBag.hasDistributor = true;
+                    }
+                }
+            }
 
             return View(cat);
         }
