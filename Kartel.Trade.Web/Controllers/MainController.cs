@@ -222,9 +222,10 @@ namespace Kartel.Trade.Web.Controllers
         /// </summary>
         /// <param name="term">Строка для поиска</param>
         /// <param name="what">Что именно ищем - товары или тендеры</param>
+        /// <param name="page">Текущая страница для поиска</param>
         /// <returns>страница с результатами поиска</returns>
         [Route("search")]
-        public ActionResult Search(string term, string what)
+        public ActionResult Search(string term, string what, int page = 0)
         {
             // Пушим навигационную цепочку
             PushNavigationChainItem("Главная", "/");
@@ -243,7 +244,10 @@ namespace Kartel.Trade.Web.Controllers
             if (what == "products")
             {
                 var searched = manager.SearchProducts(term);
-                return View("SearchProducts", searched.ToList());
+                var total = searched.ToList();
+                ViewBag.count = total.Count;
+                ViewBag.page = page;
+                return View("SearchProducts", total.Skip(page*50).Take(50).ToList());
             }
             else if (what == "tenders")
             {
@@ -317,6 +321,16 @@ namespace Kartel.Trade.Web.Controllers
         public ActionResult OldCatalogHandler(int id)
         {
             return Redirect("/browse-category/" + id);
+        }
+
+        /// <summary>
+        /// Страница с ошибкой 404
+        /// </summary>
+        /// <returns></returns>
+        [Route("not-found")]
+        public ActionResult NotFound()
+        {
+            return View();
         }
     }
 }

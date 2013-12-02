@@ -36,7 +36,12 @@ namespace Kartel.Domain.Entities
         /// <returns></returns>
         public IEnumerable<Product> GetProducts()
         {
-            return Products.OrderBy(p => p.Title);
+            // Возвращает продукты в категории и во всех вложенных категориях
+            var cats = GetAllChildCategories();
+            return from c in cats
+                from p in c.Products
+                orderby p.Title
+                select p;
         }
 
         /// <summary>

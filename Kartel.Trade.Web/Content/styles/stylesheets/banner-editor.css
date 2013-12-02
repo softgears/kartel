@@ -1,26 +1,25 @@
-/* line 1, ../sass/banner-editor.sass */
-.banner-preview {
+/* line 3, ../sass/banner-editor.sass */
+#user_site_layout .banner-preview {
   position: relative;
   text-align: center;
 }
-
-/* line 5, ../sass/banner-editor.sass */
-.banner {
+/* line 7, ../sass/banner-editor.sass */
+#user_site_layout .banner {
   width: 930px;
   position: relative;
   height: 350px;
   display: inline-block;
-  border: 1px solid #a9a9a9;
+  border: 1px solid darkgrey;
   overflow: hidden;
 }
-/* line 13, ../sass/banner-editor.sass */
-.banner img {
+/* line 15, ../sass/banner-editor.sass */
+#user_site_layout .banner img {
   width: 100%;
   height: auto;
   z-index: 10;
 }
-/* line 18, ../sass/banner-editor.sass */
-.banner #banner-text {
+/* line 20, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text {
   position: absolute;
   display: inline-block;
   font-family: Arial;
@@ -28,88 +27,88 @@
   color: black;
   white-space: nowrap;
 }
-/* line 26, ../sass/banner-editor.sass */
-.banner #banner-text.lefttop {
+/* line 28, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.lefttop {
   top: 5px;
   left: 5px;
 }
-/* line 30, ../sass/banner-editor.sass */
-.banner #banner-text.right-top {
+/* line 32, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.right-top {
   top: 5px;
   right: 5px;
 }
-/* line 34, ../sass/banner-editor.sass */
-.banner #banner-text.leftbottom {
+/* line 36, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.leftbottom {
   bottom: 5px;
   left: 5px;
 }
-/* line 38, ../sass/banner-editor.sass */
-.banner #banner-text.rightbottom {
+/* line 40, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.rightbottom {
   bottom: 5px;
   right: 5px;
 }
-/* line 42, ../sass/banner-editor.sass */
-.banner #banner-text.middletop {
+/* line 44, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.middletop {
   width: 100%;
   top: 5px;
   left: 0px;
   text-align: center;
 }
-/* line 48, ../sass/banner-editor.sass */
-.banner #banner-text.middlebottom {
+/* line 50, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.middlebottom {
   width: 100%;
   bottom: 5px;
   left: 0px;
   text-align: center;
 }
-/* line 54, ../sass/banner-editor.sass */
-.banner #banner-text.small {
+/* line 56, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.small {
   font-size: 13px;
 }
-/* line 57, ../sass/banner-editor.sass */
-.banner #banner-text.medium {
+/* line 59, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.medium {
   font-size: 25px;
 }
-/* line 60, ../sass/banner-editor.sass */
-.banner #banner-text.large {
+/* line 62, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.large {
   font-size: 37px;
 }
-/* line 63, ../sass/banner-editor.sass */
-.banner #banner-text.black {
+/* line 65, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.black {
   color: black;
 }
-/* line 66, ../sass/banner-editor.sass */
-.banner #banner-text.white {
+/* line 68, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.white {
   color: white;
 }
-/* line 69, ../sass/banner-editor.sass */
-.banner #banner-text.red {
+/* line 71, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.red {
   color: red;
 }
-/* line 72, ../sass/banner-editor.sass */
-.banner #banner-text.green {
+/* line 74, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.green {
   color: green;
 }
-/* line 75, ../sass/banner-editor.sass */
-.banner #banner-text.blue {
+/* line 77, ../sass/banner-editor.sass */
+#user_site_layout .banner #banner-text.blue {
   color: blue;
 }
 
-/* line 78, ../sass/banner-editor.sass */
+/* line 80, ../sass/banner-editor.sass */
 #banner-templates {
   margin: 0px 30px;
 }
-/* line 81, ../sass/banner-editor.sass */
+/* line 83, ../sass/banner-editor.sass */
 #banner-templates #templates-categories-wrapper {
   float: left;
   margin-right: 10px;
 }
-/* line 85, ../sass/banner-editor.sass */
+/* line 87, ../sass/banner-editor.sass */
 #banner-templates #templates-categories-wrapper select {
   width: 150px;
   height: 250px;
 }
-/* line 89, ../sass/banner-editor.sass */
+/* line 91, ../sass/banner-editor.sass */
 #banner-templates #templates-preview {
   height: 250px;
   overflow-y: scroll;
@@ -117,12 +116,12 @@
   border-radius: 5px;
   background-color: white;
 }
-/* line 96, ../sass/banner-editor.sass */
+/* line 98, ../sass/banner-editor.sass */
 #banner-templates #templates-preview .template-group {
   margin: 5px;
   text-align: center;
 }
-/* line 100, ../sass/banner-editor.sass */
+/* line 102, ../sass/banner-editor.sass */
 #banner-templates #templates-preview .template-group .template {
   display: inline-block;
   vertical-align: top;
@@ -133,7 +132,7 @@
   overflow: hidden;
   margin: 5px;
 }
-/* line 110, ../sass/banner-editor.sass */
+/* line 112, ../sass/banner-editor.sass */
 #banner-templates #templates-preview .template-group .template img {
   width: 150px;
   height: auto;

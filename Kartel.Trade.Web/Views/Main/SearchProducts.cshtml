@@ -1,8 +1,12 @@
-﻿@model IList<Kartel.Domain.Entities.Product>
+﻿@using Kartel.Trade.Web.Classes.Utils
+@model IList<Kartel.Domain.Entities.Product>
 
 @{
     ViewBag.Title = "Результаты поиска товаров по запросу "+ViewBag.term;
     Layout = "../Shared/_Layout.cshtml";
+    int total = ViewBag.count;
+    int page = ViewBag.page;
+    var totalPages = MathHelper.PagesCount(total, 50);
 }
 
 @* Навигационная цепочка *@
@@ -11,10 +15,28 @@
 <div id="page-products">
     @if (Model.Count > 0)
     {
-        <div style="text-align: center; margin: 15px; font-size: 13px">По запросу "@ViewBag.term" найдено @Model.Count товаров:</div>
+        <div style="text-align: center; margin: 15px; font-size: 13px">По запросу "@ViewBag.term" найдено @total товаров:</div>
         foreach(var product in Model)
         {
             @Html.Partial("Product",product)
+        }
+        
+        @* Пагинатор *@
+        if (totalPages > 1)
+        {
+            <div id="paginator" style="text-align: center;">
+                @for (var i = 0; i < totalPages; i++)
+                {
+                    if (i == page)
+                    {
+                    <span class="current-page">@(page + 1)</span>
+                    }
+                    else
+                    {
+                        <a href="/search?term=@ViewBag.term&what=products&page=@(i)">@(i + 1)</a>
+                    }
+                }
+            </div>
         }
     }
     else
