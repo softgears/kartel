@@ -2507,6 +2507,19 @@
     <Content Include="Areas\ControlPanel\Views\Root\Index.cshtml" />
     <Content Include="Areas\ControlPanel\Views\Root\Login.cshtml" />
     <Content Include="Areas\ControlPanel\Views\Shared\ControlPanelSection.cshtml" />
+    <Content Include="Content\styles\sass\account-icons.sass" />
+    <Content Include="Content\styles\sass\account.sass" />
+    <Content Include="Content\styles\sass\all.sass" />
+    <Content Include="Content\styles\sass\banner-editor.sass" />
+    <Content Include="Content\styles\sass\banners.sass" />
+    <Content Include="Content\styles\sass\categories.sass" />
+    <Content Include="Content\styles\sass\design-editor.sass" />
+    <Content Include="Content\styles\sass\layout.sass" />
+    <Content Include="Content\styles\sass\page-main.sass" />
+    <Content Include="Content\styles\sass\page-register.sass" />
+    <Content Include="Content\styles\sass\products.sass" />
+    <Content Include="Content\styles\sass\reset.sass" />
+    <Content Include="Content\styles\sass\usersite.sass" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Content Include="Scripts\Components\tinymce\langs\readme.md" />
     <Content Include="Scripts\Components\tinymce\skins\lightgray\fonts\icomoon-small.eot" />
@@ -2708,7 +2721,6 @@
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\examples\tabs\images\" />
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\logger\assets\skins\sam\" />
     <Folder Include="Areas\ControlPanel\Scripts\Libs\ext-3.4.0\src\ext-core\test\yui_2.6.0\yui\build\yuitest\assets\skins\sam\" />
-    <Folder Include="Content\styles\sass\" />
     <Folder Include="files\banner\" />
   </ItemGroup>
   <ItemGroup>

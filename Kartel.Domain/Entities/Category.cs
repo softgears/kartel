@@ -150,5 +150,10 @@ namespace Kartel.Domain.Entities
         {
             return String.Empty;
         }
+
+        public string GetMetaString(Country currentCountry, int page, int totalPages, string subregion)
+        {
+            return String.Empty;
+        }
     }
 }

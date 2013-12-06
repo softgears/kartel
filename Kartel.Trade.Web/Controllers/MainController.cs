@@ -253,7 +253,7 @@ namespace Kartel.Trade.Web.Controllers
             // Фильтр по аккупации
             if (!String.IsNullOrEmpty(subregion) && subregion != "")
             {
-                tenders = tenders.Where(p => p.User.Region.ToLower() == subregion);
+                tenders = tenders.Where(p => p.User.Region != null && p.User.Region.ToLower() == subregion.ToLower());
             }
 
             // Нав цепочка
@@ -267,6 +267,24 @@ namespace Kartel.Trade.Web.Controllers
             ViewBag.subregion = subregion;
             ViewBag.tenders = tenders.Skip(20 * page).Take(20);
 
+            // Узнаем, какие у нас есть страны для тендеров
+            var availableCountries = new List<string>();
+            var availableRegions = new List<string>();
+            foreach (var tender in tenders)
+            {
+                if (!availableCountries.Contains(tender.User.Country))
+                {
+                    availableCountries.Add(tender.User.Country);    
+                }
+                if (tender.User.Region != null && !availableRegions.Contains(tender.User.Region))
+                {
+                    availableRegions.Add(tender.User.Region);
+                }
+            }
+
+            ViewBag.availableCountries = availableCountries;
+            ViewBag.availableRegions = availableRegions;
+            
             return View(category);
         }
 

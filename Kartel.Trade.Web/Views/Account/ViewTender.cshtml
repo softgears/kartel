@@ -68,7 +68,7 @@
                 if (currentUser.Tarif != "gold")
                 {
                 <div class="gold-alert">
-                    Контактные данные доступны только пользователям с тарифом <a href="/services/gold">"Золотой поставщик"</a>
+                    Контактные данные доступны только пользователям с тарифом <br/><a href="/services/gold">"Золотой поставщик"</a>
                     <div class="separator">
                     </div>
                     <div style="text-align: center">
@@ -84,7 +84,7 @@
                 }
             }
         </div>
-        @if (currentUser != null && currentUser.Tarif == "gold")
+        @if (currentUser != null)
         {
             <div class="image">
                 <img src="/files/tenderimage/@Model.Image"/>
@@ -210,16 +210,16 @@
                             <td>
                                 <a href="/vendor/@offer.UserId">@offer.User.Company</a>
                             </td>
-                            <td>
+                            <td style="width: 15%">
                                 @offer.Price
                             </td>
-                            <td>
-                                @(offer.DeliveryInfo != 5 ? ((TenderDeliveryInfo)offer.DeliveryInfo).GetEnumMemberName() : offer.DeliveryOtherInfo)
+                            <td style="width: 20%">
+                                @Html.Raw(offer.DeliveryInfo != 5 ? ((TenderDeliveryInfo)offer.DeliveryInfo).GetEnumMemberName() : Server.HtmlEncode(offer.DeliveryOtherInfo))
                             </td>
-                            <td>
-                                @(offer.DeliveryInfo != 6 ? ((TenderPaymentInfo)offer.PaymentInfo).GetEnumMemberName() : offer.PaymentOtherInfo)
+                            <td style="width: 20%">
+                                @Html.Raw(offer.DeliveryInfo != 6 ? ((TenderPaymentInfo)offer.PaymentInfo).GetEnumMemberName() : Server.HtmlEncode(offer.PaymentOtherInfo))
                             </td>
-                            <td>
+                            <td style="width: 35%">
                                 @offer.OfferText
                             </td>
                         </tr>
@@ -228,12 +228,6 @@
             </table>
         }
     </div>
-    @if (currentUser == null)
-    {
-        <div class="action">
-            Разместите товары на <a href="/">Картель.рф</a> и покупатели найдут Вас сами. <a href="/account/register">Разместить товары сейчас и БЕСПЛАТНО</a>
-        </div>    
-    }
     <div class="other-tenders">
         <div class="title">
             Другие тендеры в разделе @Model.Category.Title
@@ -293,5 +287,9 @@
                 }
             }
         });
+    });
+
+    $(document).ready(function () {
+        $("li[data-what='tenders']").click();
     });
 </script>

@@ -1333,6 +1333,12 @@ namespace Kartel.Trade.Web.Controllers
                 return RedirectToAction("Tenders","Main");
             }
 
+            // Проверяем, давал ли этот пользователь заявку по тендеру
+            if (tender.TenderOffers.Any(o => o.UserId == CurrentUser.Id))
+            {
+                return RedirectToAction("TendersParticipation");
+            }
+
             // Добавляем заявку по тендеру
             model.User = CurrentUser;
             model.Tender = tender;
